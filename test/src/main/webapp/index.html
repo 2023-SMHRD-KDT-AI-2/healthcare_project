@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+    crossorigin="anonymous"
+/>
 </head>
 <body>
     <h1>HEALTHCARE PROJECT FIRST COMMIT</h1>
@@ -16,5 +22,65 @@
     
     <h5>5번째 커밍아웃</h5>
     <h6>나행 등장</h6>
+
+    <p><button id="btn">변경</button></p>
+
+    <div class="card mb-3" style="width: 18rem">
+        <img id="dog" src="" class="card-img-top" alt="" />
+        <div class="card-body">
+            <h5 id="cardTitleDog" class="card-title">Card title</h5>
+        </div>
+    </div>
+
+    <div class="card mb-3" style="width: 18rem">
+        <img id="cat" src="" class="card-img-top" alt="" />
+        <div class="card-body">
+            <h5 id="cardTitleCat" class="card-title">Card title</h5>
+        </div>
+    </div>
+    <script>
+        // 1) 변경 버튼을 눌렀을 때 사용자가 input 태그에 입력한 값을 감지
+        // 그 값을 콘솔창에 띄워보기
+
+        // 2) 조건에 맞게 사진을 교체
+        // 만약 사용자가 input 태그에 고양이를 입력했으면
+        // 기존 사진을 고양이 사진으로 변경
+        // 고등어도 동일하게 적용
+        // 그 외의 텍스트를 입력하면 alert 창 띄우기
+
+        let imgDog = document.getElementById('dog');
+        let titleDog = document.getElementById('cardTitleDog');
+        let imgCat = document.getElementById('cat');
+        let titleCat = document.getElementById('cardTitleCat');
+        let btnChangeImg = document.getElementById('btn');
+        let loadShibe = () =>
+            fetch('https://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (response) {
+                    let colorCode = '#' + Math.round(Math.random() * 0xffffff).toString(16)
+                    imgDog.src = response;
+                    titleDog.textContent = response
+                });
+        let loadCat = () =>
+            fetch('https://randomfox.ca/floof/')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (response) {
+                    let colorCode = '#' + Math.round(Math.random() * 0xffffff).toString(16)
+                    imgCat.src = response.image
+                    titleCat.textContent = response.image
+                });
+        loadShibe();
+        
+        loadCat();
+        btnChangeImg.addEventListener('click', function () {
+            loadShibe()
+
+            loadCat()
+        });
+    </script>
 </body>
 </html>
