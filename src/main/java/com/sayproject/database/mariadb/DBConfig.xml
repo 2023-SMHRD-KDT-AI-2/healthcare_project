@@ -26,7 +26,7 @@
 		<!-- Diet 관련 Mapper -->	
 		
 		<!-- Exercise 관련 Mapper -->	
-		
+		<mapper resource="com/sayproject/model/Exercise/MapperXML/ExerciseMapper.xml" />
 		<!-- other 관련 Mapper -->				
 		
 	</mappers>
