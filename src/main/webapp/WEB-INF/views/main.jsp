@@ -222,6 +222,7 @@ request.getAttribute("memberList");
 	<script src="assets/build/js/custom.min.js"></script>
 
 	<script>
+	/*
 		$(document).ready(function() {
 			var table = $('.dataTable').DataTable({
 				language : {
@@ -261,12 +262,12 @@ request.getAttribute("memberList");
 				order : [ [ 0, "asc" ] ], //0번째 컬럼 오름차순
 				paging : true, //페이징 기능 활성화. 기본이 true
 
-				/*numbers - Page number buttons only
-				simple - 'Previous' and 'Next' buttons only
-				simple_numbers - 'Previous' and 'Next' buttons, plus page numbers
-				full - 'First', 'Previous', 'Next' and 'Last' buttons
-				full_numbers - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
-				first_last_numbers - 'First' and 'Last' buttons, plus page numbers*/
+				//numbers - Page number buttons only
+				//simple - 'Previous' and 'Next' buttons only
+				//simple_numbers - 'Previous' and 'Next' buttons, plus page numbers
+				//full - 'First', 'Previous', 'Next' and 'Last' buttons
+				//full_numbers - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
+				//first_last_numbers - 'First' and 'Last' buttons, plus page numbers
 				pagingType : "simple_numbers", // 페이징 버튼 타입 설정
 				pageLength : 10, // 한페이지에 보여주는 데이터 개수 
 				responsive : true, // 스크립트를 추가하면 반응형으로 작동하게해줌
@@ -282,6 +283,7 @@ request.getAttribute("memberList");
 			});
 
 		});
+		*/
 	</script>
 </body>
 </html>
