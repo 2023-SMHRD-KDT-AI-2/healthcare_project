@@ -1,52 +1,80 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.sayproject.model.Members.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%
-request.getAttribute("memberList");
+/*
+int memberListSize = -1;
+
+Object obj = request.getAttribute("memberList");
+
+ArrayList<Member> memberList = null;
+if (obj != null) {
+	memberList = new ArrayList<Member>();
+	if (obj instanceof ArrayList<?>) {
+		ArrayList<?> al = (ArrayList<?>) obj;
+		if (al.size() > 0) {
+			for (int i = 0; i < al.size(); i++) {
+				Object o = al.get(i);
+				if (o instanceof Member) {
+					memberList.add((Member) o);
+				}
+			}
+			if (memberList != null) {
+				memberListSize = memberList.size();
+			}
+		}
+	}
+}
+*/
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Bootstrap core CSS -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>HealthCare | SAYPROJECT</title>
 
 <!-- Bootstrap -->
-<link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
 <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <!-- Font Awesome -->
 <link href="assets/vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <!-- NProgress -->
-<link href="assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+<link href="assets/vendors/nprogress/nprogress.css" rel="stylesheet" />
 <!-- iCheck -->
-<link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+<link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+<!-- Animate.css -->
+<link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet" />
 <!-- Datatables -->
 
 <link
 	href="assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <link
 	href="assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <link
 	href="assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <link
 	href="assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <link
 	href="assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"
-	rel="stylesheet">
+	rel="stylesheet" />
 <!-- Custom Theme Style -->
-<link href="assets/build/css/custom.min.css" rel="stylesheet">
-
+<link href="assets/build/css/custom.min.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -54,24 +82,27 @@ request.getAttribute("memberList");
 		<div class="main_container">
 			<!-- left side menu -->
 			<div class="col-md-3 left_col">
-				<jsp:include page="/WEB-INF/views/include/side_left.html" />
+				<jsp:include page="/WEB-INF/views/Members/include/side_left.html" />
 			</div>
 			<!-- /left side menu -->
 			<!-- top navigation -->
 			<div class="top_nav">
-				<jsp:include page="/WEB-INF/views/include/top_nav.html" />
+				<jsp:include page="/WEB-INF/views/Members/include/top_nav.html" />
 			</div>
 			<!-- /top navigation -->
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3></h3>
+						</div>
 						<div class="title_right">
-							<div class="col-md-5 col-sm-5   form-group pull-right top_search">
+							<div class="col-md-5 col-sm-5 form-group pull-right top_search">
 								<div class="input-group">
 									<input type="text" class="form-control"
-										placeholder="Search for..."> <span
-										class="input-group-btn">
+										placeholder="Search for..." /> <span class="input-group-btn">
 										<button class="btn btn-default" type="button">Go!</button>
 									</span>
 								</div>
@@ -82,12 +113,16 @@ request.getAttribute("memberList");
 					<div class="clearfix"></div>
 
 					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<!-- main content -->
+							<%
+							/* 기본적으로 메인 컨텐츠는 이 곳에 입력합니다. */
+							%>
 
-						<div class="col-md-12 col-sm-12  ">
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Table design <small>Custom design</small>
+										Table design <small>회원 명수 : ${memberList.size()} 명</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -107,28 +142,23 @@ request.getAttribute("memberList");
 								</div>
 
 								<div class="x_content">
-
-									<p>
-										Add class
-										<code>bulk_action</code>
-										to table for bulk actions options on row select
-									</p>
-
 									<div class="table-responsive">
 										<table class="table table-striped jambo_table bulk_action">
 											<thead>
 												<tr class="headings">
 													<th><input type="checkbox" id="check-all" class="flat">
 													</th>
-													<th class="column-title">Invoice</th>
-													<th class="column-title">Invoice Date</th>
-													<th class="column-title">Order</th>
-													<th class="column-title">Bill to Name</th>
-													<th class="column-title">Status</th>
-													<th class="column-title">Amount</th>
+													<th class="column-title">사진</th>
+													<th class="column-title">카카오</th>
+													<th class="column-title">이름</th>
+													<th class="column-title">나이</th>
+													<th class="column-title">성별</th>
+													<th class="column-title">몸무게</th>
+													<th class="column-title">키</th>
+													<th class="column-title">등록일</th>
 													<th class="column-title no-link last"><span
-														class="nobr">Action</span></th>
-													<th class="bulk-actions" colspan="7"><a class="antoo"
+														class="nobr">이동</span></th>
+													<th class="bulk-actions" colspan="9"><a class="antoo"
 														style="color: #fff; font-weight: 500;">Bulk Actions (
 															<span class="action-cnt"> </span> ) <i
 															class="fa fa-chevron-down"></i>
@@ -137,31 +167,22 @@ request.getAttribute("memberList");
 											</thead>
 
 											<tbody>
-												<tr class="pointer">
-													<td class="a-center "><input type="checkbox"
-														class="flat" name="table_records"></td>
-													<td class="">121000040</td>
-													<td class="">May 23, 2014 11:47:56 PM</td>
-													<td class="">121000210 <i
-														class="success fa fa-long-arrow-up"></i></td>
-													<td class="">John Blank L</td>
-													<td class="">Paid</td>
-													<td class="a-right a-right ">$7.45</td>
-													<td class="last"><a href="#">View</a></td>
-												</tr>
-												<tr class="pointer">
-													<td class="a-center "><input type="checkbox"
-														class="flat" name="table_records"></td>
-													<td class=" ">121000039</td>
-													<td class=" ">May 23, 2014 11:30:12 PM</td>
-													<td class=" ">121000208 <i
-														class="success fa fa-long-arrow-up"></i>
-													</td>
-													<td class=" ">John Blank L</td>
-													<td class=" ">Paid</td>
-													<td class="a-right a-right ">$741.20</td>
-													<td class=" last"><a href="#">View</a></td>
-												</tr>
+												<c:forEach var="member" items="${memberList}">
+													<tr class="even pointer">
+														<td class="a-center "><input type="checkbox"
+															class="flat" name="table_records"></td>
+														<td class=" "><img src="${member.getPhotopath()}" width="100px"
+															height="100px"></td>
+														<td class=" ">${member.getKakao_id()}</td>
+														<td class=" ">${member.getName()}</td>
+														<td class=" ">${member.getAge()}</td>
+														<td class=" ">${member.getGender()}</td>
+														<td class="a-right a-right">${member.getWeight()}</td>
+														<td class="a-right a-right">${member.getHeight()}</td>
+														<td class=" ">${member.getRegist_day()}</td>
+														<td class="last"><a href="#">이동</a></td>
+													</tr>
+												</c:forEach>
 											</tbody>
 										</table>
 									</div>
@@ -169,6 +190,8 @@ request.getAttribute("memberList");
 
 								</div>
 							</div>
+
+							<!-- /main content -->
 						</div>
 					</div>
 				</div>
@@ -202,9 +225,12 @@ request.getAttribute("memberList");
 		src="assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 	<script
 		src="assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-	<script src="assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-	<script src="assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-	<script src="assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+	<script
+		src="assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+	<script
+		src="assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+	<script
+		src="assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 	<script
 		src="assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
 	<script
@@ -220,70 +246,5 @@ request.getAttribute("memberList");
 	<script src="assets/vendors/pdfmake/build/vfs_fonts.js"></script>
 	<!-- Custom Theme Scripts -->
 	<script src="assets/build/js/custom.min.js"></script>
-
-	<script>
-	/*
-		$(document).ready(function() {
-			var table = $('.dataTable').DataTable({
-				language : {
-					search : '검색 : ',
-					url : '/resource/i18n/datatables/ko.json'
-				},
-				ajax : {
-					url : "loadMembers.say",
-					type : "GET",
-					dataType : "json",
-					dataSrc : 'data'
-				},
-				columns : [ {
-					data : "no"
-				}, {
-					data : "name"
-				}, {
-					data : "age"
-				}, {
-					data : "gender"
-				}, {
-					data : "weight"
-				}, {
-					data : "height"
-				}, {
-					data : "job"
-				}, {
-					data : "phone_number"
-				}, {
-					data : "email"
-				}, {
-					data : "trainer"
-				}, {
-					data : "regist_day"
-				} ],
-				ordering : true, // ordering 활성화
-				order : [ [ 0, "asc" ] ], //0번째 컬럼 오름차순
-				paging : true, //페이징 기능 활성화. 기본이 true
-
-				//numbers - Page number buttons only
-				//simple - 'Previous' and 'Next' buttons only
-				//simple_numbers - 'Previous' and 'Next' buttons, plus page numbers
-				//full - 'First', 'Previous', 'Next' and 'Last' buttons
-				//full_numbers - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
-				//first_last_numbers - 'First' and 'Last' buttons, plus page numbers
-				pagingType : "simple_numbers", // 페이징 버튼 타입 설정
-				pageLength : 10, // 한페이지에 보여주는 데이터 개수 
-				responsive : true, // 스크립트를 추가하면 반응형으로 작동하게해줌
-				lengthChange : false, // pageLength 조절 불가하게 해줌
-				info : true, // 페이지 상태표시
-				autoWidth : true, //페이지 좌우 크기 조절시 테이블 크기 자동 적용
-				select : true,
-				serverSide : false,
-				processing : true, // 서버와 통신 시 응답을 받기 전이라는 ui를 띄울 것인지 여부
-				dom : 'Blfrtip',
-				colReorder : true,
-				scrollX : true,
-			});
-
-		});
-		*/
-	</script>
 </body>
 </html>
