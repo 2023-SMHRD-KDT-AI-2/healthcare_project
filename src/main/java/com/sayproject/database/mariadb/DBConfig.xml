@@ -19,8 +19,15 @@
 	</environments>
 	<!-- sql 문장들이 정리된 파일을 연결하는 태그 -->
 	<mappers>
-		<mapper resource="com/smhrd/model/MapperXML/MemberMapper.xml" />
-		<mapper resource="com/smhrd/model/MapperXML/MessageMapper.xml" />
-		<mapper resource="com/smhrd/model/MapperXML/BoardMapper.xml" />
+		<!-- Main 관련 Mapper -->
+		<mapper resource="com/smhrd/model/MapperXML/xxxxxxx.xml" />
+		<!-- Members 관련 Mapper -->	
+		<mapper resource="com/smhrd/model/MapperXML/xxxxxxx.xml" />
+		<!-- Diet 관련 Mapper -->	
+		<mapper resource="com/smhrd/model/MapperXML/xxxxxxx.xml" />
+		<!-- Exercise 관련 Mapper -->	
+		<mapper resource="com/smhrd/model/MapperXML/xxxxxxxxx.xml" />
+		<!-- other 관련 Mapper -->				
+		<mapper resource="com/smhrd/model/MapperXML/xxxxxxxx.xml" />
 	</mappers>
 </configuration>
