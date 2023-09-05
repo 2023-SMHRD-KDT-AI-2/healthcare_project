@@ -17,7 +17,7 @@ public class SqlSessionManager {
     // 초기화 블럭 : 생성자가 실행이 될 때 자동적으로 실행되는 문법
     static {
         try {
-            String resource = "com/smhrd/database/config.xml";
+            String resource = "com/sayproject/database/mariadb/DBConfig.xml";
             // config.xml 파일을 수정하거나 작업을 할 수 있도록 읽어들이는 작업!
             InputStream inputStream = Resources.getResourceAsStream(resource);
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
