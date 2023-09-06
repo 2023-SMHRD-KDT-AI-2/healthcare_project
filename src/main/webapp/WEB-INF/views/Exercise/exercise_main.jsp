@@ -61,12 +61,12 @@ request.getAttribute("memberList"); %>
       <div class="main_container">
         <!-- left side menu -->
         <div class="col-md-3 left_col">
-          <jsp:include page="/WEB-INF/views/Diet/include/side_left.html" />
+          <jsp:include page="/WEB-INF/views/include/side_left.jsp" />
         </div>
         <!-- /left side menu -->
         <!-- top navigation -->
         <div class="top_nav">
-          <jsp:include page="/WEB-INF/views/Diet/include/top_nav.html" />
+          <jsp:include page="/WEB-INF/views/include/top_nav.jsp" />
         </div>
         <!-- /top navigation -->
 
@@ -100,7 +100,7 @@ request.getAttribute("memberList"); %>
                   <!-- main content -->
                   <%
 					// 기본적으로 메인 컨텐츠는 이 곳에 입력합니다.   
-					out.print("diet main contents");
+					out.print("exercise main contents");
                   %>
                   <!-- /main content -->
                 </div>

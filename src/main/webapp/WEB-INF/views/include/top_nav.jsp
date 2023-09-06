@@ -1,4 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%
+request.getAttribute("memberList"); %>
 <div class="nav_menu">
                 <div class="nav toggle">
                   <a id="menu_toggle"><i class="fa fa-bars"></i></a>

@@ -6,28 +6,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
-/*
-int memberListSize = -1;
-
-Object obj = request.getAttribute("memberList");
-
-ArrayList<Member> memberList = null;
-if (obj != null) {
-	memberList = new ArrayList<Member>();
-	if (obj instanceof ArrayList<?>) {
-		ArrayList<?> al = (ArrayList<?>) obj;
-		if (al.size() > 0) {
-			for (int i = 0; i < al.size(); i++) {
-				Object o = al.get(i);
-				if (o instanceof Member) {
-					memberList.add((Member) o);
-				}
-			}
-			if (memberList != null) {
-				memberListSize = memberList.size();
-			}
+/* int memberListSize=-1; Object obj=request.getAttribute("memberList"); ArrayList<Member>
+			memberList = null;
+			if (obj != null) {
+			memberList = new ArrayList<Member>();
+				if (obj instanceof ArrayList
+				<?>) {
+	ArrayList<?> al = (ArrayList
+				<?>) obj;
+	if (al.size() > 0) {
+		for (int i = 0; i < al.size(); i++) {
+	Object o = al.get(i);
+	if (o instanceof Member) {
+		memberList.add((Member) o);
+	}
+		}
+		if (memberList != null) {
+	memberListSize = memberList.size();
 		}
 	}
+}
 }
 */
 %>
@@ -82,12 +80,12 @@ if (obj != null) {
 		<div class="main_container">
 			<!-- left side menu -->
 			<div class="col-md-3 left_col">
-				<jsp:include page="/WEB-INF/views/Members/include/side_left.html" />
+				<jsp:include page="/WEB-INF/views/include/side_left.jsp" />
 			</div>
 			<!-- /left side menu -->
 			<!-- top navigation -->
 			<div class="top_nav">
-				<jsp:include page="/WEB-INF/views/Members/include/top_nav.html" />
+				<jsp:include page="/WEB-INF/views/include/top_nav.jsp" />
 			</div>
 			<!-- /top navigation -->
 
@@ -171,8 +169,8 @@ if (obj != null) {
 													<tr class="even pointer">
 														<td class="a-center "><input type="checkbox"
 															class="flat" name="table_records"></td>
-														<td class=" "><img src="${member.getPhotopath()}" width="100px"
-															height="100px"></td>
+														<td class=" "><img src="${member.getPhotopath()}"
+															width="100px" height="100px"></td>
 														<td class=" ">${member.getKakao_id()}</td>
 														<td class=" ">${member.getName()}</td>
 														<td class=" ">${member.getAge()}</td>
