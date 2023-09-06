@@ -20,7 +20,7 @@
 		<url-pattern>*.jsp</url-pattern>
 		<url-pattern>*.jspx</url-pattern>
 	</servlet-mapping>
-	<display-name>SAY_PROJECT</display-name>
+	<display-name>SAYPROJECT</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
