@@ -61,12 +61,12 @@ request.getAttribute("memberList"); %>
       <div class="main_container">
         <!-- left side menu -->
         <div class="col-md-3 left_col">
-          <jsp:include page="/WEB-INF/views/Main/include/side_left.html" />
+          <jsp:include page="/WEB-INF/views/include/side_left.jsp" />
         </div>
         <!-- /left side menu -->
         <!-- top navigation -->
         <div class="top_nav">
-          <jsp:include page="/WEB-INF/views/Main/include/top_nav.html" />
+          <jsp:include page="/WEB-INF/views/include/top_nav.jsp" />
         </div>
         <!-- /top navigation -->
 

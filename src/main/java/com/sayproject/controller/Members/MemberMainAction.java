@@ -24,7 +24,7 @@ public class MemberMainAction  implements Action {
 		    MembersDAO dao = new MembersDAO();
 		    List<Member> memberList =dao.memberList();
 		    request.setAttribute("memberList", memberList);
-		    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Members/main.jsp");
+		    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Members/members_main.jsp");
 		    dis.forward(request, response);
 	  }
 }

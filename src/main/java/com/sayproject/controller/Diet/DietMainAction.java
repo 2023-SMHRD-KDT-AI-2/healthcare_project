@@ -18,7 +18,7 @@ public class DietMainAction  implements Action {
 	    response.setContentType("text/html; charset=utf-8");
 	    request.setCharacterEncoding(CHARSET);
 
-	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Diet/main.jsp");
+	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Diet/diet_main.jsp");
 	    dis.forward(request, response);
 	  }
 }

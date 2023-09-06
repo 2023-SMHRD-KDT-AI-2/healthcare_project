@@ -18,7 +18,7 @@ public class ExerciseMainAction  implements Action {
 	    response.setContentType("text/html; charset=utf-8");
 	    request.setCharacterEncoding(CHARSET);
 
-	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Exercise/main.jsp");
+	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Exercise/exercise_main.jsp");
 	    dis.forward(request, response);
 	  }
 }
