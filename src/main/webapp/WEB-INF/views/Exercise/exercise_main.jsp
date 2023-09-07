@@ -15,6 +15,7 @@ request.getAttribute("memberList");
 
 <title>HealthCare | SAYPROJECT</title>
 <jsp:include page="/WEB-INF/views/include/header.jsp" />
+
 </head>
 
 <body class="nav-md">
@@ -60,9 +61,6 @@ request.getAttribute("memberList");
 							out.print("exercise main contents");
 							%>
 
-							<!-- Main Content-->
-
-
 							<!-- /main content -->
 						</div>
 					</div>
@@ -79,5 +77,6 @@ request.getAttribute("memberList");
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
+
 </body>
 </html>
