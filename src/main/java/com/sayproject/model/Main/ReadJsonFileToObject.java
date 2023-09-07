@@ -11,12 +11,14 @@ public class ReadJsonFileToObject {
   public static void main(String[] args) throws FileNotFoundException {
 
       // FileReader 생성
-      Reader reader = new FileReader("C:\\Users\\SMHRD\\Downloads\\daily.json");
+      Reader reader = new FileReader("C:\\Users\\Home\\Downloads\\daily.json");
 
       // Json 파일 읽어서, Lecture 객체로 변환
       Gson gson = new Gson();
-      MemberDailyData lecture = gson.fromJson(reader, MemberDailyData.class);
+      MemberDailyData memberDailyData = gson.fromJson(reader, MemberDailyData.class);
 
-      System.out.println(lecture);
+      
+      String jSon = gson.toJson(memberDailyData, MemberDailyData.class);
+      System.out.println(jSon);
   }
 }

@@ -15,9 +15,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDailyData {
-  @SerializedName("daily_data")
+  @SerializedName("dailyInfo")
   @Expose
-  private List<DailyInfo> dailyData;
+  private List<DailyInfo> dailyInfo;
   @SerializedName("_id")
   @Expose
   private Integer id;
