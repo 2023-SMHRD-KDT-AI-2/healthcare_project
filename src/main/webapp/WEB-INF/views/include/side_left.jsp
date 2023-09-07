@@ -34,27 +34,27 @@
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
 						<li><a href="/Main.say">Main Sub1</a></li>
-						<li><a href="/Main.say?c=sub2">Main Sub2</a></li>
+						<li><a href="/Main.say?c=list">Main Sub2</a></li>
 						<li><a href="/Main.say?c=sub3">Main Sub3</a></li>
 					</ul></li>
 				<li><a><i class="fa fa-edit"></i> 회원 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
-						<li><a href="/Members.say?c=sub1">Member Sub1</a></li>
-						<li><a href="/Members.say?c=sub2">Member Sub2</a></li>
-						<li><a href="/Members.say?c=sub3">Member Sub3</a></li>
+						<li><a href="/Members.say">Member Main</a></li>
+						<li><a href="/Members.say?c=list">Member list</a></li>
+						<li><a href="/Members.say?c=json">Member jsondata</a></li>
 					</ul></li>
 				<li><a><i class="fa fa-desktop"></i> 영양 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
-						<li><a href="/Diet.say?c=sub1">Diet Sub1</a></li>
+						<li><a href="/Diet.say">Diet Sub1</a></li>
 						<li><a href="/Diet.say?c=sub2">Diet Sub2</a></li>
 						<li><a href="/Diet.say?c=sub3">Diet Sub3</a></li>
 					</ul></li>
 				<li><a><i class="fa fa-table"></i> 운동 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
-						<li><a href="/Exercise.say?c=sub1">Exercise Sub1</a></li>
+						<li><a href="/Exercise.say">Exercise Sub1</a></li>
 						<li><a href="/Exercise.say?c=sub2">Exercise Sub2</a></li>
 						<li><a href="/Exercise.say?c=sub3">Exercise Sub3</a></li>
 					</ul></li>

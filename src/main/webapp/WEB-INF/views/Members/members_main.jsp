@@ -5,31 +5,6 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-/* int memberListSize=-1; Object obj=request.getAttribute("memberList"); ArrayList<Member>
-			memberList = null;
-			if (obj != null) {
-			memberList = new ArrayList<Member>();
-				if (obj instanceof ArrayList
-				<?>) {
-	ArrayList<?> al = (ArrayList
-				<?>) obj;
-	if (al.size() > 0) {
-		for (int i = 0; i < al.size(); i++) {
-	Object o = al.get(i);
-	if (o instanceof Member) {
-		memberList.add((Member) o);
-	}
-		}
-		if (memberList != null) {
-	memberListSize = memberList.size();
-		}
-	}
-}
-}
-*/
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,39 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>HealthCare | SAYPROJECT</title>
-
-<!-- Bootstrap -->
-<link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-<link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Font Awesome -->
-<link href="assets/vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" />
-<!-- NProgress -->
-<link href="assets/vendors/nprogress/nprogress.css" rel="stylesheet" />
-<!-- iCheck -->
-<link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
-<!-- Animate.css -->
-<link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet" />
-<!-- Datatables -->
-
-<link
-	href="assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Custom Theme Style -->
-<link href="assets/build/css/custom.min.css" rel="stylesheet" />
+<jsp:include page="/WEB-INF/views/include/header.jsp" />
 </head>
 
 <body class="nav-md">
@@ -141,12 +84,10 @@
 
 								<div class="x_content">
 									<div class="table-responsive">
-										<table class="table table-striped jambo_table bulk_action">
+										<table class="table table-striped jambo_table">
 											<thead>
 												<tr class="headings">
-													<th><input type="checkbox" id="check-all" class="flat">
-													</th>
-													<th class="column-title">사진</th>
+													<th class="column-title" rowspan="2">사진</th>
 													<th class="column-title">카카오</th>
 													<th class="column-title">이름</th>
 													<th class="column-title">나이</th>
@@ -154,23 +95,24 @@
 													<th class="column-title">몸무게</th>
 													<th class="column-title">키</th>
 													<th class="column-title">등록일</th>
-													<th class="column-title no-link last"><span
+													<th class="column-title no-link last" rowspan="2"><span
 														class="nobr">이동</span></th>
-													<th class="bulk-actions" colspan="9"><a class="antoo"
-														style="color: #fff; font-weight: 500;">Bulk Actions (
-															<span class="action-cnt"> </span> ) <i
-															class="fa fa-chevron-down"></i>
-													</a></th>
+												</tr>
+												<tr>
+													<td class=" ">회원번호</td>
+													<td class=" ">담당</td>
+													<td class=" ">직업</td>
+													<td class=" " colspan="2">주소</td>
+													<td class=" " colspan="2">연락처</td>
 												</tr>
 											</thead>
 
 											<tbody>
 												<c:forEach var="member" items="${memberList}">
-													<tr class="even pointer">
-														<td class="a-center "><input type="checkbox"
-															class="flat" name="table_records"></td>
-														<td class=" "><img src="${member.getPhotopath()}"
-															width="100px" height="100px"></td>
+													<tr class="pointer">
+														<td class=" " rowspan="2"><img
+															src="${member.getPhotopath()}" width="100px"
+															height="100px"></td>
 														<td class=" ">${member.getKakao_id()}</td>
 														<td class=" ">${member.getName()}</td>
 														<td class=" ">${member.getAge()}</td>
@@ -178,17 +120,21 @@
 														<td class="a-right a-right">${member.getWeight()}</td>
 														<td class="a-right a-right">${member.getHeight()}</td>
 														<td class=" ">${member.getRegist_day()}</td>
-														<td class="last"><a href="#">이동</a></td>
+														<td class="last" rowspan="2"><a href="#">이동</a></td>
+													</tr>
+													<tr class="pointer">
+														<td class=" ">${member.getNo()}</td>
+														<td class=" ">${member.getTrainer()}</td>
+														<td class=" ">${member.getJob()}</td>
+														<td class=" " colspan="2">${member.getAddress()}</td>
+														<td class=" " colspan="2">${member.getPhone_number()}</td>
 													</tr>
 												</c:forEach>
 											</tbody>
 										</table>
 									</div>
-
-
 								</div>
 							</div>
-
 							<!-- /main content -->
 						</div>
 					</div>
@@ -204,45 +150,6 @@
 			<!-- /footer content -->
 		</div>
 	</div>
-
-	<!-- jQuery -->
-	<script src="assets/vendors/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- FastClick -->
-	<script src="assets/vendors/fastclick/lib/fastclick.js"></script>
-	<!-- NProgress -->
-	<script src="assets/vendors/nprogress/nprogress.js"></script>
-	<!-- iCheck -->
-	<script src="assets/vendors/iCheck/icheck.min.js"></script>
-	<!-- Datatables -->
-	<script src="assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-	<script
-		src="assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-	<script src="assets/vendors/jszip/dist/jszip.min.js"></script>
-	<script src="assets/vendors/pdfmake/build/pdfmake.min.js"></script>
-	<script src="assets/vendors/pdfmake/build/vfs_fonts.js"></script>
-	<!-- Custom Theme Scripts -->
-	<script src="assets/build/js/custom.min.js"></script>
+	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 </body>
 </html>
