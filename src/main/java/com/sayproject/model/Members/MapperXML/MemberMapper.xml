@@ -13,6 +13,6 @@
         Select kakao_id, phone, address From members Where kakao_id=#{email} and password=#{password}
     </select>
     <select id="memberList" resultType="com.sayproject.model.Members.Member">
-		Select kakao_id, name, age, gender, height, weight, trainer, photopath, job, address, regist_day, phone_number From members ORDER BY NO LIMIT 10
+		Select * From members ORDER BY NO
 	</select>
 </mapper>

@@ -14,39 +14,7 @@ request.getAttribute("memberList");
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>HealthCare | SAYPROJECT</title>
-
-<!-- Bootstrap -->
-<link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-<link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Font Awesome -->
-<link href="assets/vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" />
-<!-- NProgress -->
-<link href="assets/vendors/nprogress/nprogress.css" rel="stylesheet" />
-<!-- iCheck -->
-<link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
-<!-- Animate.css -->
-<link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet" />
-<!-- Datatables -->
-
-<link
-	href="assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Custom Theme Style -->
-<link href="assets/build/css/custom.min.css" rel="stylesheet" />
+<jsp:include page="/WEB-INF/views/include/header.jsp" />
 </head>
 
 <body class="nav-md">
@@ -107,45 +75,6 @@ request.getAttribute("memberList");
 			<!-- /footer content -->
 		</div>
 	</div>
-
-	<!-- jQuery -->
-	<script src="assets/vendors/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- FastClick -->
-	<script src="assets/vendors/fastclick/lib/fastclick.js"></script>
-	<!-- NProgress -->
-	<script src="assets/vendors/nprogress/nprogress.js"></script>
-	<!-- iCheck -->
-	<script src="assets/vendors/iCheck/icheck.min.js"></script>
-	<!-- Datatables -->
-	<script src="assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-	<script
-		src="assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-	<script
-		src="assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-	<script src="assets/vendors/jszip/dist/jszip.min.js"></script>
-	<script src="assets/vendors/pdfmake/build/pdfmake.min.js"></script>
-	<script src="assets/vendors/pdfmake/build/vfs_fonts.js"></script>
-	<!-- Custom Theme Scripts -->
-	<script src="assets/build/js/custom.min.js"></script>
+<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 </body>
 </html>
