@@ -21,10 +21,11 @@
 <!-- Datatables -->
 <link href="assets/css/dataTables/jquery.dataTables.css"
 	rel="stylesheet" />
-<!-- Member Custom Style -->
-<link href="assets/Members/css/custom.css" rel="stylesheet" />
 <!-- calendar.js style -->
 <link rel="stylesheet" href="assets/css/Calendar/calendar.js.css" />
+
+<!-- Custom Theme Style -->
+<link href="assets/Members/css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">

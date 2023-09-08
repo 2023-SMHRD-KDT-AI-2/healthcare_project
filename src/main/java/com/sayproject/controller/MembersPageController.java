@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sayproject.controller.Members.MemberMainAction;
 import com.sayproject.controller.Members.MembersListAction;
 import com.sayproject.controller.Members.MembersListJsonAction;
+import com.sayproject.controller.Members.member.MemberDailyInfoAjaxForMongoDBAction;
 
 public class MembersPageController {
   protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -31,6 +32,9 @@ public class MembersPageController {
     }
     if (cmd.equals("json")) {
       return new MembersListJsonAction();
+    }
+    if (cmd.equals("member")) {
+      return new MemberDailyInfoAjaxForMongoDBAction();
     }
     return new MemberMainAction();
   }

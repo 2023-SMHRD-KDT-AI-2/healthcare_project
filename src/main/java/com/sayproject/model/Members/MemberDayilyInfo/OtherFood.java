@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Nightmeal {
+public class OtherFood {
 	@SerializedName("foodname")
 	@Expose
 	private String foodname;
