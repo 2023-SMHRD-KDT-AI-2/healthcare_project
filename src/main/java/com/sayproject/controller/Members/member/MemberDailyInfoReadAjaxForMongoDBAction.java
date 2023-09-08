@@ -13,7 +13,7 @@ import com.sayproject.Utils.Utils;
 import com.sayproject.controller.Action;
 import com.sayproject.database.mongodb.MongoDBManager;
 
-public class MemberDailyInfoAjaxForMongoDBAction implements Action {
+public class MemberDailyInfoReadAjaxForMongoDBAction implements Action {
   private static final String CHARSET = "utf-8";
 
   @Override
