@@ -29,8 +29,8 @@ public class Diet {
     @SerializedName("dinner")
     @Expose
     private List<Dinner> dinner;
-    @SerializedName("nightmeal")
+    @SerializedName("otherfood")
     @Expose
-    private List<Nightmeal> nightmeal;
+    private List<OtherFood> otherfood;
 
 }

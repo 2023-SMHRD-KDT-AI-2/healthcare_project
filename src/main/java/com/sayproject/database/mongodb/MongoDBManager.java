@@ -4,26 +4,35 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
-public class MongoDBClient {
+public class MongoDBManager {
 
-  public MongoDBClient() {
+  private MongoClient mongoClient = null;
+  public MongoDBManager() {
 
   }
 
-  public static MongoDBClient getInstance() {
+  public static MongoDBManager getInstance() {
     return LazyHoler.INSTANCE;
   }
 
   // private static inner class 인 LazyHolder
   private static class LazyHoler {
     // LazyHolder 클래스 초기화 과정에서 JVM 이 Thread-Safe 하게 instance 를 생성
-    private static final MongoDBClient INSTANCE = new MongoDBClient();
+    private static final MongoDBManager INSTANCE = new MongoDBManager();
   }
 
-  public MongoClient dbManager() {
-    String uri =
-        "mongodb+srv://${id}:${password}@${host}/?retryWrites=true&w=majority";
+  public MongoDatabase dbManager() {
+    String host = "cluster0.q3lazme.mongodb.net";    
+    String username = "sentimentalhoon";
+    String password = "L1XIq4QEJRuBXEmb";
+    String dbName = "sayproject";
+    String uri = String.format("mongodb+srv://%s:%s@%s/?retryWrites=true&w=majority", username, password, host);
     MongoClient mongoClient = MongoClients.create(uri);
-    return mongoClient;
+    MongoDatabase database = mongoClient.getDatabase(dbName);
+    return database;
+  }
+  
+  public void close() {
+    if (mongoClient != null) mongoClient.close();
   }
 }

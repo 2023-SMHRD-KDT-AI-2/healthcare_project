@@ -15,7 +15,8 @@ request.getAttribute("memberList");
 
 <title>HealthCare | SAYPROJECT</title>
 <jsp:include page="/WEB-INF/views/include/header.jsp" />
-
+<!-- Custom Theme Style -->
+<link href="assets/Exercise/css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -77,6 +78,7 @@ request.getAttribute("memberList");
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
-
+<!-- Custom Theme Scripts -->
+<script src="assets/Exercise/js/custom.js"></script>
 </body>
 </html>

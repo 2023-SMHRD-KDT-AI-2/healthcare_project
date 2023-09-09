@@ -21,8 +21,12 @@ $(document).ready(function() {
 		columns: [
 			{
 				data: "photopath",
-				render: function() {
-					return '<img src="images//Member//example.jpg" width="50px">';
+
+				render: function(data, type, row, meta) {
+					const date = new Date();
+					const year = date.getFullYear();
+					const month = date.getMonth();
+					return '<a href="Members.say?c=member&collection=' + year + (month >= 10 ? month : '0' + month) + '&fieldName=_id&value=' + row.no + '&valueType=int&dataType=json"><img src="images//Member//example.jpg" width="50px"></a>';
 				}
 			},
 			{

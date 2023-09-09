@@ -17,14 +17,13 @@
 <title>HealthCare | SAYPROJECT</title>
 
 <jsp:include page="/WEB-INF/views/include/header.jsp" />
-
 <!-- Datatables -->
 <link href="assets/css/dataTables/jquery.dataTables.css"
 	rel="stylesheet" />
-<!-- Member Custom Style -->
-<link href="assets/Members/css/custom.css" rel="stylesheet" />
 <!-- calendar.js style -->
 <link rel="stylesheet" href="assets/css/Calendar/calendar.js.css" />
+<!-- Custom Theme Style -->
+<link href="assets/Main/css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -123,7 +122,7 @@
 
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 	<!-- Members Custom Scripts -->
-	<script src="assets/Members/js/custom.js"></script>
+	<script src="assets/Main/js/custom.js"></script>
 
 	<!-- chart.js -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

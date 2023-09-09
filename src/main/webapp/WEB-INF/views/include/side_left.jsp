@@ -43,20 +43,21 @@
 						<li><a href="/Members.say">Member Main</a></li>
 						<li><a href="/Members.say?c=list">Member list</a></li>
 						<li><a href="/Members.say?c=json">Member jsondata</a></li>
+						<li><a href="/Members.say?c=input">Member info input</a></li>
 					</ul></li>
 				<li><a><i class="fa fa-desktop"></i> 영양 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
 						<li><a href="/Diet.say">Diet Sub1</a></li>
 						<li><a href="/Diet.say?c=sub2">Diet Sub2</a></li>
-						<li><a href="/Diet.say?c=sub3">Diet Sub3</a></li>
+						<li><a href="/Diet.say?c=input">영양 정보 입력</a></li>
 					</ul></li>
 				<li><a><i class="fa fa-table"></i> 운동 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
 						<li><a href="/Exercise.say">Exercise Sub1</a></li>
 						<li><a href="/Exercise.say?c=sub2">Exercise Sub2</a></li>
-						<li><a href="/Exercise.say?c=sub3">Exercise Sub3</a></li>
+						<li><a href="/Exercise.say?c=input">운동 정보 입력</a></li>
 					</ul></li>
 			</ul>
 		</div>
