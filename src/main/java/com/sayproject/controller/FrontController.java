@@ -42,6 +42,9 @@ public class FrontController extends HttpServlet {
 		} else if (subStringRequestURI.contains("/Members.say")) {
 			MembersPageController membersPageController = new MembersPageController();
 			membersPageController.doProcess(request, response);
+		} else if (subStringRequestURI.contains("/Error.say")) {
+			ErrorPageController errorPageController = new ErrorPageController();
+			errorPageController.doProcess(request, response);
 		}
 	}
 }

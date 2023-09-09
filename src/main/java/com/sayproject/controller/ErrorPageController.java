@@ -6,12 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sayproject.controller.Main.LoginAction;
-import com.sayproject.controller.Main.MainAction;
-import com.sayproject.controller.Main.KakaoLogin.KakaoLoginDbCheckAction;
-import com.sayproject.controller.Main.KakaoLogin.KakaoLoginRedirectAction;
+import com.sayproject.controller.Error.Error400Action;
 
-public class MainPageController {
+public class ErrorPageController {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String cmd = "default";
@@ -26,15 +23,9 @@ public class MainPageController {
 	}
 
 	public Action router(String cmd, HttpServletResponse response) {
-		if (cmd.equals("login") || cmd.equals("Login")) {
-			return new LoginAction();
+		if (cmd.equals("400")) {
+			return new Error400Action();
 		}
-		if (cmd.equals("kakao")) {
-			return new KakaoLoginRedirectAction();
-		}
-		if (cmd.equals("kakaoCheck")) {
-			return new KakaoLoginDbCheckAction();
-		}
-		return new MainAction();
+		return new Error400Action();
 	}
 }
