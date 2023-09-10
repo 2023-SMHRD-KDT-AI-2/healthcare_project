@@ -1,10 +1,12 @@
-package com.sayproject.controller.Main.KakaoLogin;
+package com.sayproject.controller.Main.Member.KakaoLogin;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.sayproject.controller.Action;
@@ -39,29 +41,51 @@ public class KakaoLoginDbCheckAction implements Action {
 		 * "birthday_needs_agreement": false, "has_gender": false,
 		 * "gender_needs_agreement": false } }
 		 */
-		
+
 		/***** parameter 값으로 로그인 후 카카오 등록 정보를 받아온 후 json 형태로 변환한다 */
+		HttpSession session = request.getSession();
+		session.setAttribute("grade", "personal");
+		session.setAttribute("loginType", "kakao");
+
+		/****** session check
+		 * Enumeration<String> enumeration = session.getAttributeNames(); while
+		 * (enumeration.hasMoreElements()) { String elementString =
+		 * enumeration.nextElement(); System.out.printf("%s : %s\n", elementString,
+		 * session.getAttribute(elementString)); }
+		 ******/
 		String kakaoInfo = null;
 		if (request.getParameter("kakaoInfo") != null) {
 			kakaoInfo = request.getParameter("kakaoInfo");
 			Gson gson = new Gson();
 			/********* sring to json **************/
 			KakaoLoginInfo memberDailyData = gson.fromJson(kakaoInfo, KakaoLoginInfo.class);
+			KakaoAccount kakaoAccount = memberDailyData.getKakaoAccount();
+			Profile profile = kakaoAccount.getProfile();
 
 			/*********
 			 * memberDailyData 에서 정보를 가져오는 법 일부의 정보만 가져왔다. 추가로 가져와야 하는 데이터가 더 존재함.
 			 */
-			System.out.println(memberDailyData.getId());
-			System.out.println(memberDailyData.getConnectedAt());
+			//request.setAttribute("memberDailyData", memberDailyData);
+			//System.out.println("memberDailyData.getId() : " + memberDailyData.getId());
+			//System.out.println("memberDailyData.getConnectedAt() : " + memberDailyData.getConnectedAt());
 
-			KakaoAccount kakaoAccount = memberDailyData.getKakaoAccount();
-			System.out.println(kakaoAccount.getEmail());
+			//request.setAttribute("memberObjectId", memberDailyData.getId());
 
-			Profile profile = kakaoAccount.getProfile();
-			System.out.println(profile.getNickname());
-			System.out.println(profile.getIsDefaultImage());
-			System.out.println(profile.getThumbnailImageUrl());
-			System.out.println(profile.getProfileImageUrl());
+			//System.out.println("kakaoAccount.getEmail() : " + kakaoAccount.getEmail());
+			//request.setAttribute("emailOrId", kakaoAccount.getEmail());
+
+			//System.out.println("profile.getNickname() : " + profile.getNickname());
+			//System.out.println("profile.getIsDefaultImage() : " + profile.getIsDefaultImage());
+			//System.out.println("profile.getThumbnailImageUrl() : " + profile.getThumbnailImageUrl());
+			//System.out.println("profile.getProfileImageUrl() : " + profile.getProfileImageUrl());
+
+			session.setAttribute("memberObjectId", memberDailyData.getId());
+			session.setAttribute("emailOrId", kakaoAccount.getEmail());
+			session.setAttribute("nickname", profile.getNickname());
+			session.setAttribute("isDefaultImage", profile.getIsDefaultImage());
+			session.setAttribute("thumbnailImageUrl", profile.getThumbnailImageUrl());
+			session.setAttribute("profileImageUrl", profile.getProfileImageUrl());
+			
 			/******** json to String ***************/
 			// String jSon = gson.toJson(memberDailyData, KakaoLoginInfo.class);
 			// System.out.println(jSon);
@@ -70,18 +94,31 @@ public class KakaoLoginDbCheckAction implements Action {
 			 * Kakao DB 에 접근해 해당 아이디가 존재하는지 확인한다. 존재한다면 /Main.say 페이지로 이동 존재하지 않는다면 추가 정보 입력
 			 * 페이지로 이동하게 한다.
 			 ********/
-
-			/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
-			/********** DB 에 정보가 존재한다면 디비 정보 업데이트 한 후 메인페이지로 이동 시킨다 ***/
-			/********** session 에 기록한다 ************/
-			// RequestDispatcher dis = request.getRequestDispatcher("/Main.say");
-			// dis.forward(request, response);
-			/********** DB 에 가입한 정보가 없다면 추가 정보 입력 페이지로 이동. ***********************/
-			/********** DB 에 모든 정보를 입력하기 전까지는 session 에 저장하지 않는다. ****************/
-			response.sendRedirect("/Main.say");
+			if (kakaoCheck()) {
+				/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
+				/********** DB 에 정보가 존재한다면 디비 정보 업데이트 한 후 메인페이지로 이동 시킨다 ***/
+				/********** session 에 기록한다 ************/
+				/*
+				 * 1. 일반 회원이 카카오를 통해 로그인한다. 2. 카카오에서 code 값을 받아온다. 3. 해당 code 를 이용해 access_token
+				 * 값을 구해온다. 4. token 을 이용해 사용자의 카카오 정보를 가져온다. 5. 이후 해당 정보를 DB 에 기록한다. 6. 카카오 정보
+				 * 외에 필요한 정보를 받는 페이지로 이동하여 입력 받는다. 7. 만약 추가 정보를 입력하지 않은 상태에서는 추가 정보 입력 페이지로 강제
+				 * 이동하게 한다. 8. 추가 정보를 입력하여야만 해당 계정이 활성화 되게 한다.
+				 */
+				RequestDispatcher dis = request.getRequestDispatcher("/Main.say");
+				dis.forward(request, response);
+			} else {
+				/********** DB 에 가입한 정보가 없다면 추가 정보 입력 페이지로 이동. ***********************/
+				/********** DB 에 모든 정보를 입력하기 전까지는 session 에 저장하지 않는다. ****************/
+				RequestDispatcher dis = request.getRequestDispatcher("/Main.say?c=memberAddInfo");
+				dis.forward(request, response);
+			}
 		} else {
 			/************* kakaoInfo 없이 해당 페이지 접속시 메인페이지로 이동 시킨다. **********/
 			response.sendRedirect("/Main.say");
 		}
+	}
+
+	private Boolean kakaoCheck() {
+		return false;
 	}
 }

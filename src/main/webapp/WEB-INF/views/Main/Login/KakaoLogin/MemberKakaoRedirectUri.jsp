@@ -17,31 +17,7 @@
 	<script>
 	/****** BH 의 카카오 프로젝트 KEY ****/
       Kakao.init("14274277b7b930e3289085afa313c81c");
-      /*
-      $.ajax({
-    	    type : "POST"
-    	    , url : 'https://kauth.kakao.com/oauth/token'
-    	    , data : {
-    	        grant_type : 'authorization_code',
-    	        client_id : '14274277b7b930e3289085afa313c81c',
-    	        redirect_uri : 'http://localhost/Main.say?c=kakao',
-    	        code : '${code}',
-    	    }
-    	    , contentType:'application/x-www-form-urlencoded;charset=utf-8'
-    	    , dataType: null
-    	    , success : function(response) {
-    	        Kakao.Auth.setAccessToken(response.access_token);
-    	        requestUserInfo()
-    	    }
-    	    ,error : function(jqXHR, error) {
-				console.log(jqXHR, error)
-    	    }
-    	});
-      */
 
-      /** fetch 방식, async, await 적용 
-      * code 값을 이용하여 access_token 값을 가져와 set 한다.
-      ***/
       const getAccessToken = async () => {
         await fetch("https://kauth.kakao.com/oauth/token", {
           method: "POST",
@@ -75,11 +51,10 @@
             console.log(
               "[requestUserInfo] failed to request user information: " + JSON.stringify(err)
             );
-            //window.location.href = "/Main.say";
           });
       };
 
-      const sendDataLoginProcess = (data) => {
+      const sendDataLoginProcess = async (data) => {
           const url = '/Main.say?c=kakaoCheck';
           const form = $('<form action="' + url + '" method="post">' +
             '<textarea name="kakaoInfo" style="display:none">' + data + '</textarea>' +
@@ -87,8 +62,39 @@
           $('body').append(form);
           form.submit();
       }
-      getAccessToken();
-      requestUserInfo();
+      
+      const kakaoLogin = async () => {
+          await getAccessToken();
+          await requestUserInfo();
+      }
+
+      kakaoLogin()
+      
+      /*
+      $.ajax({
+    	    type : "POST"
+    	    , url : 'https://kauth.kakao.com/oauth/token'
+    	    , data : {
+    	        grant_type : 'authorization_code',
+    	        client_id : '14274277b7b930e3289085afa313c81c',
+    	        redirect_uri : 'http://localhost/Main.say?c=kakao',
+    	        code : '${code}',
+    	    }
+    	    , contentType:'application/x-www-form-urlencoded;charset=utf-8'
+    	    , dataType: null
+    	    , success : function(response) {
+    	        Kakao.Auth.setAccessToken(response.access_token);
+    	        requestUserInfo()
+    	    }
+    	    ,error : function(jqXHR, error) {
+				console.log(jqXHR, error)
+    	    }
+    	});
+      */
+
+      /** fetch 방식, async, await 적용 
+      * code 값을 이용하여 access_token 값을 가져와 set 한다.
+      ***/
     </script>
 </body>
 </html>

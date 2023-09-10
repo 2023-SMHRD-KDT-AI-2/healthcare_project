@@ -17,3 +17,25 @@
 <link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet" />
 <!-- Custom Theme Style -->
 <link href="assets/build/css/custom.min.css" rel="stylesheet" />
+<!-- bootstrap-wysiwyg -->
+<link href="assets/vendors/google-code-prettify/bin/prettify.min.css"
+	rel="stylesheet">
+<!-- Select2 -->
+<link href="assets/vendors/select2/dist/css/select2.min.css"
+	rel="stylesheet">
+<!-- Switchery -->
+<link href="assets/vendors/switchery/dist/switchery.min.css"
+	rel="stylesheet">
+<!-- starrr -->
+<link href="assets/vendors/starrr/dist/starrr.css" rel="stylesheet">
+<!-- bootstrap-daterangepicker -->
+<link
+	href="assets/vendors/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet">
+	
+<!-- Datatables -->
+<link href="assets/css/dataTables/jquery.dataTables.css"
+	rel="stylesheet" />
+<!-- calendar.js style -->
+<link rel="stylesheet" href="assets/css/Calendar/calendar.js.css" />
+	

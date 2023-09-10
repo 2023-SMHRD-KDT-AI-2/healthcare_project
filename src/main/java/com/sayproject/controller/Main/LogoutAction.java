@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.sayproject.controller.Action;
 
-public class LoginAction implements Action {
+public class LogoutAction implements Action {
 	private static final String CHARSET = "utf-8";
 
 	@Override
@@ -24,7 +24,7 @@ public class LoginAction implements Action {
 		if (session != null) {
 			session.invalidate();
 		}
-		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/views/Main/Login/LoginMain.jsp");
-		dis.forward(request, response);
+		
+		response.sendRedirect("/Main.say?c=login");
 	}
 }

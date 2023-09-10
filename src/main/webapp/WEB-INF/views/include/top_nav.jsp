@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%
-request.getAttribute("memberList"); %>
+uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="nav_menu">
                 <div class="nav toggle">
                   <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -10,7 +9,7 @@ request.getAttribute("memberList"); %>
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="images/img.jpg" alt="">장건욱
+                      <img src="${profileImageUrl}" alt="">${nickname}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="/Main.say?c=login"> Profile</a>
@@ -19,7 +18,7 @@ request.getAttribute("memberList"); %>
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="/Main.say?c=login"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="/Main.say?c=logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
   
