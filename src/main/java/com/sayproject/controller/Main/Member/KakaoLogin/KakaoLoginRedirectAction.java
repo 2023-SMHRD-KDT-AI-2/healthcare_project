@@ -1,4 +1,4 @@
-package com.sayproject.controller.Main.KakaoLogin;
+package com.sayproject.controller.Main.Member.KakaoLogin;
 
 import java.io.IOException;
 
@@ -28,7 +28,7 @@ public class KakaoLoginRedirectAction implements Action {
 		 */
 		request.setAttribute("code", request.getParameter("code"));
 
-		RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/Login/KakaoRedirectUri.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/views/Main/Login/KakaoLogin/MemberKakaoRedirectUri.jsp");
 		dis.forward(request, response);
 	}
 }

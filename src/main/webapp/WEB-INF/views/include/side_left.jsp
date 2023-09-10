@@ -13,11 +13,11 @@
 	<!-- menu profile quick info -->
 	<div class="profile clearfix">
 		<div class="profile_pic">
-			<img src="images/img.jpg" alt="..." class="img-circle profile_img">
+			<img src="${profileImageUrl}" alt="..." class="img-circle profile_img">
 		</div>
 		<div class="profile_info">
 			<span>어서오세요,</span>
-			<h2>장건욱님</h2>
+			<h2>${nickname}님</h2>
 		</div>
 		<div class="clearfix"></div>
 	</div>

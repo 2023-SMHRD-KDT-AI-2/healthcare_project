@@ -10,6 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-<jsp:forward page="/Main.say"/>
+<jsp:forward page="/Main.say?c=login"/>
 </body>
 </html>

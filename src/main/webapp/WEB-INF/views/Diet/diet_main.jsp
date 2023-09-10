@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-request.getAttribute("memberList");
-%>
+<jsp:include page="/WEB-INF/views/include/LoginSessionCheck.jsp" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +12,7 @@ request.getAttribute("memberList");
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>HealthCare | SAYPROJECT</title>
-<jsp:include page="/WEB-INF/views/include/header.jsp" />
+<jsp:include page="/WEB-INF/views/include/header_css.jsp" />
 <!-- Custom Theme Style -->
 <link href="assets/Diet/css/custom.css" rel="stylesheet" />
 </head>
