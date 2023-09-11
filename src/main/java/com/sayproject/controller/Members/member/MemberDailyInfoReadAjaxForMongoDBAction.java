@@ -33,9 +33,9 @@ public class MemberDailyInfoReadAjaxForMongoDBAction implements Action {
     value = request.getParameter("value");
     dataType = request.getParameter("dataType");
     
-    if (request.getParameter("collection") == null || request.getParameter("fieldName") == null
-        || request.getParameter("valueType") == null || request.getParameter("value") == null
-        || request.getParameter("dataType") == null) {
+    if (collection == null || fieldName == null
+        || valueType == null || value == null
+        || dataType == null) {
       return;
     }
 
