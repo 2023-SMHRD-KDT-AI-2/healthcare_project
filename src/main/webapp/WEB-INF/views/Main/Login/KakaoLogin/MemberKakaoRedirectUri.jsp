@@ -10,6 +10,35 @@
 <title>HealthCare | SAYPROJECT</title>
 </head>
 <body>
+
+	<div class="text-center">
+
+		<div class="spinner-border text-primary" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-secondary" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-success" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-danger" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-warning" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-info" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-light" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<div class="spinner-border text-dark" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+
+	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
 		integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH"
