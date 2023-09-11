@@ -24,7 +24,8 @@
 <script
 	src="assets/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
 <script src="assets/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-<script src="assets/vendors/google-code-prettify/src/prettify.js"></script>
+<!-- googld code prettify -->
+<script src="assets\vendors\google-code-prettify\src\prettify.js"></script>
 <!-- jQuery Tags Input -->
 <script src="assets/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
 <!-- Switchery -->
@@ -32,7 +33,7 @@
 <!-- Select2 -->
 <script src="assets/vendors/select2/dist/js/select2.full.min.js"></script>
 <!-- Parsley -->
-<script src="assets/vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="assets\vendors\Parsley.js-2.9.2\dist\parsley.min.js"></script>
 <!-- Autosize -->
 <script src="assets/vendors/autosize/dist/autosize.min.js"></script>
 <!-- jQuery autocomplete -->
