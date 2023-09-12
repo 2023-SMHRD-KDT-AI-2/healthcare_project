@@ -5,6 +5,8 @@
 <!-- header import css -->
 <!-- normalize.css -->
 <link href="assets\vendors\normalize.css-master\normalize.css" rel="stylesheet" />
+<!-- jquery-ui-1.13.2 -->
+<link href="assets\vendors\jquery-ui-1.13.2.custom\jquery-ui.min.css" rel="stylesheet" />
 <!-- Bootstrap -->
 <link href="assets\css\bootstrap-4.6.2\bootstrap.min.css"
 	rel="stylesheet" />

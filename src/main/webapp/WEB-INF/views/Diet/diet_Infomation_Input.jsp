@@ -1,6 +1,3 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="com.sayproject.model.Members.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -17,7 +14,7 @@
 <title>HealthCare | SAYPROJECT</title>
 <jsp:include page="/WEB-INF/views/include/header_css.jsp" />
 <!-- Custom Theme Style -->
-<link href="assets/Members/css/custom.css" rel="stylesheet" />
+<link href="assets/Diet/css/custom.css" rel="stylesheet" />
 </head>
 
 <body class="nav-md">
@@ -58,10 +55,6 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<!-- main content -->
-							<%
-							/* 기본적으로 메인 컨텐츠는 이 곳에 입력합니다. */
-							%>
-
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
@@ -85,11 +78,13 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form class="form-horizontal form-label-left" action="Members.say?c=inputProcess" method="post">
+									<form class="form-horizontal form-label-left"
+										action="Members.say?c=inputProcess" method="post">
 										<!-- include member info -->
 										<jsp:include page="/WEB-INF/views/include/diet_and_exercise_member_info_include.jsp" />
-										<jsp:include page="/WEB-INF/views/Exercise/include/exercise_Information_Input_Main_Content.jsp" />
-										<jsp:include page="/WEB-INF/views/Diet/include/diet_Information_Input_Main_Content.jsp" />
+										<!-- include info input content -->
+										<jsp:include
+											page="/WEB-INF/views/Diet/include/diet_Information_Input_Main_Content.jsp" />
 										<div class="row"></div>
 										<div class="ln_solid"></div>
 										<div class="form-group">
@@ -102,23 +97,24 @@
 									</form>
 								</div>
 							</div>
-							<!-- /main content -->
 						</div>
+						<!-- /main content -->
 					</div>
 				</div>
 			</div>
-			<!-- /page content -->
-
-			<!-- footer content -->
-			<footer>
-				<div class="pull-right">S A Y P R O J E C T</div>
-				<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
 		</div>
+		<!-- /page content -->
+
+		<!-- footer content -->
+		<footer>
+			<div class="pull-right">S A Y P R O J E C T</div>
+			<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 	<!-- Custom Theme Scripts -->
-	<script src="assets/Members/js/custom.js"></script>
+	<script src="assets/Diet/js/custom.js"></script>
 </body>
 </html>
