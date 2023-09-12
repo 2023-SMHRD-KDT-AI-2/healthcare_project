@@ -30,14 +30,14 @@ public class ExercisePageController {
 	public Action router(String cmd, HttpServletResponse response) {
 		if (cmd.equals("main")) {
 			return new ExerciseMainAction();
+
 		} else if (cmd.equals("sub1")) {
 			return new ExerciseSub1Action();
 		} else if (cmd.equals("sub2")) {
 			return new ExerciseSub2Action();
-		} 
-		 else if (cmd.equals("inputInfo")) {
-           return new MemberExerciseInformationInput();
-       } 
+		} else if (cmd.equals("inputInfo")) {
+      return new MemberExerciseInformationInput();
+    } 
 		return new ExerciseMainAction();
 	}
 }
