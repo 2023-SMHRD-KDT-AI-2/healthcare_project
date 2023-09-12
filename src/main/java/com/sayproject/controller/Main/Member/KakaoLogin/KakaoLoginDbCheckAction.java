@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.sayproject.controller.Action;
 import com.sayproject.model.Main.KakaoLogin.KakaoAccount;
+import com.sayproject.model.Main.KakaoLogin.KakaoIdDuplicationCheck;
+import com.sayproject.model.Main.KakaoLogin.KakaoIdDuplicationCheckDAO;
 import com.sayproject.model.Main.KakaoLogin.KakaoLoginInfo;
 import com.sayproject.model.Main.KakaoLogin.Profile;
 
@@ -42,11 +44,6 @@ public class KakaoLoginDbCheckAction implements Action {
 		 * "gender_needs_agreement": false } }
 		 */
 
-		/***** parameter 값으로 로그인 후 카카오 등록 정보를 받아온 후 json 형태로 변환한다 */
-		HttpSession session = request.getSession();
-		session.setAttribute("grade", "personal");
-		session.setAttribute("loginType", "kakao");
-
 		/****** session check
 		 * Enumeration<String> enumeration = session.getAttributeNames(); while
 		 * (enumeration.hasMoreElements()) { String elementString =
@@ -62,7 +59,7 @@ public class KakaoLoginDbCheckAction implements Action {
 			KakaoAccount kakaoAccount = memberDailyData.getKakaoAccount();
 			Profile profile = kakaoAccount.getProfile();
 
-			/*********
+			/*
 			 * memberDailyData 에서 정보를 가져오는 법 일부의 정보만 가져왔다. 추가로 가져와야 하는 데이터가 더 존재함.
 			 */
 			//request.setAttribute("memberDailyData", memberDailyData);
@@ -78,7 +75,8 @@ public class KakaoLoginDbCheckAction implements Action {
 			//System.out.println("profile.getIsDefaultImage() : " + profile.getIsDefaultImage());
 			//System.out.println("profile.getThumbnailImageUrl() : " + profile.getThumbnailImageUrl());
 			//System.out.println("profile.getProfileImageUrl() : " + profile.getProfileImageUrl());
-
+			
+			HttpSession session =request.getSession();
 			session.setAttribute("memberObjectId", memberDailyData.getId());
 			session.setAttribute("emailOrId", kakaoAccount.getEmail());
 			session.setAttribute("nickname", profile.getNickname());
@@ -94,7 +92,17 @@ public class KakaoLoginDbCheckAction implements Action {
 			 * Kakao DB 에 접근해 해당 아이디가 존재하는지 확인한다. 존재한다면 /Main.say 페이지로 이동 존재하지 않는다면 추가 정보 입력
 			 * 페이지로 이동하게 한다.
 			 ********/
-			if (kakaoCheck()) {
+			
+			
+			// id중복체크
+			
+			KakaoIdDuplicationCheckDAO dao = new KakaoIdDuplicationCheckDAO();
+			
+			
+			 int cnt = dao.kakaoIdDuplicationCheck( Long.toString(memberDailyData.getId()));
+			
+			
+			if (cnt>0) {
 				/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
 				/********** DB 에 정보가 존재한다면 디비 정보 업데이트 한 후 메인페이지로 이동 시킨다 ***/
 				/********** session 에 기록한다 ************/
@@ -109,7 +117,7 @@ public class KakaoLoginDbCheckAction implements Action {
 			} else {
 				/********** DB 에 가입한 정보가 없다면 추가 정보 입력 페이지로 이동. ***********************/
 				/********** DB 에 모든 정보를 입력하기 전까지는 session 에 저장하지 않는다. ****************/
-				RequestDispatcher dis = request.getRequestDispatcher("/Main.say?c=memberAddInfo");
+				RequestDispatcher dis = request.getRequestDispatcher("/Main.say?c=memberAddInfo&loginType=kakao");
 				dis.forward(request, response);
 			}
 		} else {
@@ -118,7 +126,4 @@ public class KakaoLoginDbCheckAction implements Action {
 		}
 	}
 
-	private Boolean kakaoCheck() {
-		return false;
-	}
 }

@@ -3,6 +3,7 @@
 <!-- FOOT SCRIPT -->
 <!-- jQuery -->
 <script src="assets/js/jQuery-3.7.1/jquery-3.7.1.js"></script>
+<script src="assets\vendors\jquery-ui-1.13.2.custom\jquery-ui.min.js"></script>
 <!-- Bootstrap -->
 <script src="assets\js\bootstarp-4.6.2\bootstrap.bundle.js"></script>
 <!-- FastClick -->
@@ -24,6 +25,7 @@
 <script
 	src="assets/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
 <script src="assets/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+
 <script src="assets/vendors/google-code-prettify/src/prettify.js"></script>
 <!-- jQuery Sparklines -->
 <script src="assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
@@ -46,7 +48,7 @@
 <!-- Select2 -->
 <script src="assets/vendors/select2/dist/js/select2.full.min.js"></script>
 <!-- Parsley -->
-<script src="assets/vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="assets\vendors\Parsley.js-2.9.2\dist\parsley.min.js"></script>
 <!-- Autosize -->
 <script src="assets/vendors/autosize/dist/autosize.min.js"></script>
 <!-- jQuery autocomplete -->
