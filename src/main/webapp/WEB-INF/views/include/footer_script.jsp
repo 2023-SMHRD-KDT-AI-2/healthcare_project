@@ -25,6 +25,20 @@
 	src="assets/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
 <script src="assets/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
 <script src="assets/vendors/google-code-prettify/src/prettify.js"></script>
+<!-- jQuery Sparklines -->
+<script src="assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- Flot -->
+<script src="assets/vendors/Flot/jquery.flot.js"></script>
+<script src="assets/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="assets/vendors/Flot/jquery.flot.time.js"></script>
+<script src="assets/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="assets/vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="assets/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="assets/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="assets/vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="assets/vendors/DateJS/build/date.js"></script>
 <!-- jQuery Tags Input -->
 <script src="assets/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
 <!-- Switchery -->
