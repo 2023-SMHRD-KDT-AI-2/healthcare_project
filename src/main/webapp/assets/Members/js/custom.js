@@ -64,7 +64,7 @@ first_last_numbers - 'First' and 'Last' buttons, plus page numbers*/
 		colReorder: true,
 		scrollX: false,
 		scrollCollapse: true,
-		scrollY: '400px'
+		scrollY: '250px'
 	});
 
 });
