@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sayproject.controller.Diet.DietMainAction;
 import com.sayproject.controller.Diet.GetFoodNameAction;
 import com.sayproject.model.Diet.DietAll;
+import com.sayproject.controller.Diet.MemberDietInformationInput;
 
 public class DietPageController {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -27,6 +28,8 @@ public class DietPageController {
 	public Action router(String cmd, HttpServletResponse response) {
 		if (cmd.equals("main")) {
 			return new DietMainAction();
+		}else if (cmd.equals("inputInfo")) {
+          return new MemberDietInformationInput();
 		}
 		if (cmd.equals("foodname")){
 			return new GetFoodNameAction();
