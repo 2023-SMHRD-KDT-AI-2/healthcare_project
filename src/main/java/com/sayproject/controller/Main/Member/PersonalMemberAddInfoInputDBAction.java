@@ -15,6 +15,27 @@ public class PersonalMemberAddInfoInputDBAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding(CHARSET);
+		
+		
+		
+	String filename=	request.getParameter("filename");
+	String idOrEmail=	request.getParameter("idOrEmail");
+	String name=	request.getParameter("name");
+	String weight=	request.getParameter("weight");
+	String height=	request.getParameter("height");
+	String gender=	request.getParameter("gender");
+	String birthday=	request.getParameter("birthday");
+	
+	System.out.println(filename);
+	System.out.println(idOrEmail);
+	System.out.println(name);
+	System.out.println(weight);
+	System.out.println(height);
+	System.out.println(gender);
+	System.out.println(birthday);
+		
+		
+		
 		/************* DATA 를 받아 DB 에 저장한다 ************/
 	}
 }
