@@ -3,6 +3,7 @@
 <!-- FOOT SCRIPT -->
 <!-- jQuery -->
 <script src="assets/js/jQuery-3.7.1/jquery-3.7.1.js"></script>
+<script src="assets\vendors\jquery-ui-1.13.2.custom\jquery-ui.min.js"></script>
 <!-- Bootstrap -->
 <script src="assets\js\bootstarp-4.6.2\bootstrap.bundle.js"></script>
 <!-- FastClick -->
