@@ -24,7 +24,7 @@
 		<!-- Members 관련 Mapper -->	
 		<mapper resource="com/sayproject/model/Members/MapperXML/MemberMapper.xml" />
 		<!-- Diet 관련 Mapper -->	
-		
+		<mapper resource="com/sayproject/model/Diet/MapperXML/DietMapper.xml" />
 		<!-- Exercise 관련 Mapper -->	
 		<mapper resource="com/sayproject/model/Exercise/MapperXML/ExerciseMapper.xml" />
 		<!-- other 관련 Mapper -->				
