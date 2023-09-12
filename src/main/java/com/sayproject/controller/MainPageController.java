@@ -11,8 +11,7 @@ import com.sayproject.controller.Main.LogoutAction;
 import com.sayproject.controller.Main.MainAction;
 import com.sayproject.controller.Main.Member.MemberAddInfoAction;
 import com.sayproject.controller.Main.Member.PersonalMemberAddInfoInputDBAction;
-import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginDbCheckAction;
-import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginRedirectAction;
+import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginAction;
 
 public class MainPageController {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +33,10 @@ public class MainPageController {
 		if (cmd.equals("main")) {
 			return new MainAction();
 		}
+		// kakaoLogin 페이지로 이동
+		if (cmd.equals("kakaoLogin")) {
+		return new KakaoLoginAction();
+				}
 		// Login 페이지로 이동
 		if (cmd.equals("login")) {
 			return new LoginAction();
@@ -45,14 +48,6 @@ public class MainPageController {
 		// 카카오나 일반회원 첫 로그인 시에 추가 정보 입력 페이지
 		if (cmd.equals("memberAddInfo")) {
 			return new MemberAddInfoAction();
-		}
-		// 카카오 로그인 code, token 처리
-		if (cmd.equals("kakao")) {
-			return new KakaoLoginRedirectAction();
-		}
-		// 카카오 정보가 디비에 있는지 확인
-		if (cmd.equals("kakaoCheck")) {
-			return new KakaoLoginDbCheckAction();
 		}
 		// 추가 정보 입력 페이지에서 받은 정보를 디비에 입력하는 곳
 		if (cmd.equals("personalMemberAddInfo")) {
