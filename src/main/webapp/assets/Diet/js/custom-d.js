@@ -22,6 +22,7 @@ const loadMemberDailyInfo = async () => {
     url: moveUrl,
     success: function (data) {
       memberDailyInfo = data.dailyInfo;
+      console.log(memberDailyInfo);
     },
     error: function () {
       console.log("요청이 안됨");
@@ -40,7 +41,27 @@ const loadmember = async () => {
     "otherfood":memberDailyInfo[(day_n - 1)].diet.otherfood
     };
 
-    console.log(meal);
+    console.log(typeof(meal))
+    const sendFoodName = async () => {
+        await $.ajax({
+            url : "/Diet.say?c=foodname",
+            type : "POST",
+            data : {
+                foodName : JSON.stringify(meal)                
+            },
+            dataType : 'text',
+            success: function(data) {
+                console.log(meal);
+                console.log("음식 이름 전송 성공");
+
+            },
+            error: function(error) {
+                console.log("전송 실패", error);
+            }
+        })
+    }
+
+    sendFoodName();
 
     let sum_calorie = {
         "breakfast":0,
@@ -73,6 +94,3 @@ const loadmember = async () => {
 };
 
 loadmember();
-
-
-

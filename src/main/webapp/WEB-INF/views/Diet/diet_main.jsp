@@ -1,3 +1,5 @@
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sayproject.model.Diet.*"%>
 <%@ page import="java.io.FileWriter" %>
@@ -139,6 +141,56 @@
 							<div class="x_title">
 								<div class="title_left"><h2>오늘 내가 먹은 영양소는?</h2></div>
 								<div class="clearfix"></div>
+							</div>
+							<div class="all_nutrient">
+								<div>칼로리</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>탄수화물</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>단백질</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>식이섬유</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>당분</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>칼륨</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>마그네슘</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>칼슘</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>철</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>비타민C</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>비타민D</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+								<div>비타민K</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
 							</div>
 							<div class="x_content">
 

@@ -11,17 +11,17 @@ public class DietDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
 	
-	ArrayList<Diet> list = new ArrayList<Diet>();
+	DietAll dietAll = new DietAll();
 	
-	public ArrayList showAllNutrient(String food_code) {
+	public DietAll showAllNutrient(String code) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		list = (ArrayList) sqlSession.selectList("showAllNutrient");
+		dietAll = sqlSession.selectOne("showAllNutrient", code);
 		
 		sqlSession.close();
-		
-		return list;
+
+		return dietAll;
 	}
 	
 }

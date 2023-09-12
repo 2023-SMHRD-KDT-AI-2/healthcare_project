@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sayproject.controller.Diet.DietMainAction;
-import com.sayproject.controller.Main.LoginAction;
-import com.sayproject.controller.Main.MainAction;
+import com.sayproject.controller.Diet.GetFoodNameAction;
+import com.sayproject.model.Diet.DietAll;
 
 public class DietPageController {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -28,6 +28,10 @@ public class DietPageController {
 		if (cmd.equals("main")) {
 			return new DietMainAction();
 		}
+		if (cmd.equals("foodname")){
+			return new GetFoodNameAction();
+		}
 		return new DietMainAction();
 	}
+	
 }
