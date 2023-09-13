@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -31,6 +32,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans:wght@400;900&display=swap" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
    
     <style>
 
@@ -106,9 +108,6 @@
       color: #1abb9c;
     }
 
-
-
-
     .fixed_height_115{
       height: 115px;
     }
@@ -179,6 +178,7 @@
     /* 마우스를 올렸을 때의 스타일 */
     .topcard:hover {
     /* background-color: #11C991; 1픽 상쾌한 초록 */
+
     /* background-color: #6EBCB7; */
     background: linear-gradient(45deg, #8640fb, #a835ec, #c628ed);
     color: white 
@@ -318,8 +318,6 @@
   display: inline; "Times" 텍스트 보이기 
 } */
 
-  
-
 /* 남은 횟수 */
 .ulmanamun_top{
   display: flex;
@@ -404,8 +402,6 @@ font-weight: bold;
 margin-top: 5px;
 }
 
-
-
 .expiredate_top{
   display: flex;
   flex-direction: row;
@@ -489,17 +485,6 @@ margin-top: 5px;
  }
  
 
-
-
-
-
-
-
-
-
-
-
-
 /*회원카드*/
 /*
 회원 정보를 바로 볼 수 있게 해야 한다.
@@ -519,7 +504,14 @@ margin-top: 5px;
 
 /* 색이 차오르는 카드  2 */
 
-
+.member_card2 {
+  display: flex;
+  width: 320px;
+  height: 200px;
+  perspective: 1000px; /* 3D 효과를 위한 시점 설정 */
+  margin-bottom: 30px;
+  border-radius : 20px;
+}
 
 .card_inner2 {
   display: flex;
@@ -575,6 +567,7 @@ margin-top: 5px;
 
 .member_card {
   width: 380px;
+  width: 320px;
   height: 200px;
   perspective: 1000px; /* 3D 효과를 위한 시점 설정 */
   margin-bottom: 30px;
@@ -759,7 +752,6 @@ margin-top: 5px;
 
 
 </style>
-
 </head>
 
 <body class="nav-md">
@@ -865,7 +857,57 @@ margin-top: 5px;
 
 			<!-- page content -->
 			<!-- main content -->
-
+                <th>
+                  <div class="col-lg-7 col-md-7 col-sm-7 ">
+                    <p class="">Device</p>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 ">
+                    <p class="">Progress</p>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <table class="tile_info">
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square blue"></i>스쿼트 </p>
+                      </td>
+                      <td>80kcal</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square green"></i>팔굽혀펴기
+                        </p>
+                      </td>
+                      <td>270kcal</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square purple"></i>줌바댄스
+                        </p>
+                      </td>
+                      <td>200kcal</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square aero"></i>라인댄스 </p>
+                      </td>
+                      <td>100kcal</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square red"></i>Others </p>
+                      </td>
+                      <td>300kcal</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
 
 <!-- page content -->
 <div class="right_col" role="main">
@@ -1453,10 +1495,85 @@ margin-top: 5px;
   
   <!-- /page content -->
 
+          </div>
+        </div>
+      </div>
 
+      <!-- 표 차트 -->
+      <div class="col-md-4 col-sm-4 ">
+        <div class="x_panel tile fixed_height_287 overflow_hidden">
+          <div class="x_title">
+            <h2>운동 시간</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  role="button" aria-expanded="false"><i
+                    class="fa fa-wrench"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Settings 1</a>
+                  <a class="dropdown-item" href="#">Settings 2</a>
+                </div>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
 
+            <table class="" style="width:100%">
+              <tr>
+                <th>
+                  <div class="col-lg-7 col-md-7 col-sm-7 ">
+                    <p class=""> 운동명 </p>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 ">
+                    <p class=""> 시간 </p>
+                  </div>
+                </th>
+              </tr>
 
-
+              <tr>
+                <td>
+                  <table class="tile_info">
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square blue"></i> 스쿼트 </p>
+                      </td>
+                      <td>30회</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square green"></i> 팔굽혀펴기
+                        </p>
+                      </td>
+                      <td>20회</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square purple"></i> 줌바댄스
+                        </p>
+                      </td>
+                      <td>30 min</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square aero"></i> 라인 댄스 </p>
+                      </td>
+                      <td>30 min</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p><i class="fa fa-square red"></i> Others </p>
+                      </td>
+                      <td>20min</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
 							<!-- /main content -->
 						</div>
 					</div>
