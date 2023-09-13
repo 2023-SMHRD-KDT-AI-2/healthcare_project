@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sayproject.model.Diet.MapperXML.DietMapper">
 	<select id="showAllNutrient" parameterType="string" resultType="com.sayproject.model.Diet.Diet">
-		select * from food_nutrients where food_code = #{code}
+		select energy,water,protein,fat,carbohydrate,total_sugars,saccharose,glucose,fruit_sugar,lactose,maltose,dietary_fiber,calcium,iron_mg,iron_ug,magnesium,phosphorus,potassium,natrium,zinc,cuprum,manganese,selenium,retinol,betacarotene,vitamin_d3,tocopherol,tocotrienols,vitamin_b1,vitamin_b2,niacin,folicacid,vitamin_b12,vitamin_c,aminoacid,isoleucine,leucine,lysine,methionine,phenylalanine,threonine,valine,histidine,arginine,tyrosine,cysteine,alanine,aspartic_acid,glutamic_acid,glycine,proline,serine,cholesterol,total_saturated_fatty_acids,butyric_acid,caproic_acid,caprylic_acid,capric_acid,lauric_acid,myristic_acid,palmitic_acid,stearic_acid,arachidic_acid,myristoleic_acid,palmitoleic_acid,oleic_acid,bacsenic_acid,gadoleic_acid,linoleic_acid,alpha_linoleic_acid,gamma_linoleic_acid,eicosadienoic_acid,arachidonic_acid,eicosatrienoic_acid,eicosapentaenoic_acid,docosapentaenoic_acid,docosahexaenoic_acid,trans_fatty_acids,trans_oleic_acid,trans_linoleic_acid,trans_linolenic_acid,ash,caffeine,serving_size 
+		from food_nutrients where food_code = #{code}
 	</select>
 </mapper>

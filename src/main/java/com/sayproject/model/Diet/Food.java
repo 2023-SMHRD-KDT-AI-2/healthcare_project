@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Food {
 	
+	// MongDB에서 받아온 회원의 섭취 음식 정보 클래스
+	
     private String code;
     private String foodname;
     private int gram;
