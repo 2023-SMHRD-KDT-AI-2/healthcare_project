@@ -574,7 +574,7 @@ margin-top: 5px;
 /* 플립 카드*/
 
 .member_card {
-  width: 380px;
+  width: 100%;
   height: 200px;
   perspective: 1000px; /* 3D 효과를 위한 시점 설정 */
   margin-bottom: 30px;
