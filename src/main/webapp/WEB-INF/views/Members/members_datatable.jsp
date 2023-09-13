@@ -40,39 +40,52 @@
 			<div class="right_col" role="main">
 				<div class="">
 					<div class="row">
-						<div class="col-md-8 col-sm-12">
+						<div class="col-md-12">
 							<!-- main content -->
 							<%
 							/* 기본적으로 메인 컨텐츠는 이 곳에 입력합니다. */
 							%>
 							<div class="x_panel">
-								<div class="card-group">
-									<div class="card border-dark mb-3" style="max-width: 18rem;">
+								<div class="card-deck">
+									<div class="card border-dark">
 										<div class="card-header">Doughnut Chart</div>
 										<div class="card-body text-danger">
 											<canvas id="doughnutChart"></canvas>
 										</div>
 									</div>
-									<div class="card border-dark mb-3" style="max-width: 18rem;">
+									<div class="card border-dark">
 										<div class="card-header">PolarAreaChart</div>
 										<div class="card-body text-danger">
 											<canvas id="polarAreaChart"></canvas>
 										</div>
 									</div>
-									<div class="card border-dark mb-3" style="max-width: 18rem;">
+									<div class="card border-dark">
 										<div class="card-header">Header</div>
 										<div class="card-body text-danger">
-											<canvas id="barChart" height="300px"></canvas>
+											<canvas id="barChart"></canvas>
 										</div>
 									</div>
-									<div class="card border-dark mb-3" style="max-width: 18rem;">
+									<div class="card border-dark">
 										<div class="card-header">Header</div>
 										<div class="card-body text-danger">
 											<canvas id="pieChart"></canvas>
 										</div>
 									</div>
+									<div class="card border-dark">
+										<div class="card-header">PolarAreaChart</div>
+										<div class="card-body text-danger">
+										</div>
+									</div>
+									<div class="card border-dark">
+										<div class="card-header">Header</div>
+										<div class="card-body text-danger">
+										</div>
+									</div>
 								</div>
 							</div>
+						</div></div>
+						<div class="row">
+						<div class="col-md-9">
 							<div class="x_panel">
 								<table id="dataTable" class="display dataTable">
 									<thead>
@@ -93,14 +106,13 @@
 									<!-- table ajax return data-->
 								</table>
 							</div>
-							<!-- /main content -->
 						</div>
-						<div class="col-md-4 col-sm-12">
+						<div class="col-md-3">
 							<div class="x_panel">
-								<div id='fullCalendar'></div>
-								<br>
 								<div id='calendar'></div>
 							</div>
+							<!-- /main content -->
+						</div>
 						</div>
 					</div>
 				</div>
@@ -123,7 +135,7 @@
 	<!-- chart.js -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
-		<!-- doughnut chart -->
+		// doughnut chart
 		const doughnut = document.getElementById('doughnutChart');
 
 		new Chart(doughnut,
@@ -146,7 +158,7 @@
 						}
 					}
 				});
-		<!-- polarArea chart-->
+		// polarArea chart
 		const polarArea = document.getElementById('polarAreaChart');
 
 		new Chart(polarArea,
@@ -169,70 +181,52 @@
 						}
 					}
 				});
-		<!-- bar Chart-->
+		// bar Chart
 		const bardata = {
-				  labels: ['1', '2','3','4','5','6','7'],
-				  datasets: [{
-				    label: 'My First Dataset',
-				    data: [65, 59, 80, 81, 56, 55, 40],
-				    backgroundColor: [
-				      'rgba(255, 99, 132, 0.2)',
-				      'rgba(255, 159, 64, 0.2)',
-				      'rgba(255, 205, 86, 0.2)',
-				      'rgba(75, 192, 192, 0.2)',
-				      'rgba(54, 162, 235, 0.2)',
-				      'rgba(153, 102, 255, 0.2)',
-				      'rgba(201, 203, 207, 0.2)'
-				    ],
-				    borderColor: [
-				      'rgb(255, 99, 132)',
-				      'rgb(255, 159, 64)',
-				      'rgb(255, 205, 86)',
-				      'rgb(75, 192, 192)',
-				      'rgb(54, 162, 235)',
-				      'rgb(153, 102, 255)',
-				      'rgb(201, 203, 207)'
-				    ],
-				    borderWidth: 1
-				  }]
-				};
+			labels : [ '1', '2', '3', '4', '5', '6', '7' ],
+			datasets : [ {
+				label : 'My First Dataset',
+				data : [ 65, 59, 80, 81, 56, 55, 40 ],
+				backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+						'rgba(255, 159, 64, 0.2)', 'rgba(255, 205, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)',
+						'rgba(153, 102, 255, 0.2)', 'rgba(201, 203, 207, 0.2)' ],
+				borderColor : [ 'rgb(255, 99, 132)', 'rgb(255, 159, 64)',
+						'rgb(255, 205, 86)', 'rgb(75, 192, 192)',
+						'rgb(54, 162, 235)', 'rgb(153, 102, 255)',
+						'rgb(201, 203, 207)' ],
+				borderWidth : 1
+			} ]
+		};
 		const barconfig = {
-				  type: 'bar',
-				  data: bardata,
-				  options: {
-				    scales: {
-				      y: {
-				        beginAtZero: true
-				      }
-				    }
-				  },
-				};
+			type : 'bar',
+			data : bardata,
+			options : {
+				scales : {
+					y : {
+						beginAtZero : true
+					}
+				}
+			},
+		};
 
-		
 		const bar = document.getElementById('barChart');
 		new Chart(bar, barconfig);
-		<!-- pie chart -->
+		// pie chart 
 		const piedata = {
-				  labels: [
-				    'Red',
-				    'Blue',
-				    'Yellow'
-				  ],
-				  datasets: [{
-				    label: 'My First Dataset',
-				    data: [300, 50, 100],
-				    backgroundColor: [
-				      'rgb(255, 99, 132)',
-				      'rgb(54, 162, 235)',
-				      'rgb(255, 205, 86)'
-				    ],
-				    hoverOffset: 4
-				  }]
-				};
+			labels : [ 'Red', 'Blue', 'Yellow' ],
+			datasets : [ {
+				label : 'My First Dataset',
+				data : [ 300, 50, 100 ],
+				backgroundColor : [ 'rgb(255, 99, 132)', 'rgb(54, 162, 235)',
+						'rgb(255, 205, 86)' ],
+				hoverOffset : 4
+			} ]
+		};
 		const pieconfig = {
-				  type: 'pie',
-				  data: piedata,
-				};
+			type : 'pie',
+			data : piedata,
+		};
 		const pie = document.getElementById('pieChart');
 		new Chart(pie, pieconfig);
 	</script>
@@ -254,19 +248,6 @@
 		};
 
 		calendarInstance.addEvent(event);
-	</script>
-
-	<!-- full canlendar -->
-	<script
-		src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			var calendarEl = document.getElementById('fullCalendar');
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView : 'dayGridMonth'
-			});
-			calendar.render();
-		});
 	</script>
 </body>
 </html>
