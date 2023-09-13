@@ -54,13 +54,13 @@
 											<div class="card text-center border-dark">
 												<div class="card-header">출석 상황</div>
 												<div class="card-body text-primary">
-													<h5>7 / 15</h5>
+													<h5><i class="glyphicon glyphicon-retweet"></i> 7 / 15</h5>
 												</div>
 											</div>
 											<div class="card text-center border-dark">
 												<div class="card-header">PT 회원 상황</div>
 												<div class="card-body text-secondary">
-													<h5>5 / 10</h5>
+													<h5><i class="glyphicon glyphicon-picture"></i> 5 / 10</h5>
 												</div>
 											</div>
 										</div>
@@ -70,13 +70,13 @@
 											<div class="card text-center border-dark">
 												<div class="card-header">출석 상황</div>
 												<div class="card-body text-success">
-													<h5>7 / 15</h5>
+													<h5><i class="glyphicon glyphicon-user"></i> 7 / 15</h5>
 												</div>
 											</div>
 											<div class="card text-center border-dark">
 												<div class="card-header">PT 회원 상황</div>
 												<div class="card-body text-dark">
-													<h5>5 / 10</h5>
+													<h5><i class="glyphicon glyphicon-star"></i> 5 / 10</h5>
 												</div>
 											</div>
 										</div>
@@ -88,7 +88,7 @@
 											<div class="card text-center border-dark">
 												<div class="card-header">출석 상황</div>
 												<div class="card-body text-info">
-													<h5>멍멍이</h5>
+													<h5><i class="glyphicon glyphicon-ok"></i> 멍멍이</h5>
 												</div>
 											</div>
 											<div class="card text-center border-dark">
