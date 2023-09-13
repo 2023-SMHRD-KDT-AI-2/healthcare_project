@@ -86,10 +86,194 @@
 								<div class="x_content">
 									<br />
 									<form class="form-horizontal form-label-left" action="Members.say?c=inputProcess" method="post">
-										<!-- include member info -->
-										<jsp:include page="/WEB-INF/views/include/diet_and_exercise_member_info_include.jsp" />
-										<jsp:include page="/WEB-INF/views/Exercise/include/exercise_Information_Input_Main_Content.jsp" />
-										<jsp:include page="/WEB-INF/views/Diet/include/diet_Information_Input_Main_Content.jsp" />
+										<div class="form-group row">
+											<label class="control-label col-md-3 col-sm-3 ">회원 ID</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" class="form-control" readonly="readonly"
+													placeholder="Read-Only Input" name="id" value="1">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-3 col-sm-3 ">회원 이름</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" class="form-control" readonly="readonly"
+													placeholder="Read-Only Input" name="name" value="윤춘자">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-3 col-sm-3 ">담당
+												트레이너</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" class="form-control" readonly="readonly"
+													placeholder="Read-Only Input" name="trainer" value="1001">
+											</div>
+										</div>
+										<div class="form-group row ">
+											<label class="control-label col-md-3 col-sm-3 ">몸무게</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" class="form-control"
+													placeholder="몸무게를 입력해주세요. 숫자만 입력 가능 : kg" name="weight">
+											</div>
+										</div>
+										<div class="form-group row ">
+											<label class="control-label col-md-3 col-sm-3 ">키</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" class="form-control"
+													placeholder="몸무게를 입력해주세요. 숫자만 입력 가능 : kg" name="height">
+											</div>
+										</div>
+										<!-- breakfast -->
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">아침 먹은
+												것</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="breakfast_foodname">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">아침 먹은
+												양</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="breakfast_gram">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">아침 먹은
+												칼로리</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="breakfast_calorie">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">아침 먹은
+												것</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="breakfast_foodname">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">아침 먹은
+												양</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="breakfast_gram">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">아침 먹은
+												칼로리</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="breakfast_calorie">
+											</div>
+										</div>
+										<!-- /breakfast end -->
+										<!--lunch -->
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">점심 먹은
+												것</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="lunch1_foodname">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">점심 먹은
+												양</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="lunch1_gram">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">점심 먹은
+												칼로리</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="lunch1_calorie">
+											</div>
+										</div>
+										<!-- /lunch end -->
+										<!-- dinner -->
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">저녁 먹은
+												것</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="dinner1_foodname">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">저녁 먹은
+												양</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="dinner1_graam">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">저녁 먹은
+												칼로리</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="dinner1_calorie">
+											</div>
+										</div>
+										<!-- /dinner end -->
+										<!-- otherfood -->
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">간식이나 그외 등등 먹은
+												것</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="other_foodname">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">간식이나 그외 등등 먹은
+												양</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="other_gram">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">간식이나 그외 등등 먹은
+												칼로리</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="other_calorie">
+											</div>
+										</div>
+										<!-- /otherfood end -->
+										<!-- /food end -->
+										<!-- exercise start -->
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">운동 종류</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="excercise_name">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">운동 시간</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="excercise_time">
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-12  form-group">
+											<label class="control-label col-md-3 col-sm-3 ">운동 소모 칼로리</label>
+											<div class="col-md-9 col-sm-9 ">
+												<input type="text" placeholder=".col-md-3"
+													class="form-control" name="excercise_calorie">
+											</div>
+										</div>										
+										<!-- /exercise end -->
 										<div class="row"></div>
 										<div class="ln_solid"></div>
 										<div class="form-group">
@@ -99,6 +283,7 @@
 												<button type="submit" class="btn btn-success">Submit</button>
 											</div>
 										</div>
+
 									</form>
 								</div>
 							</div>

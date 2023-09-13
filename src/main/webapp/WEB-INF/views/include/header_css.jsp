@@ -3,10 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- header import css -->
-<!-- normalize.css -->
-<link href="assets\vendors\normalize.css-master\normalize.css" rel="stylesheet" />
-<!-- jquery-ui-1.13.2 -->
-<link href="assets\vendors\jquery-ui-1.13.2.custom\jquery-ui.min.css" rel="stylesheet" />
 <!-- Bootstrap -->
 <link href="assets\css\bootstrap-4.6.2\bootstrap.min.css"
 	rel="stylesheet" />
@@ -19,8 +15,10 @@
 <link href="assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
 <!-- Animate.css -->
 <link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet" />
-<!-- google code prettify -->
-<link href="assets\vendors\google-code-prettify\src\prettify.css"
+<!-- Custom Theme Style -->
+<link href="assets/build/css/custom.min.css" rel="stylesheet" />
+<!-- bootstrap-wysiwyg -->
+<link href="assets/vendors/google-code-prettify/bin/prettify.min.css"
 	rel="stylesheet">
 <!-- Select2 -->
 <link href="assets/vendors/select2/dist/css/select2.min.css"
@@ -40,7 +38,4 @@
 	rel="stylesheet" />
 <!-- calendar.js style -->
 <link rel="stylesheet" href="assets/css/Calendar/calendar.js.css" />
-
-<!-- Custom Theme Style -->
-<link href="assets/build/css/custom.min.css" rel="stylesheet" />
 	
