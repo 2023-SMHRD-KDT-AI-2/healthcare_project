@@ -1,3 +1,4 @@
+<%@page import="com.sayproject.model.Exercise.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -869,6 +870,7 @@ margin-top: 5px;
 
 <!-- page content -->
 <div class="right_col" role="main">
+	
 
     <div class="title_right">
   
@@ -1246,6 +1248,10 @@ margin-top: 5px;
       <div class="col-md-12 col-sm-12">
   
         <!-- 회원 정보 미니 카드 -->
+	<%
+		//회원 정보를 가져오기
+		MemberInfo info = (MemberInfo)session.getAttribute("info");
+	%>
   
         <!-- 회전 카드 -->
   
@@ -1278,32 +1284,32 @@ margin-top: 5px;
               </div>
   
               <div class="front_right">
-                <div class="hisname">최 다 인</div>
+                <div class="hisname"><%=info.getName()%></div>
   
                 <div class="hisinfo">
                   <div class="info_tr">
                     <div>등록일자</div>
-                    <div>2023.07.23</div>
+                    <div><%=info.getRegist_day() %></div>
                   </div>
                   <div class="info_tr">
                     <div>성별</div>
-                    <div>여성</div>
+                    <div><%=info.getGender() %></div>
                   </div>
                   <div class="info_tr">
                     <div>나이</div>
-                    <div>만 30세</div>
+                    <div><%=info.getAge() %></div>
                   </div>
                   <div class="info_tr">
                     <div>몸무게</div>
-                    <div>60kg</div>
+                    <div><%=info.getWeight()%>}</div>
                   </div>
                   <div class="info_tr">
                     <div>키</div>
-                    <div>165cm</div>
+                    <div><%=info.getHeight() %></div>
                   </div>
                   <div class="info_tr">
                     <div>연락처</div>
-                    <div>010-1234-5678</div>
+                    <div>><%=info.getPhone_number() %></div>
                   </div>
   
                   <!-- <div class="coords">
@@ -1338,7 +1344,7 @@ margin-top: 5px;
   
             <div class="back">
               <!-- 뒷면 내용 -->
-              <h2>아... 생각보다 안 예쁘다 그냥 좌우로 초록색 차오르는 걸로 만들자</h2>
+              <h2>목표체중:</h2>
             </div>
           </div>
         </div>

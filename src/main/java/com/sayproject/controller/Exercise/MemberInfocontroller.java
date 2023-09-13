@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sayproject.model.Exercise.ExerciseDAO;
 
-@WebServlet("/info")
 public class MemberInfocontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
