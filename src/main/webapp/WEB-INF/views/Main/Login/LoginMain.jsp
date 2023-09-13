@@ -47,13 +47,15 @@
 											id="floatingPassword" placeholder="Password"> <label
 											for="floatingPassword">Password</label>
 									</div>
-									<div>
-									<a href="#" class="btn btn-primary btn-xs" style="height: 55px;"><i class="fa fa-smile-o"></i>회원가입</a>
-									<a id="kakao-login-btn" href="javascript:loginWithKakao()">
-										<img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="222"
-										  alt="카카오 로그인 버튼" />
-									  </a>
-									</div>
+									<a href="#" class="btn btn-primary">일반 회원 로그인</a> <a
+										id="kakao-login-btn"
+										href="javascript:loginWithKakaoPersonalMember()"> <img
+										src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+										width="222" alt="카카오 로그인 버튼" />
+									</a>
+									<button type="button" class="btn btn-success">
+										<a href="/Main.say?c=memberAddInfo&loginType=member"> 회원가입</a>
+									</button>
 								</form>
 								<!-- /personal member login form end -->
 							</div>
