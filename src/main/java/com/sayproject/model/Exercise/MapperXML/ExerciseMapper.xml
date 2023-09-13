@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.smhrd.model.ExerciseMapper">
-    <!-- Member 테이블을 사용한 SQL 에 대한 실행 문장들을 정리하는 파일 -->
-    <select id="exerciseList" resultType="com.sayproject.model.Exercise.Exercise">
-		Select kakao_id, name, age, gender, height, weight, trainer, photopath, job, address, regist_day, phone_number From members
-	</select>
-</mapper>
