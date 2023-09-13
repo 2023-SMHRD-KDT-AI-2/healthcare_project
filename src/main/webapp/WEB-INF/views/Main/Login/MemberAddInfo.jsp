@@ -126,9 +126,8 @@
 									<div class="x_content">
 										<div class="col-md-12 col-sm-6">
 											<!-- 추가 정보 입력 Form -->
-											<form id="personalMemberAddInfo"
-												action="/Main.say" method="get"
-												data-parsley-validate
+											<form id="personalMemberAddInfo" action="/Main.say"
+												method="get" data-parsley-validate
 												class="form-horizontal form-label-left">
 												<input type=hidden name=c value=personalMemberAddInfo>
 												<span class="section">Personal Member Info</span>
@@ -172,12 +171,61 @@
 															for="first-name">ID or Email <span
 															class="required">*</span>
 														</label>
-														<div class="col-md-6 col-sm-6 ">
-															<input type="text" id="idOrEmail" name="idOrEmail"
-																required="required" class="form-control ">
-														</div>
+														<form>
+															<div class="col-md-6 col-sm-6 ">
+																<input type="text" id="idOrEmail" name="idOrEmail"
+																	required="required" class="form-control ">
+															</div>
+
+															<div class="col-md-3 col-sm-3">
+																<button type="button" id="submitButton">중복확인</button>
+																<span id="errorMessage" class="error"></span>
+															</div>
+														</form>
 													</div>
 												</c:if>
+
+
+												<script>
+									        const submitButton = document.getElementById('submitButton');
+									        const errorMessage = document.getElementById('errorMessage');
+									        const inputID = document.getElementById('idOrEmail');
+									        submitButton.addEventListener('click', () => {
+									            
+									            // 이 부분에서 서버로부터 중복된 ID를 확인하도록 요청을 보내고 응답을 처리해야 합니다.
+									            // 여기서는 간단한 예제를 제공하므로 직접 서버와 통신하지 않습니다.
+									            const data = {
+									            		  method: 'POST',
+									            		  headers: {
+									            			  "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+									            		  },
+									            		  body:`c=generalIDCheck&id=` + inputID.value
+									            		};
+
+									            		fetch('/Main.say', data)
+									            		  .then((res) => {
+									            			  console.log("aa", res.text())
+									            			})
+									            		  .then((res) => {
+															console.log(res)
+														});
+									            		
+									            
+									            // 임의로 중복된 ID가 없다고 가정합니다.
+									            const isDuplicate = false;
+									
+									            if (isDuplicate) {
+									                errorMessage.textContent = '중복된 ID';
+									                errorMessage.classList.remove('success');
+									                errorMessage.classList.add('error');
+									            } else {
+									                errorMessage.textContent = '중복되지 않은 ID';
+									                errorMessage.classList.remove('error');
+									                errorMessage.classList.add('success');
+									                // 여기서 서버로 데이터를 제출하거나 다른 작업을 수행합니다.
+									            }
+									        });
+									    </script>
 
 
 												<div class="item form-group">
@@ -248,8 +296,8 @@
 														for="first-name">주소 <span class="required">*</span>
 													</label>
 													<div class="col-md-6 col-sm-6 ">
-														<input type="text" id="address" required="required"
-															class="form-control ">
+														<input type="text" id="address" name="address"
+															required="required" class="form-control ">
 													</div>
 												</div>
 												<div class="item form-group">
@@ -257,8 +305,8 @@
 														for="first-name">연락처 <span class="required">*</span>
 													</label>
 													<div class="col-md-6 col-sm-6 ">
-														<input type="text" id="phonenumber" required="required"
-															class="form-control ">
+														<input type="text" id="phone_number" name="phone_number"
+															required="required" class="form-control ">
 													</div>
 												</div>
 												<div class="item form-group">
@@ -268,13 +316,13 @@
 															<label class="btn btn-secondary"
 																data-toggle-class="btn-primary"
 																data-toggle-passive-class="btn-default"> <input
-																type="radio" name="gender" value="male" class="join-btn">
+																type="radio" name="gender" value="M" class="join-btn">
 																&nbsp; Male &nbsp;
 															</label> <label class="btn btn-primary"
 																data-toggle-class="btn-primary"
 																data-toggle-passive-class="btn-default"> <input
-																type="radio" name="gender" value="female"
-																class="join-btn">&nbsp; Female &nbsp;
+																type="radio" name="gender" value="F" class="join-btn">&nbsp;
+																Female &nbsp;
 															</label>
 														</div>
 													</div>
