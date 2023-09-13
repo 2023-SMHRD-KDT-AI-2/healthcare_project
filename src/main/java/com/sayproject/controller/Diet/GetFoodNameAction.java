@@ -1,6 +1,7 @@
 package com.sayproject.controller.Diet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,28 +27,21 @@ public class GetFoodNameAction implements Action {
         response.setContentType("text/html; charset=utf-8");
         request.setCharacterEncoding(CHARSET);
 
-        Gson gon = new Gson();
+        // gson형식을 위한 객체 생성
+        Gson gson = new Gson();
+        // custom-d.js에서 ajax를 통해 보내온 MonggoDB의 데이터 수신
         String foodName = request.getParameter("foodName");
-        Meal meal = gon.fromJson(foodName, Meal.class);
+        // 수신된 foodName를 Json형식으로 변환 후 meal에 저장
+        Meal meal = gson.fromJson(foodName, Meal.class);
         
         DietDAO dao = new DietDAO();
         
+        // 아침, 점심, 저녁, 간식별로 먹은 음식 리스트를 담을 객체 생성 
         Mealtime mealTime = new Mealtime();
         
-//        ArrayList<List<Food>> list = new ArrayList<List<Food>>();
-        
-//        list.add(meal.getBreakfast());
-//        list.add(meal.getLunch());
-//        list.add(meal.getDinner());
-//        list.add(meal.getOtherfood());
-        
-//        Diet breakfast = new Diet();
-//        Diet lunch = new Diet();
-//        Diet dinner = new Diet();
-//        Diet otherfood = new Diet();
-        
-        System.out.println(meal.getBreakfast());
-        
+        // 유저가 입력한 음식을 MariaDB에 저장된 food_nutrients 테이블에 food_code값으로 접근
+        // 아침, 점심, 저녁, 간식별로 List를 따로 만들어서 각각 저장 후
+        // 데이터를 한번에 전송하기 위해 mealTime에 아침, 점심, 저녁, 간식을 다시 하나의 ArrayList로 저장
         List<Diet> breakfastDietList = new ArrayList<>();
         for (Food breakfast: meal.getBreakfast()) {
             String code = breakfast.getCode();
@@ -76,41 +70,14 @@ public class GetFoodNameAction implements Action {
         }
         mealTime.setOtherfood(otherfoodDietList);
         
-        System.out.println(mealTime);
+        // custom-d.js로 ajax를 통해 보내는 과정 
+        // mealTime 을 다시 json파일로 변경
+        String mealData = gson.toJson(mealTime);
         
-        request.setAttribute("mealTime", mealTime);
-        
-        RequestDispatcher rd = request.getRequestDispatcher("/Diet.say?c=main");
-        rd.forward(request, response);
-     
-//        mealTime.add(breakfast);
-//        mealTime.add(lunch);
-//        mealTime.add(dinner);
-//        mealTime.add(otherfood);
-
-        
-//        for (int i = 0; i < list.size(); i++) {
-//    		double serving_size = 0;
-//    		double eating_size = 0;
-//    		double n = 0;
-//    		double carbohydrate = 0;
-//    		double protein = 0;
-//    		double fat = 0;
-//    		double cal = 0;
-//        	for (int j = 0; j < list.get(i).size(); j++) {
-//        		serving_size = dao.showAllNutrient(list.get(i).get(j).getCode()).getServing_size();
-//        		eating_size = list.get(i).get(j).getGram();
-//        		n = eating_size / serving_size;
-//        		carbohydrate += n * dao.showAllNutrient(list.get(i).get(j).getCode()).getCarbohydrate();
-//        		protein += n * dao.showAllNutrient(list.get(i).get(j).getCode()).getProtein();
-//        		fat += n * dao.showAllNutrient(list.get(i).get(j).getCode()).getFat();
-//        		cal += dao.showAllNutrient(list.get(i).get(j).getCode()).getEnergy();
-//        	}
-//        	mealTime.get(i).setCarbohydrate(carbohydrate);
-//        	mealTime.get(i).setProtein(protein);
-//        	mealTime.get(i).setFat(fat);
-//        	mealTime.get(i).setEnergy(cal);
-//        }
+        // 해당 과정은 공부가 필요함
+        response.setContentType("text/json;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.println(mealData);
         
         
         
