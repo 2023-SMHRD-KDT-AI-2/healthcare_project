@@ -85,55 +85,32 @@
 								</div>
 
 								<div class="x_content">
-									<div class="table-responsive">
-										<table class="table table-striped jambo_table">
-											<thead>
-												<tr class="headings">
-													<th class="column-title" rowspan="2">사진</th>
-													<th class="column-title">카카오</th>
-													<th class="column-title">이름</th>
-													<th class="column-title">나이</th>
-													<th class="column-title">성별</th>
-													<th class="column-title">몸무게</th>
-													<th class="column-title">키</th>
-													<th class="column-title">등록일</th>
-													<th class="column-title no-link last" rowspan="2"><span
-														class="nobr">이동</span></th>
-												</tr>
-												<tr>
-													<td class=" ">회원번호</td>
-													<td class=" ">담당</td>
-													<td class=" ">직업</td>
-													<td class=" " colspan="2">주소</td>
-													<td class=" " colspan="2">연락처</td>
-												</tr>
-											</thead>
-
-											<tbody>
-												<c:forEach var="member" items="${memberList}">
-													<tr class="pointer">
-														<td class=" " rowspan="2"><img
-															src="${member.getPhotopath()}" width="100px"
-															height="100px"></td>
-														<td class=" ">${member.getKakao_id()}</td>
-														<td class=" ">${member.getName()}</td>
-														<td class=" ">${member.getAge()}</td>
-														<td class=" ">${member.getGender()}</td>
-														<td class="a-right a-right">${member.getWeight()}</td>
-														<td class="a-right a-right">${member.getHeight()}</td>
-														<td class=" ">${member.getRegist_day()}</td>
-														<td class="last" rowspan="2"><a href="#">이동</a></td>
-													</tr>
-													<tr class="pointer">
-														<td class=" ">${member.getNo()}</td>
-														<td class=" ">${member.getTrainer()}</td>
-														<td class=" ">${member.getJob()}</td>
-														<td class=" " colspan="2">${member.getAddress()}</td>
-														<td class=" " colspan="2">${member.getPhone_number()}</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
+									<div class="container">
+										<div class="row row-cols-3">
+											<c:forEach var="member" items="${memberList}">
+												<div class="col ">
+													<div class="card mb-3" style="max-width: 540px;">
+														<div class="row no-gutters">
+															<div class="col-md-5 p-1">
+																<img src="${member.getPhotopath()}"
+																	 class="img-thumbnail" alt="${member.getName()} (${member.getAge()}) 님">
+															</div>
+															<div class="col-md-7">
+																<div class="card-body">
+																	<h5 class="card-title">${member.getName()} (${member.getAge()}) 님</h5>
+																	<p class="card-text">몸무게 : ${member.getWeight()}</p>
+																	<p class="card-text">키 : ${member.getHeight()}</p>
+																	<p class="card-text">연락처 : ${member.getPhone_number()}</p>
+																	<p class="card-text">
+																		<small class="text-muted">등록일 : ${member.getRegist_day()}</small>
+																	</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -154,6 +131,6 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 	<!-- Custom Theme Scripts -->
-<script src="assets/Members/js/custom.js"></script>
+	<script src="assets/Members/js/custom.js"></script>
 </body>
 </html>

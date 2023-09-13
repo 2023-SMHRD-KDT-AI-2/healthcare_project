@@ -13,7 +13,16 @@
 	<!-- menu profile quick info -->
 	<div class="profile clearfix">
 		<div class="profile_pic">
-			<img src="${profileImageUrl}" alt="..." class="img-circle profile_img">
+			<c:choose>
+				<c:when test="${empty profileImageUrl}">
+					<img src="/images/Member/default.jpg" alt="..."
+						class="img-circle profile_img">
+				</c:when>
+				<c:otherwise>
+					<img src="${profileImageUrl}" alt="..."
+						class="img-circle profile_img">
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="profile_info">
 			<span>어서오세요,</span>
@@ -30,13 +39,8 @@
 		<div class="menu_section">
 			<h3>General</h3>
 			<ul class="nav side-menu">
-				<li><a><i class="fa fa-home"></i> Home <span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="/Main.say">Main Sub1</a></li>
-						<li><a href="/Main.say?c=list">Main Sub2</a></li>
-						<li><a href="/Main.say?c=sub3">Main Sub3</a></li>
-					</ul></li>
+				<li><a href="/Main.say?c=main"><i class="fa fa-home"></i>
+						Home <span class="fa fa-chevron-down"></span></a></li>
 				<li><a><i class="fa fa-edit"></i> 회원 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">
