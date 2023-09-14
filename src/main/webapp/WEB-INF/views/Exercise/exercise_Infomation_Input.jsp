@@ -86,7 +86,7 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form class="form-horizontal form-label-left" action="Members.say?c=inputProcess" method="post">
+									<form class="form-horizontal form-label-left" action="/Members.say?c=inputProcess" method="post">
 										<!-- include member info -->
 										<jsp:include page="/WEB-INF/views/include/diet_and_exercise_member_info_include.jsp" />
 										<jsp:include page="/WEB-INF/views/Exercise/include/exercise_Information_Input_Main_Content.jsp" />
