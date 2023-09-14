@@ -68,52 +68,8 @@
 								<div class="clearfix"></div>
 							</div>
 
-							<div class="x_content">
-								<div class="row">
-									<div class="col-md-3 col-sm-6">
-										<div class="well">
-											<h4>칼로리</h4>
-											<h4>390cal</h4>
-											<h4>10%</h4>
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<div class="well">
-											<h4>탄수화물</h4>
-											<h4>190cal</h4>
-											<h4>5%</h4>
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<div class="well">
-											<h4>단백질</h4>
-											<h4>70cal</h4>
-											<h4>6%</h4>
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<div class="well">
-											<h4>지방</h4>
-											<h4>30cal</h4>
-											<h4>7%</h4>
-										</div>
-									</div>
-								</div>
+							<div id="breakfast_food_info" class="x_content">
 
-								<table class="table table-striped projects">
-									<tr>
-										<td>음식 이름1</td>
-										<td>수량1</td>
-										<td>단위1</td>
-										<td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 제외</td>
-									</tr>
-									<tr>
-										<td>음식 이름2</td>
-										<td>수량2</td>
-										<td>단위2</td>
-										<td><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 제외</td>
-									</tr>
-								</table>
 							</div>
 						</div>
 
@@ -124,6 +80,10 @@
 								</div>
 								<div class="clearfix"></div>
 							</div>
+
+							<div id="lunch_food_info" class="x_content">
+
+							</div>
 						</div>
 
 						<div class="x_panel">
@@ -132,6 +92,10 @@
 									<h2>저녁</h2>
 								</div>
 								<div class="clearfix"></div>
+							</div>
+
+							<div id="dinner_food_info" class="x_content">
+
 							</div>
 						</div>
 						
@@ -142,6 +106,10 @@
 								</div>
 								<div class="x_content"></div>			
 								<div class="clearfix"></div>
+							</div>
+
+							<div id="otherfood_food_info" class="x_content">
+
 							</div>
 						</div>
 					</div>
@@ -155,51 +123,62 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="all_nutrient">
-								<div>칼로리</div>
+								<div><h5>칼로리</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>탄수화물</div>
+								<br>
+								<div><h5>탄수화물</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>단백질</div>
+								<br>
+								<div><h5>단백질</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>식이섬유</div>
+								<br>
+								<div><h5>식이섬유</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>당분</div>
+								<br>
+								<div><h5>당분</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>칼륨</div>
+								<br>
+								<div><h5>칼륨</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>마그네슘</div>
+								<br>
+								<div><h5>마그네슘</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>칼슘</div>
+								<br>
+								<div><h5>칼슘</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>철</div>
+								<br>
+								<div><h5>철</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>비타민C</div>
+								<br>
+								<div><h5>비타민C</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>비타민D</div>
+								<br>
+								<div><h5>비타민D</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-								<div>비타민K</div>
+								<br>
+								<div><h5>비타민K</h5></div>
 								<div class="progress">
 									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
@@ -225,10 +204,6 @@
 	</div>
 <jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 <!-- Custom Theme Scripts -->
-<script type="text/javascript">
-	//let test=${breakfastDietList};
-	console.log(${breakfastDietList});
-</script>
 <script src="assets/Diet/js/autocomplete.js"></script>
 <script src="assets/Diet/js/bootstrap-autocomplete.js"></script>
 <script src="assets/Diet/js/index.js"></script>
@@ -237,6 +212,7 @@
 <script src="assets/Diet/js/util.js"></script>
 <script src="assets/Diet/js/custom.js"></script>
 <script src="assets/Diet/js/custom-d.js"></script>
+<script src="assets/Diet/js/test.js"></script>
 
 </body>
 </html>
