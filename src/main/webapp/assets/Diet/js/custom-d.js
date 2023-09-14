@@ -448,7 +448,7 @@ const loadMemberDailyInfo = async () => {
     success: function (data) {
 	  memberInfo = data;	
       memberDailyInfo = data.dailyInfo;
-      console.log(data);
+      console.log(memberInfo.dailyInfo);
     },
     error: function () {
       console.log("요청이 안됨");

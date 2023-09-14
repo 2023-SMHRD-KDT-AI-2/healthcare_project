@@ -1,3 +1,4 @@
+<%@page import="java.lang.ProcessHandle.Info"%>
 <%@page import="com.sayproject.model.Exercise.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
@@ -766,7 +767,11 @@ margin-top: 5px;
 <body class="nav-md">
   <!-- 도넛차트 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- 
+ 	<%
+		//회원 정보를 가져오기
+		MemberInfo info = (MemberInfo)session.getAttribute("info");
+	%>
+  
  <script>
 
 // 자바스크립트 모음
@@ -982,7 +987,7 @@ margin-top: 5px;
               </div>
   
               <div class="expiredate_bottom">
-                  <div class="expiredate_bottom_content" class="randomNumber">2023. 10. 20</div>
+                  <div class="expiredate_bottom_content" class="randomNumber"><%=info.getExpiration_day() %></div>
               </div>
           </div>
       </div>
@@ -1248,11 +1253,7 @@ margin-top: 5px;
       <div class="col-md-12 col-sm-12">
   
         <!-- 회원 정보 미니 카드 -->
-	<%
-		//회원 정보를 가져오기
-		MemberInfo info = (MemberInfo)session.getAttribute("info");
-	%>
-  
+
         <!-- 회전 카드 -->
   
         <div class="member_card">
@@ -1301,41 +1302,17 @@ margin-top: 5px;
                   </div>
                   <div class="info_tr">
                     <div>몸무게</div>
-                    <div><%=info.getWeight()%>}</div>
+                    <div><%=info.getWeight()%></div>
                   </div>
                   <div class="info_tr">
                     <div>키</div>
-                    <div><%=info.getHeight() %></div>
+                    <div><%=info.getHeight()%></div>
                   </div>
                   <div class="info_tr">
                     <div>연락처</div>
-                    <div>><%=info.getPhone_number() %></div>
+                    <div><%=info.getPhone_number() %></div>
                   </div>
   
-                  <!-- <div class="coords">
-                    <span>회원등록</span>
-                    <span>2023.07.23</span>
-                  </div>
-                  <div class="coords">
-                    <span>성별</span>
-                    <span>여성</span>
-                  </div>
-                  <div class="coords">
-                    <span>나이</span>
-                    <span>만 30살</span>
-                  </div>
-                  <div class="coords">
-                    <span>연락처</span>
-                    <span>010-2304-1709</span>
-                  </div>
-                  <div class="coords">
-                    <span>몸무게</span>
-                    <span>45kg</span>
-                  </div>
-                  <div class="coords">
-                    <span>키</span>
-                    <span>165cm</span>
-                  </div> -->
                 </div>
   
               </div>
@@ -1344,7 +1321,7 @@ margin-top: 5px;
   
             <div class="back">
               <!-- 뒷면 내용 -->
-              <h2>목표체중:</h2>
+              <h2></h2>
             </div>
           </div>
         </div>
@@ -1475,7 +1452,7 @@ margin-top: 5px;
 
 <!-- Custom Theme Scripts -->
 
-<script src="assets/Exercise/js/custom.js"></script>
+
 
 <!-- 세로 바 차트-->
 
@@ -1611,7 +1588,7 @@ margin-top: 5px;
       data: {
           labels: ['Navy', 'Blue', 'Red', 'Gray', 'Purple'],
           datasets: [{
-              data: [15, 19, 20, 15, 18],
+              data: [(memberInfo.dailyInfo[9].exercise[2]/5), 19, 20, 15, 18],
               backgroundColor: [
                   // '#ff7590',
                   // '#9daaff',
@@ -1653,6 +1630,7 @@ margin-top: 5px;
       afterDraw: addTextToDonutChart
   });
 </script>
+<script src="assets/Exercise/js/custom.js"></script>
 
 
 

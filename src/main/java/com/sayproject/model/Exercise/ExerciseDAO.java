@@ -31,12 +31,12 @@ public class ExerciseDAO {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true); 
 
 		// sql문장
-		MemberInfo info = sqlsession.selectOne("expiration", expiration_day);//("id",데이터값)
+		MemberInfo day = sqlsession.selectOne("expiration", expiration_day);//("id",데이터값)
 
 		//데이터베이스 종료
 		sqlsession.close();
 
-		return info;
+		return day;
 
 	}
 }
