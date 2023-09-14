@@ -3,6 +3,19 @@
 <mapper namespace="com.sayproject.model.Main.KakaoLogin.MapperXML.KakaoLgoin">
 	
 	<select id="kakaoIdDuplicate" parameterType="string" resultType="int">
-		SELECT count(id) FROM kakao_login WHERE id=#{memberObjectId}
+		SELECT count(id) FROM kakao_login WHERE email=#{memberObjectId}
 	</select>
+	
+	<insert id="kakaoJoin" parameterType="com.sayproject.model.Main.KakaoLogin.KakaoJoin">
+		INSERT INTO kakao_login (id,email,profile_image_url,nickname,isDefaultImage,thumbnailImageUrl)
+		VALUES(
+		#{memberObjectId},
+		#{emailOrId},
+		#{profileImageUrl},
+		#{nickname},
+		#{isDefaultImage},
+		#{thumbnailImageUrl}
+		) 
+		
+	</insert>
 </mapper>

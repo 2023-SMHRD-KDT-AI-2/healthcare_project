@@ -56,8 +56,6 @@
 	src="assets/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <!-- starrr -->
 <script src="assets/vendors/starrr/dist/starrr.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="assets/build/js/custom.min.js"></script>
 <!-- Kakao Login SDK -->
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
 	integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH"
@@ -65,3 +63,5 @@
 <script>
 	Kakao.init('14274277b7b930e3289085afa313c81c') // 사용하려는 앱의 JavaScript 키 입력
 </script>
+<!-- Custom Theme Scripts -->
+<script src="assets/build/js/custom.min.js"></script>

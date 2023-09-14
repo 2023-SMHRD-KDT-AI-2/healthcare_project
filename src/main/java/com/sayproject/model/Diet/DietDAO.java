@@ -14,6 +14,7 @@ public class DietDAO {
 	
 	Diet dietAll = new Diet();
 	
+	// food_code를 참조하여 음식데이터 조회 
 	public Diet showAllNutrient(String code) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);

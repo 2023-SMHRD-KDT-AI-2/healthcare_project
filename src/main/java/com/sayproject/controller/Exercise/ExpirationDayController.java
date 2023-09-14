@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.sayproject.controller.Action;
 import com.sayproject.model.Exercise.ExerciseDAO;
 import com.sayproject.model.Exercise.MemberInfo;
-public class ExerciseSub2Action  implements Action {
+public class ExpirationDayController  implements Action {
 	  private static final String CHARSET = "utf-8";
 
 	  @Override
@@ -28,7 +28,7 @@ public class ExerciseSub2Action  implements Action {
 	    MemberInfo info = dao.info(memberinfo);
 	    
 	    HttpSession session = request.getSession();
-		session.setAttribute("info", info); // info 하고 하는 이름으로 info데이터를 보내준다
+		session.setAttribute("info", info); // info 라고 하는 이름으로 info데이터를 보내준다
 		
 	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Exercise/exercise_sub2.jsp");
 	    dis.forward(request, response);

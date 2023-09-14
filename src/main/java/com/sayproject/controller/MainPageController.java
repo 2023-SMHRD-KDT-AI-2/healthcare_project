@@ -11,6 +11,8 @@ import com.sayproject.controller.Main.LogoutAction;
 import com.sayproject.controller.Main.MainAction;
 import com.sayproject.controller.Main.Member.MemberAddInfoAction;
 import com.sayproject.controller.Main.Member.PersonalMemberAddInfoInputDBAction;
+import com.sayproject.controller.Main.Member.GeneralLogin.GeneralIDCheckAction;
+import com.sayproject.controller.Main.Member.GeneralLogin.GeneralLoginDbCheckAction;
 import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginDbCheckAction;
 import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginRedirectAction;
 
@@ -53,6 +55,10 @@ public class MainPageController {
 		// 카카오 정보가 디비에 있는지 확인
 		if (cmd.equals("kakaoCheck")) {
 			return new KakaoLoginDbCheckAction();
+		}
+		// 회원가입시 아이디 중복값 체크
+		if (cmd.equals("generalIDCheck")) {
+			return new GeneralIDCheckAction();
 		}
 		// 추가 정보 입력 페이지에서 받은 정보를 디비에 입력하는 곳
 		if (cmd.equals("personalMemberAddInfo")) {

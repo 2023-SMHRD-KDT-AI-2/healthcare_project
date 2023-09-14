@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.sayproject.controller.Action;
 import com.sayproject.model.Main.KakaoLogin.KakaoAccount;
-import com.sayproject.model.Main.KakaoLogin.KakaoIdDuplicationCheck;
 import com.sayproject.model.Main.KakaoLogin.KakaoIdDuplicationCheckDAO;
 import com.sayproject.model.Main.KakaoLogin.KakaoLoginInfo;
 import com.sayproject.model.Main.KakaoLogin.Profile;
@@ -88,6 +87,7 @@ public class KakaoLoginDbCheckAction implements Action {
 			session.setAttribute("isDefaultImage", profile.getIsDefaultImage());
 			session.setAttribute("thumbnailImageUrl", profile.getThumbnailImageUrl());
 			session.setAttribute("profileImageUrl", profile.getProfileImageUrl());
+			
 
 			/******** json to String ***************/
 			// String jSon = gson.toJson(memberDailyData, KakaoLoginInfo.class);
@@ -102,7 +102,7 @@ public class KakaoLoginDbCheckAction implements Action {
 
 			KakaoIdDuplicationCheckDAO dao = new KakaoIdDuplicationCheckDAO();
 
-			int cnt = dao.kakaoIdDuplicationCheck(Long.toString(memberDailyData.getId()));
+			int cnt = dao.kakaoIdDuplicationCheck(kakaoAccount.getEmail());
 
 			if (cnt > 0) {
 				/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
@@ -114,8 +114,7 @@ public class KakaoLoginDbCheckAction implements Action {
 				 * 외에 필요한 정보를 받는 페이지로 이동하여 입력 받는다. 7. 만약 추가 정보를 입력하지 않은 상태에서는 추가 정보 입력 페이지로 강제
 				 * 이동하게 한다. 8. 추가 정보를 입력하여야만 해당 계정이 활성화 되게 한다.
 				 */
-				RequestDispatcher dis = request.getRequestDispatcher("/Main.say");
-				dis.forward(request, response);
+				response.sendRedirect("/Main.say?c=main");
 			} else {
 				/********** DB 에 가입한 정보가 없다면 추가 정보 입력 페이지로 이동. ***********************/
 				/********** DB 에 모든 정보를 입력하기 전까지는 session 에 저장하지 않는다. ****************/
