@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.sayproject.model.Exercise.ExerciseDAO;
 
+import com.sayproject.model.Exercise.ExerciseDAO;
+
 //import com.sayproject.model.Exercise.ExerciseDAO;
 
 public class MemberInfocontroller extends HttpServlet {
