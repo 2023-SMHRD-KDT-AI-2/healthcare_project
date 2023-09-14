@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class Diet {
 
 	// 음식 정보 클래스
-	
 	public Integer no;
 	public String sample_id;
 	public String food_code;
