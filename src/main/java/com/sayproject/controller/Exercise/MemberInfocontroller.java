@@ -28,8 +28,8 @@ public class MemberInfocontroller extends HttpServlet {
 		float met = Integer.parseInt("met");
 				
 		// 기능처리
-//		ExerciseDAO dao = new ExerciseDAO();
-//		MemberInfocontroller info = new MemberInfocontroller(id,name,met);
+		ExerciseDAO dao = new ExerciseDAO();
+		MemberInfocontroller info = new MemberInfocontroller(id,name,met);
 		
 	}
 
