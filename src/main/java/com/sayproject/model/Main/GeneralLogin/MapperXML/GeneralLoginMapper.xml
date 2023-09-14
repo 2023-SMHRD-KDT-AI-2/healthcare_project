@@ -3,7 +3,7 @@
 <mapper
 	namespace="com.sayproject.model.Main.GeneralLogin.MapperXML.GeneralLoginMapper">
 	
-	
+	<!--회원가입시 insert하기-->
 	<insert id="generalJoin" parameterType="com.sayproject.model.Main.GeneralLgoin.GeneralJoin">
 		INSERT INTO members(idOrEmail,name,weight,height,address,phone_number,gender,birthday,regist_day)
 		VALUES(
@@ -18,4 +18,17 @@
 			NOW()
 			)
 	</insert>
+	
+	<!--아이디 중복체크-->
+	<select id="generalIDCheck" parameterType="string" resultType="int">
+		SELECT count(idOrEmail) FROM members WHERE idOrEmail=#{idOrEmail}
+	</select>
+	
+	<!--로그인 시 session만들기외한 xml-->
+	<select id="generalSession" parameterType="string" resultType="com.sayproject.model.Main.GeneralLgoin.GeneralJoin">
+		SELECT * FROM members WHERE idOrEmail=#{idOrEmail}
+	</select>
+	
+	
+	
 </mapper>

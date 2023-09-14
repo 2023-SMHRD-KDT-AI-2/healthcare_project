@@ -1,24 +1,24 @@
-package com.sayproject.model.Main.KakaoLogin;
+package com.sayproject.model.Main.GeneralLgoin;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sayproject.database.mariadb.SqlSessionManager;
-import com.sayproject.model.Members.Member;
 
-public class KakaoIdDuplicationCheckDAO {
-
-	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
-
+public class GeneralLoginDAO {
 	
-	//카카오 아이디 중복체크
-	public int kakaoIdDuplicationCheck(String memberObjectId) {
-		int cnt = 0;
+	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
+	
+	
+	// 일반로그인 성공시 members테이블 데이터 호출!(세션화하기)
+	public GeneralJoin generalSession(String idOrEmail) {
+		GeneralJoin session = null;
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-			cnt = sqlSession.selectOne("kakaoIdDuplicate", memberObjectId);
+			session = (GeneralJoin)sqlSession.selectOne("generalSession", idOrEmail);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return cnt;
+		return session;
 	}
+
 }

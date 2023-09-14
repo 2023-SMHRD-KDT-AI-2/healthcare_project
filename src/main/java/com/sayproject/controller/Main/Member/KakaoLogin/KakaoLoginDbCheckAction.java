@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.sayproject.controller.Action;
+import com.sayproject.model.Main.GeneralLgoin.GeneralJoin;
+import com.sayproject.model.Main.GeneralLgoin.GeneralLoginDAO;
 import com.sayproject.model.Main.KakaoLogin.KakaoAccount;
 import com.sayproject.model.Main.KakaoLogin.KakaoIdDuplicationCheckDAO;
 import com.sayproject.model.Main.KakaoLogin.KakaoLoginInfo;
@@ -44,9 +46,8 @@ public class KakaoLoginDbCheckAction implements Action {
 		 */
 
 		/******
-		 * session check
-		 * Enumeration<String> enumeration = session.getAttributeNames(); while
-		 * (enumeration.hasMoreElements()) { String elementString =
+		 * session check Enumeration<String> enumeration = session.getAttributeNames();
+		 * while (enumeration.hasMoreElements()) { String elementString =
 		 * enumeration.nextElement(); System.out.printf("%s : %s\n", elementString,
 		 * session.getAttribute(elementString)); }
 		 ******/
@@ -87,7 +88,6 @@ public class KakaoLoginDbCheckAction implements Action {
 			session.setAttribute("isDefaultImage", profile.getIsDefaultImage());
 			session.setAttribute("thumbnailImageUrl", profile.getThumbnailImageUrl());
 			session.setAttribute("profileImageUrl", profile.getProfileImageUrl());
-			
 
 			/******** json to String ***************/
 			// String jSon = gson.toJson(memberDailyData, KakaoLoginInfo.class);
@@ -102,7 +102,7 @@ public class KakaoLoginDbCheckAction implements Action {
 
 			KakaoIdDuplicationCheckDAO dao = new KakaoIdDuplicationCheckDAO();
 
-			int cnt = dao.kakaoIdDuplicationCheck(kakaoAccount.getEmail());
+			int cnt = dao.kakaoIdDuplicationCheck(Long.toString(memberDailyData.getId()));
 
 			if (cnt > 0) {
 				/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
@@ -114,7 +114,28 @@ public class KakaoLoginDbCheckAction implements Action {
 				 * 외에 필요한 정보를 받는 페이지로 이동하여 입력 받는다. 7. 만약 추가 정보를 입력하지 않은 상태에서는 추가 정보 입력 페이지로 강제
 				 * 이동하게 한다. 8. 추가 정보를 입력하여야만 해당 계정이 활성화 되게 한다.
 				 */
-				response.sendRedirect("/Main.say?c=main");
+
+				// 기존 회원이면!!! input페이지로 session과 함께 넘어간다!!!
+				GeneralLoginDAO generallogindao = new GeneralLoginDAO();
+				GeneralJoin data = generallogindao.generalSession(kakaoAccount.getEmail());
+
+				session.setAttribute("address", data.getAddress());
+				session.setAttribute("age", data.getAge());
+				session.setAttribute("birthday", data.getBirthday());
+				session.setAttribute("credit_card", data.getCredit_card());
+				session.setAttribute("expiration", data.getExpiration_date());
+				session.setAttribute("gender", data.getGender());
+				session.setAttribute("height", data.getHeight());
+				session.setAttribute("job", data.getJob());
+				session.setAttribute("kaka_id", data.getKaka_id());
+				session.setAttribute("nickname", data.getName());
+				session.setAttribute("no", data.getNo());
+				session.setAttribute("phone_number", data.getPhone_number());
+				session.setAttribute("regist_day", data.getRegist_day());
+				session.setAttribute("trainer", data.getTrainer());
+				session.setAttribute("weight", data.getWeight());
+
+				response.sendRedirect("/Members.say?c=input");
 			} else {
 				/********** DB 에 가입한 정보가 없다면 추가 정보 입력 페이지로 이동. ***********************/
 				/********** DB 에 모든 정보를 입력하기 전까지는 session 에 저장하지 않는다. ****************/
