@@ -1,6 +1,7 @@
 package com.sayproject.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +31,17 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String subStringRequestURI = requestURI.substring(contextPath.length());
 
+		System.out.println("=====================");
+		System.out.println("requestURI : " + requestURI);
+		System.out.println("contextPath : " + contextPath);
+		System.out.println("subStringRequestURI : " + subStringRequestURI);
+		
+		Enumeration<String> parameter = request.getParameterNames();
+		
+		while(parameter.hasMoreElements()) {
+			System.out.println("parameter : " + parameter.nextElement());
+		}
+		System.out.println("=====================");
 		if (subStringRequestURI.contains("/Main.say")) {
 			MainPageController mainPageController = new MainPageController();
 			mainPageController.doProcess(request, response);

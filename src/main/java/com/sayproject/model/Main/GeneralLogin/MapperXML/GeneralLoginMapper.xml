@@ -2,4 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.sayproject.model.Main.GeneralLogin.MapperXML.GeneralLoginMapper">
+	
+	
+	<insert id="generalJoin" parameterType="com.sayproject.model.Main.GeneralLgoin.GeneralJoin">
+		INSERT INTO members(idOrEmail,name,weight,height,address,phone_number,gender,birthday,regist_day)
+		VALUES(
+			#{idOrEmail},
+			#{name},
+			#{weight},
+			#{height},
+			#{address},
+			#{phone_number},
+			#{gender},
+			#{birthday},
+			NOW()
+			)
+	</insert>
 </mapper>

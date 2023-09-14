@@ -18,7 +18,7 @@ public class Error400Action  implements Action {
 	    response.setContentType("text/html; charset=utf-8");
 	    request.setCharacterEncoding(CHARSET);
 
-	    RequestDispatcher dis = request.getRequestDispatcher("/Main.say");
+	    RequestDispatcher dis = request.getRequestDispatcher("/Main.say?c=main");
 	    dis.forward(request, response);
 	  }
 }
