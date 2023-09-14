@@ -9,7 +9,14 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="${profileImageUrl}" alt="">${nickname}
+                      			<c:choose>
+				<c:when test="${empty profileImageUrl}">
+					<img src="/images/Member/default.jpg" alt="...">${nickname}
+				</c:when>
+				<c:otherwise>
+					<img src="${profileImageUrl}" alt="...">${nickname}
+				</c:otherwise>
+			</c:choose>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="/Main.say?c=login"> Profile</a>

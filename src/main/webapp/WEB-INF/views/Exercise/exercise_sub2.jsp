@@ -1,4 +1,4 @@
-
+<%@page import="com.sayproject.model.Exercise.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -32,11 +32,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans:wght@400;900&display=swap" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
    
     <style>
-      
-      /* 
+
+/* 
 
 2023.09.10
 
@@ -60,7 +59,7 @@
 도넛을 아랫줄로 가져오는 배치도 생각 해 보자... 
 
 */
-
+      
     .nav_title {
       width: 230px;
       float: left;
@@ -107,6 +106,9 @@
       color: #490000; 
       color: #1abb9c;
     }
+
+
+
 
     .fixed_height_115{
       height: 115px;
@@ -178,7 +180,6 @@
     /* 마우스를 올렸을 때의 스타일 */
     .topcard:hover {
     /* background-color: #11C991; 1픽 상쾌한 초록 */
-
     /* background-color: #6EBCB7; */
     background: linear-gradient(45deg, #8640fb, #a835ec, #c628ed);
     color: white 
@@ -318,6 +319,8 @@
   display: inline; "Times" 텍스트 보이기 
 } */
 
+  
+
 /* 남은 횟수 */
 .ulmanamun_top{
   display: flex;
@@ -402,6 +405,8 @@ font-weight: bold;
 margin-top: 5px;
 }
 
+
+
 .expiredate_top{
   display: flex;
   flex-direction: row;
@@ -485,6 +490,17 @@ margin-top: 5px;
  }
  
 
+
+
+
+
+
+
+
+
+
+
+
 /*회원카드*/
 /*
 회원 정보를 바로 볼 수 있게 해야 한다.
@@ -503,6 +519,7 @@ margin-top: 5px;
 
 
 /* 색이 차오르는 카드  2 */
+
 
 
 .card_inner2 {
@@ -558,8 +575,7 @@ margin-top: 5px;
 /* 플립 카드*/
 
 .member_card {
-  width: 380px;
-  width: 320px;
+  width: 100%;
   height: 200px;
   perspective: 1000px; /* 3D 효과를 위한 시점 설정 */
   margin-bottom: 30px;
@@ -744,6 +760,7 @@ margin-top: 5px;
 
 
 </style>
+
 </head>
 
 <body class="nav-md">
@@ -775,7 +792,27 @@ margin-top: 5px;
               }
               setInterval(toggleElements, 3000);
         
- 
+              // /* 주 ~ 회 Times/회 글씨 바뀌는 효과 */
+              // /* 근데 너무 많이 쓰니까 요란스럽다*/
+              // function toggleElement2s() {
+              //   const elements = document.getElementsByClassName('howoften_times');
+              //   const changeElements = document.getElementsByClassName('howoften_times_hides');
+        
+              //   // elements와 changeElements의 display 속성을 토글
+              //   for (let i = 0; i < elements.length; i++) {
+              //     if (elements[i].style.display === 'none') {
+              //       elements[i].style.display = 'block';
+              //       changeElements[i].style.display = 'none';
+              //     } else {
+              //       elements[i].style.display = 'none';
+              //       changeElements[i].style.display = 'block';
+              //     }
+              //   }
+              // }
+              // setInterval(toggleElement2s, 3000);
+        /*숫자가 3초 뒤에 바뀌는 애니메이션 끝*/
+        
+        /*~일째 랜덤한 숫자가 돌다가 멈추는 애니메이션*/
             function startRandomNumberAnimation() {
             const randomNumberElement = document.getElementsByClassName("randomNumber");
             const targetNumber = 36; // 멈출 숫자
@@ -813,8 +850,8 @@ margin-top: 5px;
         /* 주 ~회 숫자 애니메이션 */
         
         /* 주~째 애니메이션 효과 끝*/
-</script>
-    <div class="container body">
+        </script>
+	<div class="container body">
 		<div class="main_container">
 			<!-- left side menu -->
 			<div class="col-md-3 left_col">
@@ -829,60 +866,11 @@ margin-top: 5px;
 
 			<!-- page content -->
 			<!-- main content -->
-                <th>
-                  <div class="col-lg-7 col-md-7 col-sm-7 ">
-                    <p class="">Device</p>
-                  </div>
-                  <div class="col-lg-5 col-md-5 col-sm-5 ">
-                    <p class="">Progress</p>
-                  </div>
-                </th>
-              </tr>
-              <tr>
-                <td>
-                  <table class="tile_info">
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square blue"></i>스쿼트 </p>
-                      </td>
-                      <td>80kcal</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square green"></i>팔굽혀펴기
-                        </p>
-                      </td>
-                      <td>270kcal</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square purple"></i>줌바댄스
-                        </p>
-                      </td>
-                      <td>200kcal</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square aero"></i>라인댄스 </p>
-                      </td>
-                      <td>100kcal</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square red"></i>Others </p>
-                      </td>
-                      <td>300kcal</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
 
-  <!-- page content -->
-  <div class="right_col" role="main">
+
+<!-- page content -->
+<div class="right_col" role="main">
+	
 
     <div class="title_right">
   
@@ -1172,17 +1160,9 @@ margin-top: 5px;
             </div>
             <div class="x_content">
   
-              <div class="demo-container" style="height:280px">
-                <div id="chart_plot_02" class="demo-placeholder">
-
                     <div class="line_chart-container">
                         <canvas id="line-chart"></canvas>
                     </div>
-
-                </div>
-              </div>
-  
-
 
             </div>
           </div>
@@ -1268,6 +1248,10 @@ margin-top: 5px;
       <div class="col-md-12 col-sm-12">
   
         <!-- 회원 정보 미니 카드 -->
+	<%
+		//회원 정보를 가져오기
+		MemberInfo info = (MemberInfo)session.getAttribute("info");
+	%>
   
         <!-- 회전 카드 -->
   
@@ -1286,7 +1270,7 @@ margin-top: 5px;
                 <div class="hispicture">
   
                   <div>
-                    <!-- 이미지 자리 -->
+                    <img src="assets/Exercise/Images/choidainpic.jpg">
                   </div>
   
                 </div>
@@ -1300,32 +1284,32 @@ margin-top: 5px;
               </div>
   
               <div class="front_right">
-                <div class="hisname">권 용 현</div>
+                <div class="hisname"><%=info.getName()%></div>
   
                 <div class="hisinfo">
                   <div class="info_tr">
                     <div>등록일자</div>
-                    <div>2023.06.20</div>
+                    <div><%=info.getRegist_day() %></div>
                   </div>
                   <div class="info_tr">
                     <div>성별</div>
-                    <div>남성</div>
+                    <div><%=info.getGender() %></div>
                   </div>
                   <div class="info_tr">
                     <div>나이</div>
-                    <div>24세</div>
+                    <div><%=info.getAge() %></div>
                   </div>
                   <div class="info_tr">
                     <div>몸무게</div>
-                    <div>80kg</div>
+                    <div><%=info.getWeight()%>}</div>
                   </div>
                   <div class="info_tr">
                     <div>키</div>
-                    <div>187cm</div>
+                    <div><%=info.getHeight() %></div>
                   </div>
                   <div class="info_tr">
                     <div>연락처</div>
-                    <div>010-1234-5678</div>
+                    <div>><%=info.getPhone_number() %></div>
                   </div>
   
                   <!-- <div class="coords">
@@ -1360,7 +1344,7 @@ margin-top: 5px;
   
             <div class="back">
               <!-- 뒷면 내용 -->
-              <h2>안뇽~</h2>
+              <h2>목표체중:</h2>
             </div>
           </div>
         </div>
@@ -1467,85 +1451,10 @@ margin-top: 5px;
   
   <!-- /page content -->
 
-          </div>
-        </div>
-      </div>
 
-      <!-- 표 차트 -->
-      <div class="col-md-4 col-sm-4 ">
-        <div class="x_panel tile fixed_height_287 overflow_hidden">
-          <div class="x_title">
-            <h2>운동 시간</h2>
-            <ul class="nav navbar-right panel_toolbox">
-              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                  role="button" aria-expanded="false"><i
-                    class="fa fa-wrench"></i></a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Settings 1</a>
-                  <a class="dropdown-item" href="#">Settings 2</a>
-                </div>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
 
-            <table class="" style="width:100%">
-              <tr>
-                <th>
-                  <div class="col-lg-7 col-md-7 col-sm-7 ">
-                    <p class=""> 운동명 </p>
-                  </div>
-                  <div class="col-lg-5 col-md-5 col-sm-5 ">
-                    <p class=""> 시간 </p>
-                  </div>
-                </th>
-              </tr>
 
-              <tr>
-                <td>
-                  <table class="tile_info">
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square blue"></i> 스쿼트 </p>
-                      </td>
-                      <td>30회</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square green"></i> 팔굽혀펴기
-                        </p>
-                      </td>
-                      <td>20회</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square purple"></i> 줌바댄스
-                        </p>
-                      </td>
-                      <td>30 min</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square aero"></i> 라인 댄스 </p>
-                      </td>
-                      <td>30 min</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p><i class="fa fa-square red"></i> Others </p>
-                      </td>
-                      <td>20min</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
+
 							<!-- /main content -->
 						</div>
 					</div>
@@ -1576,25 +1485,28 @@ margin-top: 5px;
             type:'bar',
             data:{
                 labels:[
-                    '스쿼트','데드리프트','벤치프레스','바벨로우'
+                    '월요일','화요일','수요일','목요일','금요일'
                 ],
                 datasets:[
                     {
                         label:'2023년',
-                        data:[150,140,120,130],
-                        backgroundColor:["#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD",
-                                         "#01F6D5"],
-                        borerColor:[     "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD",
-                                         "#01F6D5"],
+                        data:[10,8,6,5,9],
+                        backgroundColor:['#bc69fa',
+                                         '#7386FF',
+                                         '#5C9EF5',
+                                         '#00E1FD',
+                                         '#01F6D5'],
+                        borerColor:[     '#bc69fa',
+                                         '#7386FF',
+                                         '#5C9EF5',
+                                         '#00E1FD',
+                                         '#01F6D5'],
                         hoverBackgroundColor:[
-                                        "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD",
-                                         "#01F6D5",
+                                         '#bc69fa',
+                                         '#7386FF',
+                                         '#5C9EF5',
+                                         '#00E1FD',
+                                         '#01F6D5'
                         ],
                         borderWidth: 1
                     },
@@ -1666,8 +1578,8 @@ margin-top: 5px;
 
 <!-- 라인 차트 -->
 <script>
-        let mychart = $('#line-chart');
-        let myLineChart = new Chart(mychart, {
+        let lineChart = $('#line-chart');
+        let myLineChart = new Chart(lineChart, {
             type:'line',
             data:{
                 labels:[
@@ -1676,7 +1588,7 @@ margin-top: 5px;
                 datasets:[
                     {
                         label:'2023년',
-                        data:[10,8,6,5,12,7,16,7,6,10,12,10],
+                        data:[70,72,74,76,78,80,82,84,80,79,78,77],
                         backgroundColor:'#01F6D5',
                         borerColor:'#01F6D5'
                         
@@ -1693,8 +1605,8 @@ margin-top: 5px;
 
 <!-- 도넛 차트 -->
 <script>
-  var ctx = document.getElementById('donutChart').getContext('2d');
-  var donutChart = new Chart(ctx, {
+  var doughtnutChart = document.getElementById('donutChart').getContext('2d');
+  var myDoughtnutChart = new Chart(doughtnutChart, {
       type: 'doughnut',
       data: {
           labels: ['Navy', 'Blue', 'Red', 'Gray', 'Purple'],

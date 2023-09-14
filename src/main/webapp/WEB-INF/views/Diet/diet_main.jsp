@@ -9,11 +9,14 @@
 <%@page import="com.google.gson.Gson"%>
 
 <%
-	Mealtime mealTime = (Mealtime) request.getAttribute("mealTime");
-	Gson gson = new Gson();
+	String mealData = (String) request.getAttribute("mealData");
 	
-	String meal = gson.toJson(mealTime);
-	System.out.print(meal);
+	// ArrayList<Diet> breakfastDietList = (ArrayList) request.getAttribute("breakfastDietList");
+	// ArrayList<Diet> lunchDietList = (ArrayList) request.getAttribute("lunchDietList");
+	// ArrayList<Diet> dinnerDietList = (ArrayList) request.getAttribute("dinnerDietList");
+	// ArrayList<Diet> otherfoodDietList = (ArrayList) request.getAttribute("otherfoodDietList");
+	
+	// System.out.print(breakfastDietList);
 %>
 
 <!DOCTYPE html>
@@ -136,7 +139,8 @@
 							<div class="x_title">
 								<div class="title_left">
 									<h2>간식</h2>
-								</div>			
+								</div>
+								<div class="x_content"></div>			
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -222,8 +226,8 @@
 <jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
 <!-- Custom Theme Scripts -->
 <script type="text/javascript">
-	let mealData = <%=meal%>;
-	console.log(mealData);
+	//let test=${breakfastDietList};
+	console.log(${breakfastDietList});
 </script>
 <script src="assets/Diet/js/autocomplete.js"></script>
 <script src="assets/Diet/js/bootstrap-autocomplete.js"></script>

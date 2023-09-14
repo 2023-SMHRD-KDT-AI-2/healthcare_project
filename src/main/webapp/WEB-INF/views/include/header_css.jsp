@@ -34,7 +34,6 @@
 <link
 	href="assets/vendors/bootstrap-daterangepicker/daterangepicker.css"
 	rel="stylesheet">
-	
 <!-- Datatables -->
 <link href="assets/css/dataTables/jquery.dataTables.css"
 	rel="stylesheet" />
