@@ -38,7 +38,7 @@
 <link href="assets/css/dataTables/jquery.dataTables.css"
 	rel="stylesheet" />
 <!-- calendar.js style -->
-<link rel="stylesheet" href="assets/css/Calendar/calendar.js.css" />
+<link rel="stylesheet" href="assets/vendors/Calendar.js-main/dist/calendar.js.min.css" />
 
 <!-- Custom Theme Style -->
 <link href="assets/build/css/custom.min.css" rel="stylesheet" />
