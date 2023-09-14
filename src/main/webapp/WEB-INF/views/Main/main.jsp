@@ -186,8 +186,6 @@
 	<!-- Members Custom Scripts -->
 	<script src="assets/Main/js/custom.js"></script>
 
-	<!-- chart.js -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
 		// doughnut chart
 		const doughnut = document.getElementById('doughnutChart');
@@ -278,7 +276,6 @@
 	</script>
 
 	<!-- calendar.js : https://github.com/williamtroup/Calendar.js -->
-	<script src="assets/js/Calendar/calendar.js"></script>
 	<script>
 		var calendarInstance = new calendarJs("calendar", {
 			exportEventsEnabled : true,
