@@ -72,53 +72,20 @@
 									<div class="x_panel">
 										<div class="x_content">
 											<div class="card" style="width: 100%;">
-												<img id="imagePreview" src="" alt="선택된 이미지">
+												<img src="images\Member\default.jpg" alt="기본 이미지">
 												<div class="card-body">
 													<p class="card-text">
 														[<span id="displayEmail"></span>${emailOrId}] ${nickname}<span
 															id="displayName"></span> 님 반갑습니다.
 													</p>
 												</div>
-												<input type="file" name="filename" id="fileInput"
-													style="float: right;">
 											</div>
 										</div>
 									</div>
 								</div>
 							</c:if>
+							
 
-							<script>
-								// 파일 입력 필드
-								var fileInput = document
-										.getElementById("fileInput");
-
-								// 이미지 미리보기를 표시할 이미지 요소
-								var imagePreview = document
-										.getElementById("imagePreview");
-
-								// 파일 입력 필드가 변경될 때마다 호출되는 함수
-								fileInput
-										.addEventListener(
-												"change",
-												function() {
-													var file = fileInput.files[0];
-
-													if (file) {
-														var reader = new FileReader();
-
-														reader.onload = function(
-																e) {
-															imagePreview.src = e.target.result;
-														};
-
-														reader
-																.readAsDataURL(file);
-													} else {
-														// 파일을 선택하지 않았을 때의 처리
-														imagePreview.src = "";
-													}
-												});
-							</script>
 							<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 							<div class="col-md-9 col-sm-6">
@@ -171,7 +138,7 @@
 															for="first-name">ID or Email <span
 															class="required">*</span>
 														</label>
-														<form>
+														
 															<div class="col-md-6 col-sm-6 ">
 																<input type="text" id="idOrEmail" name="idOrEmail"
 																	required="required" class="form-control ">
@@ -181,51 +148,11 @@
 																<button type="button" id="submitButton">중복확인</button>
 																<span id="errorMessage" class="error"></span>
 															</div>
-														</form>
+														
 													</div>
 												</c:if>
-
-
-												<script>
-									        const submitButton = document.getElementById('submitButton');
-									        const errorMessage = document.getElementById('errorMessage');
-									        const inputID = document.getElementById('idOrEmail');
-									        submitButton.addEventListener('click', () => {
-									            
-									            // 이 부분에서 서버로부터 중복된 ID를 확인하도록 요청을 보내고 응답을 처리해야 합니다.
-									            // 여기서는 간단한 예제를 제공하므로 직접 서버와 통신하지 않습니다.
-									            const data = {
-									            		  method: 'POST',
-									            		  headers: {
-									            			  "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-									            		  },
-									            		  body:`c=generalIDCheck&id=` + inputID.value
-									            		};
-
-									            		fetch('/Main.say', data)
-									            		  .then((res) => {
-									            			  console.log("aa", res.text())
-									            			})
-									            		  .then((res) => {
-															console.log(res)
-														});
-									            		
-									            
-									            // 임의로 중복된 ID가 없다고 가정합니다.
-									            const isDuplicate = false;
-									
-									            if (isDuplicate) {
-									                errorMessage.textContent = '중복된 ID';
-									                errorMessage.classList.remove('success');
-									                errorMessage.classList.add('error');
-									            } else {
-									                errorMessage.textContent = '중복되지 않은 ID';
-									                errorMessage.classList.remove('error');
-									                errorMessage.classList.add('success');
-									                // 여기서 서버로 데이터를 제출하거나 다른 작업을 수행합니다.
-									            }
-									        });
-									    </script>
+												<!-- IDDuplicationCheck.js 아이디 중복 체크 -->
+												<script src="assets\Main\js\IDDuplicationCheck.js"></script>
 
 
 												<div class="item form-group">
@@ -239,38 +166,8 @@
 													</div>
 												</div>
 
-												<!-- 일반 로그인시 input태그에 입력된 이름/이메일 가져오기  -->
-												<script>
-													// name 요소와 표시할 요소를 가져옵니다.
-													var nameInput = document
-															.getElementById("name");
-													var displayName = document
-															.getElementById("displayName");
-													// email 요소와 표시할 요소를 가져옵니다.
-													var emailInput = document
-															.getElementById("idOrEmail");
-													var displayEmail = document
-															.getElementById("displayEmail");
-
-													// 입력 값이 변경될 때마다 실행되는 함수를 만듭니다.
-													nameInput
-															.addEventListener(
-																	"input",
-																	function() {
-																		// 입력된 값을 가져와서 표시할 요소에 넣습니다.
-																		var enteredName = nameInput.value;
-																		displayName.textContent = enteredName;
-																	});
-													// 입력 값이 변경될 때마다 실행되는 함수를 만듭니다.
-													emailInput
-															.addEventListener(
-																	"input",
-																	function() {
-																		// 입력된 값을 가져와서 표시할 요소에 넣습니다.
-																		var enteredEmail = emailInput.value;
-																		displayEmail.textContent = enteredEmail;
-																	});
-												</script>
+												<!-- IDEmailAutoInput.js 일반 로그인시 input태그에 입력된 이름/이메일 가져오기  -->
+												<script src="assets/Main/js/IDEmailAutoInput.js"></script>
 
 
 												<div class="item form-group">
@@ -328,34 +225,8 @@
 													</div>
 												</div>
 
-												<!-- 버튼 클릭 js -->
-												<script>
-													var labels = document
-															.querySelectorAll(".btn");
-
-													labels
-															.forEach(function(
-																	label) {
-																label
-																		.addEventListener(
-																				"click",
-																				function() {
-																					labels
-																							.forEach(function(
-																									l) {
-																								l.classList
-																										.remove("btn-primary");
-																								l.classList
-																										.add("btn-secondary");
-																							});
-
-																					label.classList
-																							.remove("btn-secondary");
-																					label.classList
-																							.add("btn-primary");
-																				});
-															});
-												</script>
+												<!-- GenerButton.js gender버튼 -->
+												<script src="assets\Main\js\GenerButton.js"></script>
 
 												<div class="item form-group">
 													<label class="col-form-label col-md-3 col-sm-3 label-align"
@@ -392,11 +263,14 @@
 
 												<div class="ln_solid"></div>
 												<div class="item form-group">
-													<div class="col-md-6 col-sm-6 offset-md-3">
+													<div class="col-md-6 col-sm-6 offset-md-3"
+														style="display: flex; align-items: center;">
 														<button class="btn btn-primary" type="button">Cancel</button>
 														<button class="btn btn-primary" type="reset">Reset</button>
 														<button type="submit" class="btn btn-success">Submit</button>
 													</div>
+														<input type="file" name="filename" id="fileInput" style="float: right;">
+														<span>*프로필 첨부</span>
 												</div>
 											</form>
 											<!-- /추가 정보 입력 Form END -->

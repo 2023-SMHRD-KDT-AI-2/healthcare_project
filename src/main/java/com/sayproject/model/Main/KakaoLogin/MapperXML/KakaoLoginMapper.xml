@@ -2,10 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sayproject.model.Main.KakaoLogin.MapperXML.KakaoLgoin">
 	
+	<!--카카오 아이디 중보체크-->
 	<select id="kakaoIdDuplicate" parameterType="string" resultType="int">
-		SELECT count(id) FROM kakao_login WHERE email=#{memberObjectId}
+		SELECT count(id) FROM kakao_login WHERE id=#{memberObjectId}
 	</select>
 	
+	
+	<!--카카오 회원가입-->
 	<insert id="kakaoJoin" parameterType="com.sayproject.model.Main.KakaoLogin.KakaoJoin">
 		INSERT INTO kakao_login (id,email,profile_image_url,nickname,isDefaultImage,thumbnailImageUrl)
 		VALUES(
@@ -16,6 +19,10 @@
 		#{isDefaultImage},
 		#{thumbnailImageUrl}
 		) 
+		
+		
+		
+		
 		
 	</insert>
 </mapper>

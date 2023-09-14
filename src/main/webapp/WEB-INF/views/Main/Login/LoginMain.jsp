@@ -77,19 +77,24 @@
 							<div class="card-body">
 								<h5 class="card-title">일반회원</h5>
 								<!-- personal member login form -->
-								<form>
+								<form action="/Main.say" method="post">
+								<input type=hidden name=c value=memberLogin>
+								<input type=hidden name=loginType value=member>
 									<div class="form-floating mb-3">
-										<input type="email" class="form-control" id="floatingInput"
-											placeholder="name@example.com"> <label
+										<input name="id" type="email" class="form-control"
+											id="floatingInput" placeholder="name@example.com"> <label
 											for="floatingInput">Email address</label>
 									</div>
 									<div class="form-floating">
-										<input type="password" class="form-control"
+										<input name="password" type="password" class="form-control"
 											id="floatingPassword" placeholder="Password"> <label
 											for="floatingPassword">Password</label>
 									</div>
-									<a href="#" class="btn btn-primary">일반 회원 로그인</a> <a
-										id="kakao-login-btn"
+									<button type="submit" class="btn btn-primary" >
+									일반 회원 로그인 
+									</button>
+									
+									<a id="kakao-login-btn"
 										href="javascript:loginWithKakaoPersonalMember()"> <img
 										src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
 										width="222" alt="카카오 로그인 버튼" />

@@ -46,11 +46,13 @@ public class PersonalMemberAddInfoInputDBAction implements Action {
 	System.out.println(request.getParameter("birthday"));
 		
 		
-		//카카오 memberObjectId가 있으면 카카오 로그인
+
+	
+		//카카오 memberObjectId가 있으면 카카오 회원가입
 		if(session.getAttribute("memberObjectId")!=null) {
 			
 			KakaoJoin kjoin = new KakaoJoin();
-			//kakao 정보넘기기
+			//kakao 정보넘기기 kakao_loginDB에 넘기고
 			kjoin.setMemberObjectId(String.valueOf(session.getAttribute("memberObjectId"))); //id
 			kjoin.setEmailOrId(String.valueOf(session.getAttribute("emailOrId")));			//email
 			kjoin.setProfileImageUrl(String.valueOf(session.getAttribute("profileImageUrl"))); ////profileimageurl
@@ -58,14 +60,13 @@ public class PersonalMemberAddInfoInputDBAction implements Action {
 			kjoin.setIsDefaultImage(String.valueOf(session.getAttribute("isDefaultImage")));	//isDefaultImage
 			kjoin.setIsDefaultImage(String.valueOf(session.getAttribute("thumbnailImageUrl")));		//thumbnailImageUrl
 			
-			
-			
-			
 			KakaoJoinDAO dao = new KakaoJoinDAO();
 			int cnt = dao.kakaoJoin(kjoin);
 			
 			if(cnt>0) {
+				// 추가정보 입력은 members테이블에 넘기기
 				GeneralJoin gjoin = new GeneralJoin();
+				
 				gjoin.setIdOrEmail(String.valueOf(session.getAttribute("emailOrId"))); //id
 				gjoin.setName(request.getParameter("name"));	//name
 				gjoin.setWeight(request.getParameter("weight"));	//weight
@@ -91,7 +92,7 @@ public class PersonalMemberAddInfoInputDBAction implements Action {
 			
 			
 		}else {
-			//일반회원가입
+			//일반회원가입 이후 members테이블에 data넘기기
 			GeneralJoin gjoin = new GeneralJoin();
 			gjoin.setIdOrEmail(request.getParameter("idOrEmail")); //id
 			gjoin.setName(request.getParameter("name"));	//name

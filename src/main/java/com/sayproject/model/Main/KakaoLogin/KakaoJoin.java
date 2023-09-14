@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KakaoJoin {
-	//kakao 세션정보
+	//kakao_login
 	private String memberObjectId;	//id
 	private String emailOrId;		//email
 	private String profileImageUrl;	//profileimageurl
