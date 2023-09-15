@@ -117,71 +117,13 @@
 					
 					<!-- all nutrient content -->
 					<div class="col-md-6 col-sm-12">
-						<div class="x_panel" style="height: 100vh;">
+						<div class="x_panel">
 							<div class="x_title">
 								<div class="title_left"><h2>오늘 내가 먹은 영양소는?</h2></div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="all_nutrient">
-								<div><h5>칼로리</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>탄수화물</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>단백질</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>식이섬유</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>당분</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>칼륨</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>마그네슘</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>칼슘</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>철</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>비타민C</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>비타민D</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-								<br>
-								<div><h5>비타민K</h5></div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
+								
 							</div>
 							<div class="x_content">
 
