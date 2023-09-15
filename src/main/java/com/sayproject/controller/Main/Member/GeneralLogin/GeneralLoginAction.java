@@ -30,14 +30,15 @@ public class GeneralLoginAction implements Action {
 		String password = request.getParameter("password");
 		
 		// ID중복체크
-		GeneralJoinDAO dao = new GeneralJoinDAO();
-		int cnt= dao.generalIDCheck(id);
+		GeneralLoginDAO dao = new GeneralLoginDAO();
+		GeneralJoin login= dao.generalSession(id);
 		
-		System.out.println("로그인 한것 :" + id);
-		System.out.println("DB :" +cnt);
+		System.out.println("id :" + id);
+		System.out.println("password :" + password);
+		System.out.println("넘어온 password :" + login.getPassword());
 		
 		
-		if(cnt>0) {
+		if(password.equals(login.getPassword())) {
 			//로그인 성공
 			String loginType = request.getParameter("loginType");
 			session.setAttribute("loginType", loginType);
@@ -62,6 +63,8 @@ public class GeneralLoginAction implements Action {
 			session.setAttribute("regist", data.getRegist_day());
 			session.setAttribute("trainer", data.getTrainer());
 			session.setAttribute("weight", data.getWeight());
+			session.setAttribute("profileImageUrl", data.getProfileImageUrl());
+			session.setAttribute("trainer", data.getTrainer());
 			
 			
 			
