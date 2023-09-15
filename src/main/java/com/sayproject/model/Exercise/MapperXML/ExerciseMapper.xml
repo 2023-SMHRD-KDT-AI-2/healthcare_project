@@ -6,18 +6,18 @@
 		Select kakao_id, name, age, gender, height, weight, trainer, photopath, job, address, regist_day, phone_number From members
 	</select>
 	
-	<!--MET가져오기-->
-	<select id=" Exercise" parameterType="com.sayproject.model.Exercise.Exercise" resultType="float">
-		Select MET from EXERCISE_INFO WHERE EXERCISE_NAME=#{name};
-	</select>
-
 	<!-- 회원정보 -->
 	<select id="info" parameterType="com.sayproject.model.Exercise.MemberInfo" resultType="com.sayproject.model.Exercise.MemberInfo">
-		select name, regist_day, gender, age, weight, height, phone_number from members where name=#{name}
+		select name, regist_day, gender, age, weight, height, phone_number, expiration_day from members where name=#{name}
 	</select>
 	
-	<!-- 만기일 -->
+	<!--MET가져오기
+	<select id=" met" parameterType="com.sayproject.model.Exercise.Exercise" resultType="float">
+		Select MET from EXERCISE_INFO WHERE EXERCISE_NAME=#{name};
+	</select>-->
+
+	<!--만기일
 	<select id="expiration" parameterType="String" resultType="com.sayproject.model.Exercise.MemberInfo">
 		select expiration_day from members where name=#{name}
-	</select>
+	</select>-->
 </mapper>
