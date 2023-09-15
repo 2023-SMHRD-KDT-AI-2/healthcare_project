@@ -379,39 +379,41 @@ let gender = "male"
 let recommendedNutrient = {}
 if (gender == 'male') {
 	recommendedNutrient = {
-		"energy" : 2600,
-		"carbohydrate" : 130,
-		"dietary_fiber" : 30,
-		"fat" : 13.0,
-		"protein" : 50,
-		"water" : 2600,
-		"vitamin_d3" : 10,
-		"vitamin_e" : 12,
-		"vitamin_k" : 75,
-		"vitamin_c" : 100,
-		"calcium" : 800,
-		"natrium" : 1500,
-		"potassium" : 3500,
-		"magnesium" : 350,
-		"iron_mg" : 10
+		"energy" : [2600, "총칼로리", "cal"],
+		"carbohydrate" : [130, "탄수화물", "g"],
+		"fat" : [13, "지방", "g"],
+		"protein" : [50, "단백질", "g"],
+		"dietary_fiber" : [30, "식이섬유", "g"],
+		"water" : [2600, "수분", "mL"],
+		"vitamin_b1" : [1.2, "비타민B1", "mg"],
+		"vitamin_b12" : [2.4, "비타민B12", "ug"],
+		"vitamin_b2" : [1.3, "비타민B2", "mg"],
+		"vitamin_c" : [100, "비타민C", "mg"],
+		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"calcium" : [800, "칼슘", "mg"],
+		"natrium" : [1500, "나트륨", "mg"],
+		"potassium" : [3500, "칼륨", "mg"],
+		"magnesium" : [350, "마그네슘", "mg"],
+		"iron_mg" : [100, "철", "mg"]
 	}
 } else if (gender == 'female') {
 	recommendedNutrient = {
-		"energy" : 2000,
-		"carbohydrate" : 130,
-		"dietary_fiber" : 20,
-		"fat" : 13.0,
-		"protein" : 55,
-		"water" : 2100,
-		"vitamin_d3" : 10,
-		"vitamin_e" : 12,
-		"vitamin_k" : 65,
-		"vitamin_c" : 100,
-		"calcium" : 700,
-		"natrium" : 1500,
-		"potassium" : 3500,
-		"magnesium" : 350,
-		"iron_mg" : 14
+		"energy" : [2000, "총칼로리", "cal"],
+		"carbohydrate" : [130, "탄수화물", "g"],
+		"fat" : [13, "지방", "g"],
+		"protein" : [55, "단백질", "g"],
+		"dietary_fiber" : [20, "식이섬유", "g"],
+		"water" : [2100, "수분", "mL"],
+		"vitamin_b1" : [1.2, "비타민B1", "mg"],
+		"vitamin_b12" : [2.4, "비타민B12", "ug"],
+		"vitamin_b2" : [1.3, "비타민B2", "mg"],
+		"vitamin_c" : [100, "비타민C", "mg"],
+		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"calcium" : [700, "칼슘", "mg"],
+		"natrium" : [1500, "나트륨", "mg"],
+		"potassium" : [3500, "칼륨", "mg"],
+		"magnesium" : [350, "마그네슘", "mg"],
+		"iron_mg" : [10, "철", "mg"]
 	}
 }
 
@@ -480,24 +482,24 @@ const createPage = function() {
 	for (key in nutrientCalc) {
 		let nutrients = [
 			{	
-				name: "칼로리", 
+				name: "총칼로리", 
 				value: Math.round(nutrientCalc[key].energy), 
-				percent: Math.round(100*(nutrientCalc[key].energy/recommendedNutrient.energy))
+				percent: Math.round(100*(nutrientCalc[key].energy/recommendedNutrient.energy[0]))
 			},
 			{	
 				name: "탄수화물", 
 				value: Math.round(4*nutrientCalc[key].carbohydrate), 
-				percent: Math.round(100*(nutrientCalc[key].carbohydrate/recommendedNutrient.carbohydrate))
+				percent: Math.round(100*(nutrientCalc[key].carbohydrate/recommendedNutrient.carbohydrate[0]))
 			},
 			{	
 				name: "단백질", 
 				value: Math.round(4*nutrientCalc[key].protein),
-				percent: Math.round(100*(nutrientCalc[key].protein/recommendedNutrient.protein))
+				percent: Math.round(100*(nutrientCalc[key].protein/recommendedNutrient.protein[0]))
 			},
 			{	
 				name: "지방", 
 				value: Math.round(9*nutrientCalc[key].fat), 
-				percent: Math.round(100*(nutrientCalc[key].fat/recommendedNutrient.fat))
+				percent: Math.round(100*(nutrientCalc[key].fat/recommendedNutrient.fat[0]))
 			}
 		];
 		  
@@ -537,7 +539,7 @@ const createPage = function() {
 
 		let foodData = [];
 		
-		for (let i = 0; i < nutrientCalc.length; i++) {
+		for (let i = 0; i < nutrientReceive[key].length; i++) {
 			foodData.push({
 				name : nutrientReceive[key][i].food_name,
 				quantity : meal[key][i].gram,
@@ -545,104 +547,148 @@ const createPage = function() {
 			})
 		}
 
-		console.log(foodData);
-
 		// 테이블 요소 생성
 		const table = document.createElement("table");
 		table.className = "table table-striped projects";
 		
 		// 데이터 배열을 순회하면서 각 행을 생성합니다.
 		foodData.forEach((foodItem) => {
-		const row = document.createElement("tr");
-		
-		// 음식 이름 셀
-		const nameCell = document.createElement("td");
-		nameCell.textContent = foodItem.name;
-		
-		// 수량 셀
-		const quantityCell = document.createElement("td");
-		quantityCell.textContent = foodItem.quantity;
-		
-		// 단위 셀
-		const unitCell = document.createElement("td");
-		unitCell.textContent = foodItem.unit;
-		
-		// 제외 버튼 셀
-		const excludeCell = document.createElement("td");
-		const excludeButton = document.createElement("span");
-		excludeButton.className = "glyphicon glyphicon-minus";
-		excludeButton.setAttribute("aria-hidden", "true");
-		excludeButton.textContent = " 제외";
-		excludeCell.appendChild(excludeButton);
-		
-		// 각 셀을 행에 추가
-		row.appendChild(nameCell);
-		row.appendChild(quantityCell);
-		row.appendChild(unitCell);
-		row.appendChild(excludeCell);
-		
-		// 행을 테이블에 추가
-		table.appendChild(row);
+			const row = document.createElement("tr");
+			
+			// 음식 이름 셀
+			const nameCell = document.createElement("td");
+			nameCell.textContent = foodItem.name;
+			
+			// 수량 셀
+			const quantityCell = document.createElement("td");
+			quantityCell.textContent = foodItem.quantity;
+			
+			// 단위 셀
+			const unitCell = document.createElement("td");
+			unitCell.textContent = foodItem.unit;
+			
+			// 제외 버튼 셀
+			const excludeCell = document.createElement("td");
+			const excludeButton = document.createElement("span");
+			excludeButton.className = "glyphicon glyphicon-minus";
+			excludeButton.setAttribute("aria-hidden", "true");
+			excludeButton.textContent = " 제외";
+			excludeCell.appendChild(excludeButton);
+			
+			// 각 셀을 행에 추가
+			row.appendChild(nameCell);
+			row.appendChild(quantityCell);
+			row.appendChild(unitCell);
+			row.appendChild(excludeCell);
+			
+			// 행을 테이블에 추가
+			table.appendChild(row);
 		});
 		// 새로 생성한 요소를 부모 요소에 추가
 		parentElement.appendChild(rowDiv);
 		parentElement.appendChild(table);
 	}
 
-	// const parentElement = document.querySelector('.all_nutrient');
+	const parentElement = document.querySelector('.all_nutrient');
 
-	// console.log("nutrientCalc: ", nutrientCalc);
+	console.log("nutrientCalc: ", nutrientCalc);
 
-	// // 각각의 영양소 데이터 배열을 생성합니다.
-	// let nutrientData = [];
-	// let sumNutrientCalc = {}
+	// 각각의 영양소 데이터 배열을 생성합니다.
+	let nutrientData = [];
+	let sumNutrientCalc = {
+		"energy" : 0,
+		"carbohydrate" : 0,
+		"fat" : 0,
+		"protein" : 0,
+		"dietary_fiber" : 0,
+		"water" : 0,
+		"vitamin_b1" : 0,
+		"vitamin_b12" : 0,
+		"vitamin_b2" : 0,
+		"vitamin_c" : 0,
+		"vitamin_d3" : 0,
+		"calcium" : 0,
+		"natrium" : 0,
+		"potassium" : 0,
+		"magnesium" : 0,
+		"iron_mg" : 0
+	}
 
-	// for (meal in nutrientCalc) {
-	// 	for (nutrient in nutrient[meal]) {
-	// 		sumNutrientCalc[nutrient] += nutrient[nutrient];
-	// 	}
-	// }
+	
+	for (meal in nutrientCalc) {
+		for (nutrient in nutrientCalc[meal]) {
+			sumNutrientCalc[nutrient] += nutrientCalc[meal][nutrient];
+			console.log(sumNutrientCalc[nutrient]);
+		}
+	}
 
-	// for (const key in recommendedNutrient) {
-	// 	nutrientData.push({
-	// 		name : key,
-	// 		width : 10 * sumNutrientCalc[key] / recommendedNutrient[key]
-	// 	})
-	// }
+	for (const key in recommendedNutrient) {
+		nutrientData.push({
+			name : recommendedNutrient[key][1],
+			width : Math.round(100 * sumNutrientCalc[key] / recommendedNutrient[key][0]),
+			eating : Math.round(sumNutrientCalc[key]),
+			recommended : recommendedNutrient[key][0],
+			unit : recommendedNutrient[key][2]
+		})
+	}
 
-	// // 각각의 영양소 데이터를 기반으로 요소를 생성하고 추가합니다.
-	// nutrientData.forEach((data) => {
-	// // div 요소 생성
-	// const nutrientDiv = document.createElement("div");
-	// nutrientDiv.className = "nutrient";
+	// 각각의 영양소 데이터를 기반으로 요소를 생성하고 추가합니다.
+	nutrientData.forEach((data) => {
+	// div 요소 생성
+	const nutrientDiv = document.createElement("div");
+	nutrientDiv.className = "nutrient";
 
-	// // h5 요소 생성
-	// const h5Element = document.createElement("h5");
-	// h5Element.textContent = data.name;
+	// div 요소생성
+	const nutrientHeaderDiv = document.createElement("div");
+	nutrientHeaderDiv.className = "nutrient-header";
+	nutrientHeaderDiv.style.display = "flex";
 
-	// // progress 요소 생성
-	// const progressDiv = document.createElement("div");
-	// progressDiv.className = "progress";
+	// 첫 번째 h5 요소 생성
+	const h5Element = document.createElement("h5");
+	h5Element.textContent = data.name;
+	h5Element.style.flex = "1"; // 왼쪽 정렬 스타일 적용
 
-	// // progress-bar 요소 생성
-	// const progressBar = document.createElement("div");
-	// progressBar.className = "progress-bar progress-bar-striped";
-	// progressBar.setAttribute("role", "progressbar");
-	// progressBar.style.width = `${data.width}%`;
-	// progressBar.setAttribute("aria-valuenow", data.width);
-	// progressBar.setAttribute("aria-valuemin", "0");
-	// progressBar.setAttribute("aria-valuemax", "100");
+	// 두 번째 h5 요소 (오른쪽 정렬)
+	const rightAlignedH5 = document.createElement("h5");
+	rightAlignedH5.textContent = `${data.eating}${data.unit} / ${data.recommended}${data.unit} (${data.width}%)`;
+	rightAlignedH5.style.textAlign = "right"; // 텍스트 오른쪽 정렬 스타일 적용
+	rightAlignedH5.style.marginLeft = "auto"; // 왼쪽 마진을 auto로 설정하여 오른쪽 정렬 스타일 적용
 
-	// // progressDiv에 progressBar를 추가
-	// progressDiv.appendChild(progressBar);
+	// progress 요소 생성
+	const progressDiv = document.createElement("div");
+	progressDiv.className = "progress";
 
-	// // nutrientDiv에 h5Element와 progressDiv를 추가
-	// nutrientDiv.appendChild(h5Element);
-	// nutrientDiv.appendChild(progressDiv);
+	// progress-bar 요소 생성
+	const progressBar = document.createElement("div");
+	if (data.width <= 100) {
+		progressBar.className = "progress-bar progress-bar-striped";
+	} else {
+		progressBar.className = "progress-bar-striped bg-danger";
+	}
+	progressBar.setAttribute("role", "progressbar");
+	progressBar.style.width = `${data.width}%`;
+	progressBar.setAttribute("aria-valuenow", data.width);
+	progressBar.setAttribute("aria-valuemin", "0");
+	progressBar.setAttribute("aria-valuemax", "100");
 
-	// // 부모 요소에 nutrientDiv를 추가
-	// parentElement.appendChild(nutrientDiv);
-	// });
+	// progressDiv에 progressBar를 추가
+	progressDiv.appendChild(progressBar);
+
+	nutrientHeaderDiv.appendChild(h5Element);
+	nutrientHeaderDiv.appendChild(rightAlignedH5);
+
+	// nutrientDiv에 h5Element와 progressDiv를 추가
+	nutrientDiv.appendChild(nutrientHeaderDiv);
+	nutrientDiv.appendChild(progressDiv);
+
+	// 부모 요소에 nutrientDiv를 추가
+	parentElement.appendChild(nutrientDiv);
+
+	nutrientDiv.style.marginBottom = "10px";
+
+	console.log(progressBar.style.width);
+
+	});
 }
 
 // MonggoDB에서 회원의 상세정보를 가져와서 저장 후
