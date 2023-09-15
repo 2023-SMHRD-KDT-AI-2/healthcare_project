@@ -1,3 +1,4 @@
+<%@page import="java.lang.ProcessHandle.Info"%>
 <%@page import="com.sayproject.model.Exercise.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
@@ -766,7 +767,11 @@ margin-top: 5px;
 <body class="nav-md">
   <!-- 도넛차트 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- 
+ 	<%
+		//회원 정보를 가져오기
+		MemberInfo info = (MemberInfo)session.getAttribute("info");
+	%>
+  
  <script>
 
 // 자바스크립트 모음
@@ -982,7 +987,7 @@ margin-top: 5px;
               </div>
   
               <div class="expiredate_bottom">
-                  <div class="expiredate_bottom_content" class="randomNumber">2023. 10. 20</div>
+                  <div class="expiredate_bottom_content" class="randomNumber"><%=info.getExpiration_day() %></div>
               </div>
           </div>
       </div>
@@ -1248,11 +1253,7 @@ margin-top: 5px;
       <div class="col-md-12 col-sm-12">
   
         <!-- 회원 정보 미니 카드 -->
-	<%
-		//회원 정보를 가져오기
-		MemberInfo info = (MemberInfo)session.getAttribute("info");
-	%>
-  
+
         <!-- 회전 카드 -->
   
         <div class="member_card">
@@ -1301,41 +1302,17 @@ margin-top: 5px;
                   </div>
                   <div class="info_tr">
                     <div>몸무게</div>
-                    <div><%=info.getWeight()%>}</div>
+                    <div><%=info.getWeight()%></div>
                   </div>
                   <div class="info_tr">
                     <div>키</div>
-                    <div><%=info.getHeight() %></div>
+                    <div><%=info.getHeight()%></div>
                   </div>
                   <div class="info_tr">
                     <div>연락처</div>
-                    <div>><%=info.getPhone_number() %></div>
+                    <div><%=info.getPhone_number() %></div>
                   </div>
   
-                  <!-- <div class="coords">
-                    <span>회원등록</span>
-                    <span>2023.07.23</span>
-                  </div>
-                  <div class="coords">
-                    <span>성별</span>
-                    <span>여성</span>
-                  </div>
-                  <div class="coords">
-                    <span>나이</span>
-                    <span>만 30살</span>
-                  </div>
-                  <div class="coords">
-                    <span>연락처</span>
-                    <span>010-2304-1709</span>
-                  </div>
-                  <div class="coords">
-                    <span>몸무게</span>
-                    <span>45kg</span>
-                  </div>
-                  <div class="coords">
-                    <span>키</span>
-                    <span>165cm</span>
-                  </div> -->
                 </div>
   
               </div>
@@ -1344,7 +1321,7 @@ margin-top: 5px;
   
             <div class="back">
               <!-- 뒷면 내용 -->
-              <h2>목표체중:</h2>
+              <h2></h2>
             </div>
           </div>
         </div>
@@ -1475,184 +1452,43 @@ margin-top: 5px;
 
 <!-- Custom Theme Scripts -->
 
-<script src="assets/Exercise/js/custom.js"></script>
 
-<!-- 세로 바 차트-->
 
-<script>
-        let heightBarChart = $('#heightBar-chart');
-        let myHeightBarChart = new Chart(heightBarChart, {
-            type:'bar',
-            data:{
-                labels:[
-                    '월요일','화요일','수요일','목요일','금요일'
-                ],
-                datasets:[
-                    {
-                        label:'2023년',
-                        data:[10,8,6,5,9],
-                        backgroundColor:['#bc69fa',
-                                         '#7386FF',
-                                         '#5C9EF5',
-                                         '#00E1FD',
-                                         '#01F6D5'],
-                        borerColor:[     '#bc69fa',
-                                         '#7386FF',
-                                         '#5C9EF5',
-                                         '#00E1FD',
-                                         '#01F6D5'],
-                        hoverBackgroundColor:[
-                                         '#bc69fa',
-                                         '#7386FF',
-                                         '#5C9EF5',
-                                         '#00E1FD',
-                                         '#01F6D5'
-                        ],
-                        borderWidth: 1
-                    },
-    
-                ]
-            },
-            options:{
-                maintainAspectRatio :false,
-                legend:{
-                    display:false
-                },
-            }
-        });
-</script>
+
 
 <!-- 캘린더 -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
-
-    </script>
-<!-- 가로 바 차트 -->
 <script>
-            let widthBarChart = $('#widthBar-chart');
-            let myWidthBarChart = new Chart(widthBarChart, {
-            type:'bar',
-            data:{
-                labels:[
-                    '스쿼트','데드리프트','벤치프레스','바벨로우'
-                ],
-                datasets:[
-                    {
-                        label:'운동 목록',
-                        data:[20,30,40,50],
-                        backgroundColor:["#bc69fa",
-                                         "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD"],
-                        borerColor:[    "#bc69fa",
-                                         "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD"],
-                        hoverBackgroundColor:[
-                                         "#bc69fa",
-                                         "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD"],
-                        borderWidth: 1
-                    },
-    
-                ]
-            },
-            options:{
-                maintainAspectRatio :false,
-                legend:{
-                    display:false
-                },
-                indexAxis: 'y', 
-            }
-        });
-</script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+  
+  </script>
+
+<!-- 세로 바 차트-->
+
+<!-- 가로 바 차트 -->
+
 
 <!-- 라인 차트 -->
-<script>
-        let lineChart = $('#line-chart');
-        let myLineChart = new Chart(lineChart, {
-            type:'line',
-            data:{
-                labels:[
-                    '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-                ],
-                datasets:[
-                    {
-                        label:'2023년',
-                        data:[70,72,74,76,78,80,82,84,80,79,78,77],
-                        backgroundColor:'#01F6D5',
-                        borerColor:'#01F6D5'
-                        
-                    },
-    
-                ]
-            },
-            options:{
-                maintainAspectRatio :false
-            }
-        });
 
-</script>
+
 
 <!-- 도넛 차트 -->
+
 <script>
-  var doughtnutChart = document.getElementById('donutChart').getContext('2d');
-  var myDoughtnutChart = new Chart(doughtnutChart, {
-      type: 'doughnut',
-      data: {
-          labels: ['Navy', 'Blue', 'Red', 'Gray', 'Purple'],
-          datasets: [{
-              data: [15, 19, 20, 15, 18],
-              backgroundColor: [
-                  // '#ff7590',
-                  // '#9daaff',
-                  // '#83b4ff', 
-                  // '#2cd7ef',
-                  // '#2ce4ce'
-
-                  '#bc69fa',
-                  '#7386FF',
-                  '#5C9EF5',
-                  '#00E1FD',
-                  '#01F6D5'
-
-              ]
-          }]
-      },
-      options: {
-          cutoutPercentage: 50,
-          responsive: true,
-          maintainAspectRatio: false,
-      }
-  });
-
-  function addTextToDonutChart() {
-      var ctx = document.getElementById('donutChart').getContext('2d');
-      ctx.font = '16px Arial';
-      ctx.fillStyle = '#000';
-      ctx.textAlign = 'center';
-
-      var text = '최다인 미녀';
-      var x = ctx.canvas.width / 2;
-      var y = ctx.canvas.height / 2;
-
-      ctx.fillText(text, x, y);
-  }
 
   // afterDraw 함수를 사용하여 텍스트를 추가합니다.
   Chart.plugins.register({
       afterDraw: addTextToDonutChart
   });
 </script>
+<script src="assets/Exercise/js/custom.js"></script>
 
 
 

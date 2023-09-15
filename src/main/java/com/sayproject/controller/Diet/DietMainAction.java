@@ -22,5 +22,4 @@ public class DietMainAction  implements Action {
 	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Diet/diet_main.jsp");
 	    dis.forward(request, response);
 	  }
-	  
 }

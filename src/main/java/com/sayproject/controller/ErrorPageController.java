@@ -6,7 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sayproject.controller.Error.Error400Action;
+import com.sayproject.controller.Error.Error403Action;
+import com.sayproject.controller.Error.Error500Action;
 
 public class ErrorPageController {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -23,9 +24,15 @@ public class ErrorPageController {
 	}
 
 	public Action router(String cmd, HttpServletResponse response) {
-		if (cmd.equals("400")) {
-			return new Error400Action();
+		if (cmd.equals("403")) {
+			return new Error403Action();
 		}
-		return new Error400Action();
+		if (cmd.equals("404")) {
+			return new Error403Action();
+		}
+		if (cmd.equals("500")) {
+			return new Error500Action();
+		}
+		return new Error500Action();
 	}
 }
