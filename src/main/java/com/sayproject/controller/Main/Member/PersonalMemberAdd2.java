@@ -152,7 +152,7 @@ public class PersonalMemberAdd2 implements Action {
 						//일반 login profileImageUrl DB에 넘기기
 						System.out.println(upPath.getAbsolutePath() + "\\" + name);
 						
-						gjoin.setProfileImageUrl(upPath.getAbsolutePath() + "\\" + name);
+						gjoin.setPhotopath(upPath.getAbsolutePath() + "\\" + name);
 						
 						fi.write(new File(upPath, name));
 					}
