@@ -123,7 +123,7 @@ public class KakaoLoginDbCheckAction implements Action {
 				session.setAttribute("age", data.getAge());
 				session.setAttribute("birthday", data.getBirthday());
 				session.setAttribute("credit_card", data.getCredit_card());
-				session.setAttribute("expiration", data.getExpiration_date());
+				session.setAttribute("expiration", data.getExpiration_day());
 				session.setAttribute("gender", data.getGender());
 				session.setAttribute("height", data.getHeight());
 				session.setAttribute("job", data.getJob());
