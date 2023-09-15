@@ -35,7 +35,7 @@ public class GetFoodNameAction implements Action {
         Meal meal = gson.fromJson(foodCode, Meal.class);
         
         DietDAO dao = new DietDAO();
-        
+        System.out.println(meal);
         // 아침, 점심, 저녁, 간식별로 먹은 음식 리스트를 담을 객체 생성 
         Mealtime mealTime = new Mealtime();
         

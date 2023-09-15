@@ -37,7 +37,7 @@ public class ExercisePageController {
       return new ExerciseSub2Action();
     } else if (cmd.equals("inputInfo")) {
       return new MemberExerciseInformationInput();
-    }
+    } 
     return new ExerciseMainAction();
   }
 }
