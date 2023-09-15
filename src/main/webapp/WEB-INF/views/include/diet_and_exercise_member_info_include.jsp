@@ -7,7 +7,7 @@
 	<label class="control-label col-md-3 col-sm-3 ">회원 EMAIL</label>
 	<div class="col-md-9 col-sm-9 ">
 		<c:choose>
-			<c:when test="${email != null}">
+			<c:when test="${idOrEmail != null}">
 				<input type="text" class="form-control" readonly="readonly"
 					placeholder="Read-Only Input" name="id" value=${email}>
 			</c:when>
@@ -24,7 +24,7 @@
 	<label class="control-label col-md-3 col-sm-3 ">회원 이름</label>
 	<div class="col-md-9 col-sm-9 ">
 		<c:choose>
-			<c:when test="${name != null}">
+			<c:when test="${nickname != null}">
 				<input type="text" class="form-control" readonly="readonly"
 					placeholder="Read-Only Input" name="name" value=${name}>
 			</c:when>
@@ -41,13 +41,13 @@
 	<label class="control-label col-md-3 col-sm-3 ">담당 트레이너</label>
 	<div class="col-md-9 col-sm-9 ">
 		<c:choose>
-			<c:when test="${trainer}">
+			<c:when test="${trainer != null}">
 				<input type="text" class="form-control" readonly="readonly"
 					placeholder="Read-Only Input" name="trainer" value=${trainer}>
 			</c:when>
 			<c:otherwise>
 				<input type="text" class="form-control" readonly="readonly"
-					placeholder="Read-Only Input" name="trainer" value="DefaultTrainer">
+					placeholder="Read-Only Input" name="trainer" value="트레이너 미지정">
 			</c:otherwise>
 		</c:choose>
 	</div>

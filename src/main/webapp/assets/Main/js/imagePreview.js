@@ -8,25 +8,18 @@
 										.getElementById("imagePreview");
 
 								// 파일 입력 필드가 변경될 때마다 호출되는 함수
-								fileInput
-										.addEventListener(
-												"change",
-												function() {
-													var file = fileInput.files[0];
+								 fileInput.addEventListener('change', function () {
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
 
-													if (file) {
-														var reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                };
 
-														reader.onload = function(
-																e) {
-															imagePreview.src = e.target.result;
-														};
-
-														reader
-																.readAsDataURL(file);
-													} else {
-														// 파일을 선택하지 않았을 때의 처리
-														imagePreview.src = "";
-													}
-												});
-				
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = 'default-image.jpg'; // 이미지가 첨부되지 않았을 때 기본 이미지 표시
+            }
+        });

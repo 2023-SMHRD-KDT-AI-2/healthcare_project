@@ -30,28 +30,30 @@ public class GeneralLoginAction implements Action {
 		String password = request.getParameter("password");
 		
 		// ID중복체크
-		GeneralJoinDAO dao = new GeneralJoinDAO();
-		int cnt= dao.generalIDCheck(id);
+		GeneralLoginDAO dao = new GeneralLoginDAO();
+		GeneralJoin login= dao.generalSession(id);
 		
-		System.out.println("로그인 한것 :" + id);
-		System.out.println("DB :" +cnt);
+		System.out.println("id :" + id);
+		System.out.println("password :" + password);
+		System.out.println("넘어온 password :" + login.getPassword());
 		
 		
-		if(cnt>0) {
+		if(password.equals(login.getPassword())) {
 			//로그인 성공
 			String loginType = request.getParameter("loginType");
 			session.setAttribute("loginType", loginType);
 			session.setAttribute("idOrEmail", id);
 			
-			GeneralLoginDAO generalLoginDAO = new GeneralLoginDAO();
+			
+			;
 			
 			//로그인 이후 members테이블에 있는 모든 data 세션화!
-			GeneralJoin data = generalLoginDAO.generalSession(id);
-			session.setAttribute("address", data.getAddress());
-			session.setAttribute("age", data.getAge());
-			session.setAttribute("birthday", data.getBirthday());
-			session.setAttribute("gredit_card", data.getCredit_card());
-			session.setAttribute("expiration", data.getExpiration_date());
+			GeneralJoin data = dao.generalSession(id);
+			session.setAttribute("address", data.getAddress());	// address
+			session.setAttribute("age", data.getAge());	//나이
+			session.setAttribute("birthday", data.getBirthday());	//생일
+			session.setAttribute("gredit_card", data.getCredit_card());	//회원번호
+			session.setAttribute("expiration", data.getExpiration_day());	//만료일
 			session.setAttribute("gender", data.getGender());
 			session.setAttribute("height", data.getHeight());
 			session.setAttribute("job", data.getJob());
@@ -62,9 +64,27 @@ public class GeneralLoginAction implements Action {
 			session.setAttribute("regist", data.getRegist_day());
 			session.setAttribute("trainer", data.getTrainer());
 			session.setAttribute("weight", data.getWeight());
+			session.setAttribute("profileImageUrl", data.getPhotopath());	//이미지
+			session.setAttribute("trainer", data.getTrainer());
+			session.setAttribute("expiration_date", data.getExpiration_day());
 			
 			
-			
+			System.out.println("프로필 이미지 체크 :" + data.getPhotopath());
+			System.out.println("아이디 체크 :" + data.getIdOrEmail());
+			System.out.println("나이 체크 :" + data.getAge());
+			System.out.println("생일 체크 :" +  data.getBirthday());
+			System.out.println("회원번호 체크 :" + data.getCredit_card());
+			System.out.println("만료일 체크 :" + data.getExpiration_day());
+			System.out.println("성별 체크 :" + data.getGender());
+			System.out.println("키 체크 :" +  data.getHeight());
+			System.out.println("직업 체크 :" +  data.getJob());
+			System.out.println("이름 체크 :" +  data.getName());
+			System.out.println("일련번호 체크 :" +  data.getNo());
+			System.out.println("휴대혼번호 체크 :" +  data.getPhone_number());
+			System.out.println("트레이너번호 :" +  data.getTrainer());
+			System.out.println("체중 체크 :" +  data.getWeight());
+			System.out.println("등록일 체크 :" +  data.getRegist_day());
+			System.out.println("등록일 체크 :" +  data.getExpiration_day());
 			
 			
 			

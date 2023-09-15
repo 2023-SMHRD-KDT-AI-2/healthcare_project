@@ -5,7 +5,7 @@
 	
 	<!--회원가입시 insert하기-->
 	<insert id="generalJoin" parameterType="com.sayproject.model.Main.GeneralLgoin.GeneralJoin">
-		INSERT INTO members(idOrEmail,name,weight,height,address,phone_number,gender,birthday,regist_day)
+		INSERT INTO members(idOrEmail,name,weight,height,address,phone_number,gender,birthday,photopath,password,regist_day)
 		VALUES(
 			#{idOrEmail},
 			#{name},
@@ -15,6 +15,8 @@
 			#{phone_number},
 			#{gender},
 			#{birthday},
+			#{profileImageUrl},
+			#{password},
 			NOW()
 			)
 	</insert>
