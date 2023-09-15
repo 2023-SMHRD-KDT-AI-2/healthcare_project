@@ -14,47 +14,48 @@ import com.sayproject.controller.Action;
 import com.sayproject.database.mongodb.MongoDBManager;
 
 public class MemberDailyInfoReadAjaxForMongoDBAction implements Action {
-  private static final String CHARSET = "utf-8";
+	private static final String CHARSET = "utf-8";
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    response.setContentType("application/json; charset=utf-8");
-    request.setCharacterEncoding(CHARSET);
-    String collection = null;
-    String fieldName = null;
-    String value = null;
-    String valueType = null;
-    String dataType = null;
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json; charset=utf-8");
+		request.setCharacterEncoding(CHARSET);
+		String collection = null;
+		String fieldName = null;
+		String value = null;
+		String valueType = null;
+		String dataType = null;
 
-    collection = request.getParameter("collection");
-    fieldName = request.getParameter("fieldName");
-    valueType = request.getParameter("valueType");
-    value = request.getParameter("value");
-    dataType = request.getParameter("dataType");
-    if (collection == null || fieldName == null || valueType == null || value == null
-        || dataType == null) {
-      try (PrintWriter out = response.getWriter()) {
-        out.print("N U L L");
-      }
-      return;
-    }
+		collection = request.getParameter("collection");
+		fieldName = request.getParameter("fieldName");
+		valueType = request.getParameter("valueType");
+		value = request.getParameter("value");
+		dataType = request.getParameter("dataType");
+		if (collection == null || fieldName == null || valueType == null || value == null || dataType == null) {
+			try (PrintWriter out = response.getWriter()) {
+				out.print("N U L L");
+			}
+			return;
+		}
 
-    if (dataType.equals("json")) {
-      try {
-        MongoDatabase db = MongoDBManager.getInstance().dbManager();
-        MongoCollection<Document> docuCollection = db.getCollection(collection);
-        Document document = docuCollection
-            .find(eq(fieldName, Utils.isInteger(value) ? Integer.parseInt(value) : value)).first();
-        if (document != null) {
-          String json = document.toJson();
-          try (PrintWriter out = response.getWriter()) {
-            out.print(json);
-          }
-        }
-      } finally {
-        MongoDBManager.getInstance().close();
-      }
-    }
-  }
+		if (dataType.equals("json")) {
+			MongoDBManager dbManager = null;
+			try {
+				dbManager = MongoDBManager.getInstance();
+				MongoDatabase db = dbManager.dbManager();
+				MongoCollection<Document> docuCollection = db.getCollection(collection);
+				Document document = docuCollection
+						.find(eq(fieldName, Utils.isInteger(value) ? Integer.parseInt(value) : value)).first();
+				if (document != null) {
+					String json = document.toJson();
+					try (PrintWriter out = response.getWriter()) {
+						out.print(json);
+					}
+				}
+			} finally {
+				if (dbManager != null)
+					dbManager.close();
+			}
+		}
+	}
 }
