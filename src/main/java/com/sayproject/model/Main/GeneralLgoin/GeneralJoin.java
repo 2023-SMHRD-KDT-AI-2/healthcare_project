@@ -23,12 +23,12 @@ public class GeneralJoin {
 	private int no;
 	private int age;
 	private int trainer;
-	private String profileImageUrl;
+	private String photopath;
 	private String job;
 	private String regist_day;
 	private String kaka_id;
 	private String credit_card;
-	private String expiration_date;
+	private String expiration_day;
 	
 	
 
