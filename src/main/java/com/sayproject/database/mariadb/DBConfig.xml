@@ -31,6 +31,12 @@
 		<mapper resource="com/sayproject/model/Main/KakaoLogin/MapperXML/KakaoLoginMapper.xml" />
 		<!--generalLogin 관련 Mapper-->
 		<mapper resource="com/sayproject/model/Main/GeneralLogin/MapperXML/GeneralLoginMapper.xml" />
+		<!--trainerLogin
+		관련 Mapper-->
+		<mapper resource="com/sayproject/model/Main/TrainerLogin/MapperXML/TrainerLoginMapper.xml" />
+		<!--bossLogin
+		관련 Mapper-->
+		<mapper resource="com/sayproject/model/Main/BossLogin/MapperXML/BossLoginMapper.xml" />
 		<!-- other 관련 Mapper -->
 	</mappers>
 </configuration>
