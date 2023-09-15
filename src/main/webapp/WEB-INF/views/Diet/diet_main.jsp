@@ -59,7 +59,7 @@
 				<div class="clearfix"></div>
 				
 					<!-- add food content -->
-					<div class="col-md-6 col-sm-12">
+					<div class="col-md-5 col-sm-12">
 						<div class="x_panel">
 							<div class="x_title">
 								<div class="title_left">
@@ -116,21 +116,28 @@
 					<!-- /add food content -->
 					
 					<!-- all nutrient content -->
-					<div class="col-md-6 col-sm-12">
+					<div class="col-md-4 col-sm-12">
 						<div class="x_panel">
 							<div class="x_title">
 								<div class="title_left"><h2>오늘 내가 먹은 영양소는?</h2></div>
 								<div class="clearfix"></div>
 							</div>
-							<div class="all_nutrient">
-								
+							<div class="x_content">
+								<canvas id="doughtnut-chart1"></canvas>
 							</div>
 							<div class="x_content">
-
+								<div class="all_nutrient">
+								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /all nutrient content -->
+
+					<div class="col-md-3 col-sm-12">
+						<div class="x_panel">
+							
+						</div>
+					</div>
 
 				<div class="clearfix"></div>
 			</div>
@@ -148,13 +155,13 @@
 <!-- Custom Theme Scripts -->
 <script src="assets/Diet/js/autocomplete.js"></script>
 <script src="assets/Diet/js/bootstrap-autocomplete.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <script src="assets/Diet/js/index.js"></script>
 <script src="assets/Diet/js/mock.js"></script>
 <script src="assets/Diet/js/source.js"></script>
 <script src="assets/Diet/js/util.js"></script>
 <script src="assets/Diet/js/custom.js"></script>
 <script src="assets/Diet/js/custom-d.js"></script>
-<script src="assets/Diet/js/test.js"></script>
 
 </body>
 </html>

@@ -1197,7 +1197,7 @@ margin-top: 5px;
             </div>
             <div class="x_content">
 
-                <h4>오늘의 운동~</h4>
+                <h4>오늘 진행한 운동 </h4>
                 <div class="widthBarChart-container">
                     <canvas id="widthBar-chart"></canvas>
                 </div> 
@@ -1230,7 +1230,7 @@ margin-top: 5px;
             </div>
             <div class="x_content">
   
-              <h4>막대 세로그래프 (단위:kcal) 주/월/연</h4>
+              <h4>요일별 칼로리 소모량</h4>
               <div class="heightChart-container">
                 <canvas id="heightBar-chart"></canvas>
               </div> 
@@ -1271,7 +1271,7 @@ margin-top: 5px;
                 <div class="hispicture">
   
                   <div>
-                    <img src="assets/Exercise/Images/choidainpic.jpg">
+                    <img src="assets/Exercise/Images/YHdog.png">
                   </div>
   
                 </div>
