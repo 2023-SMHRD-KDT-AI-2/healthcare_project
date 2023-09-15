@@ -11,11 +11,14 @@ import com.sayproject.controller.Main.LogoutAction;
 import com.sayproject.controller.Main.MainAction;
 import com.sayproject.controller.Main.Member.MemberAddInfoAction;
 import com.sayproject.controller.Main.Member.PersonalMemberAddInfoInputDBAction;
+import com.sayproject.controller.Main.Member.BossLogin.BossLoginCheckAction;
 import com.sayproject.controller.Main.Member.GeneralLogin.GeneralIDCheckAction;
 import com.sayproject.controller.Main.Member.GeneralLogin.GeneralLoginAction;
 import com.sayproject.controller.Main.Member.GeneralLogin.GeneralLoginDbCheckAction;
 import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginDbCheckAction;
 import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginRedirectAction;
+import com.sayproject.controller.Main.Member.TrainerLogin.TrainerLoginCheckAction;
+import com.sayproject.controller.Main.Member.TrainerLogin.TrainerLoginPageAction;
 
 public class MainPageController {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -68,6 +71,18 @@ public class MainPageController {
 		// 일반회원 로그인
 		if (cmd.equals("memberLogin")) {
 			return new GeneralLoginAction();
+		}
+		// 최고 관리자 로그인 : id, pw 전송 받아 db 와 비교
+		if (cmd.equals("bossLoginCheck")) {
+			return new BossLoginCheckAction();
+		}
+		// 트레이너 로그인페이지로 로그인
+		if (cmd.equals("trainerLogin")) {
+			return new TrainerLoginPageAction();
+		}
+		// 트레이너 로그인 : id, pw 전송 받아 db 와 비교
+		if (cmd.equals("trainerLoginCheck")) {
+			return new TrainerLoginCheckAction();
 		}
 		return new LoginAction();
 	}

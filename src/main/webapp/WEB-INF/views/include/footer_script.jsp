@@ -55,6 +55,19 @@
 <!-- jQuery autocomplete -->
 <script
 	src="assets/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+	    <!-- bootstrap-daterangepicker -->
+    <script src="assets/vendors/moment/min/moment.min.js"></script>
+    <script src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->    
+    <script src="assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Ion.RangeSlider -->
+    <script src="assets/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <!-- Bootstrap Colorpicker -->
+    <script src="assets/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <!-- jquery.inputmask -->
+    <script src="assets/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- jQuery Knob -->
+    <script src="assets/vendors/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- starrr -->
 <script src="assets/vendors/starrr/dist/starrr.js"></script>
 <!-- calendar 2.3.4 -->
