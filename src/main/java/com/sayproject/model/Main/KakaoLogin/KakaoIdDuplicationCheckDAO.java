@@ -10,6 +10,8 @@ public class KakaoIdDuplicationCheckDAO {
 
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
 
+	
+	//카카오 아이디 중복체크
 	public int kakaoIdDuplicationCheck(String memberObjectId) {
 		int cnt = 0;
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {

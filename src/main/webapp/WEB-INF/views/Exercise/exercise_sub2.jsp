@@ -1454,176 +1454,35 @@ margin-top: 5px;
 
 
 
-<!-- 세로 바 차트-->
 
-<script>
-        let heightBarChart = $('#heightBar-chart');
-        let myHeightBarChart = new Chart(heightBarChart, {
-            type:'bar',
-            data:{
-                labels:[
-                    '월요일','화요일','수요일','목요일','금요일'
-                ],
-                datasets:[
-                    {
-                        label:'2023년',
-                        data:[10,8,6,5,9],
-                        backgroundColor:['#bc69fa',
-                                         '#7386FF',
-                                         '#5C9EF5',
-                                         '#00E1FD',
-                                         '#01F6D5'],
-                        borerColor:[     '#bc69fa',
-                                         '#7386FF',
-                                         '#5C9EF5',
-                                         '#00E1FD',
-                                         '#01F6D5'],
-                        hoverBackgroundColor:[
-                                         '#bc69fa',
-                                         '#7386FF',
-                                         '#5C9EF5',
-                                         '#00E1FD',
-                                         '#01F6D5'
-                        ],
-                        borderWidth: 1
-                    },
-    
-                ]
-            },
-            options:{
-                maintainAspectRatio :false,
-                legend:{
-                    display:false
-                },
-            }
-        });
-</script>
+
 
 <!-- 캘린더 -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
-
-    </script>
-<!-- 가로 바 차트 -->
 <script>
-            let widthBarChart = $('#widthBar-chart');
-            let myWidthBarChart = new Chart(widthBarChart, {
-            type:'bar',
-            data:{
-                labels:[
-                    '스쿼트','데드리프트','벤치프레스','바벨로우'
-                ],
-                datasets:[
-                    {
-                        label:'운동 목록',
-                        data:[20,30,40,50],
-                        backgroundColor:["#bc69fa",
-                                         "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD"],
-                        borerColor:[    "#bc69fa",
-                                         "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD"],
-                        hoverBackgroundColor:[
-                                         "#bc69fa",
-                                         "#7386FF",
-                                         "#5C9EF5",
-                                         "#00E1FD"],
-                        borderWidth: 1
-                    },
-    
-                ]
-            },
-            options:{
-                maintainAspectRatio :false,
-                legend:{
-                    display:false
-                },
-                indexAxis: 'y', 
-            }
-        });
-</script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+  
+  </script>
+
+<!-- 세로 바 차트-->
+
+<!-- 가로 바 차트 -->
+
 
 <!-- 라인 차트 -->
-<script>
-        let lineChart = $('#line-chart');
-        let myLineChart = new Chart(lineChart, {
-            type:'line',
-            data:{
-                labels:[
-                    '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-                ],
-                datasets:[
-                    {
-                        label:'2023년',
-                        data:[70,72,74,76,78,80,82,84,80,79,78,77],
-                        backgroundColor:'#01F6D5',
-                        borerColor:'#01F6D5'
-                        
-                    },
-    
-                ]
-            },
-            options:{
-                maintainAspectRatio :false
-            }
-        });
 
-</script>
+
 
 <!-- 도넛 차트 -->
+
 <script>
-  var doughtnutChart = document.getElementById('donutChart').getContext('2d');
-  var myDoughtnutChart = new Chart(doughtnutChart, {
-      type: 'doughnut',
-      data: {
-          labels: ['Navy', 'Blue', 'Red', 'Gray', 'Purple'],
-          datasets: [{
-              data: [(memberInfo.dailyInfo[9].exercise[2]/5), 19, 20, 15, 18],
-              backgroundColor: [
-                  // '#ff7590',
-                  // '#9daaff',
-                  // '#83b4ff', 
-                  // '#2cd7ef',
-                  // '#2ce4ce'
-
-                  '#bc69fa',
-                  '#7386FF',
-                  '#5C9EF5',
-                  '#00E1FD',
-                  '#01F6D5'
-
-              ]
-          }]
-      },
-      options: {
-          cutoutPercentage: 50,
-          responsive: true,
-          maintainAspectRatio: false,
-      }
-  });
-
-  function addTextToDonutChart() {
-      var ctx = document.getElementById('donutChart').getContext('2d');
-      ctx.font = '16px Arial';
-      ctx.fillStyle = '#000';
-      ctx.textAlign = 'center';
-
-      var text = '최다인 미녀';
-      var x = ctx.canvas.width / 2;
-      var y = ctx.canvas.height / 2;
-
-      ctx.fillText(text, x, y);
-  }
 
   // afterDraw 함수를 사용하여 텍스트를 추가합니다.
   Chart.plugins.register({

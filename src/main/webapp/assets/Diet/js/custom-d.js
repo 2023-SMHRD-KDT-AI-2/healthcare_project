@@ -106,7 +106,9 @@ let nutrientCalc = {
 		"trans_linolenic_acid" : 0,
 		"ash" : 0,
 		"caffeine" : 0,
-		"serving_size":0
+		"serving_size":0,
+		"unit":"",
+		"food_name":""
   }, "lunch" : {
 		"energy" : 0,
 		"water" : 0,
@@ -191,7 +193,9 @@ let nutrientCalc = {
 		"trans_linolenic_acid" : 0,
 		"ash" : 0,
 		"caffeine" : 0,
-		"serving_size":0
+		"serving_size":0,
+		"unit":"",
+		"food":""
   }, "dinner" : {
 		"energy" : 0,
 		"water" : 0,
@@ -276,7 +280,9 @@ let nutrientCalc = {
 		"trans_linolenic_acid" : 0,
 		"ash" : 0,
 		"caffeine" : 0,
-		"serving_size":0
+		"serving_size":0,
+		"unit":"",
+		"food_name":""
   }, "otherfood" : {
 		"energy" : 0,
 		"water" : 0,
@@ -361,37 +367,15 @@ let nutrientCalc = {
 		"trans_linolenic_acid" : 0,
 		"ash" : 0,
 		"caffeine" : 0,
-		"serving_size":0
+		"serving_size":0,
+		"unit":"",
+		"food_name":""
   }
-}
-
-// 칼로리 계산을 위한 객체
-let calorie = {
-	"breakfast" : {
-		"calborhydrate" : 0,
-		"protein" : 0,
-		"fat" : 0,
-	},
-	"lunch" : {
-		"calborhydrate" : 0,
-		"protein" : 0,
-		"fat" : 0,
-	},
-	"dinner" : {
-		"calborhydrate" : 0,
-		"protein" : 0,
-		"fat" : 0,
-	},
-	"otherfood" : {
-		"calborhydrate" : 0,
-		"protein" : 0,
-		"fat" : 0,
-	}
 }
 
 // 영양소별 일일권장섭취량
 // 임시 성별 변수, memberInfo.gender로 변경이 될 수도... 
-let gender = ""
+let gender = "male"
 let recommendedNutrient = {}
 if (gender == 'male') {
 	recommendedNutrient = {
@@ -490,6 +474,177 @@ const calcNutrient = function() {
 
 }
 
+// 페이지 그려주는 부분
+const createPage = function() {
+
+	for (key in nutrientCalc) {
+		let nutrients = [
+			{	
+				name: "칼로리", 
+				value: Math.round(nutrientCalc[key].energy), 
+				percent: Math.round(100*(nutrientCalc[key].energy/recommendedNutrient.energy))
+			},
+			{	
+				name: "탄수화물", 
+				value: Math.round(4*nutrientCalc[key].carbohydrate), 
+				percent: Math.round(100*(nutrientCalc[key].carbohydrate/recommendedNutrient.carbohydrate))
+			},
+			{	
+				name: "단백질", 
+				value: Math.round(4*nutrientCalc[key].protein),
+				percent: Math.round(100*(nutrientCalc[key].protein/recommendedNutrient.protein))
+			},
+			{	
+				name: "지방", 
+				value: Math.round(9*nutrientCalc[key].fat), 
+				percent: Math.round(100*(nutrientCalc[key].fat/recommendedNutrient.fat))
+			}
+		];
+		  
+		// 부모 요소 가져오기
+		let parentElement = document.getElementById(`${key}_food_info`);
+		
+		// 새로운 div.row 요소 생성
+		let rowDiv = document.createElement("div");
+		rowDiv.className = "row";
+		
+		// 각각의 영양소를 생성하고 추가
+		nutrients.forEach(function (nutrientData) {
+			let colDiv = document.createElement("div");
+			colDiv.className = "col-md-3 col-sm-6";
+		
+			let wellDiv = document.createElement("div");
+			wellDiv.className = "well";
+		
+			let h4Name = document.createElement("h4");
+			h4Name.textContent = nutrientData.name;
+
+			h4Name.style.fontWeight = "bold";
+		
+			let h4Value = document.createElement("h4");
+			h4Value.textContent = nutrientData.value + "cal";
+		
+			let h4Percent = document.createElement("h4");
+			h4Percent.textContent = nutrientData.percent + "%";
+		
+			wellDiv.appendChild(h4Name);
+			wellDiv.appendChild(h4Value);
+			wellDiv.appendChild(h4Percent);
+		
+			colDiv.appendChild(wellDiv);
+			rowDiv.appendChild(colDiv);
+		});
+
+		let foodData = [];
+		
+		for (let i = 0; i < nutrientCalc.length; i++) {
+			foodData.push({
+				name : nutrientReceive[key][i].food_name,
+				quantity : meal[key][i].gram,
+				unit : nutrientReceive[key][i].unit
+			})
+		}
+
+		console.log(foodData);
+
+		// 테이블 요소 생성
+		const table = document.createElement("table");
+		table.className = "table table-striped projects";
+		
+		// 데이터 배열을 순회하면서 각 행을 생성합니다.
+		foodData.forEach((foodItem) => {
+		const row = document.createElement("tr");
+		
+		// 음식 이름 셀
+		const nameCell = document.createElement("td");
+		nameCell.textContent = foodItem.name;
+		
+		// 수량 셀
+		const quantityCell = document.createElement("td");
+		quantityCell.textContent = foodItem.quantity;
+		
+		// 단위 셀
+		const unitCell = document.createElement("td");
+		unitCell.textContent = foodItem.unit;
+		
+		// 제외 버튼 셀
+		const excludeCell = document.createElement("td");
+		const excludeButton = document.createElement("span");
+		excludeButton.className = "glyphicon glyphicon-minus";
+		excludeButton.setAttribute("aria-hidden", "true");
+		excludeButton.textContent = " 제외";
+		excludeCell.appendChild(excludeButton);
+		
+		// 각 셀을 행에 추가
+		row.appendChild(nameCell);
+		row.appendChild(quantityCell);
+		row.appendChild(unitCell);
+		row.appendChild(excludeCell);
+		
+		// 행을 테이블에 추가
+		table.appendChild(row);
+		});
+		// 새로 생성한 요소를 부모 요소에 추가
+		parentElement.appendChild(rowDiv);
+		parentElement.appendChild(table);
+	}
+
+	// const parentElement = document.querySelector('.all_nutrient');
+
+	// console.log("nutrientCalc: ", nutrientCalc);
+
+	// // 각각의 영양소 데이터 배열을 생성합니다.
+	// let nutrientData = [];
+	// let sumNutrientCalc = {}
+
+	// for (meal in nutrientCalc) {
+	// 	for (nutrient in nutrient[meal]) {
+	// 		sumNutrientCalc[nutrient] += nutrient[nutrient];
+	// 	}
+	// }
+
+	// for (const key in recommendedNutrient) {
+	// 	nutrientData.push({
+	// 		name : key,
+	// 		width : 10 * sumNutrientCalc[key] / recommendedNutrient[key]
+	// 	})
+	// }
+
+	// // 각각의 영양소 데이터를 기반으로 요소를 생성하고 추가합니다.
+	// nutrientData.forEach((data) => {
+	// // div 요소 생성
+	// const nutrientDiv = document.createElement("div");
+	// nutrientDiv.className = "nutrient";
+
+	// // h5 요소 생성
+	// const h5Element = document.createElement("h5");
+	// h5Element.textContent = data.name;
+
+	// // progress 요소 생성
+	// const progressDiv = document.createElement("div");
+	// progressDiv.className = "progress";
+
+	// // progress-bar 요소 생성
+	// const progressBar = document.createElement("div");
+	// progressBar.className = "progress-bar progress-bar-striped";
+	// progressBar.setAttribute("role", "progressbar");
+	// progressBar.style.width = `${data.width}%`;
+	// progressBar.setAttribute("aria-valuenow", data.width);
+	// progressBar.setAttribute("aria-valuemin", "0");
+	// progressBar.setAttribute("aria-valuemax", "100");
+
+	// // progressDiv에 progressBar를 추가
+	// progressDiv.appendChild(progressBar);
+
+	// // nutrientDiv에 h5Element와 progressDiv를 추가
+	// nutrientDiv.appendChild(h5Element);
+	// nutrientDiv.appendChild(progressDiv);
+
+	// // 부모 요소에 nutrientDiv를 추가
+	// parentElement.appendChild(nutrientDiv);
+	// });
+}
+
 // MonggoDB에서 회원의 상세정보를 가져와서 저장 후
 // MonggoDB에서 가져온 food_code로 MariaDB에 있는 음식정보 테이블을 참조 후
 // 음실별 영양정보 리스트를 받아오는 함수
@@ -508,13 +663,13 @@ const loadmember = async () => {
 	// 음식정보가 있는 MariaDB에 접근하기 위해
 	// meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후
 	// 음식별 영양정보 수신
-    const sendFoodName = async () => {
+    const sendFoodCode = async () => {
         await $.ajax({
-            url : "/Diet.say?c=foodname", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
+            url : "/Diet.say?c=foodCode", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
             type : "POST",
             data : {
-				// meal을 전송하기 위해 JSON으로 변환 후 foodName에 저장
-                foodName : JSON.stringify(meal)                
+				// meal을 전송하기 위해 JSON으로 변환 후 foodCode에 저장
+                foodCode : JSON.stringify(meal)                
             },
             dataType : 'json',
             success: function(data) {
@@ -529,19 +684,14 @@ const loadmember = async () => {
     }
 
 	// ajax이 끝날 때까지 대기
-    await sendFoodName();
+    await sendFoodCode();
 
 	console.log("meal : ", meal);
     console.log("nutrientReceive : ", nutrientReceive);
 	
 	// 영양소 정보 합산 실행
     calcNutrient();
-    
-    console.log("nutrientCalc : ", nutrientCalc);
-	calorie.breakfast.calborhydrate = 4 * nutrientCalc.breakfast.carbohydrate;
-	calorie.breakfast.protein = 4 * nutrientCalc.breakfast.protein;
-	calorie.breakfast.fat = 9 * nutrientCalc.breakfast.fat;
-
+	createPage();
 };
 
 loadmember();

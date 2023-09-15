@@ -30,9 +30,9 @@ public class GetFoodNameAction implements Action {
         // gson형식을 위한 객체 생성
         Gson gson = new Gson();
         // custom-d.js에서 ajax를 통해 보내온 MonggoDB의 데이터 수신
-        String foodName = request.getParameter("foodName");
+        String foodCode = request.getParameter("foodCode");
         // 수신된 foodName를 Json형식으로 변환 후 meal에 저장
-        Meal meal = gson.fromJson(foodName, Meal.class);
+        Meal meal = gson.fromJson(foodCode, Meal.class);
         
         DietDAO dao = new DietDAO();
         
@@ -78,8 +78,6 @@ public class GetFoodNameAction implements Action {
         response.setContentType("text/json;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.println(mealData);
-        
-        
         
     }
 

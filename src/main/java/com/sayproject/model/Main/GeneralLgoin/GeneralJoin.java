@@ -18,5 +18,17 @@ public class GeneralJoin {
 	private String phone_number;	//phone_number
 	private String gender;		//gender
 	private String birthday;	//birthday
+	
+	
+	private int no;
+	private int age;
+	private int trainer;
+	private String photopath;
+	private String job;
+	private String regist_day;
+	private String kaka_id;
+	private String credit_card;
+	private String expiration_date;
+	
 
 }

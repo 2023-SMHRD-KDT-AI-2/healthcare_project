@@ -8,7 +8,9 @@ import com.sayproject.database.mariadb.SqlSessionManager;
 public class KakaoJoinDAO {
 
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
-
+	
+	
+	//kakaologin 회원가입 insert
 	public int kakaoJoin(KakaoJoin kakaoJoin) {
 		int cnt = 0;
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {

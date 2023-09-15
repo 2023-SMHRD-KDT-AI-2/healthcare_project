@@ -28,7 +28,8 @@
 
 <script src="assets/vendors/google-code-prettify/src/prettify.js"></script>
 <!-- jQuery Sparklines -->
-<script src="assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script
+	src="assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- Flot -->
 <script src="assets/vendors/Flot/jquery.flot.js"></script>
 <script src="assets/vendors/Flot/jquery.flot.pie.js"></script>
@@ -56,6 +57,10 @@
 	src="assets/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <!-- starrr -->
 <script src="assets/vendors/starrr/dist/starrr.js"></script>
+<!-- calendar 2.3.4 -->
+<script src="assets\vendors\Calendar.js-main\dist\calendar.min.js"></script>
+<!-- chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Kakao Login SDK -->
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
 	integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH"
