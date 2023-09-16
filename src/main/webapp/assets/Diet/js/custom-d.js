@@ -394,7 +394,8 @@ if (gender == 'male') {
 		"vitamin_b12" : [2.4, "비타민B12", "ug"],
 		"vitamin_b2" : [1.3, "비타민B2", "mg"],
 		"vitamin_c" : [100, "비타민C", "mg"],
-		"vitamin_d3" : [10, "비타민D3", "ug"]
+		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"total_sugars" : [100, "당분", "g"]
 	}
 } else if (gender == 'female') {
 	recommendedNutrient = {
@@ -413,7 +414,8 @@ if (gender == 'male') {
 		"vitamin_b12" : [2.4, "비타민B12", "ug"],
 		"vitamin_b2" : [1.3, "비타민B2", "mg"],
 		"vitamin_c" : [100, "비타민C", "mg"],
-		"vitamin_d3" : [10, "비타민D3", "ug"]
+		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"total_sugars" : [100, "당분", "g"]
 	}
 }
 
@@ -624,7 +626,8 @@ let sumNutrientCalc = {
 	"vitamin_b12" : 0,
 	"vitamin_b2" : 0,
 	"vitamin_c" : 0,
-	"vitamin_d3" : 0
+	"vitamin_d3" : 0,
+	"total_sugars" : 0
 }
 let nutrientData = [];
 
@@ -766,40 +769,73 @@ const createPage = function() {
 			const modalXpanel = document.createElement("div");
 			modalXpanel.className = "x_panel"
 
-		
 			// 모달 헤더에 제목과 닫기 버튼 추가
 			modalHeader.appendChild(modalTitle);
 			modalHeader.appendChild(closeButton);
 		
 			// 모달 본문에 내용 추가
 			// 동적으로 페이지 생성
-			const rowContainer = document.querySelector(".row");
+			let nutrientOne = [
+				{	
+					name: "총칼로리", 
+					value: Math.round(nutrientReceive[key].energy), 
+					percent: Math.round(100*(nutrientReceive[key].energy/recommendedNutrient.energy[0]))
+				},
+				{	
+					name: "탄수화물", 
+					value: Math.round(nutrientReceive[key].carbohydrate), 
+					percent: Math.round(100*(nutrientReceive[key].carbohydrate/recommendedNutrient.carbohydrate[0]))
+				},
+				{	
+					name: "단백질", 
+					value: Math.round(nutrientReceive[key].protein),
+					percent: Math.round(100*(nutrientReceive[key].protein/recommendedNutrient.protein[0]))
+				},
+				{	
+					name: "지방", 
+					value: Math.round(nutrientReceive[key].fat), 
+					percent: Math.round(100*(nutrientReceive[key].fat/recommendedNutrient.fat[0]))
+				},				{	
+					name: "식이섬유", 
+					value: Math.round(nutrientReceive[key].dietary_fiber), 
+					percent: Math.round(100*(nutrientReceive[key].dietary_fiber/recommendedNutrient.dietary_fiber[0]))
+				},				{	
+					name: "당분", 
+					value: Math.round(nutrientReceive[key].total_sugars), 
+					percent: Math.round(100*(nutrientReceive[key].total_sugars/recommendedNutrient.total_sugars[0]))
+				}
+			];
 
-			data.forEach((item) => {
-				const colDiv = document.createElement("div");
-				colDiv.className = "col-md-3 col-sm-6";
+			let rowContainer = document.createElement("div");
+			rowContainer.class = "row"
 
-				const xPanelDiv = document.createElement("div");
-				xPanelDiv.className = "x_panel";
+			nutrientOne.forEach((item) => {
+				let colDivModal = document.createElement("div");
+				colDivModal.className = "col-md-3 col-sm-6";
 
-				const titleH4 = document.createElement("h4");
+				let xPanelModalDiv = document.createElement("div");
+				xPanelModalDiv.className = "x_panel";
+
+				let titleH4 = document.createElement("h4");
 				titleH4.style.fontWeight = "bold";
-				titleH4.textContent = item.title;
+				titleH4.textContent = item.name;
 
-				const valueH4 = document.createElement("h4");
-				valueH4.textContent = item.value;
+				let valueH4 = document.createElement("h4");
+				valueH4.textContent = item.value + "g";
 
-				const dvH4 = document.createElement("h4");
-				dvH4.textContent = `DV : ${item.dv}`;
+				let dvH4 = document.createElement("h4");
+				dvH4.textContent = "DV" + item.percent + "%";
 
-				xPanelDiv.appendChild(titleH4);
-				xPanelDiv.appendChild(valueH4);
-				xPanelDiv.appendChild(dvH4);
+				xPanelModalDiv.appendChild(titleH4);
+				xPanelModalDiv.appendChild(valueH4);
+				xPanelModalDiv.appendChild(dvH4);
 
-				colDiv.appendChild(xPanelDiv);
-				rowContainer.appendChild(colDiv);
+				colDivModal.appendChild(xPanelModalDiv);
+				rowContainer.appendChild(colDivModal);
 			});
-		
+			
+			modalBody.appendChild(rowContainer);
+
 			// 모달 헤더와 본문을 모달 내용에 추가
 			modalContent.appendChild(modalHeader);
 			modalContent.appendChild(modalBody);

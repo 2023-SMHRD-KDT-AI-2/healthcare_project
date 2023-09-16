@@ -31,11 +31,13 @@ public class GetFoodNameAction implements Action {
         Gson gson = new Gson();
         // custom-d.js에서 ajax를 통해 보내온 MonggoDB의 데이터 수신
         String foodCode = request.getParameter("foodCode");
+        System.out.println("변환 후 : " + foodCode);
+        
         // 수신된 foodName를 Json형식으로 변환 후 meal에 저장
         Meal meal = gson.fromJson(foodCode, Meal.class);
         
         DietDAO dao = new DietDAO();
-        System.out.println(meal);
+        System.out.println("변환전 : " + meal);
         // 아침, 점심, 저녁, 간식별로 먹은 음식 리스트를 담을 객체 생성 
         Mealtime mealTime = new Mealtime();
         
