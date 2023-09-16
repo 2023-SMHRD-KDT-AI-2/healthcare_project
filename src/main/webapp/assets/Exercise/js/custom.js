@@ -1,8 +1,8 @@
 // MonggoDB에 데이터를 받아오기 위해 ajax통신 필요
 // ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
 let year = "2023"; //년도
-let month = "08"; //월
-let day = "03"; //일
+let month = "09"; //월
+let day = "15"; //일
 let day_n = Number(day); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
 let memberID = "3"; // 회원ID
 
@@ -87,35 +87,53 @@ const loadmember = async () => {
 	// ajax이 끝날 때까지 대기
 /*     await sendFoodCode(); */
 
-// 가로 바 차트
 
-let ex = memberInfo.dailyInfo[day_n-1].exercise[0].kind
+// 차트에서 쓸 쿨톤 색깔들
+let goodColor = [ '#bc69fa',
+                  '#7386FF',
+                  '#5C9EF5',
+                  '#00E1FD',
+                  '#01F6D5',
+                  '#8258FA',
+                  '#5858FA']
 
-            
+// 매일 입력받은 운동정보, 운동시간, 색깔 정보를 담을 리스트 선언
+let dayExerciseKinds = [];
+let dayExerciseTimeMinute = [];
+let dayExerciseColor = [];
+                  
+let exerciseInfo = memberInfo.dailyInfo[day_n-1].exercise
+                  
+// 운동한 시간 표에 넣는 운동정보, 운동한 시간, 색깔을 리스트로 만드는 for문.
+// 색깔은 최대 7개 까지만 사용 가능!
+
+for(let i = 0; i < exerciseInfo.length; i++) {
+    dayExerciseKinds.push(exerciseInfo[i].kind);
+    dayExerciseTimeMinute.push(exerciseInfo[i].time_minute)
+    dayExerciseColor.push(goodColor[i])
+}
+
+// console.log(dayExerciseTimeMinute);
+// console.log(dayExerciseKinds);
+
+
+
+// 가로 바 차트 (몽고 db데이터로만 구동 완료!)
+
 let widthBarChart = $('#widthBar-chart');
 let myWidthBarChart = new Chart(widthBarChart, {
 type:'bar',
 data:{
-    labels:[
-        ex,'데드리프트','벤치프레스','바벨로우'
-    ],
+    labels:dayExerciseKinds,
     datasets:[
         {
-            label:'운동 목록',
-            data:[80,30,40,50],
-            backgroundColor:["#bc69fa",
-                             "#7386FF",
-                             "#5C9EF5",
-                             "#00E1FD"],
-            borerColor:[    "#bc69fa",
-                             "#7386FF",
-                             "#5C9EF5",
-                             "#00E1FD"],
-            hoverBackgroundColor:[
-                             "#bc69fa",
-                             "#7386FF",
-                             "#5C9EF5",
-                             "#00E1FD"],
+            label:'단위(분)',
+            // data 값 넣기
+            data:dayExerciseTimeMinute,
+            // 아래 3개 다 색깔 값만 넣었음.
+            backgroundColor:dayExerciseColor,
+            borerColor:dayExerciseColor,
+            hoverBackgroundColor:dayExerciseColor,
             borderWidth: 1
         },
 
@@ -130,28 +148,47 @@ options:{
 }
 });
 
+
+// 매번 입력받은 몸무게를 담을 리스트 선언
+let dayWeight = [];
+
+let statusInfo = memberInfo.dailyInfo[day_n-1].status
+
+console.log(statusInfo);
+
+let dayofDay = []
+const getDayNum = 10
+for (let i = day_n - getDayNum; i <= day_n; i++){
+    dayofDay.push(i + "일")
+    dayWeight.push(statusInfo.weight)
+}
 // 라인 차트
 let lineChart = $('#line-chart');
 let myLineChart = new Chart(lineChart, {
   type:'line',
   data:{
-      labels:[
-          '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-      ],
+      labels: dayofDay,
       datasets:[
           {
-              label:'2023년',
-              data:[70,72,74,76,78,80,82,84,80,79,78,77],
+              label: year + '년 ' + month + '월',
+              data: dayWeight,
               backgroundColor:'#01F6D5',
               borerColor:'#01F6D5'
               
           },
-
       ]
   },
-  options:{
-      maintainAspectRatio :false
-  }
+  options: {
+    maintainAspectRatio: false,
+    scales: {
+        y: {
+            title: {
+                display: true,
+                text: '(kg)' // y축 라벨 설정
+            }
+        }
+    }
+}
 });
 
 // 도넛 차트
@@ -159,15 +196,15 @@ var doughtnutChart = document.getElementById('donutChart').getContext('2d');
 var myDoughtnutChart = new Chart(doughtnutChart, {
  type: 'doughnut',
  data: {
-     labels: ['Navy', 'Blue', 'Red', 'Gray', 'Purple'],
+     labels: ['스쿼트', '팔굽혀펴기', '줌바댄스', '라인댄스', 'Others'],
      datasets: [{
          data: [15, 19, 20, 15, 18],
          backgroundColor: [
-             // '#ff7590',
-             // '#9daaff',
-             // '#83b4ff', 
-             // '#2cd7ef',
-             // '#2ce4ce'
+            //  '#ff7590',
+            //  '#9daaff',
+            //  '#83b4ff', 
+            //  '#2cd7ef',
+            //  '#2ce4ce'
 
              '#bc69fa',
              '#7386FF',
@@ -191,29 +228,15 @@ let myHeightBarChart = new Chart(heightBarChart, {
  type:'bar',
  data:{
      labels:[
-         '월요일','화요일','수요일','목요일','금요일'
+         '월요일','화요일','수요일','목요일','금요일','토요일','일요일'
      ],
      datasets:[
          {
-             label:'2023년',
-             data:[10,8,6,5,9],
-             backgroundColor:['#bc69fa',
-                              '#7386FF',
-                              '#5C9EF5',
-                              '#00E1FD',
-                              '#01F6D5'],
-             borerColor:[     '#bc69fa',
-                              '#7386FF',
-                              '#5C9EF5',
-                              '#00E1FD',
-                              '#01F6D5'],
-             hoverBackgroundColor:[
-                              '#bc69fa',
-                              '#7386FF',
-                              '#5C9EF5',
-                              '#00E1FD',
-                              '#01F6D5'
-             ],
+             label:'단위 (kcal)',
+             data:[230,250,150,170,200,160,210],
+             backgroundColor: goodColor,
+             borerColor:goodColor,
+             hoverBackgroundColor:goodColor,
              borderWidth: 1
          },
 

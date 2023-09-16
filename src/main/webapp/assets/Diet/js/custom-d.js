@@ -383,18 +383,18 @@ if (gender == 'male') {
 		"carbohydrate" : [130, "탄수화물", "g"],
 		"fat" : [13, "지방", "g"],
 		"protein" : [50, "단백질", "g"],
-		"dietary_fiber" : [30, "식이섬유", "g"],
 		"water" : [2600, "수분", "mL"],
-		"vitamin_b1" : [1.2, "비타민B1", "mg"],
-		"vitamin_b12" : [2.4, "비타민B12", "ug"],
-		"vitamin_b2" : [1.3, "비타민B2", "mg"],
-		"vitamin_c" : [100, "비타민C", "mg"],
-		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"dietary_fiber" : [30, "식이섬유", "g"],
 		"calcium" : [800, "칼슘", "mg"],
 		"natrium" : [1500, "나트륨", "mg"],
 		"potassium" : [3500, "칼륨", "mg"],
 		"magnesium" : [350, "마그네슘", "mg"],
-		"iron_mg" : [100, "철", "mg"]
+		"iron_mg" : [100, "철", "mg"],
+		"vitamin_b1" : [1.2, "비타민B1", "mg"],
+		"vitamin_b12" : [2.4, "비타민B12", "ug"],
+		"vitamin_b2" : [1.3, "비타민B2", "mg"],
+		"vitamin_c" : [100, "비타민C", "mg"],
+		"vitamin_d3" : [10, "비타민D3", "ug"]
 	}
 } else if (gender == 'female') {
 	recommendedNutrient = {
@@ -402,18 +402,18 @@ if (gender == 'male') {
 		"carbohydrate" : [130, "탄수화물", "g"],
 		"fat" : [13, "지방", "g"],
 		"protein" : [55, "단백질", "g"],
-		"dietary_fiber" : [20, "식이섬유", "g"],
 		"water" : [2100, "수분", "mL"],
-		"vitamin_b1" : [1.2, "비타민B1", "mg"],
-		"vitamin_b12" : [2.4, "비타민B12", "ug"],
-		"vitamin_b2" : [1.3, "비타민B2", "mg"],
-		"vitamin_c" : [100, "비타민C", "mg"],
-		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"dietary_fiber" : [20, "식이섬유", "g"],
 		"calcium" : [700, "칼슘", "mg"],
 		"natrium" : [1500, "나트륨", "mg"],
 		"potassium" : [3500, "칼륨", "mg"],
 		"magnesium" : [350, "마그네슘", "mg"],
-		"iron_mg" : [10, "철", "mg"]
+		"iron_mg" : [10, "철", "mg"],
+		"vitamin_b1" : [1.2, "비타민B1", "mg"],
+		"vitamin_b12" : [2.4, "비타민B12", "ug"],
+		"vitamin_b2" : [1.3, "비타민B2", "mg"],
+		"vitamin_c" : [100, "비타민C", "mg"],
+		"vitamin_d3" : [10, "비타민D3", "ug"]
 	}
 }
 
@@ -476,6 +476,158 @@ const calcNutrient = function() {
 
 }
 
+// 하루 섭취한 모든 음식의 영양소 합산 도너 그래프
+
+const mainNutrientDoughnutChart = function (inputData) {
+
+	let setLabels = [];
+	let dataValues = [];
+	for (let i = 1; i < 4; i++) {
+		setLabels.push(inputData[i].name);
+		dataValues.push(inputData[i].eating);
+	}
+
+	let doughtnutChart_1 = $('#doughtnut-chart1');
+	let myDoughtnutChart1 = new Chart(doughtnutChart_1, {
+		type:'doughnut',
+		data:{
+			labels: setLabels,
+			datasets:[
+				{
+					data: dataValues,
+					backgroundColor:["rgba(242,166,54,.5)",
+									 "rgba(206,29,22,.5)",
+									 "rgba(40,161,130,.5)"],
+					borerColor:[ "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					hoverBackgroundColor:[
+								 "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					borderWidth: 1
+				},
+
+			]
+		},
+		options:{
+			maintainAspectRatio :false,
+			legend:{
+				display:false
+			}
+		}
+	});
+
+}
+
+// const oneNutrientDoughnutChart = function (inputData) {
+
+// 	const keys = Object.keys(recommendedNutrient);
+// 	const startIndex = keys.indexOf("dietary_fiber");
+// 	const selectedLabels = [];
+	
+// 	if (startIndex !== -1) {
+// 	  for (let i = startIndex; i < keys.length; i++) {
+// 		selectedValues.push(recommendedNutrient[keys[i]][1]);
+// 	  }
+// 	}
+
+// 	let doughtnutChart_2 = $('#doughtnut-chart2');
+// 	let myDoughtnutChart2 = new Chart(doughtnutChart_2, {
+// 		type:'doughnut',
+// 		data:{
+// 			labels:selectedLabels,
+// 			datasets:[
+// 				{
+// 					data:[],
+// 					backgroundColor:["rgba(242,166,54,.5)",
+// 									 "rgba(206,29,22,.5)",
+// 									 "rgba(40,161,130,.5)"],
+// 					borerColor:[ "rgb(242,166,54)",
+// 								 "rgb(206,29,22)",
+// 								 "rgb(40,161,130)"],
+// 					hoverBackgroundColor:[
+// 								 "rgb(242,166,54)",
+// 								 "rgb(206,29,22)",
+// 								 "rgb(40,161,130)"],
+// 					borderWidth: 1
+// 				},
+
+// 			]
+// 		},
+// 		options:{
+// 			maintainAspectRatio :false,
+// 			legend:{
+// 				display:false
+// 			}
+// 		}
+// 	});
+// }
+
+const mainNutrientBarChart = function (inputData) {
+
+	let setLabels = [];
+	let dataValues = [];
+	for (let i = 4; i < inputData.length; i++) {
+		setLabels.push(inputData[i].name);
+		dataValues.push(inputData[i].width);
+	}
+
+	let BarChart_1 = $('#bar-chart1');
+	let myBarnutChart2 = new Chart(BarChart_1, {
+		type:'bar',
+		data:{
+			labels: setLabels,
+			datasets:[
+				{
+					data: dataValues,
+					backgroundColor:["rgba(242,166,54,.5)",
+									 "rgba(206,29,22,.5)",
+									 "rgba(40,161,130,.5)"],
+					borerColor:[ "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					hoverBackgroundColor:[
+								 "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					borderWidth: 1
+				},
+
+			]
+		},
+		options:{
+			maintainAspectRatio :false,
+			legend:{
+				display:false
+			}
+		}
+	});
+
+}
+
+
+
+let sumNutrientCalc = {
+	"energy" : 0,
+	"carbohydrate" : 0,
+	"fat" : 0,
+	"protein" : 0,
+	"water" : 0,
+	"dietary_fiber" : 0,
+	"calcium" : 0,
+	"natrium" : 0,
+	"potassium" : 0,
+	"magnesium" : 0,
+	"iron_mg" : 0,
+	"vitamin_b1" : 0,
+	"vitamin_b12" : 0,
+	"vitamin_b2" : 0,
+	"vitamin_c" : 0,
+	"vitamin_d3" : 0
+}
+let nutrientData = [];
+
 // 페이지 그려주는 부분
 const createPage = function() {
 
@@ -515,8 +667,8 @@ const createPage = function() {
 			let colDiv = document.createElement("div");
 			colDiv.className = "col-md-3 col-sm-6";
 		
-			let wellDiv = document.createElement("div");
-			wellDiv.className = "well";
+			let xPanelDiv = document.createElement("div");
+			xPanelDiv.className = "x_panel";
 		
 			let h4Name = document.createElement("h4");
 			h4Name.textContent = nutrientData.name;
@@ -527,13 +679,13 @@ const createPage = function() {
 			h4Value.textContent = nutrientData.value + "cal";
 		
 			let h4Percent = document.createElement("h4");
-			h4Percent.textContent = nutrientData.percent + "%";
+			h4Percent.textContent = "DV : " + nutrientData.percent + "%";
 		
-			wellDiv.appendChild(h4Name);
-			wellDiv.appendChild(h4Value);
-			wellDiv.appendChild(h4Percent);
+			xPanelDiv.appendChild(h4Name);
+			xPanelDiv.appendChild(h4Value);
+			xPanelDiv.appendChild(h4Percent);
 		
-			colDiv.appendChild(wellDiv);
+			colDiv.appendChild(xPanelDiv);
 			rowDiv.appendChild(colDiv);
 		});
 
@@ -552,7 +704,7 @@ const createPage = function() {
 		table.className = "table table-striped projects";
 		
 		// 데이터 배열을 순회하면서 각 행을 생성합니다.
-		foodData.forEach((foodItem) => {
+		foodData.forEach((foodItem, index) => {
 			const row = document.createElement("tr");
 			
 			// 음식 이름 셀
@@ -567,26 +719,113 @@ const createPage = function() {
 			const unitCell = document.createElement("td");
 			unitCell.textContent = foodItem.unit;
 			
-			// 제외 버튼 셀
-			const excludeCell = document.createElement("td");
-			const excludeButton = document.createElement("span");
-			excludeButton.className = "glyphicon glyphicon-minus";
-			excludeButton.setAttribute("aria-hidden", "true");
-			excludeButton.textContent = " 제외";
-			excludeCell.appendChild(excludeButton);
+			// 상세정보 버튼 셀
+			const detailCell = document.createElement("td");
+			const detailButton = document.createElement("button");
+			detailButton.className = "btn btn-primary";
+			detailButton.setAttribute("data-toggle", "modal");
+			detailButton.setAttribute("data-target", `.bs-example-modal-lg${index}`);
+			detailButton.textContent = "상세정보";
+
+			// 모달 대화 상자 생성
+			const modal = document.createElement("div");
+			modal.className = `modal fade bs-example-modal-lg${index}`;
+			modal.setAttribute("tabindex", "-1");
+			modal.setAttribute("role", "dialog");
+			modal.setAttribute("aria-hidden", "true");
+
+			// 모달 대화 상자 생성
+			const modalDialog = document.createElement("div");
+			modalDialog.className = "modal-dialog modal-lg";
+		
+			// 모달 내용 생성
+			const modalContent = document.createElement("div");
+			modalContent.className = "modal-content";
+		
+			// 모달 헤더 생성
+			const modalHeader = document.createElement("div");
+			modalHeader.className = "modal-header";
+			
+			// 모달 제목 생성
+			const modalTitle = document.createElement("h4");
+			modalTitle.className = "modal-title";
+			modalTitle.textContent = `${foodItem.name} 의 성분 정보`;
+		
+			// 모달 닫기 버튼 생성
+			const closeButton = document.createElement("button");
+			closeButton.type = "button";
+			closeButton.className = "close";
+			closeButton.setAttribute("data-dismiss", "modal");
+			closeButton.innerHTML = '<span aria-hidden="true">×</span>';
+		
+			// 모달 본문 생성
+			const modalBody = document.createElement("div");
+			modalBody.className = "modal-body";
+		
+			// 본문 내용 추가
+			const modalXpanel = document.createElement("div");
+			modalXpanel.className = "x_panel"
+
+		
+			// 모달 헤더에 제목과 닫기 버튼 추가
+			modalHeader.appendChild(modalTitle);
+			modalHeader.appendChild(closeButton);
+		
+			// 모달 본문에 내용 추가
+			// 동적으로 페이지 생성
+			const rowContainer = document.querySelector(".row");
+
+			data.forEach((item) => {
+				const colDiv = document.createElement("div");
+				colDiv.className = "col-md-3 col-sm-6";
+
+				const xPanelDiv = document.createElement("div");
+				xPanelDiv.className = "x_panel";
+
+				const titleH4 = document.createElement("h4");
+				titleH4.style.fontWeight = "bold";
+				titleH4.textContent = item.title;
+
+				const valueH4 = document.createElement("h4");
+				valueH4.textContent = item.value;
+
+				const dvH4 = document.createElement("h4");
+				dvH4.textContent = `DV : ${item.dv}`;
+
+				xPanelDiv.appendChild(titleH4);
+				xPanelDiv.appendChild(valueH4);
+				xPanelDiv.appendChild(dvH4);
+
+				colDiv.appendChild(xPanelDiv);
+				rowContainer.appendChild(colDiv);
+			});
+		
+			// 모달 헤더와 본문을 모달 내용에 추가
+			modalContent.appendChild(modalHeader);
+			modalContent.appendChild(modalBody);
+		
+			// 모달 대화 상자에 모달 내용 추가
+			modalDialog.appendChild(modalContent);
+		
+			// 모달 요소에 클래스 추가
+			modal.appendChild(modalDialog);
+
+			detailCell.appendChild(detailButton);
+			detailCell.appendChild(modal);
 			
 			// 각 셀을 행에 추가
 			row.appendChild(nameCell);
 			row.appendChild(quantityCell);
 			row.appendChild(unitCell);
-			row.appendChild(excludeCell);
-			
+			row.appendChild(detailCell);
+					
 			// 행을 테이블에 추가
 			table.appendChild(row);
 		});
 		// 새로 생성한 요소를 부모 요소에 추가
 		parentElement.appendChild(rowDiv);
 		parentElement.appendChild(table);
+	
 	}
 
 	const parentElement = document.querySelector('.all_nutrient');
@@ -594,31 +833,11 @@ const createPage = function() {
 	console.log("nutrientCalc: ", nutrientCalc);
 
 	// 각각의 영양소 데이터 배열을 생성합니다.
-	let nutrientData = [];
-	let sumNutrientCalc = {
-		"energy" : 0,
-		"carbohydrate" : 0,
-		"fat" : 0,
-		"protein" : 0,
-		"dietary_fiber" : 0,
-		"water" : 0,
-		"vitamin_b1" : 0,
-		"vitamin_b12" : 0,
-		"vitamin_b2" : 0,
-		"vitamin_c" : 0,
-		"vitamin_d3" : 0,
-		"calcium" : 0,
-		"natrium" : 0,
-		"potassium" : 0,
-		"magnesium" : 0,
-		"iron_mg" : 0
-	}
-
+	// let nutrientData = [];
 	
 	for (meal in nutrientCalc) {
 		for (nutrient in nutrientCalc[meal]) {
 			sumNutrientCalc[nutrient] += nutrientCalc[meal][nutrient];
-			console.log(sumNutrientCalc[nutrient]);
 		}
 	}
 
@@ -632,61 +851,63 @@ const createPage = function() {
 		})
 	}
 
+	mainNutrientDoughnutChart(nutrientData);
+	mainNutrientBarChart(nutrientData);
+
 	// 각각의 영양소 데이터를 기반으로 요소를 생성하고 추가합니다.
 	nutrientData.forEach((data) => {
-	// div 요소 생성
-	const nutrientDiv = document.createElement("div");
-	nutrientDiv.className = "nutrient";
+		// div 요소 생성
+		const nutrientDiv = document.createElement("div");
+		nutrientDiv.className = "nutrient";
 
-	// div 요소생성
-	const nutrientHeaderDiv = document.createElement("div");
-	nutrientHeaderDiv.className = "nutrient-header";
-	nutrientHeaderDiv.style.display = "flex";
+		// div 요소생성
+		const nutrientHeaderDiv = document.createElement("div");
+		nutrientHeaderDiv.className = "nutrient-header";
+		nutrientHeaderDiv.style.display = "flex";
 
-	// 첫 번째 h5 요소 생성
-	const h5Element = document.createElement("h5");
-	h5Element.textContent = data.name;
-	h5Element.style.flex = "1"; // 왼쪽 정렬 스타일 적용
+		// 첫 번째 h5 요소 생성
+		const h2Element = document.createElement("h2");
+		h2Element.textContent = data.name;
+		h2Element.style.flex = "1"; // 왼쪽 정렬 스타일 적용
 
-	// 두 번째 h5 요소 (오른쪽 정렬)
-	const rightAlignedH5 = document.createElement("h5");
-	rightAlignedH5.textContent = `${data.eating}${data.unit} / ${data.recommended}${data.unit} (${data.width}%)`;
-	rightAlignedH5.style.textAlign = "right"; // 텍스트 오른쪽 정렬 스타일 적용
-	rightAlignedH5.style.marginLeft = "auto"; // 왼쪽 마진을 auto로 설정하여 오른쪽 정렬 스타일 적용
+		// 두 번째 h5 요소 (오른쪽 정렬)
+		const rightAlignedH5 = document.createElement("h2");
+		rightAlignedH5.textContent = `${data.eating}${data.unit} / ${data.recommended}${data.unit} (${data.width}%)`;
+		rightAlignedH5.style.textAlign = "right"; // 텍스트 오른쪽 정렬 스타일 적용
+		rightAlignedH5.style.marginLeft = "auto"; // 왼쪽 마진을 auto로 설정하여 오른쪽 정렬 스타일 적용
 
-	// progress 요소 생성
-	const progressDiv = document.createElement("div");
-	progressDiv.className = "progress";
 
-	// progress-bar 요소 생성
-	const progressBar = document.createElement("div");
-	if (data.width <= 100) {
-		progressBar.className = "progress-bar progress-bar-striped";
-	} else {
-		progressBar.className = "progress-bar-striped bg-danger";
-	}
-	progressBar.setAttribute("role", "progressbar");
-	progressBar.style.width = `${data.width}%`;
-	progressBar.setAttribute("aria-valuenow", data.width);
-	progressBar.setAttribute("aria-valuemin", "0");
-	progressBar.setAttribute("aria-valuemax", "100");
+		// progress 요소 생성
+		const progressDiv = document.createElement("div");
+		progressDiv.className = "progress";
 
-	// progressDiv에 progressBar를 추가
-	progressDiv.appendChild(progressBar);
+		// progress-bar 요소 생성
+		const progressBar = document.createElement("div");
+		if (data.width <= 100) {
+			progressBar.className = "progress-bar progress-bar-striped";
+		} else {
+			progressBar.className = "progress-bar-striped bg-danger";
+		}
+		progressBar.setAttribute("role", "progressbar");
+		progressBar.style.width = `${data.width}%`;
+		progressBar.setAttribute("aria-valuenow", data.width);
+		progressBar.setAttribute("aria-valuemin", "0");
+		progressBar.setAttribute("aria-valuemax", "100");
 
-	nutrientHeaderDiv.appendChild(h5Element);
-	nutrientHeaderDiv.appendChild(rightAlignedH5);
+		// progressDiv에 progressBar를 추가
+		progressDiv.appendChild(progressBar);
 
-	// nutrientDiv에 h5Element와 progressDiv를 추가
-	nutrientDiv.appendChild(nutrientHeaderDiv);
-	nutrientDiv.appendChild(progressDiv);
+		nutrientHeaderDiv.appendChild(h2Element);
+		nutrientHeaderDiv.appendChild(rightAlignedH5);
 
-	// 부모 요소에 nutrientDiv를 추가
-	parentElement.appendChild(nutrientDiv);
+		// nutrientDiv에 h5Element와 progressDiv를 추가
+		nutrientDiv.appendChild(nutrientHeaderDiv);
+		nutrientDiv.appendChild(progressDiv);
 
-	nutrientDiv.style.marginBottom = "10px";
+		// 부모 요소에 nutrientDiv를 추가
+		parentElement.appendChild(nutrientDiv);
 
-	console.log(progressBar.style.width);
+		nutrientDiv.style.marginBottom = "5px";
 
 	});
 }
@@ -699,12 +920,14 @@ const loadmember = async () => {
   await loadMemberDailyInfo();
   
   // MonggoDB에서 받은 음식 정보만을 meal객체에 저장
-  meal = {
-    "breakfast":memberDailyInfo[(day_n - 1)].diet.breakfast,
-    "lunch":memberDailyInfo[(day_n - 1)].diet.lunch,
-    "dinner":memberDailyInfo[(day_n - 1)].diet.dinner,
-    "otherfood":memberDailyInfo[(day_n - 1)].diet.otherfood
-    };
+	meal = {
+		"breakfast":memberDailyInfo[(day_n - 1)].diet.breakfast,
+		"lunch":memberDailyInfo[(day_n - 1)].diet.lunch,
+		"dinner":memberDailyInfo[(day_n - 1)].diet.dinner,
+		"otherfood":memberDailyInfo[(day_n - 1)].diet.otherfood
+	};
+
+	console.log(meal);
 
 	// 음식정보가 있는 MariaDB에 접근하기 위해
 	// meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후

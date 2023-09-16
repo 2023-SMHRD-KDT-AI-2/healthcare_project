@@ -18,7 +18,7 @@ public class GeneralJoin {
 	private String phone_number;	//phone_number
 	private String gender;		//gender
 	private String birthday;	//birthday
-	
+	private String password;
 	
 	private int no;
 	private int age;
@@ -28,7 +28,8 @@ public class GeneralJoin {
 	private String regist_day;
 	private String kaka_id;
 	private String credit_card;
-	private String expiration_date;
+	private String expiration_day;
+	
 	
 
 }
