@@ -772,10 +772,43 @@ const createPage = function() {
 			modalHeader.appendChild(closeButton);
 		
 			// 모달 본문에 내용 추가
+			let nutrientOne = [
+				{	
+					name: "총칼로리", 
+					value: Math.round(nutrientReceive[key].energy), 
+					percent: Math.round(100*(nutrientReceive[key].energy/recommendedNutrient.energy[0]))
+				},
+				{	
+					name: "탄수화물", 
+					value: Math.round(nutrientReceive[key].carbohydrate), 
+					percent: Math.round(100*(nutrientReceive[key].carbohydrate/recommendedNutrient.carbohydrate[0]))
+				},
+				{	
+					name: "단백질", 
+					value: Math.round(nutrientReceive[key].protein),
+					percent: Math.round(100*(nutrientReceive[key].protein/recommendedNutrient.protein[0]))
+				},
+				{	
+					name: "지방", 
+					value: Math.round(nutrientReceive[key].fat), 
+					percent: Math.round(100*(nutrientReceive[key].fat/recommendedNutrient.fat[0]))
+				},
+				{	
+					name: "식이섬유", 
+					value: Math.round(nutrientReceive[key].dietary_fiber), 
+					percent: Math.round(100*(nutrientReceive[key].dietary_fiber/recommendedNutrient.dietary_fiber[0]))
+				}
+				// {	
+				// 	name: "당분", 
+				// 	value: Math.round(nutrientReceive[key].total_sugars), 
+				// 	percent: Math.round(100*(nutrientReceive[key].total_sugars/recommendedNutrient.total_sugars[0]))
+				// }
+			];
 			// 동적으로 페이지 생성
+			
 			const rowContainer = document.querySelector(".row");
 
-			data.forEach((item) => {
+			nutrientOne.forEach((item) => {
 				const colDiv = document.createElement("div");
 				colDiv.className = "col-md-3 col-sm-6";
 
@@ -784,13 +817,13 @@ const createPage = function() {
 
 				const titleH4 = document.createElement("h4");
 				titleH4.style.fontWeight = "bold";
-				titleH4.textContent = item.title;
+				titleH4.textContent = item.name;
 
 				const valueH4 = document.createElement("h4");
-				valueH4.textContent = item.value;
+				valueH4.textContent = item.value + 'g';
 
 				const dvH4 = document.createElement("h4");
-				dvH4.textContent = `DV : ${item.dv}`;
+				dvH4.textContent = item.percent + "%"
 
 				xPanelDiv.appendChild(titleH4);
 				xPanelDiv.appendChild(valueH4);
@@ -800,6 +833,8 @@ const createPage = function() {
 				rowContainer.appendChild(colDiv);
 			});
 		
+			modalBody.appendChild(rowContainer)
+
 			// 모달 헤더와 본문을 모달 내용에 추가
 			modalContent.appendChild(modalHeader);
 			modalContent.appendChild(modalBody);
