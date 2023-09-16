@@ -39,5 +39,21 @@ public class ExerciseDAO {
 		return day;
 
 	}
+	
+	// exerciseID를 참조하여 운동데이터 조회
+	public ExerciseMaria exerciseID(int id) {
+		// DB연결
+		SqlSession sqlsession = sqlSessionFactory.openSession(true); 
+		// sql문장
+		ExerciseMaria met = sqlsession.selectOne("exerciseID", id);//("id",데이터값)
+		//데이터베이스 종료
+		sqlsession.close();
+		
+		return met;
+	}
+	
+	
+	
+	
 }
 

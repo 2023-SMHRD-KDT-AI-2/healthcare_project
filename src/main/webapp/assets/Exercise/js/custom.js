@@ -1,6 +1,3 @@
-
-
-
 // MonggoDB에 데이터를 받아오기 위해 ajax통신 필요
 // ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
 let year = "2023"; //년도
@@ -8,8 +5,6 @@ let month = "08"; //월
 let day = "03"; //일
 let day_n = Number(day); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
 let memberID = "3"; // 회원ID
-
-
 
 // ajax요청에 사용되는 rul
 let moveUrl = `http://localhost/Members.say?c=member&collection=${
@@ -21,6 +16,9 @@ let memberInfo;
 
 // MonggoDB에서 받아온 회원의 일별 상세정보가 저장되는 변수
 let memberDailyInfo;
+
+// MonggoDB에서 받아온 회원의 운동정보를 저장하기 위한 객체
+let health = {};
 
 // MonggoDB에 저장된 데이터에 접근하기 위해 ajax요청하는 함수
 // 비동기 동작을 위한 async()함수 사용
@@ -42,35 +40,49 @@ const loadMemberDailyInfo = async () => {
   });
 };
 
+// MonggoDB에서 받은 운동 정보만을 health객체에 저장
+
+
 // MonggoDB에서 회원의 상세정보를 가져와서 저장 후
-// MonggoDB에서 가져온 food_code로 MariaDB에 있는 음식정보 테이블을 참조 후
-// 음식별 영양정보 리스트를 받아오는 함수
+// MonggoDB에서 가져온 exerciseID로 MariaDB에 있는 운동정보 테이블을 참조 후
+// 운동정보 리스트를 받아오는 함수
 const loadmember = async () => {
   // MonggoDB에 ajax요청 후 데이터를 받을 때까지 대기
   await loadMemberDailyInfo();
+  health = memberDailyInfo[(day_n - 1)].exercise
+  console.log(health);
 
 	// 음식정보가 있는 MariaDB에 접근하기 위해
-	// meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후
+	// health 전송 -> health이 가지고 있는 exerciseID로 MariaDB를 참조 후
 	// 음식별 영양정보 수신
-    // const sendFoodCode = async () => {
-    //     await $.ajax({
-    //         url : "/Diet.say?c=foodCode", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
-    //         type : "POST",
-    //         data : {
-	// 			// meal을 전송하기 위해 JSON으로 변환 후 foodCode에 저장
-    //             foodCode : JSON.stringify(meal)                
-    //         },
-    //         dataType : 'json',
-    //         success: function(data) {
-	// 			// MariaDB에 참조 후 조회한 음식정보를 nutrientReceive에 저장
-    //             nutrientReceive = data;
-    //             console.log("전송 성공");
-    //         },
-    //         error: function(error) {
-    //             console.log("전송 실패", error);
-    //         }
-    //     })
-    // }
+    const sendExerciseID = async () => {
+        await $.ajax({
+            url : "/Exercise.say?c=exerciseID", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
+            type : "POST",
+            data : {
+				// health을 전송하기 위해 JSON으로 변환 후 exerciseID에 저장
+                exerciseID : JSON.stringify(health)                
+            },
+            dataType : 'json',
+            success: function(data) {
+				// MariaDB에 참조 후 조회한 음식정보를 nutrientReceive에 저장
+                nutrientReceive = data;
+                console.log("전송 성공");
+                console.log("운동페이지")
+                console.log(data)
+                console.log(data.exercise_id)
+                console.log(data.exercise_name)
+                console.log(data.met)
+                console.log(data.met)
+
+            },
+            error: function(error) {
+                console.log("전송 실패", error);
+            }
+        })
+    }
+
+    sendExerciseID();
 
 	// ajax이 끝날 때까지 대기
 /*     await sendFoodCode(); */

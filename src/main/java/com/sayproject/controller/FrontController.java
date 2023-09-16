@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
+
 import com.sayproject.controller.Main.LoginAction;
 import com.sayproject.controller.Main.MainAction;
 import com.sayproject.model.Members.Member;
@@ -39,7 +41,9 @@ public class FrontController extends HttpServlet {
 		Enumeration<String> parameter = request.getParameterNames();
 		
 		while(parameter.hasMoreElements()) {
-			System.out.println("parameter : " + parameter.nextElement());
+			String element = parameter.nextElement();
+			System.out.println("parameter : " + element);
+			System.out.println("parameter value : " + request.getParameter(element));
 		}
 		System.out.println("=====================");
 		if (subStringRequestURI.contains("/Main.say")) {
