@@ -20,7 +20,7 @@ public class DietDAO {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
 		dietAll = sqlSession.selectOne("showAllNutrient", code);
-		
+
 		sqlSession.close();
 
 		return dietAll;
