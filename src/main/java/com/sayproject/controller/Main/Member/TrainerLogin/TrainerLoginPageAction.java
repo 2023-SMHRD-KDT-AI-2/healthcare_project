@@ -18,7 +18,7 @@ public class TrainerLoginPageAction implements Action {
         response.setContentType("text/html; charset=utf-8");
         request.setCharacterEncoding(CHARSET);
 
-        RequestDispatcher dis = request.getRequestDispatcher("WEB-INF\\views\\Main\\TrainerLogin\\TrainerLogin.jsp");
+        RequestDispatcher dis = request.getRequestDispatcher("\\WEB-INF\\views\\Main\\Login\\TrainerLogin\\TrainerLogin.jsp");
         dis.forward(request, response);
     }
 }
