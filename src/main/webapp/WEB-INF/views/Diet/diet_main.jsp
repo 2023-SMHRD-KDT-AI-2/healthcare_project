@@ -123,7 +123,10 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
-								<canvas id="doughtnut-chart1"></canvas>
+								<canvas id="doughtnut-chart1" style="margin-bottom: 20px;"></canvas>
+							</div>
+							<div class="x_content">
+								<canvas id="bar-chart1" style="height: 300px; margin-bottom: 20px;"></canvas>
 							</div>
 							<div class="x_content">
 								<div class="all_nutrient">
