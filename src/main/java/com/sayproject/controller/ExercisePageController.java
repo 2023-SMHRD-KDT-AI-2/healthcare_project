@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sayproject.controller.Exercise.ExerciseMainAction;
+import com.sayproject.controller.Exercise.ExerciseMetAction;
 import com.sayproject.controller.Exercise.ExerciseSub1Action;
 import com.sayproject.controller.Exercise.ExerciseSub2Action;
 import com.sayproject.controller.Exercise.MemberExerciseInformationInput;
@@ -33,11 +34,16 @@ public class ExercisePageController {
 
     } else if (cmd.equals("sub1")) {
       return new ExerciseSub1Action();
-    } else if (cmd.equals("sub2")) {
+    } 
+    else if (cmd.equals("sub2")) {
       return new ExerciseSub2Action();
-    } else if (cmd.equals("inputInfo")) {
+    } 
+    else if (cmd.equals("inputInfo")) {
       return new MemberExerciseInformationInput();
     } 
+    else if (cmd.equals("exerciseID")) {
+        return new ExerciseMetAction();
+      } 
     return new ExerciseMainAction();
   }
 }

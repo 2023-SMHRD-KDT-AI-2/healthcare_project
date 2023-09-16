@@ -226,7 +226,7 @@
 													</label>
 													<div class="col-md-6 col-sm-6">
 														<input type="text" name=phone_number class="form-control"
-															data-inputmask="'mask' : '(999) 999-9999'"> <span
+															data-inputmask="'mask' : '(999) 9999-9999'"> <span
 															class="fa fa-user form-control-feedback right"
 															aria-hidden="true"></span>
 													</div>

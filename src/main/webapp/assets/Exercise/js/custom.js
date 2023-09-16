@@ -48,32 +48,35 @@ const loadMemberDailyInfo = async () => {
 const loadmember = async () => {
   // MonggoDB에 ajax요청 후 데이터를 받을 때까지 대기
   await loadMemberDailyInfo();
+  health = memberDailyInfo[day_n-1].exercise;
+  console.log(health)
 
 	// 음식정보가 있는 MariaDB에 접근하기 위해
-	// meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후
-	// 음식별 영양정보 수신
-    // const sendFoodCode = async () => {
-    //     await $.ajax({
-    //         url : "/Diet.say?c=foodCode", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
-    //         type : "POST",
-    //         data : {
-	// 			// meal을 전송하기 위해 JSON으로 변환 후 foodCode에 저장
-    //             foodCode : JSON.stringify(meal)                
-    //         },
-    //         dataType : 'json',
-    //         success: function(data) {
-	// 			// MariaDB에 참조 후 조회한 음식정보를 nutrientReceive에 저장
-    //             nutrientReceive = data;
-    //             console.log("전송 성공");
-    //         },
-    //         error: function(error) {
-    //             console.log("전송 실패", error);
-    //         }
-    //     })
-    // }
+	 //meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후
+	 //음식별 영양정보 수신
+    const sendFoodCode = async () => {
+        await $.ajax({
+            url : "/Exercise.say?c=exerciseID", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
+            type : "POST",
+            data : {
+	 			// meal을 전송하기 위해 JSON으로 변환 후 foodCode에 저장
+                 exerciseID : JSON.stringify(health)                
+             },
+            dataType : 'json',
+            success: function(data) {
+	 		// MariaDB에 참조 후 조회한 음식정보를 nutrientReceive에 저장
+                 exerciseMet = data;
+                console.log("전송 성공");
+                console.log(exerciseMet);
+             },
+            error: function(error) {
+                 console.log("전송 실패", error);
+            }
+        })
+     }
 
 	// ajax이 끝날 때까지 대기
-/*     await sendFoodCode(); */
+ await sendFoodCode(); 
 
 
 // 차트에서 쓸 쿨톤 색깔들

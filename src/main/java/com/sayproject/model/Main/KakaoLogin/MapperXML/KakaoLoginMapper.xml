@@ -10,19 +10,15 @@
 	
 	<!--카카오 회원가입-->
 	<insert id="kakaoJoin" parameterType="com.sayproject.model.Main.KakaoLogin.KakaoJoin">
-		INSERT INTO kakao_login (id,email,profile_image_url,nickname,isDefaultImage,thumbnailImageUrl)
+		INSERT INTO kakao_login (id,email,profile_image_url,nickname,isDefaultImage)
 		VALUES(
 		#{memberObjectId},
 		#{emailOrId},
 		#{profileImageUrl},
 		#{nickname},
-		#{isDefaultImage},
-		#{thumbnailImageUrl}
+		#{isDefaultImage}
+		
 		) 
-		
-		
-		
-		
 		
 	</insert>
 </mapper>
