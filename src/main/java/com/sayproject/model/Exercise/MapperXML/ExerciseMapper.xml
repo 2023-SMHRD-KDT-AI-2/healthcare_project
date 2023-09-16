@@ -8,13 +8,13 @@
    
    <!-- 회원정보 -->
    <select id="info" parameterType="com.sayproject.model.Exercise.MemberInfo" resultType="com.sayproject.model.Exercise.MemberInfo">
-      select name, regist_day, gender, age, weight, height, phone_number, expiration_day from members where name=#{name}
+      select name, regist_day, gender, age, weight, height, phone_number, expiration_day, schedule from members where name=#{name}
    </select>
    
-   <!--MET가져오기
+   <!--MET가져오기-->
    <select id=" met" parameterType="com.sayproject.model.Exercise.Exercise" resultType="float">
       Select MET from EXERCISE_INFO WHERE EXERCISE_NAME=#{name};
-   </select>-->
+   </select>
 
    <!--만기일
    <select id="expiration" parameterType="String" resultType="com.sayproject.model.Exercise.MemberInfo">
