@@ -102,7 +102,7 @@ public class KakaoLoginDbCheckAction implements Action {
 
 			KakaoIdDuplicationCheckDAO dao = new KakaoIdDuplicationCheckDAO();
 
-			int cnt = dao.kakaoIdDuplicationCheck(Long.toString(memberDailyData.getId()));
+			int cnt = dao.kakaoIdDuplicationCheck(kakaoAccount.getEmail());
 
 			if (cnt > 0) {
 				/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
