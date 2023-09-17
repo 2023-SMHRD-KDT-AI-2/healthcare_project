@@ -44,7 +44,7 @@ public class PersonalMemberAddInfoInputDBAction implements Action {
 	System.out.println(request.getParameter("height"));
 	System.out.println(request.getParameter("phone_number"));
 	System.out.println(request.getParameter("birthday"));
-		
+		System.out.println(request.getParameter("name"));
 		
 
 	

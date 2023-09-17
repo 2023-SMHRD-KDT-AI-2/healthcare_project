@@ -15,7 +15,7 @@
 			#{phone_number},
 			#{gender},
 			#{birthday},
-			#{profileImageUrl},
+			#{photopath},
 			#{password},
 			NOW()
 			)

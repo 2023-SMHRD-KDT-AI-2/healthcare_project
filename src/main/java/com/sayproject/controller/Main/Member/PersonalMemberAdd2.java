@@ -50,27 +50,116 @@ public class PersonalMemberAdd2 implements Action {
 			kjoin.setProfileImageUrl(String.valueOf(session.getAttribute("profileImageUrl"))); //// profileimageurl
 			kjoin.setNickname(String.valueOf(session.getAttribute("nickname"))); // nickname
 			kjoin.setIsDefaultImage(String.valueOf(session.getAttribute("isDefaultImage"))); // isDefaultImage
-			kjoin.setIsDefaultImage(String.valueOf(session.getAttribute("thumbnailImageUrl"))); // thumbnailImageUrl
+			
+			System.out.println("이름 넘어오니??   " + request.getParameter("name"));
 
 			KakaoJoinDAO dao = new KakaoJoinDAO();
 			int cnt = dao.kakaoJoin(kjoin);
-
-			if (cnt > 0) {
+			System.out.println("cnt값 : " + cnt);
+			if (cnt> 0) {
 				// 추가정보 입력은 members테이블에 넘기기
 				GeneralJoin gjoin = new GeneralJoin();
+				
 
-				gjoin.setIdOrEmail(String.valueOf(session.getAttribute("emailOrId"))); // id
-				gjoin.setName(request.getParameter("name")); // name
-				gjoin.setWeight(request.getParameter("weight")); // weight
-				gjoin.setHeight(request.getParameter("height")); // height
-				gjoin.setAddress(request.getParameter("address")); // address
-				gjoin.setPhone_number(request.getParameter("phone_number")); // phone_number
-				gjoin.setGender(request.getParameter("gender")); // gender
-				gjoin.setBirthday(request.getParameter("birthday")); // birthday
-				GeneralJoinDAO generalJoinDao = new GeneralJoinDAO();
+				
+				//일반회원 login DB에 데이int cnt = 0;
+				String saveDir = "/images";
+				int size = 10 * 1024 * 1024;
+
+				File currentDir = new File(saveDir);
+				DiskFileItemFactory factory = new DiskFileItemFactory();
+				factory.setRepository(currentDir);
+				factory.setSizeThreshold(size);
+
+				ServletFileUpload upload = new ServletFileUpload(factory);
+				try {
+
+					// 일반회원가입 이후 members테이블에 data넘기기
+					
+					
+					List<FileItem> items = upload.parseRequest(request);
+					for (FileItem fi : items) {
+						if (fi.isFormField()) {
+							System.out.println(fi.getFieldName() + " = " + fi.getString("utf-8"));
+							System.out.println(fi.getFieldName().equals(("password")));
+							if (fi.getFieldName().equals(("idOrEmail"))){// id
+								gjoin.setIdOrEmail(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("name"))){// name
+								gjoin.setName(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("password"))){// password
+								gjoin.setName(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("weight"))){ // weight
+								gjoin.setWeight(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("height"))){ // height
+								gjoin.setHeight(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("address"))){// address
+								gjoin.setAddress(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("phone_number"))){// phone_number
+								gjoin.setPhone_number(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("gender"))){// gender
+								gjoin.setGender(fi.getString("utf-8"));
+							}
+							if (fi.getFieldName().equals(("birthday"))){// birthday
+								gjoin.setBirthday(fi.getString("utf-8"));
+								
+							}if (fi.getFieldName().equals(("password"))){// password
+								gjoin.setPassword(fi.getString("utf-8"));
+							}
+							
+						} else {
+							System.out.println(fi.getFieldName());
+
+							String origin = fi.getName();
+							System.out.println(origin);
+							String ext = origin.substring(origin.lastIndexOf("."));
+
+							UUID uuid = UUID.randomUUID();
+							String name = uuid + ext;
+
+							System.out.println(fi.getSize());
+							File upPath = new File(currentDir + "\\");
+							if (!upPath.exists()) {
+								upPath.mkdirs();
+							}
+							
+							//일반 login profileImageUrl DB에 넘기기
+							System.out.println(upPath.getAbsolutePath() + "\\" + name);
+							
+							gjoin.setPhotopath(upPath.getAbsolutePath() + "\\" + name);
+							
+							fi.write(new File(upPath, name));
+						}
+					}
+					// gjoin 데이터 setter에 값을 다 집어 넌 이후 DAO에서 확인 후 cnt값 확인 후 
+					GeneralJoinDAO generalJoinDao = new GeneralJoinDAO();
+					 cnt = generalJoinDao.generalJoin(gjoin);
+					 if (cnt > 0) {
+							Script.href("회원가입 성공!!", "/Main.say?c=login", response);
+							// kakao 로그인 세션 삭제
+							session.invalidate();
+
+						} else {
+							Script.href("회원가입 실패!!", "/Main.say?c=login", response);
+							// kakao 로그인 세션 삭제
+							session.invalidate();
+						}
+
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			
+				
 
 				GeneralJoinDAO dao1 = new GeneralJoinDAO();
-				cnt = dao1.generalJoin(gjoin);
+				dao1.generalJoin(gjoin);
 
 				Script.href("로그인 성공!!", "/Main.say?c=login", response);
 				// kakao 로그인 세션 삭제
@@ -109,6 +198,9 @@ public class PersonalMemberAdd2 implements Action {
 							gjoin.setIdOrEmail(fi.getString("utf-8"));
 						}
 						if (fi.getFieldName().equals(("name"))){// name
+							gjoin.setName(fi.getString("utf-8"));
+						}
+						if (fi.getFieldName().equals(("password"))){// password
 							gjoin.setName(fi.getString("utf-8"));
 						}
 						if (fi.getFieldName().equals(("weight"))){ // weight
