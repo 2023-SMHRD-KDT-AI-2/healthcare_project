@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 public class TrainerAccount {
     private int no;
     private String name;
-    private String id;
+    private String email;
     private String nickname;
     private String photopath;
     private String password;
+    private String age;
 }

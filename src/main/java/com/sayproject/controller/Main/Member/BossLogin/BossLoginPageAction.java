@@ -1,4 +1,4 @@
-package com.sayproject.controller.Main.Member.TrainerLogin;
+package com.sayproject.controller.Main.Member.BossLogin;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sayproject.controller.Action;
 
-public class TrainerLoginPageAction implements Action {
+public class BossLoginPageAction implements Action {
     private static final String CHARSET = "utf-8";
 
     @Override
@@ -18,7 +18,7 @@ public class TrainerLoginPageAction implements Action {
         response.setContentType("text/html; charset=utf-8");
         request.setCharacterEncoding(CHARSET);
 
-        RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/Login/TrainerLogin/TrainerLogin.jsp");
+        RequestDispatcher dis = request.getRequestDispatcher("\\WEB-INF\\views\\Main\\Login\\BossLogin\\BossLogin.jsp");
         dis.forward(request, response);
     }
 }

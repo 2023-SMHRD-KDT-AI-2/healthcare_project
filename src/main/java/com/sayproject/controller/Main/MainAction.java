@@ -17,7 +17,7 @@ public class MainAction implements Action {
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding(CHARSET);
-
+		
 		RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/main.jsp");
 		dis.forward(request, response);
 	}

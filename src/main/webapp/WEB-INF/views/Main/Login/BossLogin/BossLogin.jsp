@@ -11,31 +11,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>HealthCare | SAYPROJECT</title>
-<jsp:include page="/WEB-INF/views/include/header_css.jsp" />
+<!-- Animate.css -->
+<link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet">
 <link href="assets/Main/Login/css/style.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
+
 	<div class="container">
 		<!-- Sign In -->
 		<div class="container__form container--admin_and_trainer_signin">
-			<form action="/Main.say" method="POST" class="form"
-				id="trainerLoginForm">
-				<c:if test="${loginError != null}">
-					<div class="alert alert-danger" role="alert">${loginError}</div>
-				</c:if>
-
-				<h2 class="form__title">트레이너 로그인</h2>
-				<input type="hidden" name="c" value="trainerLoginCheck"> <input
-					type="hidden" name="loginType" value="trainer"> <input
-					type="email" placeholder="Email" class="input" id="email"
-					name="email" required="required" /> <input type="password"
-					placeholder="비밀번호" class="input" id="password" name="password"
-					required="required" />
+			<form action="#" class="form" id="bossLoginForm">
+				<h2 class="form__title">대표자 로그인</h2>
+				<input type="email" placeholder="Email" class="input" /> <input
+					type="password" placeholder="비밀번호" class="input" />
 				<button class="btn">로그인</button>
 			</form>
 		</div>
 	</div>
+
 	<script src="assets/Main/Login/js/custom.js"></script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 package com.sayproject.model.Main.TrainerLogin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -18,5 +21,15 @@ public class TrainerLoginDAO {
             e.printStackTrace();
         }
         return returnTrainerAccount;
+    }
+
+    public ArrayList<TrainerAccount> getAllTrainer() {
+        List<TrainerAccount> returnAllTrainerList = null;
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            returnAllTrainerList = sqlSession.selectList("getAllTrainer");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (ArrayList<TrainerAccount>) returnAllTrainerList;
     }
 }
