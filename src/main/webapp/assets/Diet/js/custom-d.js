@@ -394,7 +394,8 @@ if (gender == 'male') {
 		"vitamin_b12" : [2.4, "비타민B12", "ug"],
 		"vitamin_b2" : [1.3, "비타민B2", "mg"],
 		"vitamin_c" : [100, "비타민C", "mg"],
-		"vitamin_d3" : [10, "비타민D3", "ug"]
+		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"total_sugars" : [100, "당분", "g"]
 	}
 } else if (gender == 'female') {
 	recommendedNutrient = {
@@ -413,7 +414,8 @@ if (gender == 'male') {
 		"vitamin_b12" : [2.4, "비타민B12", "ug"],
 		"vitamin_b2" : [1.3, "비타민B2", "mg"],
 		"vitamin_c" : [100, "비타민C", "mg"],
-		"vitamin_d3" : [10, "비타민D3", "ug"]
+		"vitamin_d3" : [10, "비타민D3", "ug"],
+		"total_sugars" : [100, "당분", "g"]
 	}
 }
 
@@ -435,6 +437,7 @@ const loadMemberDailyInfo = async () => {
 	  memberInfo = data;	
       memberDailyInfo = data.dailyInfo;
       console.log(memberInfo.dailyInfo);
+	  
     },
     error: function () {
       console.log("요청이 안됨");
@@ -476,8 +479,7 @@ const calcNutrient = function() {
 
 }
 
-// 하루 섭취한 모든 음식의 영양소 합산 도너 그래프
-
+// 하루 섭취한 모든 음식의 주요 영양소 합산 도너 그래프
 const mainNutrientDoughnutChart = function (inputData) {
 
 	let setLabels = [];
@@ -517,53 +519,9 @@ const mainNutrientDoughnutChart = function (inputData) {
 			}
 		}
 	});
-
 }
 
-// const oneNutrientDoughnutChart = function (inputData) {
-
-// 	const keys = Object.keys(recommendedNutrient);
-// 	const startIndex = keys.indexOf("dietary_fiber");
-// 	const selectedLabels = [];
-	
-// 	if (startIndex !== -1) {
-// 	  for (let i = startIndex; i < keys.length; i++) {
-// 		selectedValues.push(recommendedNutrient[keys[i]][1]);
-// 	  }
-// 	}
-
-// 	let doughtnutChart_2 = $('#doughtnut-chart2');
-// 	let myDoughtnutChart2 = new Chart(doughtnutChart_2, {
-// 		type:'doughnut',
-// 		data:{
-// 			labels:selectedLabels,
-// 			datasets:[
-// 				{
-// 					data:[],
-// 					backgroundColor:["rgba(242,166,54,.5)",
-// 									 "rgba(206,29,22,.5)",
-// 									 "rgba(40,161,130,.5)"],
-// 					borerColor:[ "rgb(242,166,54)",
-// 								 "rgb(206,29,22)",
-// 								 "rgb(40,161,130)"],
-// 					hoverBackgroundColor:[
-// 								 "rgb(242,166,54)",
-// 								 "rgb(206,29,22)",
-// 								 "rgb(40,161,130)"],
-// 					borderWidth: 1
-// 				},
-
-// 			]
-// 		},
-// 		options:{
-// 			maintainAspectRatio :false,
-// 			legend:{
-// 				display:false
-// 			}
-// 		}
-// 	});
-// }
-
+// 하루 섭취한 모든 음식의 서브 영양소(무기질) 합산 도너 그래프
 const mainNutrientBarChart = function (inputData) {
 
 	let setLabels = [];
@@ -606,8 +564,96 @@ const mainNutrientBarChart = function (inputData) {
 
 }
 
+let myDoughtnutChart2 = [];
+// 개별 음식의 주요 영양소 도너 그래프
+let oneNutrientDoughnutChart = function (inputData, index) {
 
+	let setLabels = [];
+	let dataValues = [];
+	for (let i = 1; i < 4; i++) {
+		setLabels.push(inputData[i].name);
+		dataValues.push(inputData[i].eating);
+	}
 
+	// console.log("setLabels", setLabels);
+	// console.log("dataValues", dataValues);
+
+	let doughtnutChart_2 = $(".doughnut-chart-modal")[index];
+	myDoughtnutChart2.push(new Chart(doughtnutChart_2, {
+		type:'doughnut',
+		data:{ 
+			labels: setLabels,
+			datasets:[
+				{
+					data: dataValues,
+					backgroundColor:["rgba(242,166,54,.5)",
+									 "rgba(206,29,22,.5)",
+									 "rgba(40,161,130,.5)"],
+					borerColor:[ "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					hoverBackgroundColor:[
+								 "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					borderWidth: 1
+				},
+
+			]
+		},
+		options:{
+			maintainAspectRatio :false,
+			legend:{
+				display:false
+			}
+		}
+	}));
+}
+
+let myBarChart2 = [];
+// 개별 음식의 서브 영양소(무기질) 영양소 도너 그래프
+let oneNutrientBarChart = function (inputData, index) {
+
+	let setLabels = [];
+	let dataValues = [];
+	for (let i = 4; i < inputData.length; i++) {
+		setLabels.push(inputData[i].name);
+		dataValues.push(inputData[i].eating);
+	}
+
+	let barChart_2 = $(".bar-chart-modal")[index];
+	myBarChart2.push(new Chart(barChart_2, {
+		type:'bar',
+		data:{
+			labels: setLabels,
+			datasets:[
+				{
+					data: dataValues,
+					backgroundColor:["rgba(242,166,54,.5)",
+									 "rgba(206,29,22,.5)",
+									 "rgba(40,161,130,.5)"],
+					borerColor:[ "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					hoverBackgroundColor:[
+								 "rgb(242,166,54)",
+								 "rgb(206,29,22)",
+								 "rgb(40,161,130)"],
+					borderWidth: 1
+				},
+
+			]
+		},
+		options:{
+			maintainAspectRatio :false,
+			legend:{
+				display:false
+			}
+		}
+	}));
+}
+
+// 챠트에 표현할 주요 영양소의 합에 대한 변수
 let sumNutrientCalc = {
 	"energy" : 0,
 	"carbohydrate" : 0,
@@ -624,13 +670,23 @@ let sumNutrientCalc = {
 	"vitamin_b12" : 0,
 	"vitamin_b2" : 0,
 	"vitamin_c" : 0,
-	"vitamin_d3" : 0
+	"vitamin_d3" : 0,
+	"total_sugars" : 0
 }
+
+// 차트 그릴 때 필요한 영양소 데이터에 대한 변수
 let nutrientData = [];
 
 // 페이지 그려주는 부분
 const createPage = function() {
 
+	// 상세정보 창 챠트 생성에 필요한 데이터 변수
+	let modalCanvas = [];
+
+	// 모달 창 인덱스 번호
+	let modalIndex = 0; 
+
+	// 아침 점심 저녁 간식별 음식 리스트 그리는 페이지(음식 페이지 왼쪽 구역) ===============================================
 	for (key in nutrientCalc) {
 		let nutrients = [
 			{	
@@ -654,7 +710,8 @@ const createPage = function() {
 				percent: Math.round(100*(nutrientCalc[key].fat/recommendedNutrient.fat[0]))
 			}
 		];
-		  
+		
+		// 카드 생성 부분 =================================================
 		// 부모 요소 가져오기
 		let parentElement = document.getElementById(`${key}_food_info`);
 		
@@ -688,7 +745,11 @@ const createPage = function() {
 			colDiv.appendChild(xPanelDiv);
 			rowDiv.appendChild(colDiv);
 		});
+		// 카드 생성 부분 끝 ===============================================
 
+		// 음식 리스트(테이블 형식) 생성 부분 ===============================
+
+		// 음식 리스트 생성에 필요한 변수
 		let foodData = [];
 		
 		for (let i = 0; i < nutrientReceive[key].length; i++) {
@@ -702,6 +763,9 @@ const createPage = function() {
 		// 테이블 요소 생성
 		const table = document.createElement("table");
 		table.className = "table table-striped projects";
+		table.style.marginBottom = "0px"
+
+		// console.log("foodData", foodData)
 		
 		// 데이터 배열을 순회하면서 각 행을 생성합니다.
 		foodData.forEach((foodItem, index) => {
@@ -710,29 +774,37 @@ const createPage = function() {
 			// 음식 이름 셀
 			const nameCell = document.createElement("td");
 			nameCell.textContent = foodItem.name;
+			nameCell.style.fontSize = "17px";
 			
 			// 수량 셀
 			const quantityCell = document.createElement("td");
 			quantityCell.textContent = foodItem.quantity;
-			
+			quantityCell.style.fontSize = "15px";
+
 			// 단위 셀
 			const unitCell = document.createElement("td");
 			unitCell.textContent = foodItem.unit;
-			
+			unitCell.style.fontSize = "15px";
+
 			// 상세정보 버튼 셀
 			const detailCell = document.createElement("td");
+			detailCell.style.paddingBottom = "0px";
+			detailCell.style.paddingTop = "5px";
 			const detailButton = document.createElement("button");
 			detailButton.className = "btn btn-primary";
 			detailButton.setAttribute("data-toggle", "modal");
-			detailButton.setAttribute("data-target", `.bs-example-modal-lg${index}`);
+			detailButton.setAttribute("data-target", `.bs-example-modal-lg${modalIndex}`);
 			detailButton.textContent = "상세정보";
 
+			// 상세 정보 클릭 시 생기는 팝업창(modal) 생성 부분 ==================================
 			// 모달 대화 상자 생성
 			const modal = document.createElement("div");
-			modal.className = `modal fade bs-example-modal-lg${index}`;
+			modal.className = `modal fade bs-example-modal-lg${modalIndex}`;
 			modal.setAttribute("tabindex", "-1");
 			modal.setAttribute("role", "dialog");
 			modal.setAttribute("aria-hidden", "true");
+
+			modalIndex++;
 
 			// 모달 대화 상자 생성
 			const modalDialog = document.createElement("div");
@@ -750,6 +822,10 @@ const createPage = function() {
 			const modalTitle = document.createElement("h4");
 			modalTitle.className = "modal-title";
 			modalTitle.textContent = `${foodItem.name} 의 성분 정보`;
+
+			// 모달에 x_content 생성
+			const modalContent1 = document.createElement("div");
+			modalContent1.className = "x_content";
 		
 			// 모달 닫기 버튼 생성
 			const closeButton = document.createElement("button");
@@ -766,40 +842,138 @@ const createPage = function() {
 			const modalXpanel = document.createElement("div");
 			modalXpanel.className = "x_panel"
 
-		
 			// 모달 헤더에 제목과 닫기 버튼 추가
 			modalHeader.appendChild(modalTitle);
 			modalHeader.appendChild(closeButton);
-		
+
+			// 팝업 창 안에 표현되는 카드 생성 부분 =====================================
 			// 모달 본문에 내용 추가
 			// 동적으로 페이지 생성
-			const rowContainer = document.querySelector(".row");
 
-			data.forEach((item) => {
-				const colDiv = document.createElement("div");
-				colDiv.className = "col-md-3 col-sm-6";
+			// 모달에 들어갈 내용에 필요한 변수
+			let nutrientOne = [
+				{	
+					name: "총칼로리", 
+					value: Math.round(nutrientReceive[key][index].energy), 
+					percent: Math.round(100*(nutrientReceive[key][index].energy/recommendedNutrient.energy[0]))
+				},
+				{	
+					name: "탄수화물", 
+					value: Math.round(nutrientReceive[key][index].carbohydrate), 
+					percent: Math.round(100*(nutrientReceive[key][index].carbohydrate/recommendedNutrient.carbohydrate[0]))
+				},
+				{	
+					name: "단백질", 
+					value: Math.round(nutrientReceive[key][index].protein),
+					percent: Math.round(100*(nutrientReceive[key][index].protein/recommendedNutrient.protein[0]))
+				},
+				{	
+					name: "지방", 
+					value: Math.round(nutrientReceive[key][index].fat), 
+					percent: Math.round(100*(nutrientReceive[key][index].fat/recommendedNutrient.fat[0]))
+				},				{	
+					name: "식이섬유", 
+					value: Math.round(nutrientReceive[key][index].dietary_fiber), 
+					percent: Math.round(100*(nutrientReceive[key][index].dietary_fiber/recommendedNutrient.dietary_fiber[0]))
+				},				{	
+					name: "당분", 
+					value: Math.round(nutrientReceive[key][index].total_sugars), 
+					percent: Math.round(100*(nutrientReceive[key][index].total_sugars/recommendedNutrient.total_sugars[0]))
+				}
+			];
+			
+			// console.log("nutrientOne", nutrientOne);
 
-				const xPanelDiv = document.createElement("div");
-				xPanelDiv.className = "x_panel";
+			const rowContainer = document.createElement("div");
+			rowContainer.className = "row"
 
-				const titleH4 = document.createElement("h4");
+			nutrientOne.forEach((item) => {
+				let colDivModal = document.createElement("div");
+				colDivModal.className = "col-md-4 col-sm-6";
+
+				let xPanelModalDiv = document.createElement("div");
+				xPanelModalDiv.className = "x_panel";
+
+				let titleH4 = document.createElement("h4");
 				titleH4.style.fontWeight = "bold";
-				titleH4.textContent = item.title;
+				titleH4.textContent = item.name;
 
-				const valueH4 = document.createElement("h4");
-				valueH4.textContent = item.value;
+				let valueH4 = document.createElement("h4");
+				if (item.name == "총칼로리") {
+					valueH4.textContent = item.value + "cal";
+				} else {
+					valueH4.textContent = item.value + "g";
+				}
 
-				const dvH4 = document.createElement("h4");
-				dvH4.textContent = `DV : ${item.dv}`;
+				let dvH4 = document.createElement("h4");
+				dvH4.textContent = "DV : " + item.percent + "%";
 
-				xPanelDiv.appendChild(titleH4);
-				xPanelDiv.appendChild(valueH4);
-				xPanelDiv.appendChild(dvH4);
+				xPanelModalDiv.appendChild(titleH4);
+				xPanelModalDiv.appendChild(valueH4);
+				xPanelModalDiv.appendChild(dvH4);
 
-				colDiv.appendChild(xPanelDiv);
-				rowContainer.appendChild(colDiv);
+				colDivModal.appendChild(xPanelModalDiv);
+				rowContainer.appendChild(colDivModal);
 			});
-		
+			
+			modalContent1.appendChild(rowContainer)
+			modalBody.appendChild(modalContent1);
+
+			// 팝업 창 안에 표현되는 카드 생성 부분 끝 ===================================
+
+			// 팝업 창 안에 표현되는 챠트 생성 부분 =====================================
+			let oneNutrientData = []; 
+
+			for (const key2 in recommendedNutrient) {
+				oneNutrientData.push({
+					name : recommendedNutrient[key2][1],
+					width : Math.round(100 * nutrientReceive[key][index][key2] / recommendedNutrient[key2][0]),
+					eating : Math.round(nutrientReceive[key][index][key2]),
+					recommended : recommendedNutrient[key2][0],
+					unit : recommendedNutrient[key2][2]
+				})
+			}
+
+			// console.log("oneNutrientData", oneNutrientData);
+
+			modalCanvas.push(oneNutrientData);
+
+			// console.log("modalCanvas", modalCanvas);
+
+			// 모달에 x_content 생성
+			const modalContent2 = document.createElement("div");
+			modalContent2.className = "x_content";
+
+			const rowContainerCanvas = document.createElement("div");
+			rowContainerCanvas.className = "row";
+			rowContainerCanvas.style.height = "300px"
+
+			const colDivModalCanvas1 = document.createElement("div");
+			colDivModalCanvas1.className = "col-md-6";
+
+			const colDivModalCanvas2 = document.createElement("div");
+			colDivModalCanvas2.className = "col-md-6";
+
+			const modalCanvas1 = document.createElement("canvas");
+			modalCanvas1.className = "doughnut-chart-modal";
+			
+			const modalCanvas2 = document.createElement("canvas");
+			modalCanvas2.className = "bar-chart-modal";
+
+			colDivModalCanvas1.appendChild(modalCanvas1);
+			colDivModalCanvas2.appendChild(modalCanvas2);
+
+			rowContainerCanvas.appendChild(colDivModalCanvas1);
+			rowContainerCanvas.appendChild(colDivModalCanvas2);
+
+			// modalCanvas1.style.height = "300px"; 
+			// modalCanvas2.style.height = "300px"; 
+
+			modalContent2.appendChild(rowContainerCanvas);
+			modalBody.appendChild(modalContent2);
+
+			// 팝업 창 안에 표현되는 챠트 생성 부분 끝 =====================================
+
 			// 모달 헤더와 본문을 모달 내용에 추가
 			modalContent.appendChild(modalHeader);
 			modalContent.appendChild(modalBody);
@@ -809,6 +983,8 @@ const createPage = function() {
 		
 			// 모달 요소에 클래스 추가
 			modal.appendChild(modalDialog);
+
+			// 상세 정보 클릭 시 생기는 팝업창(modal) 생성 부분 끝 ================================
 
 			detailCell.appendChild(detailButton);
 			detailCell.appendChild(modal);
@@ -824,17 +1000,34 @@ const createPage = function() {
 		});
 		// 새로 생성한 요소를 부모 요소에 추가
 		parentElement.appendChild(rowDiv);
-		parentElement.appendChild(table);
-	
+		parentElement.appendChild(table);		
 	}
+	
+	// 모달 창 안에 있는 챠트 정보 세팅
+	for (let i = 0; i < modalCanvas.length; i++) {
+		oneNutrientDoughnutChart(modalCanvas[i], i);
+		oneNutrientBarChart(modalCanvas[i], i);
+		// console.log("챠트도넛 데이터", myDoughtnutChart2[i].data.datasets[0].data);
+		// console.log("전 데이터", modalCanvas[i][1].eating, modalCanvas[i][2].eating, modalCanvas[i][3].eating);
+	}
+	
+	// console.log("도넛캔버스 요소 확인 : ", $(".doughnut-chart-modal"));
+	// console.log("바캔버스 요소 확인 : ", $(".bar-chart-modal"));
 
+	// 음식 리스트(테이블 형식) 생성 부분 끝 ============================= 
+
+	// 아침 점심 저녁 간식별 음식 리스트 그리는 페이지(음식 페이지 왼쪽 구역) 끝 ============================================
+	
+	// 하루 섭취한 영양소 정보 표츌- 챠트, 프로그래스바 (음식 페이지 오른쪽 구역) ============================================
+	// 챠트 생성 코드는 html로 작성함
+
+	// 프로그래스바 생성 코드 ========================================================== 
 	const parentElement = document.querySelector('.all_nutrient');
-
-	console.log("nutrientCalc: ", nutrientCalc);
+	// console.log("nutrientCalc: ", nutrientCalc);
 
 	// 각각의 영양소 데이터 배열을 생성합니다.
-	// let nutrientData = [];
-	
+	let nutrientData = [];
+
 	for (meal in nutrientCalc) {
 		for (nutrient in nutrientCalc[meal]) {
 			sumNutrientCalc[nutrient] += nutrientCalc[meal][nutrient];
@@ -876,7 +1069,6 @@ const createPage = function() {
 		rightAlignedH5.style.textAlign = "right"; // 텍스트 오른쪽 정렬 스타일 적용
 		rightAlignedH5.style.marginLeft = "auto"; // 왼쪽 마진을 auto로 설정하여 오른쪽 정렬 스타일 적용
 
-
 		// progress 요소 생성
 		const progressDiv = document.createElement("div");
 		progressDiv.className = "progress";
@@ -910,6 +1102,9 @@ const createPage = function() {
 		nutrientDiv.style.marginBottom = "5px";
 
 	});
+	// 프로그래스바 생성 코드 끝 ============================================================= 
+	// 하루 섭취한 영양소 정보 표츌- 챠트, 프로그래스바 (음식 페이지 오른쪽 구역) ============================================
+
 }
 
 // MonggoDB에서 회원의 상세정보를 가져와서 저장 후
@@ -927,7 +1122,7 @@ const loadmember = async () => {
 		"otherfood":memberDailyInfo[(day_n - 1)].diet.otherfood
 	};
 
-	console.log(meal);
+	// console.log(meal);
 
 	// 음식정보가 있는 MariaDB에 접근하기 위해
 	// meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후
@@ -961,6 +1156,8 @@ const loadmember = async () => {
 	// 영양소 정보 합산 실행
     calcNutrient();
 	createPage();
+
 };
 
 loadmember();
+console.log("테스트 날짜 :", end.toISOString());
