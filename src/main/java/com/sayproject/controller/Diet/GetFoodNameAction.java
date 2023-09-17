@@ -76,6 +76,7 @@ public class GetFoodNameAction implements Action {
         // mealTime 을 다시 json파일로 변경
         String mealData = gson.toJson(mealTime);
         
+        System.out.println("mealData : " + mealData);
         // 해당 과정은 공부가 필요함
         response.setContentType("text/json;charset=utf-8");
         PrintWriter out = response.getWriter();
