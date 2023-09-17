@@ -2,6 +2,7 @@ package com.sayproject.controller.Main.Member.TrainerLogin;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,17 +32,21 @@ public class TrainerLoginCheckAction implements Action {
         if (stringNullCheck(password)) {
             Script.back("비밀번호가 입력되지 않았습니다.", response);
         }
+
+        final String loginType = request.getParameter("loginType");
+        if (stringNullCheck(loginType)) {
+            Script.back("TYPE ERROR", response);
+        }
         TrainerLoginDAO trainerLoginDAO = new TrainerLoginDAO();
         TrainerAccount trainerAccount = new TrainerAccount();
         trainerAccount.setId(email);
         trainerAccount.setPassword(password);
         // DB 접근해 id, password 확인해 해당 정보가 존재하는지 확인한다.
         TrainerAccount returnTrainerAccount = trainerLoginDAO.trainerLoginCheck(trainerAccount);
-
+        HttpSession session = request.getSession();
         // 존재하는 정보를 세션에 저장시킨다.
-        if (returnTrainerAccount != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginType", "trainer");
+        if (returnTrainerAccount != null) {            
+            session.setAttribute("loginType", loginType);
             session.setAttribute("memberObjectId", returnTrainerAccount.getNo());
             session.setAttribute("emailOrId", returnTrainerAccount.getId());
             session.setAttribute("name", returnTrainerAccount.getName());
@@ -49,7 +54,9 @@ public class TrainerLoginCheckAction implements Action {
             session.setAttribute("profileImageUrl", returnTrainerAccount.getPhotopath());
             response.sendRedirect("/Main.say?c=main");
         } else {
-            Script.back("입력하신 계정 정보가 틀립니다.", response);
+            request.setAttribute("loginError", "아이디나 비밀번호가 틀렸습니다.");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Main.say?c=trainerLogin");
+            requestDispatcher.forward(request, response);
         }
     }
 

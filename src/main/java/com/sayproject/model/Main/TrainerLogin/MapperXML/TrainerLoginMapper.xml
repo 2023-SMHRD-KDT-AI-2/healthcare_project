@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sayproject.model.Main.TrainerLogin.MapperXML">
-    <!--카카오
-    아이디 중보체크-->
+    <!-- 모든 트레이너 정보 -->
+    <select id="getAllTrainer" resultType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"> 
+        SELECT no, name, email, nickname, photopath, age FROM trainer</select>
+    <!-- 트레이너 로그인 정보 id, password -->
     <select id="trainerLogin"
         parameterType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"
-        resultType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"> SELECT no, name, id,
-        nickname, photopath FROM trainer WHERE id=#{id} and password=#{password}</select>
+        resultType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"> SELECT no, name, email,
+        nickname, photopath, age FROM trainer WHERE email=#{emaiil} and password=#{password}</select>
 </mapper>
