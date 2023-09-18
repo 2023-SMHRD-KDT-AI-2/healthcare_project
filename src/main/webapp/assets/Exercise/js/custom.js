@@ -1,10 +1,28 @@
+
+// 현재 날짜와 시간을 가져오는 Date 객체 생성
+const currentDate = new Date();
+
+// 현재 날짜를 출력하거나 다루고 싶은 방식으로 포맷팅합니다.
+// 예를 들어, 아래와 같이 포맷팅할 수 있습니다.
+let sysYear = currentDate.getFullYear(); // 연도
+
+let sysMonth_pre = currentDate.getMonth() + 1; // 월 (0부터 시작하므로 1을 더해줍니다)
+let sysMonth = sysMonth_pre.toString().padStart(2, 0);
+
+let sysDay_pre = currentDate.getDate(); // 일
+let sysDay = sysDay_pre.toString().padStart(2, 0);
+
+// 날짜와 시간을 원하는 형식으로 출력
+console.log(`현재 날짜: ${sysYear}-${sysMonth}-${sysDay}`);
+
 // MonggoDB에 데이터를 받아오기 위해 ajax통신 필요
 // ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
-let year = "2023"; //년도
-let month = "09"; //월
-let day = "15"; //일
+let year = sysYear.toString(); //년도
+let month = sysMonth.toString(); //월
+let day = sysDay.toString(); //일
 let day_n = Number(day); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
-let memberID = "3"; // 회원ID
+let memberID = number; // 회원ID
+
 
 // ajax요청에 사용되는 rul
 let moveUrl = `http://localhost/Members.say?c=member&collection=${year + month
@@ -22,6 +40,7 @@ let memberDailyInfo;
 //         비동기 통신 시 await를 걸어놓지 않으면 데이터를 받아오기도 전에
 //         다음 동작으로 넘어가서 데이터를 못 받은 채로 로직이 실행될 수 있음
 const loadMemberDailyInfo = async () => {
+    console.log(moveUrl)
     await $.ajax({
         url: moveUrl,
         success: function (data) {
@@ -36,38 +55,24 @@ const loadMemberDailyInfo = async () => {
     });
 };
 
+function removeAllChildren(parentElementId) {
+    // 부모 요소를 가져옵니다.
+    const parentElement = document.querySelector(parentElementId);
+    
+    // 부모 요소가 존재하면 모든 자식 요소를 제거합니다.
+    if (parentElement) {
+        while (parentElement.firstChild) {
+            parentElement.removeChild(parentElement.firstChild);
+        }
+    }
+}
+
 // MonggoDB에서 회원의 상세정보를 가져와서 저장 후
 // MonggoDB에서 가져온 food_code로 MariaDB에 있는 음식정보 테이블을 참조 후
 // 음식별 영양정보 리스트를 받아오는 함수
 const loadmember = async () => {
     // MonggoDB에 ajax요청 후 데이터를 받을 때까지 대기
     await loadMemberDailyInfo();
-
-    // 음식정보가 있는 MariaDB에 접근하기 위해
-    // meal을 전송 -> meal이 가지고 있는 food_cood로 MariaDB를 참조 후
-    // 음식별 영양정보 수신
-    // const sendFoodCode = async () => {
-    //     await $.ajax({
-    //         url : "/Diet.say?c=foodCode", // 해당 페이지에서 데이터 송/수신이 동시에 일어남
-    //         type : "POST",
-    //         data : {
-    // 			// meal을 전송하기 위해 JSON으로 변환 후 foodCode에 저장
-    //             foodCode : JSON.stringify(meal)
-    //         },
-    //         dataType : 'json',
-    //         success: function(data) {
-    // 			// MariaDB에 참조 후 조회한 음식정보를 nutrientReceive에 저장
-    //             nutrientReceive = data;
-    //             console.log("전송 성공");
-    //         },
-    //         error: function(error) {
-    //             console.log("전송 실패", error);
-    //         }
-    //     })
-    // }
-
-    // ajax이 끝날 때까지 대기
-    /*     await sendFoodCode(); */
 
     // 차트에서 쓸 쿨톤 색깔들
     let goodColor = [
@@ -96,10 +101,40 @@ const loadmember = async () => {
         dayExerciseColor.push(goodColor[i]);
     }
 
+    console.log("운동 종류", dayExerciseKinds);
+    console.log("운동 시간", dayExerciseTimeMinute);
+
     // console.log(dayExerciseTimeMinute);
     // console.log(dayExerciseKinds);
 
     // 가로 바 차트 (몽고 db데이터로만 구동 완료!)
+
+    // 챠트 그리는 로직
+    const divDoughnut = document.querySelector('#donutChart_div');
+    const canvas1 = document.createElement('canvas');
+    canvas1.id = "donutChart";
+    canvas1.style.width = "280px";
+    canvas1.style.height = "280px";
+
+    divDoughnut.appendChild(canvas1);
+
+    const divlineChart = document.querySelector('.line_chart-container');
+    const canvas2 = document.createElement('canvas');
+    canvas2.id = "line-chart";
+
+    divlineChart.appendChild(canvas2);
+
+    const divWidthBarChart = document.querySelector('.widthBarChart-container');
+    const canvas3 = document.createElement('canvas');
+    canvas3.id = "widthBar-chart";
+
+    divWidthBarChart.appendChild(canvas3);
+
+    const divHeightChart = document.querySelector('.heightChart-container');
+    const canvas4 = document.createElement('canvas');
+    canvas4.id = "heightBar-chart";
+
+    divHeightChart.appendChild(canvas4);
 
     let widthBarChart = $("#widthBar-chart");
     let myWidthBarChart = new Chart(widthBarChart, {
@@ -174,15 +209,25 @@ const loadmember = async () => {
     console.log(nowWeight);
     console.log(exerciseInfo);
 
-
-
     // MET를 활용해서 칼로리 소모량 구하는 함수
     // 칼로리 소모량 구하는 식 MET * 체중 * 시간(분/60) == 칼로리 소비량
 
+    // MetCalculation(met);
     const MetCalculation = function (met, weight, time_minute) {
         var CalResult = met * weight * (time_minute / 60);
         return CalResult;
     };
+
+    let dayExerciseCal = memberDailyInfo[day_n - 1].exercise;
+    let dayExerciseweight = memberDailyInfo[day_n - 1].status.weight;
+
+    let dayExerciseCalList = [];
+
+    // 일 운동별 칼로리 소모량 구하기
+    for (let i = 0; i < dayExerciseCal.length; i++) {
+       dayExerciseCalList.push(Math.floor(MetCalculation(dayExerciseCal[i].met, dayExerciseweight, dayExerciseCal[i].time_minute)));
+    }
+
 
 
     // 도넛 차트
@@ -193,7 +238,7 @@ const loadmember = async () => {
             labels: dayExerciseKinds,
             datasets: [
                 {
-                    data: [15, 19, 20, 15],
+                    data: dayExerciseCalList,
                     backgroundColor: dayExerciseColor,
                 },
             ],
@@ -208,8 +253,9 @@ const loadmember = async () => {
     const showExercise = document.getElementById('showExercise')
     console.log(showExercise)
     let dayExerciseKindsNum = 0
-    const iClassdayExerciseKinds = [ "fa fa-square blue", "fa fa-square red", "fa fa-square blue", "fa fa-square blue", "fa fa-square blue", "fa fa-square blue"]
-    dayExerciseKinds.forEach(element => {
+    const iClassdayExerciseKinds = [ "fa fa-square fa_custom1", "fa fa-square fa_custom2", "fa fa-square fa_custom3", "fa fa-square fa_custom4", 
+                                     "fa fa-square fa_custom5", "fa fa-square fa_custom6", "fa fa-square fa_custom7"]
+    dayExerciseKinds.forEach((element,index) => {
         console.log('test console',element)
         showExercise.innerHTML += `
         <div class="container">
@@ -219,14 +265,14 @@ const loadmember = async () => {
             + iClassdayExerciseKinds[dayExerciseKindsNum] +
             `"></i>
           </div>
-          <div class="col-md-8 mb-2">
+          <div class="col-md-6 mb-2">
           `
           + element +
           `
           </div>
-          <div class="col-md-3 mb-2">
+          <div class="col-md-5 mb-2">
           `
-          + element +
+          + dayExerciseCalList[index] + " cal" +
           `
           </div>
         </div>
@@ -235,24 +281,54 @@ const loadmember = async () => {
         dayExerciseKindsNum += 1
     });
     
+    
+    
+    let calorieSum = 0;
+    let calorieSumList = [];
+    
+    // 일별 총 칼로리 소모량 구하기.
+    // calorieSumList에 일별 총 칼로리 소모량을 넣어둠.
+    for(let i = 0; i< memberInfo.dailyInfo.length; i++) {
+        for(let j = 0; j< memberDailyInfo[i].exercise.length; j++){
+            calorieSum += memberInfo.dailyInfo[i].exercise[j].calorie;
+        }
+        calorieSumList.push(calorieSum);
+        calorieSum = 0;
+    }
+    
+    console.log("칼로리썸 : ", calorieSumList);
+    
+    console.log("여깃지롱2~" , memberInfo.dailyInfo);
+    
+    
+    // 매일 입력받은 칼로리 정보를 담을 리스트 선언 
+    let dayOfTheWeek_1 = [];
+    let dayCalorieSumList = [];
+
+
+    for(let i = day_n-1; i > day_n-8; i-- ) {
+        if(i>0){
+        dayOfTheWeek_1.push(memberInfo.dailyInfo[i].dayOfTheWeek);
+        dayCalorieSumList.push(Math.floor(calorieSumList[i]));
+        }else{
+            break;
+        }
+    }
+  
+    // 오늘을 기준으로 -7 동안의 요일을 담은 리스트
+    let dayOfTheWeek = dayOfTheWeek_1.reverse()
+    console.log("dayOfTheWeek : ", dayOfTheWeek);
+
     // 세로 바 차트
     let heightBarChart = $("#heightBar-chart");
     let myHeightBarChart = new Chart(heightBarChart, {
         type: "bar",
         data: {
-            labels: [
-                "월요일",
-                "화요일",
-                "수요일",
-                "목요일",
-                "금요일",
-                "토요일",
-                "일요일",
-            ],
+            labels: dayOfTheWeek,
             datasets: [
                 {
                     label: "단위 (kcal)",
-                    data: [230, 250, 150, 170, 200, 160, 210],
+                    data: dayCalorieSumList,
                     backgroundColor: goodColor,
                     borerColor: goodColor,
                     hoverBackgroundColor: goodColor,
@@ -267,6 +343,48 @@ const loadmember = async () => {
             },
         },
     });
+
+    $('#single_calCustom').daterangepicker({
+        singleDatePicker: true,
+        singleClasses: "picker_1"
+    }, function (start, end, label) {
+        globalEnd = end.toISOString();
+        console.log(start.toISOString(), end.toISOString(), label);
+
+		let dateString = globalEnd;
+		let dateObject = new Date(dateString);
+
+		let clickYear = String(dateObject.getFullYear()); // 연도 추출
+		let clickMonth = String(dateObject.getMonth() + 1).padStart(2, '0'); // 월 추출 (0부터 시작하므로 1을 더하고 2자리 문자열로 변환)
+		let clickDay = String(dateObject.getDate()).padStart(2, '0'); // 일 추출
+
+		console.log("달력 클릭 시 날짜", clickYear, clickMonth, clickDay);
+
+		year = clickYear;
+		month = clickMonth;
+		day = clickDay;
+
+		// MonggoDB에 데이터를 받아오기 위해 ajax통신 필요
+		// ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
+		urlYear = year //년도
+		urlMonth = month; //월
+		urlDay = day; //일
+		day_n = Number(urlDay); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
+
+		// ajax요청에 사용되는 rul
+		moveUrl = `http://localhost/Members.say?c=member&collection=${
+			urlYear + urlMonth
+		}&fieldName=_id&value=${memberID}&valueType=int&dataType=json`;
+
+        removeAllChildren('#donutChart_div');
+        removeAllChildren('.line_chart-container');
+        removeAllChildren('.widthBarChart-container');
+        removeAllChildren('.heightChart-container');
+        removeAllChildren('#showExercise');
+
+		loadmember();
+    });
+
 };
 
 loadmember();
