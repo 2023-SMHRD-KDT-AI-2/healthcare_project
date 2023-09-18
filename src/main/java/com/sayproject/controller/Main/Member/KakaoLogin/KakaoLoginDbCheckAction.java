@@ -59,51 +59,25 @@ public class KakaoLoginDbCheckAction implements Action {
 			KakaoLoginInfo memberDailyData = gson.fromJson(kakaoInfo, KakaoLoginInfo.class);
 			KakaoAccount kakaoAccount = memberDailyData.getKakaoAccount();
 			Profile profile = kakaoAccount.getProfile();
-
-			/*
-			 * memberDailyData 에서 정보를 가져오는 법 일부의 정보만 가져왔다. 추가로 가져와야 하는 데이터가 더 존재함.
-			 */
-			// request.setAttribute("memberDailyData", memberDailyData);
-			// System.out.println("memberDailyData.getId() : " + memberDailyData.getId());
-			// System.out.println("memberDailyData.getConnectedAt() : " +
-			// memberDailyData.getConnectedAt());
-
-			// request.setAttribute("memberObjectId", memberDailyData.getId());
-
-			// System.out.println("kakaoAccount.getEmail() : " + kakaoAccount.getEmail());
-			// request.setAttribute("emailOrId", kakaoAccount.getEmail());
-
-			// System.out.println("profile.getNickname() : " + profile.getNickname());
-			// System.out.println("profile.getIsDefaultImage() : " +
-			// profile.getIsDefaultImage());
-			// System.out.println("profile.getThumbnailImageUrl() : " +
-			// profile.getThumbnailImageUrl());
-			// System.out.println("profile.getProfileImageUrl() : " +
-			// profile.getProfileImageUrl());
-			System.out.println("카카오계쩡 : " +  kakaoAccount.getEmail());
+			
+			
 			HttpSession session = request.getSession();
-			session.setAttribute("memberObjectId", memberDailyData.getId());
-			session.setAttribute("emailOrId", kakaoAccount.getEmail());
-			session.setAttribute("nickname", profile.getNickname());
-			session.setAttribute("isDefaultImage", profile.getIsDefaultImage());
-			session.setAttribute("thumbnailImageUrl", profile.getThumbnailImageUrl());
-			session.setAttribute("profileImageUrl", profile.getProfileImageUrl());
-
-			/******** json to String ***************/
-			// String jSon = gson.toJson(memberDailyData, KakaoLoginInfo.class);
-			// System.out.println(jSon);
-
-			/********
-			 * Kakao DB 에 접근해 해당 아이디가 존재하는지 확인한다. 존재한다면 /Main.say 페이지로 이동 존재하지 않는다면 추가 정보 입력
-			 * 페이지로 이동하게 한다.
-			 ********/
-
+	
 			// id중복체크
 
 			KakaoIdDuplicationCheckDAO dao = new KakaoIdDuplicationCheckDAO();
-
-			int cnt = dao.kakaoIdDuplicationCheck(kakaoAccount.getEmail());
-
+			
+			
+			System.out.println("objectID 체크 : " +  (memberDailyData.getId()));
+			
+			
+			
+			int cnt = dao.kakaoIdDuplicationCheck(memberDailyData.getId());
+			
+			
+			System.out.println("objecId DAO 체크 : "+ cnt );
+			
+			//이미 카카오 회원입니다!
 			if (cnt > 0) {
 				/********** DB 에서 kakao 정보로 가입한 기록이 있는지 확인 ***********/
 				/********** DB 에 정보가 존재한다면 디비 정보 업데이트 한 후 메인페이지로 이동 시킨다 ***/
@@ -112,11 +86,18 @@ public class KakaoLoginDbCheckAction implements Action {
 				 * 1. 일반 회원이 카카오를 통해 로그인한다. 2. 카카오에서 code 값을 받아온다. 3. 해당 code 를 이용해 access_token
 				 * 값을 구해온다. 4. token 을 이용해 사용자의 카카오 정보를 가져온다. 5. 이후 해당 정보를 DB 에 기록한다. 6. 카카오 정보
 				 * 외에 필요한 정보를 받는 페이지로 이동하여 입력 받는다. 7. 만약 추가 정보를 입력하지 않은 상태에서는 추가 정보 입력 페이지로 강제
-				 * 이동하게 한다. 8. 추가 정보를 입력하여야만 해당 계정이 활성화 되게 한다.
-				 */			System.out.println("카카오계쩡 : " +  kakaoAccount.getEmail());
+				 * 이동하게 한다. 8. 추가 정보를 입력하여야만 해당 계정이 활성화 되게 한다.*/
+				
+				session.setAttribute("memberObjectId", memberDailyData.getId());
+				session.setAttribute("emailOrId", kakaoAccount.getEmail());
+				session.setAttribute("nickname", profile.getNickname());
+				session.setAttribute("isDefaultImage", profile.getIsDefaultImage());
+				session.setAttribute("thumbnailImageUrl", profile.getThumbnailImageUrl());
+				session.setAttribute("profileImageUrl", profile.getProfileImageUrl());
 
+				
 
-				// 기존 회원이면!!! input페이지로 session과 함께 넘어간다!!!
+				//기존 회원이면!!! input페이지로 session과 함께 넘어간다!!!
 				GeneralLoginDAO generallogindao = new GeneralLoginDAO();
 				GeneralJoin data = generallogindao.generalSession(kakaoAccount.getEmail());
 				System.out.println("data : " + data);
@@ -131,7 +112,7 @@ public class KakaoLoginDbCheckAction implements Action {
 				session.setAttribute("gender", data.getGender());
 				session.setAttribute("height", data.getHeight());
 				session.setAttribute("job", data.getJob());
-				session.setAttribute("kaka_id", data.getKaka_id());
+				
 				session.setAttribute("nickname", data.getName());
 				session.setAttribute("no", data.getNo());
 				session.setAttribute("phone_number", data.getPhone_number());
@@ -141,6 +122,44 @@ public class KakaoLoginDbCheckAction implements Action {
 
 				response.sendRedirect("/Members.say?c=input");
 			} else {
+				
+					
+					/*
+					 * memberDailyData 에서 정보를 가져오는 법 일부의 정보만 가져왔다. 추가로 가져와야 하는 데이터가 더 존재함.
+					 */
+					// request.setAttribute("memberDailyData", memberDailyData);
+					// System.out.println("memberDailyData.getId() : " + memberDailyData.getId());
+					// System.out.println("memberDailyData.getConnectedAt() : " +
+					// memberDailyData.getConnectedAt());
+
+					// request.setAttribute("memberObjectId", memberDailyData.getId());
+
+					// System.out.println("kakaoAccount.getEmail() : " + kakaoAccount.getEmail());
+					// request.setAttribute("emailOrId", kakaoAccount.getEmail());
+
+					// System.out.println("profile.getNickname() : " + profile.getNickname());
+					// System.out.println("profile.getIsDefaultImage() : " +
+					// profile.getIsDefaultImage());
+					// System.out.println("profile.getThumbnailImageUrl() : " +
+					// profile.getThumbnailImageUrl());
+					// System.out.println("profile.getProfileImageUrl() : " +
+					// profile.getProfileImageUrl());
+					System.out.println("카카오계쩡 : " +  kakaoAccount.getEmail());
+					
+					session.setAttribute("memberObjectId", memberDailyData.getId());
+					session.setAttribute("emailOrId", kakaoAccount.getEmail());
+					session.setAttribute("nickname", profile.getNickname());
+					session.setAttribute("isDefaultImage", profile.getIsDefaultImage());
+					session.setAttribute("thumbnailImageUrl", profile.getThumbnailImageUrl());
+					session.setAttribute("profileImageUrl", profile.getProfileImageUrl());
+
+					/******** json to String ***************/
+					// String jSon = gson.toJson(memberDailyData, KakaoLoginInfo.class);
+					// System.out.println(jSon);
+
+					/********
+					 * Kakao DB 에 접근해 해당 아이디가 존재하는지 확인한다. 존재한다면 /Main.say 페이지로 이동 존재하지 않는다면 추가 정보 입력
+					 * 페이지로 이동하게 한다.
 				/********** DB 에 가입한 정보가 없다면 추가 정보 입력 페이지로 이동. ***********************/
 				/********** DB 에 모든 정보를 입력하기 전까지는 session 에 저장하지 않는다. ****************/
 				RequestDispatcher dis = request.getRequestDispatcher("/Main.say?c=memberAddInfo&loginType=kakao");

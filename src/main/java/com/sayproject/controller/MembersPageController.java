@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sayproject.controller.Main.Member.RegistAttendenceAction;
 import com.sayproject.controller.Members.MemberMainAction;
 import com.sayproject.controller.Members.MembersListAction;
 import com.sayproject.controller.Members.MembersListJsonAction;
@@ -51,6 +52,10 @@ public class MembersPageController {
 		/********* 회원의 일일의 식단, 운동, 키, 몸무게 정보를 form, action 하는 주소 **********/
 		if (cmd.equals("inputProcess")) {
 			return new MemberDailyInfoInputProcessAction();
+		}
+		/***** 출석체크하는 주소******/
+		if (cmd.equals("registAttendence")) {
+			return new RegistAttendenceAction();
 		}
 		/******* 기본 페이지로 이동 ******/
 		return new MemberMainAction();
