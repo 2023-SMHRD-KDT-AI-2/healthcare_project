@@ -30,6 +30,11 @@
 
 <title>HealthCare | SAYPROJECT</title>
 <jsp:include page="/WEB-INF/views/include/header_css.jsp" />
+
+<!-- FullCalendar -->
+<link href="assets/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+<link href="assets/vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
+
 <!-- Custom Theme Style -->
 <link href="assets/Diet/css/custom.css" rel="stylesheet" />
 <link href="assets/Diet/css/custom-d.css" rel="stylesheet" />
@@ -138,9 +143,31 @@
 
 					<div class="col-md-3 col-sm-12">
 						<div class="x_panel">
-							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="x_title">
+									  <h2>Calendar Events <small>Sessions</small></h2>
+									<div class="clearfix"></div>
+									</div>
+									<div class="x_content">				  
+										<fieldset>
+											<div class="control-group">
+											  <div class="controls">
+												<div class="col-md-11 xdisplay_inputx form-group row has-feedback">
+												  <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="First Name" aria-describedby="inputSuccess2Status">
+												  	<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+												  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+												</div>
+											  </div>
+											</div>
+										</fieldset>				  
+									</div>								
+								</div>
+							</div>
 						</div>
 					</div>
+					<div class="clearfix"></div>
+				</div>
 
 				<div class="clearfix"></div>
 			</div>
@@ -163,6 +190,11 @@
 <script src="assets/Diet/js/mock.js"></script>
 <script src="assets/Diet/js/source.js"></script>
 <script src="assets/Diet/js/util.js"></script>
+
+<!-- FullCalendar -->
+<script src="assets/vendors/moment/min/moment.min.js"></script>
+<script src="assets/vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+
 <script src="assets/Diet/js/custom.js"></script>
 <script src="assets/Diet/js/custom-d.js"></script>
 

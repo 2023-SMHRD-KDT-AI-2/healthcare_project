@@ -23,6 +23,7 @@ public class MemberInfo {
 	private String kakao_id;
 	private String credit_card;
 	private String expiration_day;
+	private String schedule;
 	
 	
 	

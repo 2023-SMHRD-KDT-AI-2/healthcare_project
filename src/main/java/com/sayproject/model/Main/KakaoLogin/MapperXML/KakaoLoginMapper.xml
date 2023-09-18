@@ -4,25 +4,21 @@
 	
 	<!--카카오 아이디 중보체크-->
 	<select id="kakaoIdDuplicate" parameterType="string" resultType="int">
-		SELECT count(id) FROM kakao_login WHERE id=#{memberObjectId}
+		SELECT count(idOrEmail) FROM members WHERE idOrEmail=#{idOrEmail}
 	</select>
 	
 	
 	<!--카카오 회원가입-->
 	<insert id="kakaoJoin" parameterType="com.sayproject.model.Main.KakaoLogin.KakaoJoin">
-		INSERT INTO kakao_login (id,email,profile_image_url,nickname,isDefaultImage,thumbnailImageUrl)
+		INSERT INTO kakao_login (id,email,profile_image_url,nickname,isDefaultImage)
 		VALUES(
 		#{memberObjectId},
 		#{emailOrId},
 		#{profileImageUrl},
 		#{nickname},
-		#{isDefaultImage},
-		#{thumbnailImageUrl}
+		#{isDefaultImage}
+		
 		) 
-		
-		
-		
-		
 		
 	</insert>
 </mapper>

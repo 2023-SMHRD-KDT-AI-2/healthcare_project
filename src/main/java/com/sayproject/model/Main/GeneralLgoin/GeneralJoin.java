@@ -29,6 +29,7 @@ public class GeneralJoin {
 	private String kaka_id;
 	private String credit_card;
 	private String expiration_day;
+	private String schedule;
 	
 	
 

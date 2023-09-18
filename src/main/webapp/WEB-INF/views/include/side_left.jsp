@@ -43,6 +43,8 @@
 			<ul class="nav side-menu">
 				<li><a href="/Main.say?c=main"><i class="fa fa-home"></i>
 						Home <span class="fa fa-chevron-down"></span></a></li>
+				<li><a href="/Main.say?c=allTrainerList"><i class="fa fa-home"></i>
+						전체 트레이너 정보 <span class="fa fa-chevron-down"></span></a></li>
 				<li><a><i class="fa fa-edit"></i> 회원 정보 <span
 						class="fa fa-chevron-down"></span></a>
 					<ul class="nav child_menu">

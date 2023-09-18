@@ -6,14 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sayproject.controller.Main.AllTrainerListInformationPageAction;
 import com.sayproject.controller.Main.LoginAction;
 import com.sayproject.controller.Main.LogoutAction;
 import com.sayproject.controller.Main.MainAction;
 import com.sayproject.controller.Main.Member.MemberAddInfoAction;
 import com.sayproject.controller.Main.Member.PersonalMemberAdd2;
 import com.sayproject.controller.Main.Member.BossLogin.BossLoginCheckAction;
+import com.sayproject.controller.Main.Member.BossLogin.BossLoginPageAction;
 import com.sayproject.controller.Main.Member.GeneralLogin.GeneralIDCheckAction;
 import com.sayproject.controller.Main.Member.GeneralLogin.GeneralLoginAction;
+import com.sayproject.controller.Main.Member.GeneralLogin.GeneralLoginCheckAction;
+import com.sayproject.controller.Main.Member.GeneralLogin.GeneralLoginPageAction;
 import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginDbCheckAction;
 import com.sayproject.controller.Main.Member.KakaoLogin.KakaoLoginRedirectAction;
 import com.sayproject.controller.Main.Member.TrainerLogin.TrainerLoginCheckAction;
@@ -72,6 +76,18 @@ public class MainPageController {
 		if (cmd.equals("memberLogin")) {
 			return new GeneralLoginAction();
 		}
+		// 일반 회원 로그인 페이지로 이동
+		if (cmd.equals("generalLogin")) {
+			return new GeneralLoginPageAction();
+		}
+		// 일반 회원 아이디, 비밀번호 체크 후 메인페이지로 이동 시키거나 오류시 다시 로그인 페이지로 이동
+		if (cmd.equals("generalLoginCheck")) {
+			return new GeneralLoginCheckAction();
+		}
+		// 트레이너 로그인페이지로 로그인
+		if (cmd.equals("bossLogin")) {
+			return new BossLoginPageAction();
+		}
 		// 최고 관리자 로그인 : id, pw 전송 받아 db 와 비교
 		if (cmd.equals("bossLoginCheck")) {
 			return new BossLoginCheckAction();
@@ -83,6 +99,9 @@ public class MainPageController {
 		// 트레이너 로그인 : id, pw 전송 받아 db 와 비교
 		if (cmd.equals("trainerLoginCheck")) {
 			return new TrainerLoginCheckAction();
+		}
+		if (cmd.equals("allTrainerList")) {
+			return new AllTrainerListInformationPageAction();
 		}
 		return new LoginAction();
 	}

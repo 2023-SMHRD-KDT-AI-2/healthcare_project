@@ -14,7 +14,7 @@ public class KakaoJoin {
 	private String profileImageUrl;	//profileimageurl
 	private String nickname;		//nickname
 	private String isDefaultImage;	//isDefaultImage		
-	private String thumbnailImageUrl; //thumbnailImageUrl
+	
 	
 	
 	
