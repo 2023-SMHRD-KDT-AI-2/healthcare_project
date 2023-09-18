@@ -21,14 +21,34 @@ public class ExerciseSub2Action  implements Action {
 	    response.setContentType("text/html; charset=utf-8");
 	    request.setCharacterEncoding(CHARSET);
 
+	    request.setAttribute("no", request.getParameter("no")) ;
+	    
+	    request.setAttribute("name", request.getParameter("name")) ;
+	    
+	    request.setAttribute("age", request.getParameter("age")) ;
+	    
+	    request.setAttribute("gender", request.getParameter("gender")) ;
+	    
+	    request.setAttribute("weight", request.getParameter("weight")) ;
+	    
+	    request.setAttribute("height", request.getParameter("height")) ;
+	    
+	    
+	    
 	    ExerciseDAO dao = new ExerciseDAO();
 	    MemberInfo memberinfo = new MemberInfo();// 데이터를 DAO로 보내기
-	    memberinfo.setName("김진호");
-	    
+	    memberinfo.setName(request.getParameter("name"));
 	    MemberInfo info = dao.info(memberinfo);
+	    System.out.println("사진 경로 : " + memberinfo.getPhotopath());
 	    
 	    HttpSession session = request.getSession();
 		session.setAttribute("info", info); // info 하고 하는 이름으로 info데이터를 보내준다
+		
+		int cnt = dao.check(request.getParameter("name"));
+		
+		request.setAttribute("check", cnt);
+		
+		System.out.println("cnt확인:"+cnt);
 		
 	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Exercise/exercise_sub2.jsp");
 	    dis.forward(request, response);

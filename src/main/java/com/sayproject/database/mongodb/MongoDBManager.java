@@ -22,7 +22,7 @@ public class MongoDBManager {
   }
 
   public MongoDatabase dbManager() {
-    String host = "cluster0.q3lazme.mongodb.net";    
+    String host = "cluster0.as1cuz0.mongodb.net";    
     String username = "sentimentalhoon";
     String password = "L1XIq4QEJRuBXEmb";
     String dbName = "sayproject";
