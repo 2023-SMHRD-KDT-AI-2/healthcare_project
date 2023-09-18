@@ -26,7 +26,15 @@ $(document).ready(function () {
 					const year = date.getFullYear();
 					const month = date.getMonth();
 					const day = date.getDay()
-					return '<a href="Diet.say?c=main'
+					return '<a href="Exercise.say?c=sub2'
+					+ '&no=' + row.no
+					 + '&name=' + row.name 
+					 + '&age=' + row.age 
+					 + '&gender=' + row.gender 
+					 + '&weight=' + row.weight 
+					 + '&height=' + row.height
+					 + '&trainer=' + row.trainer
+					+ '">운동</a><a href="Diet.say?c=main'
 					+ '&no=' + row.no
 					 + '&name=' + row.name 
 					 + '&age=' + row.age 
