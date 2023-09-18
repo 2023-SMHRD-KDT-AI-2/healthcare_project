@@ -25,7 +25,16 @@ $(document).ready(function () {
 					const date = new Date();
 					const year = date.getFullYear();
 					const month = date.getMonth();
-					return '<a href="Members.say?c=member&collection=' + year + (month >= 10 ? month : '0' + month) + '&fieldName=_id&value=' + row.no + '&valueType=int&dataType=json"><img src="images//Member//example.jpg" width="50px"></a>';
+					const day = date.getDay()
+					return '<a href="Diet.say?c=main'
+					+ '&no=' + row.no
+					 + '&name=' + row.name 
+					 + '&age=' + row.age 
+					 + '&gender=' + row.gender 
+					 + '&weight=' + row.weight 
+					 + '&height=' + row.height
+					 + '&trainer=' + row.trainer
+					  +'"><img src="images//Member//example.jpg" width="50px"></a>';
 				}
 			},
             {
