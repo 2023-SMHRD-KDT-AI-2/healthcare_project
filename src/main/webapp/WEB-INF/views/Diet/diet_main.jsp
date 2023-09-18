@@ -9,14 +9,14 @@
 <%@page import="com.google.gson.Gson"%>
 
 <%
-	String mealData = (String) request.getAttribute("mealData");
+	
 	
 	// ArrayList<Diet> breakfastDietList = (ArrayList) request.getAttribute("breakfastDietList");
 	// ArrayList<Diet> lunchDietList = (ArrayList) request.getAttribute("lunchDietList");
 	// ArrayList<Diet> dinnerDietList = (ArrayList) request.getAttribute("dinnerDietList");
 	// ArrayList<Diet> otherfoodDietList = (ArrayList) request.getAttribute("otherfoodDietList");
-	
 	// System.out.print(breakfastDietList);
+	
 %>
 
 <!DOCTYPE html>
@@ -56,15 +56,28 @@
 
 			<!-- page content -->
 			<div class="right_col" role="main">
-								<div class="page-title">
+				<div class="page-title">
 					<div class="title_left">
 						<h3>영양 섭취 정보</h3>
+					</div>
+					<div class="title_right">
+						<fieldset>
+							<div class="control-group">
+							  <div class="controls">
+								<div class="col-md-11 xdisplay_inputx form-group row has-feedback">
+								  <input type="text" class="form-control has-feedback-left" id="single_calCustom" placeholder="First Name" aria-describedby="inputSuccess2Status">
+									  <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+								  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+								</div>
+							  </div>
+							</div>
+						</fieldset>	
 					</div>
 				</div>
 				<div class="clearfix"></div>
 				
 					<!-- add food content -->
-					<div class="col-md-5 col-sm-12">
+					<div class="col-md-6 col-sm-12">
 						<div class="x_panel">
 							<div class="x_title">
 								<div class="title_left">
@@ -121,51 +134,21 @@
 					<!-- /add food content -->
 					
 					<!-- all nutrient content -->
-					<div class="col-md-4 col-sm-12">
+					<div class="col-md-6 col-sm-12">
 						<div class="x_panel">
 							<div class="x_title">
 								<div class="title_left"><h2>오늘 내가 먹은 영양소는?</h2></div>
 								<div class="clearfix"></div>
 							</div>
-							<div class="x_content">
-								<canvas id="doughtnut-chart1" style="margin-bottom: 20px;"></canvas>
+							<div id="all_nutrient_chart">
 							</div>
 							<div class="x_content">
-								<canvas id="bar-chart1" style="height: 300px; margin-bottom: 20px;"></canvas>
-							</div>
-							<div class="x_content">
-								<div class="all_nutrient">
+								<div id="all_nutrient_progressBar">
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /all nutrient content -->
-
-					<div class="col-md-3 col-sm-12">
-						<div class="x_panel">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="x_title">
-									  <h2>Calendar Events <small>Sessions</small></h2>
-									<div class="clearfix"></div>
-									</div>
-									<div class="x_content">				  
-										<fieldset>
-											<div class="control-group">
-											  <div class="controls">
-												<div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-												  <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="First Name" aria-describedby="inputSuccess2Status">
-												  	<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-												  <span id="inputSuccess2Status" class="sr-only">(success)</span>
-												</div>
-											  </div>
-											</div>
-										</fieldset>				  
-									</div>								
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="clearfix"></div>
 				</div>
 
@@ -195,8 +178,14 @@
 <script src="assets/vendors/moment/min/moment.min.js"></script>
 <script src="assets/vendors/fullcalendar/dist/fullcalendar.min.js"></script>
 
+<script>
+	// GetFoodName.java에서 request.setAttribute("no", request.getParameter("no")) 가 실행되면
+	// Diet.say?c=main으로 no가 넘어온다
+	// 넘어온 no는 jsp파일에서 먼저 스크립트 태그를 열어서 변수를 담아준 다음
+	// custom-d.js 에서 사용한다.
+	let receivedID = "${no}";
+</script>
 <script src="assets/Diet/js/custom.js"></script>
 <script src="assets/Diet/js/custom-d.js"></script>
-
 </body>
 </html>

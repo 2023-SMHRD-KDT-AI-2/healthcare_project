@@ -1,14 +1,21 @@
+let currentDate = new Date();
+
+// 연도, 월, 일 추출
+let year = currentDate.getFullYear();
+let month = String(currentDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1 해주고 두 자리로 포맷팅
+let day = String(currentDate.getDate()).padStart(2, '0'); // 일자도 두 자리로 포맷팅
+
 // MonggoDB에 데이터를 받아오기 위해 ajax통신 필요
 // ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
-let year = "2023"; //년도
-let month = "08"; //월
-let day = "03"; //일
-let day_n = Number(day); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
-let memberID = "3"; // 회원ID
+let urlYear = year //년도
+let urlMonth = month; //월
+let urlDay = day; //일
+let day_n = Number(urlDay); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
+let memberID = receivedID; // 회원ID
 
 // ajax요청에 사용되는 rul
 let moveUrl = `http://localhost/Members.say?c=member&collection=${
-  year + month
+	urlYear + urlMonth
 }&fieldName=_id&value=${memberID}&valueType=int&dataType=json`;
 
 // MonggoDB에서 받아온 회원의 모든 상세정보가 저장되는 변수
@@ -373,9 +380,363 @@ let nutrientCalc = {
   }
 }
 
+// nutrientCalc의 모든 값이 0값, nutrientCalcCopy을
+let nutrientCalcReset = {
+	"breakfast" : {
+		  "energy" : 0,
+		  "water" : 0,
+		  "protein" : 0,
+		  "fat" : 0,
+		  "carbohydrate" : 0,
+		  "total_sugars" : 0,
+		  "saccharose" : 0,
+		  "glucose" : 0,
+		  "fruit_sugar" : 0,
+		  "lactose" : 0,
+		  "maltose" : 0,
+		  "dietary_fiber" : 0,
+		  "calcium" : 0,
+		  "iron_mg" : 0,
+		  "iron_ug" : 0,
+		  "magnesium" : 0,
+		  "phosphorus" : 0,
+		  "potassium" : 0,
+		  "natrium" : 0,
+		  "zinc" : 0,
+		  "cuprum" : 0,
+		  "manganese" : 0,
+		  "selenium" : 0,
+		  "retinol" : 0,
+		  "betacarotene" : 0,
+		  "vitamin_d3" : 0,
+		  "tocopherol" : 0,
+		  "tocotrienols" : 0,
+		  "vitamin_b1" : 0,
+		  "vitamin_b2" : 0,
+		  "niacin" : 0,
+		  "folicacid" : 0,
+		  "vitamin_b12" : 0,
+		  "vitamin_c" : 0,
+		  "aminoacid" : 0,
+		  "isoleucine" : 0,
+		  "leucine" : 0,
+		  "lysine" : 0,
+		  "methionine" : 0,
+		  "phenylalanine" : 0,
+		  "threonine" : 0,
+		  "valine" : 0,
+		  "histidine" : 0,
+		  "arginine" : 0,
+		  "tyrosine" : 0,
+		  "cysteine" : 0,
+		  "alanine" : 0,
+		  "aspartic_acid" : 0,
+		  "glutamic_acid" : 0,
+		  "glycine" : 0,
+		  "proline" : 0,
+		  "serine" : 0,
+		  "cholesterol" : 0,
+		  "total_saturated_fatty_acids" : 0,
+		  "butyric_acid" : 0,
+		  "caproic_acid" : 0,
+		  "caprylic_acid" : 0,
+		  "capric_acid" : 0,
+		  "lauric_acid" : 0,
+		  "myristic_acid" : 0,
+		  "palmitic_acid" : 0,
+		  "stearic_acid" : 0,
+		  "arachidic_acid" : 0,
+		  "myristoleic_acid" : 0,
+		  "palmitoleic_acid" : 0,
+		  "oleic_acid" : 0,
+		  "bacsenic_acid" : 0,
+		  "gadoleic_acid" : 0,
+		  "linoleic_acid" : 0,
+		  "alpha_linoleic_acid" : 0,
+		  "gamma_linoleic_acid" : 0,
+		  "eicosadienoic_acid" : 0,
+		  "arachidonic_acid" : 0,
+		  "eicosatrienoic_acid" : 0,
+		  "eicosapentaenoic_acid" : 0,
+		  "docosapentaenoic_acid" : 0,
+		  "docosahexaenoic_acid" : 0,
+		  "trans_fatty_acids" : 0,
+		  "trans_oleic_acid" : 0,
+		  "trans_linoleic_acid" : 0,
+		  "trans_linolenic_acid" : 0,
+		  "ash" : 0,
+		  "caffeine" : 0,
+		  "serving_size":0,
+		  "unit":"",
+		  "food_name":""
+	}, "lunch" : {
+		  "energy" : 0,
+		  "water" : 0,
+		  "protein" : 0,
+		  "fat" : 0,
+		  "carbohydrate" : 0,
+		  "total_sugars" : 0,
+		  "saccharose" : 0,
+		  "glucose" : 0,
+		  "fruit_sugar" : 0,
+		  "lactose" : 0,
+		  "maltose" : 0,
+		  "dietary_fiber" : 0,
+		  "calcium" : 0,
+		  "iron_mg" : 0,
+		  "iron_ug" : 0,
+		  "magnesium" : 0,
+		  "phosphorus" : 0,
+		  "potassium" : 0,
+		  "natrium" : 0,
+		  "zinc" : 0,
+		  "cuprum" : 0,
+		  "manganese" : 0,
+		  "selenium" : 0,
+		  "retinol" : 0,
+		  "betacarotene" : 0,
+		  "vitamin_d3" : 0,
+		  "tocopherol" : 0,
+		  "tocotrienols" : 0,
+		  "vitamin_b1" : 0,
+		  "vitamin_b2" : 0,
+		  "niacin" : 0,
+		  "folicacid" : 0,
+		  "vitamin_b12" : 0,
+		  "vitamin_c" : 0,
+		  "aminoacid" : 0,
+		  "isoleucine" : 0,
+		  "leucine" : 0,
+		  "lysine" : 0,
+		  "methionine" : 0,
+		  "phenylalanine" : 0,
+		  "threonine" : 0,
+		  "valine" : 0,
+		  "histidine" : 0,
+		  "arginine" : 0,
+		  "tyrosine" : 0,
+		  "cysteine" : 0,
+		  "alanine" : 0,
+		  "aspartic_acid" : 0,
+		  "glutamic_acid" : 0,
+		  "glycine" : 0,
+		  "proline" : 0,
+		  "serine" : 0,
+		  "cholesterol" : 0,
+		  "total_saturated_fatty_acids" : 0,
+		  "butyric_acid" : 0,
+		  "caproic_acid" : 0,
+		  "caprylic_acid" : 0,
+		  "capric_acid" : 0,
+		  "lauric_acid" : 0,
+		  "myristic_acid" : 0,
+		  "palmitic_acid" : 0,
+		  "stearic_acid" : 0,
+		  "arachidic_acid" : 0,
+		  "myristoleic_acid" : 0,
+		  "palmitoleic_acid" : 0,
+		  "oleic_acid" : 0,
+		  "bacsenic_acid" : 0,
+		  "gadoleic_acid" : 0,
+		  "linoleic_acid" : 0,
+		  "alpha_linoleic_acid" : 0,
+		  "gamma_linoleic_acid" : 0,
+		  "eicosadienoic_acid" : 0,
+		  "arachidonic_acid" : 0,
+		  "eicosatrienoic_acid" : 0,
+		  "eicosapentaenoic_acid" : 0,
+		  "docosapentaenoic_acid" : 0,
+		  "docosahexaenoic_acid" : 0,
+		  "trans_fatty_acids" : 0,
+		  "trans_oleic_acid" : 0,
+		  "trans_linoleic_acid" : 0,
+		  "trans_linolenic_acid" : 0,
+		  "ash" : 0,
+		  "caffeine" : 0,
+		  "serving_size":0,
+		  "unit":"",
+		  "food":""
+	}, "dinner" : {
+		  "energy" : 0,
+		  "water" : 0,
+		  "protein" : 0,
+		  "fat" : 0,
+		  "carbohydrate" : 0,
+		  "total_sugars" : 0,
+		  "saccharose" : 0,
+		  "glucose" : 0,
+		  "fruit_sugar" : 0,
+		  "lactose" : 0,
+		  "maltose" : 0,
+		  "dietary_fiber" : 0,
+		  "calcium" : 0,
+		  "iron_mg" : 0,
+		  "iron_ug" : 0,
+		  "magnesium" : 0,
+		  "phosphorus" : 0,
+		  "potassium" : 0,
+		  "natrium" : 0,
+		  "zinc" : 0,
+		  "cuprum" : 0,
+		  "manganese" : 0,
+		  "selenium" : 0,
+		  "retinol" : 0,
+		  "betacarotene" : 0,
+		  "vitamin_d3" : 0,
+		  "tocopherol" : 0,
+		  "tocotrienols" : 0,
+		  "vitamin_b1" : 0,
+		  "vitamin_b2" : 0,
+		  "niacin" : 0,
+		  "folicacid" : 0,
+		  "vitamin_b12" : 0,
+		  "vitamin_c" : 0,
+		  "aminoacid" : 0,
+		  "isoleucine" : 0,
+		  "leucine" : 0,
+		  "lysine" : 0,
+		  "methionine" : 0,
+		  "phenylalanine" : 0,
+		  "threonine" : 0,
+		  "valine" : 0,
+		  "histidine" : 0,
+		  "arginine" : 0,
+		  "tyrosine" : 0,
+		  "cysteine" : 0,
+		  "alanine" : 0,
+		  "aspartic_acid" : 0,
+		  "glutamic_acid" : 0,
+		  "glycine" : 0,
+		  "proline" : 0,
+		  "serine" : 0,
+		  "cholesterol" : 0,
+		  "total_saturated_fatty_acids" : 0,
+		  "butyric_acid" : 0,
+		  "caproic_acid" : 0,
+		  "caprylic_acid" : 0,
+		  "capric_acid" : 0,
+		  "lauric_acid" : 0,
+		  "myristic_acid" : 0,
+		  "palmitic_acid" : 0,
+		  "stearic_acid" : 0,
+		  "arachidic_acid" : 0,
+		  "myristoleic_acid" : 0,
+		  "palmitoleic_acid" : 0,
+		  "oleic_acid" : 0,
+		  "bacsenic_acid" : 0,
+		  "gadoleic_acid" : 0,
+		  "linoleic_acid" : 0,
+		  "alpha_linoleic_acid" : 0,
+		  "gamma_linoleic_acid" : 0,
+		  "eicosadienoic_acid" : 0,
+		  "arachidonic_acid" : 0,
+		  "eicosatrienoic_acid" : 0,
+		  "eicosapentaenoic_acid" : 0,
+		  "docosapentaenoic_acid" : 0,
+		  "docosahexaenoic_acid" : 0,
+		  "trans_fatty_acids" : 0,
+		  "trans_oleic_acid" : 0,
+		  "trans_linoleic_acid" : 0,
+		  "trans_linolenic_acid" : 0,
+		  "ash" : 0,
+		  "caffeine" : 0,
+		  "serving_size":0,
+		  "unit":"",
+		  "food_name":""
+	}, "otherfood" : {
+		  "energy" : 0,
+		  "water" : 0,
+		  "protein" : 0,
+		  "fat" : 0,
+		  "carbohydrate" : 0,
+		  "total_sugars" : 0,
+		  "saccharose" : 0,
+		  "glucose" : 0,
+		  "fruit_sugar" : 0,
+		  "lactose" : 0,
+		  "maltose" : 0,
+		  "dietary_fiber" : 0,
+		  "calcium" : 0,
+		  "iron_mg" : 0,
+		  "iron_ug" : 0,
+		  "magnesium" : 0,
+		  "phosphorus" : 0,
+		  "potassium" : 0,
+		  "natrium" : 0,
+		  "zinc" : 0,
+		  "cuprum" : 0,
+		  "manganese" : 0,
+		  "selenium" : 0,
+		  "retinol" : 0,
+		  "betacarotene" : 0,
+		  "vitamin_d3" : 0,
+		  "tocopherol" : 0,
+		  "tocotrienols" : 0,
+		  "vitamin_b1" : 0,
+		  "vitamin_b2" : 0,
+		  "niacin" : 0,
+		  "folicacid" : 0,
+		  "vitamin_b12" : 0,
+		  "vitamin_c" : 0,
+		  "aminoacid" : 0,
+		  "isoleucine" : 0,
+		  "leucine" : 0,
+		  "lysine" : 0,
+		  "methionine" : 0,
+		  "phenylalanine" : 0,
+		  "threonine" : 0,
+		  "valine" : 0,
+		  "histidine" : 0,
+		  "arginine" : 0,
+		  "tyrosine" : 0,
+		  "cysteine" : 0,
+		  "alanine" : 0,
+		  "aspartic_acid" : 0,
+		  "glutamic_acid" : 0,
+		  "glycine" : 0,
+		  "proline" : 0,
+		  "serine" : 0,
+		  "cholesterol" : 0,
+		  "total_saturated_fatty_acids" : 0,
+		  "butyric_acid" : 0,
+		  "caproic_acid" : 0,
+		  "caprylic_acid" : 0,
+		  "capric_acid" : 0,
+		  "lauric_acid" : 0,
+		  "myristic_acid" : 0,
+		  "palmitic_acid" : 0,
+		  "stearic_acid" : 0,
+		  "arachidic_acid" : 0,
+		  "myristoleic_acid" : 0,
+		  "palmitoleic_acid" : 0,
+		  "oleic_acid" : 0,
+		  "bacsenic_acid" : 0,
+		  "gadoleic_acid" : 0,
+		  "linoleic_acid" : 0,
+		  "alpha_linoleic_acid" : 0,
+		  "gamma_linoleic_acid" : 0,
+		  "eicosadienoic_acid" : 0,
+		  "arachidonic_acid" : 0,
+		  "eicosatrienoic_acid" : 0,
+		  "eicosapentaenoic_acid" : 0,
+		  "docosapentaenoic_acid" : 0,
+		  "docosahexaenoic_acid" : 0,
+		  "trans_fatty_acids" : 0,
+		  "trans_oleic_acid" : 0,
+		  "trans_linoleic_acid" : 0,
+		  "trans_linolenic_acid" : 0,
+		  "ash" : 0,
+		  "caffeine" : 0,
+		  "serving_size":0,
+		  "unit":"",
+		  "food_name":""
+	}
+  }
+
 // 영양소별 일일권장섭취량
 // 임시 성별 변수, memberInfo.gender로 변경이 될 수도... 
 let gender = "male"
+
 let recommendedNutrient = {}
 if (gender == 'male') {
 	recommendedNutrient = {
@@ -419,9 +780,6 @@ if (gender == 'male') {
 	}
 }
 
-// nutrientCalc를 초기화(깊은 복사)하기 위해 생성한 객체
-const nutrientCalcCopy = JSON.parse(JSON.stringify(nutrientCalc));
-
 // MonggoDB에서 받아온 회원의 간략한 음식 정보를 저장하기 위한 객체
 let meal = {};
 
@@ -449,7 +807,6 @@ const loadMemberDailyInfo = async () => {
 const calcNutrient = function() {
   
   // 영양소 합산 후 초기화 작업(깊은 복사)
-  nutrientCalc = nutrientCalcCopy;
 
   // 반복문 횟수 제한 변수
   // 해당 반복문은 (객체의 개수 * key의 개수) 만큼 실행
@@ -497,16 +854,25 @@ const mainNutrientDoughnutChart = function (inputData) {
 			datasets:[
 				{
 					data: dataValues,
-					backgroundColor:["rgba(242,166,54,.5)",
-									 "rgba(206,29,22,.5)",
-									 "rgba(40,161,130,.5)"],
+					backgroundColor:[ '#5858FA',
+					'#bc69fa',
+					'#2E9AFE', 
+					'#2EFEC8',
+					'#8258FA',
+					'#00E1FD', 
+					'#819FF7'],
 					borerColor:[ "rgb(242,166,54)",
 								 "rgb(206,29,22)",
 								 "rgb(40,161,130)"],
 					hoverBackgroundColor:[
-								 "rgb(242,166,54)",
-								 "rgb(206,29,22)",
-								 "rgb(40,161,130)"],
+						'#7C7CFF', // #5858FA와 비슷한 색상
+						'#D982FF', // #bc69fa와 비슷한 색상
+						'#4CBDFE', // #2E9AFE와 비슷한 색상
+						'#5DFED9', // #2EFEC8와 비슷한 색상
+						'#8F7CFF', // #8258FA와 비슷한 색상
+						'#4DF2FF', // #00E1FD와 비슷한 색상
+						'#91AFFF'  // #819FF7와 비슷한 색상
+					  ],
 					borderWidth: 1
 				},
 
@@ -538,17 +904,27 @@ const mainNutrientBarChart = function (inputData) {
 			labels: setLabels,
 			datasets:[
 				{
+					label: "기타 영양소",
 					data: dataValues,
-					backgroundColor:["rgba(242,166,54,.5)",
-									 "rgba(206,29,22,.5)",
-									 "rgba(40,161,130,.5)"],
+					backgroundColor:[ '#5858FA',
+					'#bc69fa',
+					'#2E9AFE', 
+					'#2EFEC8',
+					'#8258FA',
+					'#00E1FD', 
+					'#819FF7'],
 					borerColor:[ "rgb(242,166,54)",
 								 "rgb(206,29,22)",
 								 "rgb(40,161,130)"],
 					hoverBackgroundColor:[
-								 "rgb(242,166,54)",
-								 "rgb(206,29,22)",
-								 "rgb(40,161,130)"],
+						'#7C7CFF', // #5858FA와 비슷한 색상
+						'#D982FF', // #bc69fa와 비슷한 색상
+						'#4CBDFE', // #2E9AFE와 비슷한 색상
+						'#5DFED9', // #2EFEC8와 비슷한 색상
+						'#8F7CFF', // #8258FA와 비슷한 색상
+						'#4DF2FF', // #00E1FD와 비슷한 색상
+						'#91AFFF'  // #819FF7와 비슷한 색상
+					  ],
 					borderWidth: 1
 				},
 
@@ -586,9 +962,13 @@ let oneNutrientDoughnutChart = function (inputData, index) {
 			datasets:[
 				{
 					data: dataValues,
-					backgroundColor:["rgba(242,166,54,.5)",
-									 "rgba(206,29,22,.5)",
-									 "rgba(40,161,130,.5)"],
+					backgroundColor:[ '#5858FA',
+					'#bc69fa',
+					'#2E9AFE', 
+					'#2EFEC8',
+					'#8258FA',
+					'#00E1FD', 
+					'#819FF7'],
 					borerColor:[ "rgb(242,166,54)",
 								 "rgb(206,29,22)",
 								 "rgb(40,161,130)"],
@@ -628,10 +1008,15 @@ let oneNutrientBarChart = function (inputData, index) {
 			labels: setLabels,
 			datasets:[
 				{
+					label: "기타 영양소",
 					data: dataValues,
-					backgroundColor:["rgba(242,166,54,.5)",
-									 "rgba(206,29,22,.5)",
-									 "rgba(40,161,130,.5)"],
+					backgroundColor:[ '#5858FA',
+					'#bc69fa',
+					'#2E9AFE', 
+					'#2EFEC8',
+					'#8258FA',
+					'#00E1FD', 
+					'#819FF7'],
 					borerColor:[ "rgb(242,166,54)",
 								 "rgb(206,29,22)",
 								 "rgb(40,161,130)"],
@@ -680,6 +1065,15 @@ let nutrientData = [];
 // 페이지 그려주는 부분
 const createPage = function() {
 
+	let colorSet = [
+		"#BEB2A7",
+		"#D1C68F",
+		"#DBD7CC",
+		"#CAB388",
+		"#D5C4A1",
+		"#E0D4BB"
+	];
+
 	// 상세정보 창 챠트 생성에 필요한 데이터 변수
 	let modalCanvas = [];
 
@@ -720,23 +1114,26 @@ const createPage = function() {
 		rowDiv.className = "row";
 		
 		// 각각의 영양소를 생성하고 추가
-		nutrients.forEach(function (nutrientData) {
+		nutrients.forEach(function (nut, index) {
 			let colDiv = document.createElement("div");
 			colDiv.className = "col-md-3 col-sm-6";
 		
 			let xPanelDiv = document.createElement("div");
 			xPanelDiv.className = "x_panel";
+			xPanelDiv.style.backgroundColor = colorSet[index];
 		
 			let h4Name = document.createElement("h4");
-			h4Name.textContent = nutrientData.name;
-
+			h4Name.textContent = nut.name;
+			h4Name.style.color = "black";
 			h4Name.style.fontWeight = "bold";
 		
 			let h4Value = document.createElement("h4");
-			h4Value.textContent = nutrientData.value + "cal";
+			h4Value.textContent = nut.value + "cal";
+			h4Value.style.color = "black";
 		
 			let h4Percent = document.createElement("h4");
-			h4Percent.textContent = "DV : " + nutrientData.percent + "%";
+			h4Percent.textContent = "DV : " + nut.percent + "%";
+			h4Percent.style.color = "black";
 		
 			xPanelDiv.appendChild(h4Name);
 			xPanelDiv.appendChild(h4Value);
@@ -887,26 +1284,31 @@ const createPage = function() {
 			const rowContainer = document.createElement("div");
 			rowContainer.className = "row"
 
-			nutrientOne.forEach((item) => {
+			nutrientOne.forEach((item, index) => {
 				let colDivModal = document.createElement("div");
 				colDivModal.className = "col-md-4 col-sm-6";
 
 				let xPanelModalDiv = document.createElement("div");
 				xPanelModalDiv.className = "x_panel";
+				xPanelModalDiv.style.backgroundColor = colorSet[index];
 
 				let titleH4 = document.createElement("h4");
 				titleH4.style.fontWeight = "bold";
 				titleH4.textContent = item.name;
+				titleH4.style.color = "black";
 
 				let valueH4 = document.createElement("h4");
 				if (item.name == "총칼로리") {
 					valueH4.textContent = item.value + "cal";
+					valueH4.style.color = "black";
 				} else {
 					valueH4.textContent = item.value + "g";
+					valueH4.style.color = "black";
 				}
 
 				let dvH4 = document.createElement("h4");
 				dvH4.textContent = "DV : " + item.percent + "%";
+				dvH4.style.color = "black";
 
 				xPanelModalDiv.appendChild(titleH4);
 				xPanelModalDiv.appendChild(valueH4);
@@ -1021,8 +1423,30 @@ const createPage = function() {
 	// 하루 섭취한 영양소 정보 표츌- 챠트, 프로그래스바 (음식 페이지 오른쪽 구역) ============================================
 	// 챠트 생성 코드는 html로 작성함
 
+	const parentElement2 = document.querySelector('#all_nutrient_chart');
+
+	const allNutrientChartContent1 = document.createElement("div");
+	allNutrientChartContent1.className = "x_content";
+
+	const allNutrientCanvas1 = document.createElement("canvas");
+	allNutrientCanvas1.id = "doughtnut-chart1";
+	allNutrientCanvas1.style.marginBottom = "20px";
+
+	const allNutrientChartContent2 = document.createElement("div");
+	allNutrientChartContent2.className = "x_content";
+
+	const allNutrientCanvas2 = document.createElement("canvas");
+	allNutrientCanvas2.id = "bar-chart1";
+	allNutrientCanvas2.style.height = "300px"
+
+	allNutrientChartContent1.appendChild(allNutrientCanvas1);
+	allNutrientChartContent2.appendChild(allNutrientCanvas2);
+
+	parentElement2.appendChild(allNutrientChartContent1);
+	parentElement2.appendChild(allNutrientChartContent2);
+
 	// 프로그래스바 생성 코드 ========================================================== 
-	const parentElement = document.querySelector('.all_nutrient');
+	const parentElement = document.querySelector('#all_nutrient_progressBar');
 	// console.log("nutrientCalc: ", nutrientCalc);
 
 	// 각각의 영양소 데이터 배열을 생성합니다.
@@ -1033,6 +1457,8 @@ const createPage = function() {
 			sumNutrientCalc[nutrient] += nutrientCalc[meal][nutrient];
 		}
 	}
+
+	console.log("sumNutrientCalc", sumNutrientCalc);
 
 	for (const key in recommendedNutrient) {
 		nutrientData.push({
@@ -1104,7 +1530,19 @@ const createPage = function() {
 	});
 	// 프로그래스바 생성 코드 끝 ============================================================= 
 	// 하루 섭취한 영양소 정보 표츌- 챠트, 프로그래스바 (음식 페이지 오른쪽 구역) ============================================
+}
 
+// 달력 클릭해서 페이지 로딩 시 createPage()로 생성된 html구문 모두 삭제
+function removeAllChildren(parentElementId) {
+    // 부모 요소를 가져옵니다.
+    const parentElement = document.getElementById(parentElementId);
+    
+    // 부모 요소가 존재하면 모든 자식 요소를 제거합니다.
+    if (parentElement) {
+        while (parentElement.firstChild) {
+            parentElement.removeChild(parentElement.firstChild);
+        }
+    }
 }
 
 // MonggoDB에서 회원의 상세정보를 가져와서 저장 후
@@ -1152,12 +1590,67 @@ const loadmember = async () => {
 
 	console.log("meal : ", meal);
     console.log("nutrientReceive : ", nutrientReceive);
-	
+
 	// 영양소 정보 합산 실행
     calcNutrient();
 	createPage();
 
+	$('#single_calCustom').daterangepicker({
+        singleDatePicker: true,
+        singleClasses: "picker_1"
+    }, function (start, end, label) {
+        globalEnd = end.toISOString();
+        console.log(start.toISOString(), end.toISOString(), label);
+
+		let dateString = globalEnd;
+		let dateObject = new Date(dateString);
+
+		let clickYear = String(dateObject.getFullYear()); // 연도 추출
+		let clickMonth = String(dateObject.getMonth() + 1).padStart(2, '0'); // 월 추출 (0부터 시작하므로 1을 더하고 2자리 문자열로 변환)
+		let clickDay = String(dateObject.getDate()).padStart(2, '0'); // 일 추출
+
+		console.log("달력 클릭 시 날짜", clickYear, clickMonth, clickDay);
+
+		year = clickYear;
+		month = clickMonth;
+		day = clickDay;
+
+		// MonggoDB에 데이터를 받아오기 위해 ajax통신 필요
+		// ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
+		urlYear = year //년도
+		urlMonth = month; //월
+		urlDay = day; //일
+		day_n = Number(urlDay); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
+
+		// ajax요청에 사용되는 rul
+		moveUrl = `http://localhost/Members.say?c=member&collection=${
+			urlYear + urlMonth
+		}&fieldName=_id&value=${memberID}&valueType=int&dataType=json`;
+
+		removeAllChildren("breakfast_food_info");
+		removeAllChildren("lunch_food_info");
+		removeAllChildren("dinner_food_info");
+		removeAllChildren("otherfood_food_info");
+		removeAllChildren("all_nutrient_chart");
+		removeAllChildren("all_nutrient_progressBar");
+
+		for (m in nutrientCalc) {
+			for (n in nutrientCalc[m]) {
+				nutrientCalc[m][n] = 0;
+			}
+		}
+
+		for (m in sumNutrientCalc) {
+			sumNutrientCalc[m] = 0;
+		}
+
+		myDoughtnutChart2 =[];
+		myBarChart2 = [];
+
+		
+			loadmember();
+    });
+	
 };
 
 loadmember();
-console.log("테스트 날짜 :", end.toISOString());
