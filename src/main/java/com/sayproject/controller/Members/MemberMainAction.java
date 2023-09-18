@@ -1,6 +1,8 @@
 package com.sayproject.controller.Members;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -21,8 +23,30 @@ public class MemberMainAction implements Action {
     response.setContentType("text/html; charset=utf-8");
     request.setCharacterEncoding(CHARSET);
 
+    
     MembersDAO dao = new MembersDAO();
     List<Member> memberList = dao.memberList();
+    
+    LocalDate currentDate = LocalDate.now();
+    // 날짜를 원하는 형식으로 출력하기 위해 DateTimeFormatter를 사용합니다.
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    // 현재 날짜를 지정한 형식으로 출력합니다.
+    String formattedDate = currentDate.format(formatter);
+    
+    for (Member member : memberList) {
+    	// id 하고 날짜를 쿼리로 날려서 1 이면 출석 true
+    	// false
+    	Member checkMember = new Member();
+    	checkMember.setNo(member.getNo());
+    	checkMember.setRegist_day(formattedDate);
+    	int cnt = dao.duplicateAttendence(checkMember);
+    	if(cnt>0) {
+    		member.setAttendence(true);
+    	}else {
+    		member.setAttendence(false);
+    	}    	
+    }
+    
     request.setAttribute("memberList", memberList);
     RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Members/members_main.jsp");
     dis.forward(request, response);

@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sayproject.database.mariadb.SqlSessionManager;
-import com.sayproject.model.Main.KakaoLogin.KakaoJoin;
+import com.sayproject.model.Members.Member;
 
 public class GeneralJoinDAO {
 
@@ -32,6 +32,18 @@ public class GeneralJoinDAO {
 		return cnt;
 	}
 	
+	public int duplicate출석(Member member) {
+		member.getNo(); // 고유번호
+		member.getRegist_day(); // 출석일
+
+		int cnt = 0;
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			cnt = sqlSession.selectOne("duplicate출석", member);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
 	
 	
 	

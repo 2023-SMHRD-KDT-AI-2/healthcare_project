@@ -21,4 +21,6 @@ public class Member {
   private String regist_day;
   private String phone_number;
   private String kakao_id;
+  
+  private Boolean attendence;
 }
