@@ -12,10 +12,10 @@ public class KakaoIdDuplicationCheckDAO {
 
 	
 	//카카오 아이디 중복체크
-	public int kakaoIdDuplicationCheck(String idOrEmail) {
+	public int kakaoIdDuplicationCheck(long objecId) {
 		int cnt = 0;
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-			cnt = sqlSession.selectOne("kakaoIdDuplicate", idOrEmail);
+			cnt = sqlSession.selectOne("kakaoIdDuplicate", objecId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

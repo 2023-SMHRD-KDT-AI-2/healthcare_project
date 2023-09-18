@@ -23,6 +23,7 @@ public class MembersListAction implements Action {
     List<Member> memberList = dao.memberList();
 
     request.setAttribute("memberList", memberList);
+   
     RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Members/members_datatable.jsp");
     dis.forward(request, response);
   }

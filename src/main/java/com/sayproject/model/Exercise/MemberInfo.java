@@ -24,6 +24,8 @@ public class MemberInfo {
 	private String credit_card;
 	private String expiration_day;
 	private String schedule;
+	private String time;
+	
 	
 	
 	

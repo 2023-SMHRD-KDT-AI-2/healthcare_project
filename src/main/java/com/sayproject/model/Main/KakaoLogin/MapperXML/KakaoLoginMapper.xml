@@ -3,8 +3,8 @@
 <mapper namespace="com.sayproject.model.Main.KakaoLogin.MapperXML.KakaoLgoin">
 	
 	<!--카카오 아이디 중보체크-->
-	<select id="kakaoIdDuplicate" parameterType="string" resultType="int">
-		SELECT count(idOrEmail) FROM members WHERE idOrEmail=#{idOrEmail}
+	<select id="kakaoIdDuplicate" parameterType="long" resultType="int">
+		SELECT COUNT(id) FROM kakao_login WHERE id=#{objectID}
 	</select>
 	
 	

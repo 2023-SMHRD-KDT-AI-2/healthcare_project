@@ -50,4 +50,26 @@ public class MembersDAO {
     }
     return memberList;
   }
+  // 출석 중복체크
+  public int duplicateAttendence(Member member) {
+	  int cnt =0;
+	  try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+	      cnt = sqlSession.selectOne("duplicateAttendence", member);
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	    return cnt;
+  }
+  
+  
+  //출석 입력하기
+  public int RegistAttendenceAction(Member member) {
+	  int cnt =0;
+	  try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+	      cnt = sqlSession.insert("RegistAttendenceAction", member);
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	    return cnt;
+}
 }

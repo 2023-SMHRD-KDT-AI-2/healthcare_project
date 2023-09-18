@@ -47,65 +47,62 @@
 							%>
 							<!-- 상단 박스 -->
 							<div class="x_panel">
-								<div class="col-md-3">
+								<div class="col-md-2">
 									<!--  왼쪽 상단 카드 박스 -->
 									<div class="x_panel">
 										<div class="card-deck">
 											<div class="card text-center border-dark">
 												<div class="card-header">출석 상황</div>
-												<div class="card-body text-primary">
-													<h5><i class="glyphicon glyphicon-retweet"></i> 7 / 15</h5>
-												</div>
-											</div>
-											<div class="card text-center border-dark">
-												<div class="card-header">PT 회원 상황</div>
-												<div class="card-body text-secondary">
-													<h5><i class="glyphicon glyphicon-picture"></i> 5 / 10</h5>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card text-center border-dark">
-												<div class="card-header">출석 상황</div>
-												<div class="card-body text-success">
-													<h5><i class="glyphicon glyphicon-user"></i> 7 / 15</h5>
-												</div>
-											</div>
-											<div class="card text-center border-dark">
-												<div class="card-header">PT 회원 상황</div>
-												<div class="card-body text-dark">
-													<h5><i class="glyphicon glyphicon-star"></i> 5 / 10</h5>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!--  /왼쪽 상단 카드 박스 END -->
-									<!--  왼쪽 하단 카드 박스 -->
-									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card text-center border-dark">
-												<div class="card-header">출석 상황</div>
 												<div class="card-body text-info">
-													<h5><i class="glyphicon glyphicon-ok"></i> 멍멍이</h5>
-												</div>
-											</div>
-											<div class="card text-center border-dark">
-												<div class="card-header">트레이너 평점</div>
-												<div class="card-body text-danger">
 													<h5>
-														<i class="fa fa-arrow-up"></i> 4.3
+														<i class="glyphicon glyphicon-ok"></i>
+														${attendenceCountForTriner} / ${trainerMemberCount}
 													</h5>
 												</div>
 											</div>
 										</div>
 									</div>
-									<!--  /왼쪽 하단 카드 박스 END -->
+									<div class="x_panel">
+										<div class="card-deck">
+											<div class="card text-center border-dark">
+												<div class="card-header">트레이너 평점</div>
+												<div class="card-body text-danger">
+													<h5>
+														<i class="fa fa-arrow-up"></i> ${avgGrade}
+													</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="x_panel">
+										<div class="card-deck">
+											<div class="card text-center border-dark">
+												<div class="card-header">트레이너 평점</div>
+												<div class="card-body text-danger">
+													<h5>
+														<i class="fa fa-arrow-up"></i> ${avgGrade}
+													</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="x_panel">
+										<div class="card-deck">
+											<div class="card text-center border-dark">
+												<div class="card-header">트레이너 평점</div>
+												<div class="card-body text-danger">
+													<h5>
+														<i class="fa fa-arrow-up"></i> ${avgGrade}
+													</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--  /왼쪽 상단 카드 박스 END -->
 								</div>
 								<!-- /상단 박스 END -->
 								<!-- 하단 박스 -->
-								<div class="col-md-9">
+								<div class="col-md-10">
 									<!-- 오른쪽 차트, 그래프 -->
 									<div class="x_panel">
 										<div class="card-deck">
@@ -122,10 +119,7 @@
 												</div>
 											</div>
 											<div class="card border-dark">
-												<div class="card-header">BMI(체질량) 분포도</div>
-												<div class="card-body text-danger">
-													<canvas id="polarAreaChart" style="height: 100%"></canvas>
-												</div>
+											<div id='calendar'></div>
 											</div>
 										</div>
 									</div>
@@ -137,7 +131,7 @@
 					</div>
 					<div class="row">
 						<!-- 회원 목록 DataTables -->
-						<div class="col-md-9">
+						<div class="col-md-12">
 							<div class="x_panel">
 								<table id="dataTable" class="display dataTable">
 									<thead>
@@ -160,14 +154,6 @@
 							</div>
 						</div>
 						<!-- /회원 목록 DataTables END -->
-						<!-- 달력, 스케줄러 -->
-						<div class="col-md-3">
-							<div class="x_panel">
-								<div id='calendar'></div>
-							</div>
-							<!-- /main content -->
-						</div>
-						<!-- /달력, 스케줄러 END -->
 					</div>
 				</div>
 			</div>

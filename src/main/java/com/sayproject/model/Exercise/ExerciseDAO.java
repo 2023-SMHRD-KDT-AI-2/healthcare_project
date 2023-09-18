@@ -49,4 +49,24 @@ public class ExerciseDAO {
 		return met;
 		
 	}
+	
+	//회원 출석 현황
+	   public int check(String membercheck) {
+		      // DB연결
+		      SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		     
+		      // sql문장
+		      int cnt = sqlsession.selectOne("check", membercheck);// ("id",데이터값)
+
+		      // 데이터베이스 종료
+		      sqlsession.close();
+
+		      return cnt;
+		
+	}
+	
+	
+	
+	
+	
 }

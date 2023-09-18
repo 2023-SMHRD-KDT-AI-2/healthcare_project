@@ -2,6 +2,9 @@
   <%@page import="com.sayproject.model.Exercise.MemberInfo" %>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+      <%@ page import= "java.time.LocalDate" %>
+      <%@ page import= "java.time.temporal.ChronoUnit" %>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         <jsp:include page="/WEB-INF/views/include/LoginSessionCheck.jsp" />
         <!DOCTYPE html>
         <html lang="en">
@@ -88,6 +91,37 @@
     background: #886c65;
     filter: grayscale(20%);
     */
+
+            
+
+            /*  색깔 css */
+            .fa_custom1 {
+              color: #bc69fa;
+            }
+
+            .fa_custom2 {
+              color: #7386FF;
+            }
+
+            .fa_custom3 {
+              color: #5C9EF5;
+            }
+
+            .fa_custom4 {
+              color: #00E1FD;
+            }
+
+            .fa_custom5 {
+              color: #01F6D5;
+            }
+
+            .fa_custom6 {
+              color: #8258FA;
+            }
+
+            .fa_custom7 {
+              color: #5858FA;
+            }
 
             .nav.side-menu>li.active>a {
               background: linear-gradient(#2c2c2c, #2c2c2c), #3481ce25;
@@ -803,11 +837,36 @@
         <body class="nav-md">
           <!-- 도넛차트 -->
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          <% 
-          //회원 정보를 가져오기 
-          MemberInfo info=(MemberInfo)session.getAttribute("info"); 
-          %>
 
+          
+          	<%
+		          //회원 정보를 가져오기 
+		            MemberInfo info=(MemberInfo)session.getAttribute("info"); 
+                   String dateStringFromMariaDB1 = info.getRegist_day();
+                  
+                   // MariaDB에서 가져온 문자열을 LocalDate로 변환
+                    LocalDate startDate1 = LocalDate.parse(dateStringFromMariaDB1);
+                    
+                   // 현재 날짜를 얻어옵니다.
+                    LocalDate endDate1 = LocalDate.now(); 
+                   
+                    // 두 날짜 사이의 일수를 계산합니다.
+                    long daysBetween1 = ChronoUnit.DAYS.between(startDate1, endDate1);
+                    
+                    
+                    String dateStringFromMariaDB2 = info.getExpiration_day();
+                    
+                    // 현재 날짜를 얻어옵니다.
+                     LocalDate startDate2 = LocalDate.now(); 
+                    
+                    // MariaDB에서 가져온 문자열을 LocalDate로 변환
+                     LocalDate endDate2 = LocalDate.parse(dateStringFromMariaDB2);
+                     
+                     // 두 날짜 사이의 일수를 계산합니다.
+                     long daysBetween2 = ChronoUnit.DAYS.between(startDate2, endDate2);
+              %>
+                  
+          
             <script>
 
               // 자바스크립트 모음
@@ -853,7 +912,7 @@
               // setInterval(toggleElement2s, 3000);
               /*숫자가 3초 뒤에 바뀌는 애니메이션 끝*/
 
-              /*~일째 랜덤한 숫자가 돌다가 멈추는 애니메이션*/
+              /*~일째 랜덤한 숫자가 돌다가 멈추는 애니메이션
               function startRandomNumberAnimation() {
                 const randomNumberElement = document.getElementsByClassName("randomNumber");
                 const targetNumber = 36; // 멈출 숫자
@@ -880,6 +939,7 @@
 
                 requestAnimationFrame(updateNumber);
               }
+              */
               // 페이지 로드 후 0.5초 뒤에 애니메이션 시작
               window.addEventListener("load", () => {
                 setTimeout(startRandomNumberAnimation, 500);
@@ -921,22 +981,25 @@
                       <!-- 카드 차트(일째, 주 몇회 등)-->
                       <div class="col-md-12">
 
+				
+
                         <!-- 몇 일째 -->
                         <div class="col-md-3">
                           <div class="x_panel tile fixed_height_115 overflow_hidden topcard">
                             <div class="count_top">
                               <div class="membership">
-                                <i class="fa fa-user"></i> 신규회원
+                                <i class="fa fa-user"></i> 우리가 만난지
                               </div>
                               <div class="count_month">
-                                <i class="green">1 month, 5 day</i>
+                                <i class="green"><!--1 month, 5 day--></i>
                               </div>
                             </div>
                             <div class="count_day">
-                              <div class="day_num"><span class="randomNumber">36</span></div>
+                              <div class="day_num"><span class="randomNumber" style= "font-size: 45px;"><%=daysBetween1%></span></div>
                               <div class="day_day"> Day </div>
                               <div class="day_day_hide"> 일째 </div>
                             </div>
+                            <div class="clearfix"></div>
                           </div>
                         </div>
 
@@ -952,21 +1015,21 @@
 
                               <div calss="howoften_count">
                                 <!-- <i class="green"> 1 week, 3 times </i>  -->
-                                <i class="green" style="font-weight: 800;"> 월, 수, 금, 14:00 </i>
+                                <span class="green" style= "font-weight: 800;">${info.getSchedule()}</span>
                               </div>
 
                             </div>
 
                             <div class="howoften_bottom">
                               <div class="week_month">주</div>
-                              <div class="howoften_num"><span class="randomNumber">3</span></div>
+                              <div class="howoften_num"><span class="randomNumber"><%= info.getSchedule().replaceAll(",", "").length() %></span></div>
                               <div class="howoften_times">회</div>
                               <!-- 여기에 칸을 세로로 두 칸 추가해서 월, 수, 금-->
                               <!-- 여기에 칸을 세로로 두 칸 추가해서 오후 2시-->
                               <!-- 라고 하고 싶으나 지금 적용된 how-often_bottom에 텍스트가 baseline으로 되있어서 세로길이가 늘어남-->
                               <!-- <div class="howoften_times_hides">Times</div> -->
                             </div>
-
+                          <div class="clearfix"></div>
                           </div>
                         </div>
 
@@ -978,35 +1041,35 @@
                             <div class="ulmanamun_top">
 
                               <div class="leftnumber_icon">
-                                <i class="fa-solid fa-arrow-down-9-1"></i> 남은 횟수
+                                <i class="fa-solid fa-arrow-down-9-1"></i> 출석 횟수
                               </div>
 
 
                               <div calss="ulma_count">
-                                <i class="green">50%</i>
+                                <i class="green"><!-- 50%--></i>
                               </div>
 
 
                             </div>
 
                             <div class="ulmanamun_bottom">
-                              <div class="leftnum_left"><span class="randomNumber">6</span></div>
-                              <div class="leftnum_right">/ 12</div>
+                              <div class="leftnum_left"><span class="randomNumber">${check}</span></div>
+                              <div class="leftnum_right">회</div>
                               <div class="leftnum_times">
                                 <div>
-                                  <div class="bar-container">
+                                  <!-- <div class="bar-container">
                                     <div class="bar" style="width: 50%;"></div>
-                                  </div>
+                                  </div> -->
                                 </div>
                               </div>
 
 
                             </div>
+                            <div class="clearfix"></div>
                           </div>
                         </div>
 
                         <!-- 멤버십 만료일 -->
-
 
                         <div class="col-md-3">
                           <div class="x_panel tile fixed_height_115 overflow_hidden topcard4">
@@ -1015,7 +1078,7 @@
                                 <i class="fa-regular fa-calendar"></i> 멤버십만료일
                               </div>
                               <div class="expiredate_top_middle">
-                                <i class="green">10일 남았어요</i>
+                                <span class="green"><%=daysBetween2 %>일 남았어요</span>
                               </div>
                               <div class="expiredate_top_right">
                                 <i class="fa-solid fa-bell"></i>
@@ -1024,10 +1087,11 @@
 
                             <div class="expiredate_bottom">
                               <div class="expiredate_bottom_content" class="randomNumber">
-                                <%=info.getExpiration_day() %>
+                                ${ info.getExpiration_day()}
                               </div>
                             </div>
                           </div>
+                          <div class="clearfix"></div>
                         </div>
 
 
@@ -1107,8 +1171,8 @@
                                 </div>
 
                                 <div class="x_content_top_b">
-                                  <div style="width:280px;">
-                                    <canvas id="donutChart" width="280" height="280"></canvas>
+                                  <div id = "donutChart_div" style="width:280px;">
+                                    <!-- <canvas id="donutChart" width="280" height="280"></canvas> -->
                                   </div>
                                 </div>
 
@@ -1154,7 +1218,7 @@
                               </div>
                             </div>
 
-
+                          <div class="clearfix"></div>
                           </div>
                         </div>
 
@@ -1182,10 +1246,11 @@
                             <div class="x_content">
 
                               <div class="line_chart-container">
-                                <canvas id="line-chart"></canvas>
+                                <!-- <canvas id="line-chart"></canvas> -->
                               </div>
 
                             </div>
+                            <div class="clearfix"></div>
                           </div>
                         </div>
 
@@ -1214,10 +1279,11 @@
 
                               <h4>오늘 진행한 운동 </h4>
                               <div class="widthBarChart-container">
-                                <canvas id="widthBar-chart"></canvas>
+                                <!-- <canvas id="widthBar-chart"></canvas> -->
                               </div>
 
                             </div>
+                            <div class="clearfix"></div>
                           </div>
                         </div>
 
@@ -1244,12 +1310,13 @@
                             </div>
                             <div class="x_content">
 
-                              <h4>요일별 칼로리 소모량</h4>
+                              <h4>최근 7일간 칼로리 소모량</h4>
                               <div class="heightChart-container">
-                                <canvas id="heightBar-chart"></canvas>
+                                <!-- <canvas id="heightBar-chart"></canvas> -->
                               </div>
 
                             </div>
+                            <div class="clearfix"></div>
                           </div>
                         </div>
 
@@ -1277,67 +1344,76 @@
                               <div class="front_left">
 
                                 <div class="hisrank_eng">
+                                <%if(daysBetween1<=100){%>                          
                                   <div class="points">
                                     NEW
                                   </div>
+								<%}%>
                                 </div>
 
                                 <div class="hispicture">
 
                                   <div>
-                                    <img src="assets/Exercise/Images/YHdog.png">
+                                  <img src="${info.getPhotopath()}" alt="등록된 사진이 없습니다.">
+                                    <!-- <img src="assets/Exercise/Images/YHdog.png"> -->
                                   </div>
 
                                 </div>
 
 
                                 <div class="hisrank_kor">
+                                  <%if(daysBetween1<=100){%>
                                   <div class="points">
                                     신규회원
                                   </div>
+                                  <%}else{%>
+                                   <div class="points">
+                                    일반회원
+                                  </div>
+                                  <%}%>
                                 </div>
                               </div>
 
                               <div class="front_right">
                                 <div class="hisname">
-                                  <%=info.getName()%>
+                                  ${ info.getName()}
                                 </div>
 
                                 <div class="hisinfo">
                                   <div class="info_tr">
                                     <div>등록일자</div>
                                     <div>
-                                      <%=info.getRegist_day() %>
+                                      <${ info.getRegist_day()}
                                     </div>
                                   </div>
                                   <div class="info_tr">
                                     <div>성별</div>
                                     <div>
-                                      <%=info.getGender() %>
+                                      ${info.getGender() } 
                                     </div>
                                   </div>
                                   <div class="info_tr">
                                     <div>나이</div>
                                     <div>
-                                      <%=info.getAge() %>
+                                      ${info.getAge() }
                                     </div>
                                   </div>
                                   <div class="info_tr">
                                     <div>몸무게</div>
                                     <div>
-                                      <%=info.getWeight()%>
+                                      ${info.getWeight() }
                                     </div>
                                   </div>
                                   <div class="info_tr">
                                     <div>키</div>
                                     <div>
-                                      <%=info.getHeight()%>
+                                      ${info.getHeight() }
                                     </div>
                                   </div>
                                   <div class="info_tr">
                                     <div>연락처</div>
                                     <div>
-                                      <%=info.getPhone_number() %>
+                                      ${info.getPhone_number() }
                                     </div>
                                   </div>
 
@@ -1384,10 +1460,20 @@
                             <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
-
-                            <div id='calendar'></div>
-
+                            <fieldset>
+                              <div class="control-group">
+                                <div class="controls">
+                                <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
+                                  <input type="text" class="form-control has-feedback-left" id="single_calCustom" placeholder="First Name" aria-describedby="inputSuccess2Status">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                </div>
+                                </div>
+                              </div>
+                            </fieldset>
+                          <!-- 여기야~ -->
                           </div>
+                          <div class="clearfix"></div>
                         </div>
 
                         <!-- 캘린더 설명 -->
@@ -1435,6 +1521,7 @@
                             </table>
 
                           </div>
+                          <div class="clearfix"></div>
                         </div>
 
 
@@ -1442,15 +1529,10 @@
                     </div>
 
                   </div>
-
+                  <div class="clearfix"></div>
                 </div>
 
                 <div class="clearfix"></div>
-
-                <div class="row">
-
-
-                </div>
 
                 <!-- /page content -->
 
@@ -1480,8 +1562,6 @@
 
 
 
-
-
             <!-- 캘린더 -->
             <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
             <script>
@@ -1496,19 +1576,31 @@
 
             </script>
 
-            <!-- 세로 바 차트-->
+            
+            <script>
+              // sql에서 값 가져온 것 변수에 저장 
 
-            <!-- 가로 바 차트 -->
+              // 회원 번호
+              let number = "${no}"
 
+              // 이름
+              let name = "${name}"
 
-            <!-- 라인 차트 -->
+              // 나이
+              let age = "${age}"
 
+              // 성별
+              let gender = "${gender}"
 
+              // 몸무게 
+              let weight = "${weight}"
 
-            <!-- 도넛 차트 -->
+              // 키
+              let height = "${height}"
+              
+              </script>
 
             <script>
-
               // afterDraw 함수를 사용하여 텍스트를 추가합니다.
               Chart.plugins.register({
                 afterDraw: addTextToDonutChart
@@ -1516,8 +1608,7 @@
             </script>
             <script src="assets/Exercise/js/custom.js"></script>
 
-
-
+            
 
         </body>
 

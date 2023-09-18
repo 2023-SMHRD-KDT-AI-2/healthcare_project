@@ -18,16 +18,23 @@ $(document).ready(function () {
             },
         ],
         columns: [
-			{
-				data: "photopath",
+            {
+                data: 'photopath',
 
-				render: function(data, type, row, meta) {
-					const date = new Date();
-					const year = date.getFullYear();
-					const month = date.getMonth();
-					return '<a href="Members.say?c=member&collection=' + year + (month >= 10 ? month : '0' + month) + '&fieldName=_id&value=' + row.no + '&valueType=int&dataType=json"><img src="images//Member//example.jpg" width="50px"></a>';
-				}
-			},
+                render: function (data, type, row, meta) {
+                    const date = new Date();
+                    const year = date.getFullYear();
+                    const month = date.getMonth();
+                    return (
+                        '<a href="Members.say?c=member&collection=' +
+                        year +
+                        (month >= 10 ? month : '0' + month) +
+                        '&fieldName=_id&value=' +
+                        row.no +
+                        '&valueType=int&dataType=json"><img src="images//Member//example.jpg" width="50px"></a>'
+                    );
+                },
+            },
             {
                 data: 'no',
             },
@@ -70,3 +77,6 @@ first_last_numbers - 'First' and 'Last' buttons, plus page numbers*/
         scrollY: '100%',
     });
 });
+
+
+

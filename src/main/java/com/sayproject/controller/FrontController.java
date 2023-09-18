@@ -32,14 +32,13 @@ public class FrontController extends HttpServlet {
 		String subStringRequestURI = requestURI.substring(contextPath.length());
 
 		System.out.println("=====================");
-		System.out.println("requestURI : " + requestURI);
-		System.out.println("contextPath : " + contextPath);
 		System.out.println("subStringRequestURI : " + subStringRequestURI);
-		
+
 		Enumeration<String> parameter = request.getParameterNames();
-		
-		while(parameter.hasMoreElements()) {
-			System.out.println("parameter : " + parameter.nextElement());
+
+		while (parameter.hasMoreElements()) {
+			String nextElement = parameter.nextElement();
+			System.out.printf("[PARAMETER] %s : %s\n", nextElement, request.getParameter(nextElement));
 		}
 		System.out.println("=====================");
 		if (subStringRequestURI.contains("/Main.say")) {

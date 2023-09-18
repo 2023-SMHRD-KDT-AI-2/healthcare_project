@@ -15,4 +15,14 @@
     <select id="memberList" resultType="com.sayproject.model.Members.Member">
 		Select * From members ORDER BY NO
 	</select>
+	
+	<!--출석 중복체크-->
+	<select id="duplicateAttendence" parameterType="com.sayproject.model.Members.Member" resultType="int">
+		select count(no) from Attendence_members where no=#{no} and regist_day=#{regist_day}
+	</select>
+	
+	<!--출석체크-->
+	<insert id="RegistAttendenceAction" parameterType="com.sayproject.model.Members.Member">
+		insert into Attendence_members(no,name,trainer,regist_day) values(#{no},#{name},#{trainer},CURDATE())
+	</insert>
 </mapper>
