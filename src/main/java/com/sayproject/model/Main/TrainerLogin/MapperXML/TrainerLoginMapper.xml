@@ -8,5 +8,5 @@
     <select id="trainerLogin"
         parameterType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"
         resultType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"> SELECT no, name, email,
-        nickname, photopath, age FROM trainer WHERE email=#{emaiil} and password=#{password}</select>
+        nickname, photopath, age FROM trainer WHERE email=#{email} and password=#{password}</select>
 </mapper>
