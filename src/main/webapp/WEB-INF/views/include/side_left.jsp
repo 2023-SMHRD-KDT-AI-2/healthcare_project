@@ -45,28 +45,13 @@
 						Home <span class="fa fa-chevron-down"></span></a></li>
 				<li><a href="/Main.say?c=allTrainerList"><i class="fa fa-home"></i>
 						전체 트레이너 정보 <span class="fa fa-chevron-down"></span></a></li>
-				<li><a><i class="fa fa-edit"></i> 회원 정보 <span
+				<li><a href="/Members.say?c=main"><i class="fa fa-edit"></i> 회원 정보 <span
+						class="fa fa-chevron-down"></span></a></li>
+				<li><a href="/Diet.say"><i class="fa fa-desktop"></i> 영양 정보 <span
+						class="fa fa-chevron-down"></span></a></li>
+				<li><a href="/Exercise.say"><i class="fa fa-table"></i> 운동 정보 <span
 						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="/Members.say">Member Main</a></li>
-						<li><a href="/Members.say?c=list">Member list</a></li>
-						<li><a href="/Members.say?c=json">Member jsondata</a></li>
-						<li><a href="/Members.say?c=input">Member info input</a></li>
-					</ul></li>
-				<li><a><i class="fa fa-desktop"></i> 영양 정보 <span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="/Diet.say">Diet Sub1</a></li>
-						<li><a href="/Diet.say?c=sub2">Diet Sub2</a></li>
-						<li><a href="/Diet.say?c=inputInfo">영양 정보 입력</a></li>
-					</ul></li>
-				<li><a><i class="fa fa-table"></i> 운동 정보 <span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="/Exercise.say">Exercise Sub1</a></li>
-						<li><a href="/Exercise.say?c=sub2">Exercise Sub2</a></li>
-						<li><a href="/Exercise.say?c=inputInfo">운동 정보 입력</a></li>
-					</ul></li>
+</li>
 			</ul>
 		</div>
 	</div>

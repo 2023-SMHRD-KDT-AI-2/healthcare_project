@@ -88,8 +88,8 @@
 									<form class="form-horizontal form-label-left" action="/Members.say?c=inputProcess" method="post">
 										<!-- include member info -->
 										<jsp:include page="/WEB-INF/views/include/diet_and_exercise_member_info_include.jsp" />
-										<jsp:include page="/WEB-INF/views/Exercise/include/exercise_Information_Input_Main_Content.jsp" />
-										<jsp:include page="/WEB-INF/views/Diet/include/diet_Information_Input_Main_Content.jsp" />
+										<jsp:include page="/WEB-INF/views/include/exercise_Information_Input_Main_Content.jsp" />
+										<jsp:include page="/WEB-INF/views/include/diet_Information_Input_Main_Content.jsp" />
 										<div class="row"></div>
 										<div class="ln_solid"></div>
 										<div class="form-group">
@@ -118,7 +118,12 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
+	<!-- attribute value set -->
+	<script>
+		const memberNo = "${no}"
+	</script>
 	<!-- Custom Theme Scripts -->
 	<script src="assets/Members/js/custom.js"></script>
+	<script src="assets/Members/js/all-member-information-document.js"></script>
 </body>
 </html>

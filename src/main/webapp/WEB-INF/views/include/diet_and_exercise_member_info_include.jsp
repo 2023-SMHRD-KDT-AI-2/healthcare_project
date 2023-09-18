@@ -2,18 +2,46 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!-- 회원 목록 -->
+<div class="form-group row">
+	<label class="control-label col-md-3 col-sm-3 ">전체 회원 명단</label>
+	<div class="col-md-9 col-sm-9 ">
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button"
+				data-toggle="dropdown" aria-expanded="false">전체 회원 명단</button>
+			<div id="showAllMembers" class="dropdown-menu"></div>
+		</div>
+	</div>
+</div>
+<!-- 회원 고유 object id -->
+<div class="form-group row">
+	<label class="control-label col-md-3 col-sm-3 ">회원 고유 번호</label>
+	<div class="col-md-9 col-sm-9 ">
+		<c:choose>
+			<c:when test="${no != null}">
+				<input type="text" class="form-control" readonly="readonly"
+					placeholder="Read-Only Input" name="id" value=${no}>
+			</c:when>
+			<c:otherwise>
+				<input type="text" class="form-control" readonly="readonly"
+					placeholder="Read-Only Input" name="id" value="0">
+			</c:otherwise>
+		</c:choose>
+	</div>
+</div>
+<!-- /회원 고유 object id END -->
 <!-- 회원 E-Mail -->
 <div class="form-group row">
 	<label class="control-label col-md-3 col-sm-3 ">회원 EMAIL</label>
 	<div class="col-md-9 col-sm-9 ">
 		<c:choose>
-			<c:when test="${idOrEmail != null}">
+			<c:when test="${email != null}">
 				<input type="text" class="form-control" readonly="readonly"
 					placeholder="Read-Only Input" name="id" value=${email}>
 			</c:when>
 			<c:otherwise>
 				<input type="text" class="form-control" readonly="readonly"
-					placeholder="Read-Only Input" name="id" value="defaultEmail">
+					placeholder="Read-Only Input" name="id" value="회원을 선택하세요.">
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -24,13 +52,13 @@
 	<label class="control-label col-md-3 col-sm-3 ">회원 이름</label>
 	<div class="col-md-9 col-sm-9 ">
 		<c:choose>
-			<c:when test="${nickname != null}">
+			<c:when test="${name != null}">
 				<input type="text" class="form-control" readonly="readonly"
 					placeholder="Read-Only Input" name="name" value=${name}>
 			</c:when>
 			<c:otherwise>
 				<input type="text" class="form-control" readonly="readonly"
-					placeholder="Read-Only Input" name="name" value="DefaultName">
+					placeholder="Read-Only Input" name="name" value="회원을 선택하세요.">
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -47,7 +75,7 @@
 			</c:when>
 			<c:otherwise>
 				<input type="text" class="form-control" readonly="readonly"
-					placeholder="Read-Only Input" name="trainer" value="트레이너 미지정">
+					placeholder="Read-Only Input" name="trainer" value="0">
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -95,7 +123,8 @@
 <div class="form-group row ">
 	<label class="control-label col-md-3 col-sm-3 ">입력할 날짜</label>
 	<div class="col-md-9 col-sm-9 ">
-	<input type="text" id="datePicker" class="form-control" value="2019-06-27" />
+		<input type="text" id="datePicker" class="form-control"
+			value="2019-06-27" />
 	</div>
 </div>
 <!-- /수정할 날짜 정보 END -->

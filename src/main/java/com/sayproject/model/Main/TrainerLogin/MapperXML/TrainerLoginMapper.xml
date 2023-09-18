@@ -9,4 +9,13 @@
         parameterType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"
         resultType="com.sayproject.model.Main.TrainerLogin.TrainerAccount"> SELECT no, name, email,
         nickname, photopath, age FROM trainer WHERE email=#{email} and password=#{password}</select>
+    <select id="trainerAvgGrade" resultType="Double" parameterType="Integer"> 
+        SELECT avg(grade) FROM trainer_grade Where trainer_no=#{trainer_no}
+    </select> 
+    <select id="TrainerMemberCount" resultType="Integer" parameterType="Integer"> 
+        SELECT count(trainer) FROM members Where trainer=#{trainer_no}
+    </select>
+    <select id="MembersAttendenceCountForTrainer" resultType="Integer" parameterType="Integer"> 
+        SELECT count(trainer) FROM Attendence_members Where trainer=#{trainer_no}
+    </select>     
 </mapper>

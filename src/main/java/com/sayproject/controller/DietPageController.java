@@ -27,8 +27,6 @@ public class DietPageController {
 	public Action router(String cmd, HttpServletResponse response) {
 		if (cmd.equals("main")) {
 			return new DietMainAction();
-		} else if (cmd.equals("inputInfo")) {
-          return new MemberDietInformationInput();
 		}
 		// MariaDB와 MonggoDB에서 데이터 주기 위한 Action
 		// 해당 로직이 실행되도 GetFoodNameAction()을 실행하면
