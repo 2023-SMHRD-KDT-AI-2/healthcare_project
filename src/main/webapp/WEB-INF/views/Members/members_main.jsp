@@ -93,17 +93,41 @@
 														<div class="row no-gutters">
 															<div class="col-md-5 p-1">
 																<img src="${member.getPhotopath()}"
-																	 class="img-thumbnail" alt="${member.getName()} (${member.getAge()}) 님">
+																	class="img-thumbnail"
+																	alt="${member.getName()} (${member.getAge()}) 님">
 															</div>
 															<div class="col-md-7">
 																<div class="card-body">
-																	<h5 class="card-title">${member.getName()} (${member.getAge()}) 님</h5>
+																	<h5 class="card-title">${member.getName()}
+																		(${member.getAge()}) 님</h5>
 																	<p class="card-text">몸무게 : ${member.getWeight()}</p>
 																	<p class="card-text">키 : ${member.getHeight()}</p>
-																	<p class="card-text">연락처 : ${member.getPhone_number()}</p>
+																	<p class="card-text">연락처 :
+																		${member.getPhone_number()}</p>
 																	<p class="card-text">
-																		<small class="text-muted">등록일 : ${member.getRegist_day()}</small>
+																		<small class="text-muted">등록일 :
+																			${member.getRegist_day()}</small>
 																	</p>
+																	<!-- 출석 버튼 -->
+																	<div class="attendence">
+																		<p class="card-text">
+																			<!-- 출석하였을 때의 처리 -->
+																			<c:if test="${member.getAttendence()}">
+																				<a
+																					href="/Members.say?c=registAttendence&oid=${member.getNo()}&name=${member.getName()}&trainerNumber=${member.getTrainer()}">
+																					<button style="background-color: blue; color: aliceblue;">출석완료</button>
+																				</a>
+																			</c:if>
+																			<!-- 미출석시에 처리 -->
+																			<c:if test="${!member.getAttendence()}">
+																				<a
+																					href="/Members.say?c=registAttendence&oid=${member.getNo()}&name=${member.getName()}&trainerNumber=${member.getTrainer()}">
+																					<button>출석확인</button>
+																				</a>
+																			</c:if>
+
+																		</p>
+																	</div>
 																</div>
 															</div>
 														</div>
@@ -127,10 +151,15 @@
 				<div class="clearfix"></div>
 			</footer>
 			<!-- /footer content -->
+			
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
+	
 	<!-- Custom Theme Scripts -->
 	<script src="assets/Members/js/custom.js"></script>
+
+
+
 </body>
 </html>
