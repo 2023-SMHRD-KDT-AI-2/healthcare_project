@@ -39,7 +39,7 @@ public class TrainerLoginCheckAction implements Action {
         }
         TrainerLoginDAO trainerLoginDAO = new TrainerLoginDAO();
         TrainerAccount trainerAccount = new TrainerAccount();
-        trainerAccount.setId(email);
+        trainerAccount.setEmail(email);
         trainerAccount.setPassword(password);
         // DB 접근해 id, password 확인해 해당 정보가 존재하는지 확인한다.
         TrainerAccount returnTrainerAccount = trainerLoginDAO.trainerLoginCheck(trainerAccount);
@@ -48,7 +48,7 @@ public class TrainerLoginCheckAction implements Action {
         if (returnTrainerAccount != null) {            
             session.setAttribute("loginType", loginType);
             session.setAttribute("memberObjectId", returnTrainerAccount.getNo());
-            session.setAttribute("emailOrId", returnTrainerAccount.getId());
+            session.setAttribute("emailOrId", returnTrainerAccount.getEmail());
             session.setAttribute("name", returnTrainerAccount.getName());
             session.setAttribute("nickname", returnTrainerAccount.getNickname());
             session.setAttribute("profileImageUrl", returnTrainerAccount.getPhotopath());
