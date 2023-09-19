@@ -12,18 +12,21 @@ public class DietDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSessionFactory();
 	
-	Diet dietAll = new Diet();
+	List<Diet> dietAllList = new ArrayList<Diet>();
 	
 	// food_code를 참조하여 음식데이터 조회 
-	public Diet showAllNutrient(String code) {
+	public List showAllNutrient(List code) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		dietAll = sqlSession.selectOne("showAllNutrient", code);
+		dietAllList = sqlSession.selectList("showAllNutrient", code);
+		
+		System.out.println("dietAllList :" + dietAllList);
+		System.out.println("dietAllList 크기 :" + dietAllList.size());
 
 		sqlSession.close();
 
-		return dietAll;
+		return dietAllList;
 	}
 	
 }
