@@ -1,7 +1,7 @@
 package com.sayproject.controller.Main.Member;
 
 import java.io.IOException;
-
+import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +22,20 @@ public class MemberAddInfoAction implements Action {
 		String loginType = request.getParameter("loginType");
 		HttpSession session = request.getSession();
 		session.setAttribute("grade", "personal");
-
+		
+		Enumeration<String> parameterNames = request.getParameterNames();
+		
+		while (parameterNames.hasMoreElements()) {
+		  String parameterName = parameterNames.nextElement();
+		  session.setAttribute(parameterName, request.getParameter(parameterName));
+		}
+		
 		if (loginType.equals("member")) {
-			session.setAttribute("loginType", "member");
+			session.setAttribute("loginType", loginType);
 			RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/Login/MemberAddInfo.jsp");
 			dis.forward(request, response);
 		} else if (loginType.equals("kakao")) {
-			session.setAttribute("loginType", "kakao");
+			session.setAttribute("loginType", loginType);
 			RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/Login/MemberAddInfo.jsp");
 			dis.forward(request, response);
 		} else {

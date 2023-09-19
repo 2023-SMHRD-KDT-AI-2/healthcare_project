@@ -87,54 +87,75 @@
 								<div class="x_content">
 									<div class="container">
 										<div class="row row-cols-3">
-											<c:forEach var="member" items="${memberList}">
-												<div class="col ">
-													<div class="card mb-3" style="max-width: 540px;">
-														<div class="row no-gutters">
-															<div class="col-md-5 p-1">
-																<img src="${member.getPhotopath()}"
-																	class="img-thumbnail"
-																	alt="${member.getName()} (${member.getAge()}) 님">
-															</div>
-															<div class="col-md-7">
-																<div class="card-body">
-																	<h5 class="card-title">${member.getName()}
-																		(${member.getAge()}) 님</h5>
-																	<p class="card-text">몸무게 : ${member.getWeight()}</p>
-																	<p class="card-text">키 : ${member.getHeight()}</p>
-																	<p class="card-text">연락처 :
-																		${member.getPhone_number()}</p>
-																	<p class="card-text">
-																		<small class="text-muted">등록일 :
-																			${member.getRegist_day()}</small>
-																	</p>
-																	<!-- 출석 버튼 -->
-																	<div class="attendence">
+											<c:forEach var="member" items="${memberList}" varStatus="i">
+												<c:if test="${i.index >= ((page * 8) - 8) && i.index <= page * 8}">
+													<div class="col ">
+														<div class="card mb-3" style="max-width: 540px;">
+															<div class="row no-gutters">
+																<div class="col-md-5 p-1">
+																	<img src="${member.getPhotopath()}"
+																		class="img-thumbnail" style="max-height:270px"
+																		alt="${member.getName()} (${member.getAge()}) 님">
+																</div>
+																<div class="col-md-7">
+																	<div class="card-body">
+																		<h5 class="card-title">${member.getName()}
+																			(${member.getAge()}) 님</h5>
+																		<p class="card-text">연락처 :
+																			${member.getPhone_number()}</p>
 																		<p class="card-text">
-																			<!-- 출석하였을 때의 처리 -->
-																			<c:if test="${member.getAttendence()}">
-																				<a
-																					href="/Members.say?c=registAttendence&oid=${member.getNo()}&name=${member.getName()}&trainerNumber=${member.getTrainer()}">
-																					<button style="background-color: blue; color: aliceblue;">출석완료</button>
-																				</a>
-																			</c:if>
-																			<!-- 미출석시에 처리 -->
-																			<c:if test="${!member.getAttendence()}">
-																				<a
-																					href="/Members.say?c=registAttendence&oid=${member.getNo()}&name=${member.getName()}&trainerNumber=${member.getTrainer()}">
-																					<button>출석확인</button>
-																				</a>
-																			</c:if>
-
+																			<small class="text-muted">등록일 :
+																				${member.getRegist_day()}</small>
 																		</p>
+																		<!-- 출석 버튼 -->
+																		<div class="attendence">
+																			<p class="card-text">
+																				<a
+																					href="Exercise.say?c=sub2&no=${member.getNo()}&name=${member.getName()}&age=${member.getAge()}&gender=${member.getGender()}&weight=${member.getWeight()}&height=${member.getHeight()}&trainer=${member.getTrainer()}"><button
+																						type="button" class="btn btn-light btn-block">운동</button></a><a
+																					href="Diet.say?c=main&no=${member.getNo()}&name=${member.getName()}&age=${member.getAge()}&gender=${member.getGender()}&weight=${member.getWeight()}&height=${member.getHeight()}&trainer=${member.getTrainer()}"><button
+																						type="button" class="btn btn-dark btn-block">식단</button></a>
+																				<!-- 출석하였을 때의 처리 -->
+																				<c:if test="${member.getAttendence()}">
+																					<a
+																						href="/Members.say?c=registAttendence&oid=${member.getNo()}&name=${member.getName()}&trainerNumber=${member.getTrainer()}">
+																						<button type="button"
+																							class="btn btn-success btn-block">출석완료</button>
+																					</a>
+																				</c:if>
+																				<!-- 미출석시에 처리 -->
+																				<c:if test="${!member.getAttendence()}">
+																					<a
+																						href="/Members.say?c=registAttendence&oid=${member.getNo()}&name=${member.getName()}&trainerNumber=${member.getTrainer()}">
+																						<button type="button"
+																							class="btn btn-primary btn-block">출석확인</button>
+																					</a>
+																				</c:if>
+
+																			</p>
+																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
-												</div>
+												</c:if>
 											</c:forEach>
 										</div>
+										<!-- Pagination  -->
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-center">
+												<c:if test="${page == 1}">
+													<li class="page-item disabled"><a class="page-link"
+													href="#" tabindex="-1">Previous</a></li>
+												</c:if>
+												<c:if test="${page > 1}">
+													<li class="page-item"><a class="page-link" href="/Members.say?c=Main&page=${page-1}">Previous</a></li>
+												</c:if>
+												<li class="page-item"><a class="page-link" href="/Members.say?c=Main&page=${page+1}">Next</a>
+												</li>
+											</ul>
+										</nav>
 									</div>
 								</div>
 							</div>
@@ -151,11 +172,11 @@
 				<div class="clearfix"></div>
 			</footer>
 			<!-- /footer content -->
-			
+
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/footer_script.jsp" />
-	
+
 	<!-- Custom Theme Scripts -->
 	<script src="assets/Members/js/custom.js"></script>
 

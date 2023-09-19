@@ -27,7 +27,7 @@ $(document).ready(function () {
                     const month = date.getMonth();
                     const day = date.getDay();
                     return (
-                        '<a href="Exercise.say?c=sub2' +
+                        '<img src="images//Member//example.jpg" width="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Exercise.say?c=sub2' +
                         '&no=' +
                         row.no +
                         '&name=' +
@@ -42,7 +42,7 @@ $(document).ready(function () {
                         row.height +
                         '&trainer=' +
                         row.trainer +
-                        '">운동</a><a href="Diet.say?c=main' +
+                        '"><button type="button" class="btn btn-info">운동</button></a><a href="Diet.say?c=main' +
                         '&no=' +
                         row.no +
                         '&name=' +
@@ -57,7 +57,7 @@ $(document).ready(function () {
                         row.height +
                         '&trainer=' +
                         row.trainer +
-                        '"><img src="images//Member//example.jpg" width="50px"></a>'
+                        '"><button type="button" class="btn btn-success">식단</button></a>'
                     );
                 },
             },
