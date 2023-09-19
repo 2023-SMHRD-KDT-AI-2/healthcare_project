@@ -51,7 +51,12 @@
 						class="fa fa-chevron-down"></span></a></li>
 				<li><a href="/Exercise.say"><i class="fa fa-table"></i> 운동 정보 <span
 						class="fa fa-chevron-down"></span></a>
-</li>
+				</li>
+				<c:if test="${loginType eq 'master'}">
+				<li><a href="/Main.say?c=newTrainer"><i class="fa fa-table"></i> 새로운 트레이너 등록 <span
+						class="fa fa-chevron-down"></span></a>
+				</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>

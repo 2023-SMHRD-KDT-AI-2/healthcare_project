@@ -21,7 +21,9 @@
 	<div class="container">
 		<!-- Sign In -->
 		<div class="container__form container--admin_and_trainer_signin">
-			<form action="#" class="form" id="bossLoginForm">
+			<form action="/Main.say" method="post" class="form" id="bossLoginForm">
+				<input type="hidden" name="c" value="bossLoginCheck"> 
+				<input type="hidden" name="loginType" value="boss">
 				<h2 class="form__title">대표자 로그인</h2>
 				<input type="email" placeholder="Email" class="input" /> <input
 					type="password" placeholder="비밀번호" class="input" />

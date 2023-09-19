@@ -780,6 +780,8 @@ if (gender == 'male') {
 	}
 }
 
+let memberList;
+
 // MonggoDB에서 받아온 회원의 간략한 음식 정보를 저장하기 위한 객체
 let meal = {};
 
@@ -804,6 +806,35 @@ const loadMemberDailyInfo = async () => {
     },
   });
 };
+
+const loadMemberList = async () => {
+	await $.ajax({
+	  url: "/HttpApi.say?c=getAllMember",
+	  success: function (data) {
+		memberListInfo = data;	
+		console.log("회원목록 수신완료");
+		memberList = JSON.parse(memberListInfo);
+		console.log("memberList", memberList);
+	  },
+	  error: function () {
+		console.log("회원목록 수신실패");
+	  },
+	});
+};
+
+//전체회원 명단 만들기
+const rendTotalName = () => {
+    let totalName = document.querySelector('#memberList');
+    memberList.forEach(element => {
+        totalName.innerHTML +=`
+            <div class="card" style="width: 15rem; "max-width:250px;">
+                    <img class="card-img-top" src="${element.photopath}" alt="Card image cap" style="max-width:250px; max-height:200px;">
+                            <a class="dropdown-item" href="/Diet.say?c=main&no=${element.no}&name=${element.name}&age=${element.age}&gender=${element.gender}&weight=${element.weight}&height=${element.height}&trainer=${element.trainer}"><span style="font-weight: bold;">${element.name}님</span></a>
+            </div>
+    `
+    });
+}
+
 
 // 회원이 그날 머근 영양소들의 합을 아침, 점심, 저녁, 간식별로 합산
 const calcNutrient = function() {
@@ -1563,6 +1594,9 @@ function removeAllChildren(parentElementId) {
 const loadmember = async () => {
   // MonggoDB에 ajax요청 후 데이터를 받을 때까지 대기
   await loadMemberDailyInfo();
+  await loadMemberList();
+
+  rendTotalName();
   
   // MonggoDB에서 받은 음식 정보만을 meal객체에 저장
 	meal = {

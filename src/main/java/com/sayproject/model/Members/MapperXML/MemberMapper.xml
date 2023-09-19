@@ -51,49 +51,7 @@
 		select
 		count(gender) from members where gender = 'f' ;
 	</select>
-
-	<!-- 10대 수 -->
-	<select id="teenage" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 10 and 19;
-	</select>
-
-	<!-- 20대 수 -->
-	<select id="twenty" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 20 and 29;
-	</select>
-
-	<!-- 30대 수 -->
-	<select id="thirty" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 30 and 39;
-	</select>
-
-	<!-- 40대 수 -->
-	<select id="forty" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 40 and 49;
-	</select>
-
-	<!-- 50대 수 -->
-	<select id="fifty" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 50 and 59;
-	</select>
-
-	<!-- 60대 수 -->
-	<select id="sixty" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 60 and 69;
-	</select>
-
-	<!-- 70대 수 -->
-	<select id="seventy" parameterType="int" resultType="int">
-		select
-		count(age) from members where age between 70 and 79;
-	</select>
-
+  
 	<!-- best 트레이너 -->
 	<select id="bestTrainer" parameterType="string" resultType="string">
 		SELECT
@@ -109,6 +67,9 @@
 		ON tt.trainer_no = t.no;
 	</select>
 
-
-
+	
+	<!-- 연령대 통합 -->
+	<select id="age" resultType="int">
+	SELECT age FROM members;
+	</select>
 </mapper>
