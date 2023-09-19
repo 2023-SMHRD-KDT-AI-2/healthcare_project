@@ -1383,7 +1383,7 @@
                                   <div class="info_tr">
                                     <div>등록일자</div>
                                     <div>
-                                      <${ info.getRegist_day()}
+                                      ${ info.getRegist_day()}
                                     </div>
                                   </div>
                                   <div class="info_tr">

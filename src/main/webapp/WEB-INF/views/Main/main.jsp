@@ -111,7 +111,14 @@
 												<div class="card-body text-danger">
 													<canvas id="doughnutChart" style="height: 100%"></canvas>
 												</div>
+												<div style="font-size: 22px; height: 60px; text-align: center; font-family: 'Arial', sans-serif;">
+													<i class="fa fa-square" style="color: #5C9EF5;"></i>
+													남성 : ${male}명 /
+													<i class="fa fa-square" style="color: #bc69fa;"></i>
+													여성 : ${female}명
+												</div>
 											</div>
+
 											<div class="card border-dark">
 												<div class="card-header">회원 연령 분포</div>
 												<div class="card-body text-danger">
@@ -172,17 +179,29 @@
 	<!-- Members Custom Scripts -->
 	<script src="assets/Main/js/custom.js"></script>
 
+	<script > let goodColor = [
+        "#bc69fa",
+        "#7386FF",
+        "#5C9EF5",
+        "#00E1FD",
+        "#01F6D5",
+        "#8258FA",
+        "#5858FA",
+    ];</script>
+
+
 	<script>
 		// doughnut chart
 		const doughnut = document.getElementById('doughnutChart');
-
+		
 		new Chart(doughnut, {
 			type : 'doughnut',
 			data : {
 				labels : [ '남성', '여성' ],
 				datasets : [ {
-					label : '# 명수',
-					data : [ 12, 19 ],
+					label : '# 인원 수',
+					data : [ ${male}, ${female} ],
+					backgroundColor: ["#5C9EF5","#bc69fa"],
 					borderWidth : 1
 				} ]
 			}
@@ -214,16 +233,10 @@
 		const bardata = {
 			labels : [ '10대', '20대', '30대', '40대', '50대', '60대', '70대' ],
 			datasets : [ {
-				label : 'My First Dataset',
-				data : [ 65, 59, 80, 81, 56, 55, 40 ],
-				backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
-						'rgba(255, 159, 64, 0.2)', 'rgba(255, 205, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)',
-						'rgba(153, 102, 255, 0.2)', 'rgba(201, 203, 207, 0.2)' ],
-				borderColor : [ 'rgb(255, 99, 132)', 'rgb(255, 159, 64)',
-						'rgb(255, 205, 86)', 'rgb(75, 192, 192)',
-						'rgb(54, 162, 235)', 'rgb(153, 102, 255)',
-						'rgb(201, 203, 207)' ],
+				label : '연령',
+				data : [ ${teenage}, ${twenty}, ${thirty}, ${forty}, ${fifty}, ${sixty}, ${seventy}],
+				backgroundColor : goodColor,
+				borderColor : goodColor,
 				borderWidth : 1
 			} ]
 		};
