@@ -7,59 +7,64 @@
 const showAllMemberElement = document.getElementById('showAllMembers');
 
 let loadDocumentId = () => {
-    let todayDate = ``;
-    let memberObjectId = ``;
+	let todayDate = ``;
+	let memberObjectId = ``;
 };
 
 const loadAllMembers = async () => {
-    let allMembersInfo = '';
-    const loadMemberInfoUrl = '/Members.say?c=json';
+	let allMembersInfo = '';
+	const loadMemberInfoUrl = '/Members.say?c=json';
 
-    await fetch(loadMemberInfoUrl, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-        },
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            allMembersInfo = json;
-            allMembersInfo.forEach((data) => {
-                showAllMemberElement.innerHTML += `
-                <a class="dropdown-item" href="/Members.say?c=input&no=${data.no}&name=${data.name}&email=${data.kakao_id}&age=${data.age}&gender=${data.gender}&trainer=${data.trainer}&weight=${data.weight}&height=${data.height}">
-                    ${data.no} | ${data.name}(${data.age}) | ${data.trainer}
-                </a>
+	await fetch(loadMemberInfoUrl, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+		},
+	})
+		.then((response) => response.json())
+		.then((json) => {
+			allMembersInfo = json;
+			allMembersInfo.forEach((data) => {
+				showAllMemberElement.innerHTML += `
+                <div class="card" style="width: 18rem;">
+  					<a class="dropdown-item" href="/Members.say?c=input&no=${data.no}&name=${data.name}&email=${data.kakao_id}&age=${data.age}&gender=${data.gender}&trainer=${data.trainer}&weight=${data.weight}&height=${data.height}">
+  						<img class="card-img-top" src="${data.photopath}" style="width:100px;max-height:150px" alt="Card image cap">
+  						<div class="card-body">
+                    		${data.no} | ${data.name}(${data.age}) | ${data.trainer}
+  						</div>
+  					</a>
+				</div>               
                 `;
-            });
-        })
-        .catch((err) => {
-            console.log('[getAccessToken] failed to request user information: ' + JSON.stringify(err));
-        });
+			});
+		})
+		.catch((err) => {
+			console.log('[getAccessToken] failed to request user information: ' + JSON.stringify(err));
+		});
 };
 
 loadAllMembers();
 
 const loadMemberDailyInfo = async () => {
-    await fetch('/Members.say', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-        },
-        body: `?c=member&collection=${todayDate}&fieldName=_id&value=${memberNo}&valueType=int&dataType=json`,
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            showAllMemberElement.innerHTML += json;
-        })
-        .catch((err) => {
-            console.log('[getAccessToken] failed to request user information: ' + JSON.stringify(err));
-            //window.location.href = "/Main.say";
-        });
+	await fetch('/Members.say', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+		},
+		body: `?c=member&collection=${todayDate}&fieldName=_id&value=${memberNo}&valueType=int&dataType=json`,
+	})
+		.then((response) => response.json())
+		.then((json) => {
+			showAllMemberElement.innerHTML += json;
+		})
+		.catch((err) => {
+			console.log('[getAccessToken] failed to request user information: ' + JSON.stringify(err));
+			//window.location.href = "/Main.say";
+		});
 };
 loadMemberDailyInfo();
 
 let addFoodCategory = (strLabel, categoryName, num) => {
-    return `<div class="x_content">
+	return `<div class="x_content">
      <div class="col-md-3 col-sm-12  form-group">
          <label class="control-label col-md-3 col-sm-3 ">${strLabel} 이름</label>
          <div class="col-md-9 col-sm-9 ">
@@ -100,9 +105,9 @@ const exercisePanel = document.getElementById('exercise_panel');
 let exerciseNum = 1;
 
 exerciseAdd.onclick = () => {
-    exerciseNum += 1;
-    const appendHTML = addCategory('운동', 'exercise', exerciseNum);
-    exercisePanel.innerHTML += appendHTML;
+	exerciseNum += 1;
+	const appendHTML = addCategory('운동', 'exercise', exerciseNum);
+	exercisePanel.innerHTML += appendHTML;
 };
 
 const bfAdd = document.getElementById('bfAdd');
@@ -120,25 +125,25 @@ let dinnerNum = 1;
 let otherNum = 1;
 
 bfAdd.onclick = () => {
-    bfNum += 1;
-    const appendHTML = addFoodCategory('아침', 'breakfastFood', bfNum);
-    bfPanel.innerHTML += appendHTML;
+	bfNum += 1;
+	const appendHTML = addFoodCategory('아침', 'breakfastFood', bfNum);
+	bfPanel.innerHTML += appendHTML;
 };
 
 lunchAdd.onclick = () => {
-    lunchNum += 1;
-    const appendHTML = addFoodCategory('점심', 'lunchFood', lunchNum);
-    lunchPanel.innerHTML += appendHTML;
+	lunchNum += 1;
+	const appendHTML = addFoodCategory('점심', 'lunchFood', lunchNum);
+	lunchPanel.innerHTML += appendHTML;
 };
 
 dinnerAdd.onclick = () => {
-    dinnerNum += 1;
-    const appendHTML = addFoodCategory('저녁', 'dinnerFood', dinnerNum);
-    dinnerPanel.innerHTML += appendHTML;
+	dinnerNum += 1;
+	const appendHTML = addFoodCategory('저녁', 'dinnerFood', dinnerNum);
+	dinnerPanel.innerHTML += appendHTML;
 };
 
 otherAdd.onclick = () => {
-    otherNum += 1;
-    const appendHTML = addFoodCategory('간식', 'otherFood', otherNum);
-    otherPanel.innerHTML += appendHTML;
+	otherNum += 1;
+	const appendHTML = addFoodCategory('간식', 'otherFood', otherNum);
+	otherPanel.innerHTML += appendHTML;
 };

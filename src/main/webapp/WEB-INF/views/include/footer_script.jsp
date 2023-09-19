@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <!-- FOOT SCRIPT -->
 <!-- jQuery -->
 <script src="assets/js/jQuery-3.7.1/jquery-3.7.1.js"></script>
@@ -15,17 +15,21 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <!-- Datatables -->
 <script src="assets/js/datatables/jquery.dataTables.js"></script>
 <!-- bootstrap-progressbar -->
-<script src="assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<script
+	src="assets/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="assets/vendors/moment/min/moment.min.js"></script>
-<script src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script
+	src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap-wysiwyg -->
-<script src="assets/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+<script
+	src="assets/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
 <script src="assets/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
 
 <script src="assets/vendors/google-code-prettify/src/prettify.js"></script>
 <!-- jQuery Sparklines -->
-<script src="assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script
+	src="assets/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- Flot -->
 <script src="assets/vendors/Flot/jquery.flot.js"></script>
 <script src="assets/vendors/Flot/jquery.flot.pie.js"></script>
@@ -49,18 +53,23 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <!-- Autosize -->
 <script src="assets/vendors/autosize/dist/autosize.min.js"></script>
 <!-- jQuery autocomplete -->
-<script src="assets/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+<script
+	src="assets/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="assets/vendors/moment/min/moment.min.js"></script>
-<script src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script
+	src="assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap-datetimepicker -->
-<script src="assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script
+	src="assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <!-- Ion.RangeSlider -->
 <script src="assets/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
 <!-- Bootstrap Colorpicker -->
-<script src="assets/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script
+	src="assets/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- jquery.inputmask -->
-<script src="assets/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<script
+	src="assets/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 <!-- jQuery Knob -->
 <script src="assets/vendors/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- starrr -->
@@ -69,14 +78,15 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <script src="assets\vendors\Calendar.js-main\dist\calendar.min.js"></script>
 <!-- chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- Kakao Login SDK -->
+<!-- jQuery Smart Wizard -->
 <script
-  src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
-  integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH"
-  crossorigin="anonymous"
-></script>
+	src="assets/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+<!-- Kakao Login SDK -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
+	integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH"
+	crossorigin="anonymous"></script>
 <script>
-  Kakao.init("14274277b7b930e3289085afa313c81c"); // 사용하려는 앱의 JavaScript 키 입력
+	Kakao.init("14274277b7b930e3289085afa313c81c"); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 <!-- Custom Theme Scripts -->
 <script src="assets/build/js/custom.min.js"></script>
