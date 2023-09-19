@@ -9,14 +9,8 @@
 <%@page import="com.google.gson.Gson"%>
 
 <%
-	
-	
-	// ArrayList<Diet> breakfastDietList = (ArrayList) request.getAttribute("breakfastDietList");
-	// ArrayList<Diet> lunchDietList = (ArrayList) request.getAttribute("lunchDietList");
-	// ArrayList<Diet> dinnerDietList = (ArrayList) request.getAttribute("dinnerDietList");
-	// ArrayList<Diet> otherfoodDietList = (ArrayList) request.getAttribute("otherfoodDietList");
-	// System.out.print(breakfastDietList);
-	
+	String mealData = (String) request.getAttribute("mealData");
+	System.out.println("안찍혔나" + mealData);
 %>
 
 <!DOCTYPE html>
@@ -58,13 +52,15 @@
 			<div class="right_col" role="main">
 				<div class="page-title">
 					<div class="title_left">
-						<h3>영양 섭취 정보</h3>
+						<h3><span id="page-title-member"></span> 님이 섭취한 영양소는?</h3>
 					</div>
 					<div class="title_right">
 						<fieldset>
 							<div class="control-group">
 							  <div class="controls">
-								<div class="col-md-11 xdisplay_inputx form-group row has-feedback">
+								<div class="col-md-4"></div>
+								<div class="col-md-4"></div>
+								<div class="col-md-4 xdisplay_inputx form-group row has-feedback">
 								  <input type="text" class="form-control has-feedback-left" id="single_calCustom" placeholder="First Name" aria-describedby="inputSuccess2Status">
 									  <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
 								  <span id="inputSuccess2Status" class="sr-only">(success)</span>
@@ -78,10 +74,10 @@
 				
 					<!-- add food content -->
 					<div class="col-md-6 col-sm-12">
-						<div class="x_panel">
+						<div class="x_panel" style="background-color: #F8F9FA; border-radius: 10px;">
 							<div class="x_title">
 								<div class="title_left">
-									<h2>아침</h2>
+									<h2 style="font-weight: bold;">아침</h2>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -91,10 +87,10 @@
 							</div>
 						</div>
 
-						<div class="x_panel">
+						<div class="x_panel" style="background-color: #F8F9FA; border-radius: 10px;">
 							<div class="x_title">
 								<div class="title_left">
-									<h2>점심</h2>
+									<h2 style="font-weight: bold;">점심</h2>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -104,10 +100,10 @@
 							</div>
 						</div>
 
-						<div class="x_panel">
+						<div class="x_panel" style="background-color: #F8F9FA; border-radius: 10px;">
 							<div class="x_title">
 								<div class="title_left">
-									<h2>저녁</h2>
+									<h2 style="font-weight: bold;">저녁</h2>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -117,10 +113,10 @@
 							</div>
 						</div>
 						
-						<div class="x_panel">
+						<div class="x_panel" style="background-color: #F8F9FA; border-radius: 10px;">
 							<div class="x_title">
 								<div class="title_left">
-									<h2>간식</h2>
+									<h2 style="font-weight: bold;">간식</h2>
 								</div>
 								<div class="x_content"></div>			
 								<div class="clearfix"></div>
@@ -135,9 +131,9 @@
 					
 					<!-- all nutrient content -->
 					<div class="col-md-6 col-sm-12">
-						<div class="x_panel">
+						<div class="x_panel" style="background-color: #F8F9FA; border-radius: 10px;">
 							<div class="x_title">
-								<div class="title_left"><h2>오늘 내가 먹은 영양소는?</h2></div>
+								<div class="title_left"><h2  style="font-weight: bold;">오늘 내가 먹은 영양소는?</h2></div>
 								<div class="clearfix"></div>
 							</div>
 							<div id="all_nutrient_chart">

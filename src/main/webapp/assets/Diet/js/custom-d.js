@@ -9,7 +9,7 @@ let day = String(currentDate.getDate()).padStart(2, '0'); // 일자도 두 자�
 // ajax요청에 사용되는 url에 들어가는 가변값들 변순 선언
 let urlYear = year //년도
 let urlMonth = month; //월
-let urlDay = day; //일
+let urlDay = "03"; //일
 let day_n = Number(urlDay); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
 let memberID = receivedID; // 회원ID
 
@@ -794,11 +794,13 @@ const loadMemberDailyInfo = async () => {
     success: function (data) {
 	  memberInfo = data;	
       memberDailyInfo = data.dailyInfo;
-      console.log(memberInfo.dailyInfo);
+	  console.log("monggoDB 수신완료");
+	  console.log("memberInfo", memberInfo);
+      console.log("memberDailyInfo", memberDailyInfo);
 	  
     },
     error: function () {
-      console.log("요청이 안됨");
+      console.log("monggoDB 수신 실패");
     },
   });
 };
@@ -1065,13 +1067,18 @@ let nutrientData = [];
 // 페이지 그려주는 부분
 const createPage = function() {
 
+	const dietTitleMember = document.querySelector("#page-title-member");
+	dietTitleMember.textContent = `${memberInfo.name}`;
+	dietTitleMember.style.fontWeight = "bold";
+	dietTitleMember.style.color = "#0A58CA"
+
 	let colorSet = [
-		"#BEB2A7",
-		"#D1C68F",
-		"#DBD7CC",
-		"#CAB388",
-		"#D5C4A1",
-		"#E0D4BB"
+		"#CFE2FF",
+		"#E0CFFC",
+		"#E2D9F3",
+		"#F7D6E6",
+		"#F8D7DA",
+		"#FFE5D0"
 	];
 
 	// 상세정보 창 챠트 생성에 필요한 데이터 변수
@@ -1121,6 +1128,8 @@ const createPage = function() {
 			let xPanelDiv = document.createElement("div");
 			xPanelDiv.className = "x_panel";
 			xPanelDiv.style.backgroundColor = colorSet[index];
+			xPanelDiv.style.borderRadius = "10px";
+
 		
 			let h4Name = document.createElement("h4");
 			h4Name.textContent = nut.name;
@@ -1187,8 +1196,10 @@ const createPage = function() {
 			const detailCell = document.createElement("td");
 			detailCell.style.paddingBottom = "0px";
 			detailCell.style.paddingTop = "5px";
+			detailCell.style.paddingLeft = "20px";
+
 			const detailButton = document.createElement("button");
-			detailButton.className = "btn btn-primary";
+			detailButton.className = "btn btn-primary btn-lg btn-block";
 			detailButton.setAttribute("data-toggle", "modal");
 			detailButton.setAttribute("data-target", `.bs-example-modal-lg${modalIndex}`);
 			detailButton.textContent = "상세정보";
@@ -1291,6 +1302,7 @@ const createPage = function() {
 				let xPanelModalDiv = document.createElement("div");
 				xPanelModalDiv.className = "x_panel";
 				xPanelModalDiv.style.backgroundColor = colorSet[index];
+				xPanelModalDiv.style.borderRadius = "10px";
 
 				let titleH4 = document.createElement("h4");
 				titleH4.style.fontWeight = "bold";
@@ -1647,8 +1659,7 @@ const loadmember = async () => {
 		myDoughtnutChart2 =[];
 		myBarChart2 = [];
 
-		
-			loadmember();
+		loadmember();
     });
 	
 };

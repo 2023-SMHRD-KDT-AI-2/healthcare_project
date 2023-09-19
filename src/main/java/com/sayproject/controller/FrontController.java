@@ -18,44 +18,47 @@ import com.sayproject.model.Members.MembersDAO;
 @WebServlet(urlPatterns = "*.say")
 public class FrontController extends HttpServlet {
 
-	private static final long serialVersionUID = 4059632197844714506L;
-	private static final String CHARSET = "UTF-8";
+  private static final long serialVersionUID = 4059632197844714506L;
+  private static final String CHARSET = "UTF-8";
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+  protected void service(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-		response.setContentType("text/html; charset=utf-8");
-		request.setCharacterEncoding(CHARSET);
+    response.setContentType("text/html; charset=utf-8");
+    request.setCharacterEncoding(CHARSET);
 
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String subStringRequestURI = requestURI.substring(contextPath.length());
+    String requestURI = request.getRequestURI();
+    String contextPath = request.getContextPath();
+    String subStringRequestURI = requestURI.substring(contextPath.length());
 
-		System.out.println("=====================");
-		System.out.println("subStringRequestURI : " + subStringRequestURI);
+    System.out.println("=====================");
+    System.out.println("subStringRequestURI : " + subStringRequestURI);
 
-		Enumeration<String> parameter = request.getParameterNames();
+    Enumeration<String> parameter = request.getParameterNames();
 
-		while (parameter.hasMoreElements()) {
-			String nextElement = parameter.nextElement();
-			System.out.printf("[PARAMETER] %s : %s\n", nextElement, request.getParameter(nextElement));
-		}
-		System.out.println("=====================");
-		if (subStringRequestURI.contains("/Main.say")) {
-			MainPageController mainPageController = new MainPageController();
-			mainPageController.doProcess(request, response);
-		} else if (subStringRequestURI.contains("/Diet.say")) {
-			DietPageController dietPageController = new DietPageController();
-			dietPageController.doProcess(request, response);
-		} else if (subStringRequestURI.contains("/Exercise.say")) {
-			ExercisePageController exercisePageController = new ExercisePageController();
-			exercisePageController.doProcess(request, response);
-		} else if (subStringRequestURI.contains("/Members.say")) {
-			MembersPageController membersPageController = new MembersPageController();
-			membersPageController.doProcess(request, response);
-		} else if (subStringRequestURI.contains("/Error.say")) {
-			ErrorPageController errorPageController = new ErrorPageController();
-			errorPageController.doProcess(request, response);
-		}
-	}
+    while (parameter.hasMoreElements()) {
+      String nextElement = parameter.nextElement();
+      System.out.printf("[PARAMETER] %s : %s\n", nextElement, request.getParameter(nextElement));
+    }
+    System.out.println("=====================");
+    if (subStringRequestURI.contains("/Main.say")) {
+      MainPageController mainPageController = new MainPageController();
+      mainPageController.doProcess(request, response);
+    } else if (subStringRequestURI.contains("/Diet.say")) {
+      DietPageController dietPageController = new DietPageController();
+      dietPageController.doProcess(request, response);
+    } else if (subStringRequestURI.contains("/Exercise.say")) {
+      ExercisePageController exercisePageController = new ExercisePageController();
+      exercisePageController.doProcess(request, response);
+    } else if (subStringRequestURI.contains("/Members.say")) {
+      MembersPageController membersPageController = new MembersPageController();
+      membersPageController.doProcess(request, response);
+    } else if (subStringRequestURI.contains("/Error.say")) {
+      ErrorPageController errorPageController = new ErrorPageController();
+      errorPageController.doProcess(request, response);
+    } else if (subStringRequestURI.contains("/HttpApi.say")) {
+      HttpApiController httpApiController = new HttpApiController();
+      httpApiController.doProcess(request, response);
+    }
+  }
 }
