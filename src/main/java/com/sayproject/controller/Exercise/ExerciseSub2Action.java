@@ -33,13 +33,13 @@ public class ExerciseSub2Action  implements Action {
 	    
 	    request.setAttribute("height", request.getParameter("height")) ;
 	    
-	    
-	    
 	    ExerciseDAO dao = new ExerciseDAO();
 	    MemberInfo memberinfo = new MemberInfo();// 데이터를 DAO로 보내기
+	    System.out.println("넘어온 파라미터 : " + request.getParameter("name"));
 	    memberinfo.setName(request.getParameter("name"));
 	    MemberInfo info = dao.info(memberinfo);
 	    System.out.println("사진 경로 : " + memberinfo.getPhotopath());
+	    System.out.println("info : " + info);
 	    
 	    HttpSession session = request.getSession();
 		session.setAttribute("info", info); // info 하고 하는 이름으로 info데이터를 보내준다

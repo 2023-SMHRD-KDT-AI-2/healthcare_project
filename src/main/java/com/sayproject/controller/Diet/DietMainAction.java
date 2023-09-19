@@ -21,8 +21,6 @@ public class DietMainAction  implements Action {
 	    
 	    request.setAttribute("no", request.getParameter("no"));
 	    
-	    System.out.println("파라미터 수신 값 : " + request.getParameter("no"));
-	    
 	    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Diet/diet_main.jsp");
 	    dis.forward(request, response);
 	  }

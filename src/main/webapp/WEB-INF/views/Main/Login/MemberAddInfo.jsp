@@ -145,9 +145,16 @@
 														</label>
 
 														<div class="col-md-6 col-sm-6 ">
-															<input type="email" id="idOrEmail" name="idOrEmail"
-																placeholder="name@example.com" required="required"
-																class="form-control" for="floatingInput">
+															<c:if test="${!empty memberEmail}">
+																<input type="email" id="idOrEmail" name="idOrEmail"
+																	placeholder="name@example.com" required="required"
+																	class="form-control" for="floatingInput" value="${memberEmail}" readonly>
+															</c:if>
+															<c:if test="${empty memberEmail}">
+																<input type="email" id="idOrEmail" name="idOrEmail"
+																	placeholder="name@example.com" required="required"
+																	class="form-control" for="floatingInput">
+															</c:if>
 														</div>
 
 														<div class="col-md-3 col-sm-3">
@@ -183,9 +190,17 @@
 														for="first-name">이름 <span class="required">*</span>
 													</label>
 													<div class="col-md-6 col-sm-6 ">
+														<c:if test="${!empty memberName}">
+														<input type="text" id="name" name="name"
+															required="required" data-validate-length-range="6"
+															data-validate-words="2" class="form-control" value="${memberName}" readonly>
+														</c:if>
+														<c:if test="${empty memberName}">
 														<input type="text" id="name" name="name"
 															required="required" data-validate-length-range="6"
 															data-validate-words="2" class="form-control ">
+														</c:if>
+														
 													</div>
 												</div>
 
