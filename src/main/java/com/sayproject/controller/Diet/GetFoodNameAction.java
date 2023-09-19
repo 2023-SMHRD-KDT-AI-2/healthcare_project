@@ -31,13 +31,14 @@ public class GetFoodNameAction implements Action {
         Gson gson = new Gson();
         // custom-d.js에서 ajax를 통해 보내온 MonggoDB의 데이터 수신
         String foodCode = request.getParameter("foodCode");
-        System.out.println("변환 후 : " + foodCode);
         
         // 수신된 foodName를 Json형식으로 변환 후 meal에 저장
         Meal meal = gson.fromJson(foodCode, Meal.class);
         
+        List<String> foodCodeList = new ArrayList<String>();
+        
         DietDAO dao = new DietDAO();
-        System.out.println("변환전 : " + meal);
+        System.out.println("변환 전 : " + meal);
         // 아침, 점심, 저녁, 간식별로 먹은 음식 리스트를 담을 객체 생성 
         Mealtime mealTime = new Mealtime();
         
@@ -47,34 +48,42 @@ public class GetFoodNameAction implements Action {
         List<Diet> breakfastDietList = new ArrayList<>();
         for (Food breakfast: meal.getBreakfast()) {
             String code = breakfast.getCode();
-            breakfastDietList.add(dao.showAllNutrient(code));
+            foodCodeList.add(code);
+            System.out.println("아침꺼 :" + foodCodeList);
         }
-        mealTime.setBreakfast(breakfastDietList);
-
+        mealTime.setBreakfast(dao.showAllNutrient(foodCodeList));
+        foodCodeList.clear();
+        
         List<Diet> lunchDietList = new ArrayList<>();
         for (Food lunch: meal.getLunch()) {
             String code = lunch.getCode();
-            lunchDietList.add(dao.showAllNutrient(code));
+            foodCodeList.add(code);
         }
-        mealTime.setLunch(lunchDietList);
+        mealTime.setLunch(dao.showAllNutrient(foodCodeList));
+        foodCodeList.clear();
 
         List<Diet> dinnerDietList = new ArrayList<>();
         for (Food dinner: meal.getDinner()) {
             String code = dinner.getCode();
-            dinnerDietList.add(dao.showAllNutrient(code));
+            foodCodeList.add(code);
         }
-        mealTime.setDinner(dinnerDietList);
+        mealTime.setDinner(dao.showAllNutrient(foodCodeList));
+        foodCodeList.clear();
         
         List<Diet> otherfoodDietList = new ArrayList<>();
         for (Food otherfood: meal.getOtherfood()) {
             String code = otherfood.getCode();
-            otherfoodDietList.add(dao.showAllNutrient(code));
+            foodCodeList.add(code);
         }
-        mealTime.setOtherfood(otherfoodDietList);
+        mealTime.setOtherfood(dao.showAllNutrient(foodCodeList));
+        foodCodeList.clear();
         
+        System.out.println("mealTime " + mealTime);
         // custom-d.js로 ajax를 통해 보내는 과정 
         // mealTime 을 다시 json파일로 변경
         String mealData = gson.toJson(mealTime);
+        
+        request.setAttribute("mealData", mealData);
         
         // 해당 과정은 공부가 필요함
         response.setContentType("text/json;charset=utf-8");

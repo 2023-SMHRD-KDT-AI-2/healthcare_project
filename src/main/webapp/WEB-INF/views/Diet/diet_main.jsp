@@ -8,11 +8,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.google.gson.Gson"%>
 
-<%
-	String mealData = (String) request.getAttribute("mealData");
-	System.out.println("안찍혔나" + mealData);
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +27,12 @@
 <!-- Custom Theme Style -->
 <link href="assets/Diet/css/custom.css" rel="stylesheet" />
 <link href="assets/Diet/css/custom-d.css" rel="stylesheet" />
+<style>
+	.dropdown-menu {         
+		max-height: 600px;
+		overflow-y: auto;
+}
+</style>
 </head>
 
 <body class="nav-md">
@@ -52,24 +53,34 @@
 			<div class="right_col" role="main">
 				<div class="page-title">
 					<div class="title_left">
-						<h3><span id="page-title-member"></span> 님이 섭취한 영양소는?</h3>
+						<h3><span id="page-title-member"></span><small>님이 섭취한 영양소는?<small></h3>
 					</div>
 					<div class="title_right">
-						<fieldset>
-							<div class="control-group">
-							  <div class="controls">
-								<div class="col-md-4"></div>
-								<div class="col-md-4"></div>
-								<div class="col-md-4 xdisplay_inputx form-group row has-feedback">
-								  <input type="text" class="form-control has-feedback-left" id="single_calCustom" placeholder="First Name" aria-describedby="inputSuccess2Status">
-									  <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-								  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								  회원목록
+								</button>
+								<div class="dropdown-menu" id="memberList">
 								</div>
 							  </div>
-							</div>
-						</fieldset>	
+						</div>
+						<div class="col-md-3">
+							<fieldset>
+								<div class="control-group">
+								  <div class="controls">
+									<div class="xdisplay_inputx form-group row has-feedback">
+									  <input type="text" class="form-control has-feedback-left" id="single_calCustom" placeholder="First Name" aria-describedby="inputSuccess2Status">
+										  <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+									  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+									</div>
+								  </div>
+								</div>
+							</fieldset>	
+						</div>
 					</div>
-				</div>
 				<div class="clearfix"></div>
 				
 					<!-- add food content -->
