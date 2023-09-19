@@ -184,4 +184,16 @@ public class MembersDAO {
 		return age;
 	}
 
+	
+	// 베스트 트레이너
+		public String bestTrainer() {
+			// DB연결
+			SqlSession sqlsession = sqlSessionFactory.openSession(true);
+			// sql문장
+			String TrainerName = sqlsession.selectOne("bestTrainer");// ("id",데이터값)
+			// 데이터베이스 종료
+			sqlsession.close();
+			return TrainerName;
+		}
+	
 }

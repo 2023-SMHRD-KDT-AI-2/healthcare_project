@@ -50,12 +50,12 @@
 								<div class="col-md-2">
 									<!--  왼쪽 상단 카드 박스 -->
 									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card text-center border-dark">
-												<div class="card-header">출석 상황</div>
+										<div class="card-deck bg-light">
+											<div class="card text-center">
+												<div class="card-header" style="font-size: 15px; color: #084B8A;">출석 상황</div>
 												<div class="card-body text-info">
 													<h5>
-														<i class="glyphicon glyphicon-ok"></i>
+														<i class="glyphicon glyphicon-ok"></i> &nbsp;
 														${attendenceCountForTriner} / ${trainerMemberCount}
 													</h5>
 												</div>
@@ -63,36 +63,36 @@
 										</div>
 									</div>
 									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card text-center border-dark">
-												<div class="card-header">트레이너 평점</div>
+										<div class="card-deck bg-light">
+											<div class="card text-center">
+												<div class="card-header" style="font-size: 15px; color: red;">트레이너 평점</div>
 												<div class="card-body text-danger">
 													<h5>
-														<i class="fa fa-arrow-up"></i> ${avgGrade}
+														<i class="fa fa-arrow-up"></i> &nbsp; ${avgGrade}
 													</h5>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card text-center border-dark">
-												<div class="card-header">트레이너 평점</div>
-												<div class="card-body text-danger">
+										<div class="card-deck bg-light">
+											<div class="card text-center">
+												<div class="card-header" style="font-size: 15px; color: #5C9EF5;">이달의 우수 트레이너</div>
+												<div class="card-body text-primary">
 													<h5>
-														<i class="fa fa-arrow-up"></i> ${avgGrade}
+														<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> &nbsp; ${TrainerName}
 													</h5>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card text-center border-dark">
-												<div class="card-header">트레이너 평점</div>
-												<div class="card-body text-danger">
+										<div class="card-deck bg-light">
+											<div class="card text-center">
+												<div class="card-header" style="font-size: 15px; color: green;">건욱님의 pt회원 수  </div>
+												<div class="card-body text-success" style="color :084B8A">
 													<h5>
-														<i class="fa fa-arrow-up"></i> ${avgGrade}
+														<i class="fa fa-line-chart" aria-hidden="true"></i> &nbsp; ${trainerMemberCount}명
 													</h5>
 												</div>
 											</div>
@@ -105,27 +105,31 @@
 								<div class="col-md-10">
 									<!-- 오른쪽 차트, 그래프 -->
 									<div class="x_panel">
-										<div class="card-deck">
-											<div class="card border-dark">
-												<div class="card-header">남녀성비</div>
+										<div class="card-deck bg-light">
+											<div class="card">
+												<div class="card-header" style="font-size: 15px; color: #084B8A;">남녀 성비</div>
 												<div class="card-body text-danger">
 													<canvas id="doughnutChart" style="height: 100%"></canvas>
 												</div>
-												<div style="font-size: 22px; height: 60px; text-align: center; font-family: 'Arial', sans-serif;">
+												<div style="font-size: 22px; height: 60px; text-align: center; font-family: Jeju Gothic, Garamond">
 													<i class="fa fa-square" style="color: #5C9EF5;"></i>
-													남성 : ${male}명 /
+													남성 : ${male}명 &nbsp; <!-- <- 띄어쓰기 하는하는 것.-->
 													<i class="fa fa-square" style="color: #bc69fa;"></i>
 													여성 : ${female}명
 												</div>
 											</div>
 
-											<div class="card border-dark">
-												<div class="card-header">회원 연령 분포</div>
+											<div class="card">
+												<div class="card-header" style="font-size: 15px; color: #084B8A;">회원 연령 분포</div>
 												<div class="card-body text-danger">
 													<canvas id="barChart" height="300px"></canvas>
 												</div>
+													<div style="font-size: 22px; height: 60px; text-align: center; font-family: Jeju Gothic, Garamond">
+														<i class="fa fa-square" style="color: #084B8A;"></i>
+														총 회원 수 : ${male+female}명
+													</div>
 											</div>
-											<div class="card border-dark">
+											<div class="card">
 											<div id='calendar'></div>
 											</div>
 										</div>
@@ -198,11 +202,11 @@
 			type : 'doughnut',
 			data : {
 				labels : [ '남성', '여성' ],
-				datasets : [ {
-					label : '# 인원 수',
-					data : [ ${male}, ${female} ],
-					backgroundColor: ["#5C9EF5","#bc69fa"],
-					borderWidth : 1
+	            datasets : [ {
+	               label : '# 인원 수',
+	               data : [ ${male}, ${female} ],
+	               backgroundColor: ["#5C9EF5","#bc69fa"],
+	               borderWidth : 1
 				} ]
 			}
 		});
@@ -234,10 +238,10 @@
 			labels : [ '10대', '20대', '30대', '40대', '50대', '60대', '70대' ],
 			datasets : [ {
 				label : '인원수',
-				data : [ ${teenage}, ${twenty}, ${thirty}, ${forty}, ${fifty}, ${sixty}, ${seventy}],
-				backgroundColor : goodColor,
-				borderColor : goodColor,
-				borderWidth : 1
+	            data : [ ${teenage}, ${twenty}, ${thirty}, ${forty}, ${fifty}, ${sixty}, ${seventy}],
+	            backgroundColor : goodColor,
+	            borderColor : goodColor,
+	            borderWidth : 1
 			} ]
 		};
 		const barconfig = {

@@ -1,80 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sayprojce.model.Members.MapperXML.MemberMapper">
-    <!-- Member 테이블을 사용한 SQL 에 대한 실행 문장들을 정리하는 파일 -->
-    <!-- id 속성 parameterType 속성 -->
-    <insert id="memberJoin" parameterType="com.sayproject.model.Members.Member">
-        insert into members (kakao_id, password, phone, address) values ( #{kakao_id}, #{password}, #{phone}, #{address} )
-    </insert>
-    <select id="memberJoinExist" resultType="int" parameterType="string">
-        Select count(kakao_id) From members Where kakao_id=#{email}
-    </select>
-    <select id="memberLogin" resultType="com.sayproject.model.Members.Member" parameterType="com.sayproject.model.Members.Member">
-        Select kakao_id, phone, address From members Where kakao_id=#{email} and password=#{password}
-    </select>
-    <select id="memberList" resultType="com.sayproject.model.Members.Member">
+<mapper
+	namespace="com.sayprojce.model.Members.MapperXML.MemberMapper">
+	<!-- Member 테이블을 사용한 SQL 에 대한 실행 문장들을 정리하는 파일 -->
+	<!-- id 속성 parameterType 속성 -->
+	<insert id="memberJoin"
+		parameterType="com.sayproject.model.Members.Member">
+		insert into members (kakao_id, password, phone, address) values (
+		#{kakao_id}, #{password}, #{phone}, #{address} )
+	</insert>
+	<select id="memberJoinExist" resultType="int"
+		parameterType="string">
+		Select count(kakao_id) From members Where kakao_id=#{email}
+	</select>
+	<select id="memberLogin"
+		resultType="com.sayproject.model.Members.Member"
+		parameterType="com.sayproject.model.Members.Member">
+		Select kakao_id, phone, address From members Where kakao_id=#{email} and
+		password=#{password}
+	</select>
+	<select id="memberList"
+		resultType="com.sayproject.model.Members.Member">
 		Select * From members ORDER BY NO
 	</select>
-	
-	<!--출석 중복체크-->
-	<select id="duplicateAttendence" parameterType="com.sayproject.model.Members.Member" resultType="int">
-		select count(no) from Attendence_members where no=#{no} and regist_day=#{regist_day}
+
+	<!--출석 중복체크 -->
+	<select id="duplicateAttendence"
+		parameterType="com.sayproject.model.Members.Member" resultType="int">
+		select
+		count(no) from Attendence_members where no=#{no} and
+		regist_day=#{regist_day}
 	</select>
-	
-	<!--출석체크-->
-	<insert id="RegistAttendenceAction" parameterType="com.sayproject.model.Members.Member">
-		insert into Attendence_members(no,name,trainer,regist_day) values(#{no},#{name},#{trainer},CURDATE())
+
+	<!--출석체크 -->
+	<insert id="RegistAttendenceAction"
+		parameterType="com.sayproject.model.Members.Member">
+		insert into
+		Attendence_members(no,name,trainer,regist_day)
+		values(#{no},#{name},#{trainer},CURDATE())
 	</insert>
-	
+
 	<!-- 남자비율 -->
 	<select id="male" parameterType="string" resultType="int">
-		select count(gender) from members where gender = 'm' ;
+		select
+		count(gender) from members where gender = 'm' ;
 	</select>
-	
+
 	<!-- 여자비율 -->
 	<select id="female" parameterType="string" resultType="int">
-		select count(gender) from members where gender = 'f' ;
+		select
+		count(gender) from members where gender = 'f' ;
 	</select>
+  
+	<!-- best 트레이너 -->
+	<select id="bestTrainer" parameterType="string" resultType="string">
+		SELECT
+		t.name
+		FROM (
+		SELECT trainer_no
+		FROM trainer_grade
+		GROUP BY trainer_no
+		ORDER BY AVG(grade) DESC
+		LIMIT 1
+		) tt
+		JOIN trainer t
+		ON tt.trainer_no = t.no;
+	</select>
+
 	
 	<!-- 연령대 통합 -->
 	<select id="age" resultType="int">
 	SELECT age FROM members;
 	</select>
-	
-	 <!-- 10대 수 -->
-	<!-- <select id="teenage" parameterType="int" resultType="int">
-		select count(age) from members where age between 10 and 19; 
-	</select> -->
-	
-	<!-- 20대 수 -->
-	<!--<select id="twenty" parameterType="int" resultType="int">
-		select count(age) from members where age between 20 and 29; 
-	</select>-->
-	
-	<!-- 30대 수 -->
-	<!--<select id="thirty" parameterType="int" resultType="int">
-		select count(age) from members where age between 30 and 39; 
-	</select>-->
-	
-	<!-- 40대 수 -->
-	<!--<select id="forty" parameterType="int" resultType="int">
-		select count(age) from members where age between 40 and 49; 
-	</select>-->
-	
-	<!-- 50대 수 -->
-	<!--<select id="fifty" parameterType="int" resultType="int">
-		select count(age) from members where age between 50 and 59; 
-	</select>-->
-	
-	<!-- 60대 수 -->
-	<!--<select id="sixty" parameterType="int" resultType="int">
-		select count(age) from members where age between 60 and 69; 
-	</select>-->
-	
-	<!-- 70대 수 -->
-	<!--<select id="seventy" parameterType="int" resultType="int">
-		select count(age) from members where age between 70 and 79; 
-	</select> -->
-	
-	
 </mapper>

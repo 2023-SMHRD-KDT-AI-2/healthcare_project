@@ -299,25 +299,26 @@ const loadmember = async () => {
     console.log("칼로리썸 : ", calorieSumList);
     
     console.log("여깃지롱2~" , memberInfo.dailyInfo);
+
     
     
     // 매일 입력받은 칼로리 정보를 담을 리스트 선언 
     let dayOfTheWeek_1 = [];
-    let dayCalorieSumList = [];
-
-
+    let dayCalorieSumList_1 = [];
+    
+    
     for(let i = day_n-1; i > day_n-8; i-- ) {
         if(i>0){
-        dayOfTheWeek_1.push(memberInfo.dailyInfo[i].dayOfTheWeek);
-        dayCalorieSumList.push(Math.floor(calorieSumList[i]));
+            dayOfTheWeek_1.push(memberInfo.dailyInfo[i].dayOfTheWeek);
+            dayCalorieSumList_1.push(Math.floor(calorieSumList[i]));
         }else{
             break;
         }
     }
   
-    // 오늘을 기준으로 -7 동안의 요일을 담은 리스트
-    let dayOfTheWeek = dayOfTheWeek_1.reverse()
-    console.log("dayOfTheWeek : ", dayOfTheWeek);
+    // 오늘을 기준으로 -7 동안의 요일과 칼로리 소모량을 담은 리스트
+    let dayOfTheWeek = dayOfTheWeek_1.reverse();
+    let dayCalorieSumList = dayCalorieSumList_1.reverse();
 
     // 세로 바 차트
     let heightBarChart = $("#heightBar-chart");
