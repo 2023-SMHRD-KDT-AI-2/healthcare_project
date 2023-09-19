@@ -28,6 +28,10 @@ let memberID = number; // 회원ID
 let moveUrl = `http://localhost/Members.say?c=member&collection=${year + month
     }&fieldName=_id&value=${memberID}&valueType=int&dataType=json`;
 
+
+
+
+
 // MonggoDB에서 받아온 회원의 모든 상세정보가 저장되는 변수
 let memberInfo;
 
@@ -54,6 +58,8 @@ const loadMemberDailyInfo = async () => {
         },
     });
 };
+
+
 
 function removeAllChildren(parentElementId) {
     // 부모 요소를 가져옵니다.

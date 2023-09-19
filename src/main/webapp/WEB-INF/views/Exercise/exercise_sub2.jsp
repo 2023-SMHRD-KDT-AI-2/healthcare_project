@@ -75,6 +75,7 @@
               border-radius: 0;
               height: 57px;
               padding: 0px;
+              
             }
 
             /* 
@@ -91,6 +92,11 @@
     background: #886c65;
     filter: grayscale(20%);
     */
+
+            .dropdown-menu {         
+              max-height: 400px;
+              overflow-y: auto;
+            }
 
             
 
@@ -228,6 +234,7 @@
 
             .topcard:hover * {
               color: rgb(226, 226, 226);
+             
             }
 
             .topcard:hover .green {
@@ -690,13 +697,7 @@
               border-radius: 10px;
             }
 
-            .member_card:hover .card_inner {
-              transform: rotateY(180deg);
-              /* 마우스 오버 시 회전하여 뒷면 보이게 함 */
-              background-color: rgb(255, 126, 112);
-              /* 마우스 오버 시 배경색 변경 (파란색) */
-              border-radius: 10px;
-            }
+            
 
             .front_left {
               width: 35%;
@@ -1432,9 +1433,17 @@
 
 
 
-                        <!-- 색이 차오르는 카드 -->
-
-
+                        <!-- 전체회원 검색 -->
+                          <div style="margin-bottom : 20px;">
+                              <div class="dropdown" style="display: block;">
+                                <button class="btn btn-secondary dropdown-toggle btn-lg btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                전체회원명단
+                                </button>
+                                <div id="totalName" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <!-- 전체회원 명단 이름/ 이미지 -->
+                              </div>
+                            </div>
+                          </div>
 
 
 
@@ -1607,6 +1616,8 @@
               });
             </script>
             <script src="assets/Exercise/js/custom.js"></script>
+            <script src="assets\Exercise\js\memberTotal.js"></script>
+            
 
             
 

@@ -79,7 +79,7 @@
 
 												<div class="card-body">
 													<p class="card-text">
-														[<span id="displayEmail"></span>${emailOrId}] ${nickname}<span
+														[<span id="displayEmail"></span>${memberEmail}] ${memberName}<span
 															id="displayName"></span> 님 반갑습니다.
 													</p>
 												</div>
