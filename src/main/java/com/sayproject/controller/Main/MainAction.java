@@ -20,20 +20,23 @@ public class MainAction implements Action {
 
     HttpSession httpSession = request.getSession();
     TrainerLoginDAO dao = new TrainerLoginDAO();
-    int trainerObjectId = (Integer) httpSession.getAttribute("memberObjectId");
-    System.out.println(trainerObjectId);
-    if (trainerObjectId > 0) {
-      String avgGrade = String.format("%.2f", dao.getTrainerAvgGrade(trainerObjectId));
-      httpSession.setAttribute("avgGrade", avgGrade);
+    if (httpSession.getAttribute("memberObjectId") != null) {
+      int trainerObjectId = (Integer) httpSession.getAttribute("memberObjectId");
+      System.out.println(trainerObjectId);
+      if (trainerObjectId > 0) {
+        String avgGrade = String.format("%.2f", dao.getTrainerAvgGrade(trainerObjectId));
+        httpSession.setAttribute("avgGrade", avgGrade);
 
-      int trainerMemberCount = dao.getTrainerMemberCount(trainerObjectId);
-      httpSession.setAttribute("trainerMemberCount", trainerMemberCount);
-      
-      int attendenceCountForTriner = dao.getMembersAttendenceCountForTrainer(trainerObjectId);
-      httpSession.setAttribute("attendenceCountForTriner", attendenceCountForTriner);
+        int trainerMemberCount = dao.getTrainerMemberCount(trainerObjectId);
+        httpSession.setAttribute("trainerMemberCount", trainerMemberCount);
+
+        int attendenceCountForTriner = dao.getMembersAttendenceCountForTrainer(trainerObjectId);
+        httpSession.setAttribute("attendenceCountForTriner", attendenceCountForTriner);
+      }
+      RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/main.jsp");
+      dis.forward(request, response);
+    } else {
+      response.sendRedirect("/Main.say?c=login");
     }
-
-    RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/main.jsp");
-    dis.forward(request, response);
   }
 }
