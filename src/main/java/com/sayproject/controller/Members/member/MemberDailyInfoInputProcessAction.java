@@ -115,7 +115,6 @@ public class MemberDailyInfoInputProcessAction implements Action {
 					dbManager.close();
 				}
 			}
-
 		}
 	}
 }

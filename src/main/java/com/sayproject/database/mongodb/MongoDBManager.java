@@ -7,6 +7,7 @@ import com.mongodb.client.MongoDatabase;
 public class MongoDBManager {
 
   private MongoClient mongoClient = null;
+
   public MongoDBManager() {
 
   }
@@ -22,7 +23,7 @@ public class MongoDBManager {
   }
 
   public MongoDatabase dbManager() {
-    String host = "cluster0.as1cuz0.mongodb.net";    
+    String host = "cluster0.as1cuz0.mongodb.net";
     String username = "sentimentalhoon";
     String password = "L1XIq4QEJRuBXEmb";
     String dbName = "sayproject";
@@ -31,8 +32,9 @@ public class MongoDBManager {
     MongoDatabase database = mongoClient.getDatabase(dbName);
     return database;
   }
-  
+
   public void close() {
-    if (mongoClient != null) mongoClient.close();
+    if (mongoClient != null)
+      mongoClient.close();
   }
 }

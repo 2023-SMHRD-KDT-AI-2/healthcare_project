@@ -110,27 +110,27 @@ public class PersonalMemberAdd2 implements Action {
               }
 
             } else {
-              System.out.println(fi.getFieldName());
+              String originFileName = fi.getName();
+              if (originFileName != null) {
+                System.out.println(originFileName);
+                String extFileName = originFileName.substring(originFileName.lastIndexOf("."));
 
-              String origin = fi.getName();
-              System.out.println(origin);
-              String ext = origin.substring(origin.lastIndexOf("."));
+                UUID uuid = UUID.randomUUID();
+                String uuIdextFileName = uuid + extFileName;
 
-              UUID uuid = UUID.randomUUID();
-              String name = uuid + ext;
+                System.out.println(fi.getSize());
+                File upPath = new File(currentDir + "\\");
+                if (!upPath.exists()) {
+                  upPath.mkdirs();
+                }
 
-              System.out.println(fi.getSize());
-              File upPath = new File(currentDir + "\\");
-              if (!upPath.exists()) {
-                upPath.mkdirs();
+                // 일반 login profileImageUrl DB에 넘기기
+                System.out.println(upPath.getAbsolutePath() + "\\" + uuIdextFileName);
+
+                gjoin.setPhotopath(upPath.getAbsolutePath() + "\\" + uuIdextFileName);
+
+                fi.write(new File(upPath, uuIdextFileName));
               }
-
-              // 일반 login profileImageUrl DB에 넘기기
-              System.out.println(upPath.getAbsolutePath() + "\\" + name);
-
-              gjoin.setPhotopath(upPath.getAbsolutePath() + "\\" + name);
-
-              fi.write(new File(upPath, name));
             }
           }
           // gjoin 데이터 setter에 값을 다 집어 넌 이후 DAO에서 확인 후 cnt값 확인 후
@@ -210,25 +210,27 @@ public class PersonalMemberAdd2 implements Action {
           } else {
             System.out.println(fi.getFieldName());
 
-            String origin = fi.getName();
-            System.out.println(origin);
-            String ext = origin.substring(origin.lastIndexOf("."));
+            String originFileName = fi.getName();
+            if (originFileName != null) {
+              System.out.println(originFileName);
+              String extFileName = originFileName.substring(originFileName.lastIndexOf("."));
 
-            UUID uuid = UUID.randomUUID();
-            String name = uuid + ext;
+              UUID uuid = UUID.randomUUID();
+              String uuIdextFileName = uuid + extFileName;
 
-            System.out.println(fi.getSize());
-            File upPath = new File(currentDir + "\\");
-            if (!upPath.exists()) {
-              upPath.mkdirs();
+              System.out.println(fi.getSize());
+              File upPath = new File(currentDir + "\\");
+              if (!upPath.exists()) {
+                upPath.mkdirs();
+              }
+
+              // 일반 login profileImageUrl DB에 넘기기
+              System.out.println(upPath.getAbsolutePath() + "\\" + uuIdextFileName);
+
+              gjoin.setPhotopath(upPath.getAbsolutePath() + "\\" + uuIdextFileName);
+
+              fi.write(new File(upPath, uuIdextFileName));
             }
-
-            // 일반 login profileImageUrl DB에 넘기기
-            System.out.println(upPath.getAbsolutePath() + "\\" + name);
-
-            gjoin.setPhotopath(upPath.getAbsolutePath() + "\\" + name);
-
-            fi.write(new File(upPath, name));
           }
         }
         // gjoin 데이터 setter에 값을 다 집어 넌 이후 DAO에서 확인 후 cnt값 확인 후

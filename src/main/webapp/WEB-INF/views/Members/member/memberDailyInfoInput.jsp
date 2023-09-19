@@ -18,6 +18,14 @@
 <jsp:include page="/WEB-INF/views/include/header_css.jsp" />
 <!-- Custom Theme Style -->
 <link href="assets/Members/css/custom.css" rel="stylesheet" />
+<style>
+.dropdown-menu {  
+min-width:300px;  
+	max-width: 400px;     
+  max-height: 600px;
+  overflow-y: auto;
+}
+</style>
 </head>
 
 <body class="nav-md">
