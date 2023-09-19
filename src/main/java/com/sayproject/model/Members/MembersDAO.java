@@ -171,5 +171,17 @@ public class MembersDAO {
 		sqlsession.close();
 		return cnt;
 	}
+	
+	// 나이별 비율
+	public  ArrayList<Integer> age() {
+		ArrayList<Integer> age = new ArrayList<>();
+		// DB연결
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		// sql문장
+		age = (ArrayList) sqlsession.selectList("age");// ("id",데이터값)
+		// 데이터베이스 종료
+		sqlsession.close();
+		return age;
+	}
 
 }

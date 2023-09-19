@@ -233,7 +233,7 @@
 		const bardata = {
 			labels : [ '10대', '20대', '30대', '40대', '50대', '60대', '70대' ],
 			datasets : [ {
-				label : '연령',
+				label : '인원수',
 				data : [ ${teenage}, ${twenty}, ${thirty}, ${forty}, ${fifty}, ${sixty}, ${seventy}],
 				backgroundColor : goodColor,
 				borderColor : goodColor,

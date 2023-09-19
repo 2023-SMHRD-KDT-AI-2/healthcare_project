@@ -1,6 +1,11 @@
 package com.sayproject.controller.Main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,43 +50,81 @@ public class MainAction implements Action {
         System.out.println("여자확인:" + fCnt);
 
         // 나이별비율
+//        int num = ageList.get(0);
+//        System.out.println("나이"+num);
+        ArrayList<Integer> ageList = allDao.age();
 
-        // 10대
-        int teenCnt = allDao.teenage();
+     // 연령대별 리스트 초기화
+        List<Integer> teenage = new ArrayList<>();
+        List<Integer> twenty = new ArrayList<>();
+        List<Integer> thirty = new ArrayList<>();
+        List<Integer> forty = new ArrayList<>();
+        List<Integer> fifty = new ArrayList<>();
+        List<Integer> sixty = new ArrayList<>();
+        List<Integer> seventy = new ArrayList<>();
 
-        request.setAttribute("teenage", teenCnt);
+        for (int age : ageList) {
+            if (age >= 10 && age < 20) {
+            	teenage.add(age);
+            } else if (age >= 20 && age < 30) {
+            	twenty.add(age);
+            }else if (age >= 30 && age < 40) {
+            	thirty.add(age);
+            }else if (age >= 40 && age < 50) {
+            	forty.add(age);
+            }else if (age >= 50 && age < 60) {
+            	fifty.add(age);
+            }else if (age >= 60 && age < 70) {
+            	sixty.add(age);
+            }else if (age >= 70 && age < 80) {
+            	seventy.add(age);
+            }
+        }
 
-        // 20대
-        int twoCnt = allDao.twenty();
+        // 각 연령대별 리스트를 request에 설정
+        request.setAttribute("teenage", teenage.size());
+        request.setAttribute("twenty", twenty.size());
+        request.setAttribute("thirty", thirty.size());
+        request.setAttribute("forty", forty.size());
+        request.setAttribute("fifty", fifty.size());
+        request.setAttribute("sixty", sixty.size());
+        request.setAttribute("seventy", seventy.size());
 
-        request.setAttribute("twenty", twoCnt);
-
-        // 30대
-        int thirCnt = allDao.thirty();
-
-        request.setAttribute("thirty", thirCnt);
-
-        // 40대
-        int forCnt = allDao.forty();
-
-        request.setAttribute("forty", forCnt);
-
-        // 50대
-        int fifCnt = allDao.fifty();
-
-        request.setAttribute("fifty", fifCnt);
-
-        // 60대
-        int sixCnt = allDao.sixty();
-
-        request.setAttribute("sixty", sixCnt);
-
-        // 70대
-        int sevenCnt = allDao.seventy();
-
-        request.setAttribute("seventy", sevenCnt);
-
-
+    
+//        // 10대
+//        int teenCnt = allDao.teenage();
+//
+//        request.setAttribute("teenage", teenCnt);
+//
+//        // 20대
+//        int twoCnt = allDao.twenty();
+//
+//        request.setAttribute("twenty", twoCnt);
+//
+//        // 30대
+//        int thirCnt = allDao.thirty();
+//
+//        request.setAttribute("thirty", thirCnt);
+//
+//        // 40대
+//        int forCnt = allDao.forty();
+//
+//        request.setAttribute("forty", forCnt);
+//
+//        // 50대
+//        int fifCnt = allDao.fifty();
+//
+//        request.setAttribute("fifty", fifCnt);
+//
+//        // 60대
+//        int sixCnt = allDao.sixty();
+//
+//        request.setAttribute("sixty", sixCnt);
+//
+//        // 70대
+//        int sevenCnt = allDao.seventy();
+//
+//        request.setAttribute("seventy", sevenCnt);
 
         RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/main.jsp");
         dis.forward(request, response);
