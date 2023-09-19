@@ -81,10 +81,14 @@ public class MainAction implements Action {
 
         request.setAttribute("seventy", sevenCnt);
 
-
-
+        // 베스트 트레이너
+        String TrainerName = allDao.bestTrainer();
+        
+        request.setAttribute("TrainerName", TrainerName);
+ 
         RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/main.jsp");
         dis.forward(request, response);
+        
       }
     }
   }
