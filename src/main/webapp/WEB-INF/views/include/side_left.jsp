@@ -45,11 +45,11 @@
 						Home <span class="fa fa-chevron-down"></span></a></li>
 				<li><a href="/Main.say?c=allTrainerList"><i class="fa fa-home"></i>
 						전체 트레이너 정보 <span class="fa fa-chevron-down"></span></a></li>
-				<li><a href="/Members.say?c=main"><i class="fa fa-edit"></i> 회원 정보 <span
+				<li><a href="/Members.say"><i class="fa fa-edit"></i> 회원 정보 <span
 						class="fa fa-chevron-down"></span></a></li>
-				<li><a href="/Diet.say"><i class="fa fa-desktop"></i> 영양 정보 <span
+				<li><a href="/Diet.say?c=sub2&no=${no}&name=${name}&age=${age}&gender=${gender}&weight=${weight}&height=${height}&trainer=${trainer}"><i class="fa fa-desktop"></i> 영양 정보 [${name}] <span
 						class="fa fa-chevron-down"></span></a></li>
-				<li><a href="/Exercise.say"><i class="fa fa-table"></i> 운동 정보 <span
+				<li><a href="/Exercise.say?c=sub2&no=${no}&name=${name}&age=${age}&gender=${gender}&weight=${weight}&height=${height}&trainer=${trainer}"><i class="fa fa-table"></i> 운동 정보 [${name}] <span
 						class="fa fa-chevron-down"></span></a>
 				</li>
 				<c:if test="${loginType eq 'master'}">
