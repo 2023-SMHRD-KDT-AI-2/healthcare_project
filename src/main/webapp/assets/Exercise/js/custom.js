@@ -174,13 +174,13 @@ const loadmember = async () => {
 
     let statusInfo = memberInfo.dailyInfo[day_n - 1].status;
 
-    console.log(statusInfo);
+    console.log("스테이터스 인포: ", memberInfo.dailyInfo);
 
     let dayofDay = [];
     const getDayNum = 10;
     for (let i = day_n - getDayNum; i <= day_n; i++) {
         dayofDay.push(i + "일");
-        dayWeight.push(statusInfo.weight);
+        dayWeight.push(memberInfo.dailyInfo[i-1].status.weight);
     }
     // 라인 차트
     let lineChart = $("#line-chart");
