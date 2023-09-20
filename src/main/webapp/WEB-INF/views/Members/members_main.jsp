@@ -47,7 +47,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Table design <small>회원 명수 : ${memberList.size()} 명</small>
+										전체 회원 정보 <small>회원 명수 : ${memberList.size()} 명</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
