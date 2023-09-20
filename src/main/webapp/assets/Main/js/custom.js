@@ -27,7 +27,9 @@ $(document).ready(function () {
                     const month = date.getMonth();
                     const day = date.getDay();
                     return (
-                        '<img src="images//Member//example.jpg" width="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Exercise.say?c=sub2' +
+                        '<img src="' + 
+                        row.photopath +
+                        '" width="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Exercise.say?c=sub2' +
                         '&no=' +
                         row.no +
                         '&name=' +
