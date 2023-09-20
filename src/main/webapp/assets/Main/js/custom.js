@@ -90,7 +90,7 @@ full - 'First', 'Previous', 'Next' and 'Last' buttons
 full_numbers - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
 first_last_numbers - 'First' and 'Last' buttons, plus page numbers*/
         pagingType: 'simple_numbers', // 페이징 버튼 타입 설정
-        pageLength: 5, // 한페이지에 보여주는 데이터 개수
+        pageLength: 10, // 한페이지에 보여주는 데이터 개수
         responsive: true, // 스크립트를 추가하면 반응형으로 작동하게해줌
         lengthChange: false, // pageLength 조절 불가하게 해줌
         info: true, // 페이지 상태표시
