@@ -46,8 +46,8 @@
 							/* 기본적으로 메인 컨텐츠는 이 곳에 입력합니다. */
 							%>
 							<!-- 상단 박스 -->
-							<div class="x_panel">
-								<div class="col-md-2">
+							<div class="x_panel mh-100">
+								<div class="col-md-2 h-100">
 									<!--  왼쪽 상단 카드 박스 -->
 									<div class="x_panel">
 										<div class="card-deck bg-light">
@@ -89,7 +89,7 @@
 									<div class="x_panel">
 										<div class="card-deck bg-light">
 											<div class="card text-center">
-												<div class="card-header" style="font-size: 15px; color: green;">건욱님의 pt회원 수  </div>
+												<div class="card-header" style="font-size: 15px; color: green;"> 현재 pt회원 수  </div>
 												<div class="card-body text-success" style="color :084B8A">
 													<h5>
 														<i class="fa fa-line-chart" aria-hidden="true"></i> &nbsp; ${trainerMemberCount}명
@@ -102,7 +102,7 @@
 								</div>
 								<!-- /상단 박스 END -->
 								<!-- 하단 박스 -->
-								<div class="col-md-10">
+								<div class="col-md-10 h-100">
 									<!-- 오른쪽 차트, 그래프 -->
 									<div class="x_panel">
 										<div class="card-deck bg-light">

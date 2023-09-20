@@ -11,6 +11,7 @@ public class BossAccount {
 
   private int no;
   private String masterid;
+  private String password;
   private String mastername;
   private int masterage;
 }

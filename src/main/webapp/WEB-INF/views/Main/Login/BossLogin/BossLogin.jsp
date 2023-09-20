@@ -11,6 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>HealthCare | SAYPROJECT</title>
+<!-- Bootstrap -->
+<link href="assets\css\bootstrap-4.6.2\bootstrap.min.css"
+	rel="stylesheet" />
 <!-- Animate.css -->
 <link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet">
 <link href="assets/Main/Login/css/style.css" rel="stylesheet">
@@ -21,12 +24,17 @@
 	<div class="container">
 		<!-- Sign In -->
 		<div class="container__form container--admin_and_trainer_signin">
-			<form action="/Main.say" method="post" class="form" id="bossLoginForm">
-				<input type="hidden" name="c" value="bossLoginCheck"> 
-				<input type="hidden" name="loginType" value="boss">
+			<form action="/Main.say" method="post" class="form"
+				id="bossLoginForm">
+				<input type="hidden" name="c" value="bossLoginCheck"> <input
+					type="hidden" name="loginType" value="boss">
+					<c:if test="${errorMessage != null}">
+						<div class="alert alert-danger" role="alert">${errorMessage}
+						</div>
+					</c:if>
 				<h2 class="form__title">대표자 로그인</h2>
-				<input type="email" placeholder="Email" class="input" /> <input
-					type="password" placeholder="비밀번호" class="input" />
+				<input type="email" placeholder="Email" class="input" name="masterid" /> <input
+					type="password" placeholder="비밀번호" class="input" name="masterpassword" />
 				<button class="btn">로그인</button>
 			</form>
 		</div>
