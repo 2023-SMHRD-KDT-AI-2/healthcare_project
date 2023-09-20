@@ -89,7 +89,7 @@
 									<div class="x_panel">
 										<div class="card-deck bg-light">
 											<div class="card text-center">
-												<div class="card-header" style="font-size: 15px; color: green;">건욱님의 pt회원 수  </div>
+												<div class="card-header" style="font-size: 15px; color: green;"> 현재 pt회원 수  </div>
 												<div class="card-body text-success" style="color :084B8A">
 													<h5>
 														<i class="fa fa-line-chart" aria-hidden="true"></i> &nbsp; ${trainerMemberCount}명
