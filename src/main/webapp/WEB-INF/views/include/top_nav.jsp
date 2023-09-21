@@ -39,39 +39,10 @@
 					aria-labelledby="navbarDropdown1">
 					<li class="nav-item"><a class="dropdown-item"> <span
 							class="image"><img src="images/img.jpg"
-								alt="Profile Image" /></span> <span> <span>John Smith</span> <span
+								alt="Profile Image" /></span> <span> <span>손지영</span> <span
 								class="time">3 mins ago</span>
-						</span> <span class="message"> Film festivals used to be do-or-die
-								moments for movie makers. They were where... </span>
-					</a></li>
-					<li class="nav-item"><a class="dropdown-item"> <span
-							class="image"><img src="images/img.jpg"
-								alt="Profile Image" /></span> <span> <span>John Smith</span> <span
-								class="time">3 mins ago</span>
-						</span> <span class="message"> Film festivals used to be do-or-die
-								moments for movie makers. They were where... </span>
-					</a></li>
-					<li class="nav-item"><a class="dropdown-item"> <span
-							class="image"><img src="images/img.jpg"
-								alt="Profile Image" /></span> <span> <span>John Smith</span> <span
-								class="time">3 mins ago</span>
-						</span> <span class="message"> Film festivals used to be do-or-die
-								moments for movie makers. They were where... </span>
-					</a></li>
-					<li class="nav-item"><a class="dropdown-item"> <span
-							class="image"><img src="images/img.jpg"
-								alt="Profile Image" /></span> <span> <span>John Smith</span> <span
-								class="time">3 mins ago</span>
-						</span> <span class="message"> Film festivals used to be do-or-die
-								moments for movie makers. They were where... </span>
-					</a></li>
-					<li class="nav-item">
-						<div class="text-center">
-							<a class="dropdown-item"> <strong>See All Alerts</strong> <i
-								class="fa fa-angle-right"></i>
-							</a>
-						</div>
-					</li>
+						</span> <span class="message"> 빨리 연락 부탁드립니다. 출근을 하셔야지. 이렇게 무단 결근을 하시면 어떻게 합니까? </span>
+					</a></li>					
 				</ul></li>
 		</ul>
 	</nav>

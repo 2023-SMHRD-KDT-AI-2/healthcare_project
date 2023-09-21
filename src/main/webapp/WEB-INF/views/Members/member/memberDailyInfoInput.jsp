@@ -19,11 +19,11 @@
 <!-- Custom Theme Style -->
 <link href="assets/Members/css/custom.css" rel="stylesheet" />
 <style>
-.dropdown-menu {  
-min-width:300px;  
-	max-width: 400px;     
-  max-height: 600px;
-  overflow-y: auto;
+.dropdown-menu {
+	min-width: 300px;
+	max-width: 400px;
+	max-height: 600px;
+	overflow-y: auto;
 }
 </style>
 </head>
@@ -93,11 +93,17 @@ min-width:300px;
 								</div>
 								<div class="x_content">
 									<br />
-									<form class="form-horizontal form-label-left" action="/Members.say?c=inputProcess" method="post">
+									<div class="alert alert-success" role="alert">회원의 페이지는 추후 구성 예정 중입니다.!</div>
+									<br />
+									<form class="form-horizontal form-label-left"
+										action="/Members.say?c=inputProcess" method="post">
 										<!-- include member info -->
-										<jsp:include page="/WEB-INF/views/include/diet_and_exercise_member_info_include.jsp" />
-										<jsp:include page="/WEB-INF/views/include/exercise_Information_Input_Main_Content.jsp" />
-										<jsp:include page="/WEB-INF/views/include/diet_Information_Input_Main_Content.jsp" />
+										<jsp:include
+											page="/WEB-INF/views/include/diet_and_exercise_member_info_include.jsp" />
+										<jsp:include
+											page="/WEB-INF/views/include/exercise_Information_Input_Main_Content.jsp" />
+										<jsp:include
+											page="/WEB-INF/views/include/diet_Information_Input_Main_Content.jsp" />
 										<div class="row"></div>
 										<div class="ln_solid"></div>
 										<div class="form-group">

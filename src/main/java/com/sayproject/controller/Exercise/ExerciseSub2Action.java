@@ -22,7 +22,7 @@ public class ExerciseSub2Action implements Action {
 
     String memberNo = request.getParameter("no");
 
-    if (memberNo.length() > 0) {
+    if (memberNo != null && memberNo.length() > 0) {
       ExerciseDAO dao = new ExerciseDAO();
       MemberInfo memberinfo = new MemberInfo();// 데이터를 DAO로 보내기
       memberinfo.setName(request.getParameter("name"));
