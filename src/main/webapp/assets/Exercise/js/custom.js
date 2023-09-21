@@ -49,7 +49,7 @@ const loadMemberDailyInfo = async () => {
             console.log('전송 성공');
         },
         error: function () {
-			alert("해당 일자의 정보가 없습니다. 다른 일자를 선택하여 주시기 바랍니다.")
+            alert('해당 일자의 정보가 없습니다. 다른 일자를 선택하여 주시기 바랍니다.');
             console.log('전송 실패');
         },
     });
@@ -83,8 +83,12 @@ const loadmember = async () => {
     let dayExerciseColor = [];
     let dayExerciseCalList = [];
 
-    let exerciseInfo = memberInfo.dailyInfo[day_n - 1].exercise;
+    let exerciseInfo = memberInfo?.dailyInfo[day_n - 1]?.exercise;
 
+    if (exerciseInfo === undefined) {
+        alert('해당 일자에 대한 데이터가 없습니다. 오늘 이전의 날짜를 선택하여 주시기 바랍니다.');
+        return;
+    }
     // 운동한 시간 표에 넣는 운동정보, 운동한 시간, 색깔을 리스트로 만드는 for문.
     // 색깔은 최대 7개 까지만 사용 가능!
 
