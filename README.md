@@ -1,44 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-## 📎 HellowPT?(팀명: SAY(Senior and Junior))
-<br>
-![image](https://user-images.githubusercontent.com/25995055/178401309-2a2ffc86-ef45-439b-bfd8-6978312100bc.png)
+## 📎 HellowPT (팀명: SAY(Senior and Junior))
 
-<br>
-<br>
+![팀명](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/21248be7-578e-4c67-bb1e-6a7f38e0d899)
+
 ## 👀 서비스 소개
-<br>
 * 서비스명:  Personal Traniner을 위한 PT고객 관리용 대시보드 
-<br>
 * 서비스설명: Personal Traniner들이 담당 회원들의 운동 및 음식 정보를 시각화된 형태로 보고 
-<br>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
 회원들에게 효율적이고 체계적인 피드백을 줄 수 있는 서비스
-<br>
-<br>
 
 ## 📅 프로젝트 기간
 2022.09.06 ~ 2022.09.21 (2주)
 <br>
-<br>
 
 ## ⭐ 주요 기능
-<br>
 1. 회원의 일일 운동/식단 정보를 입력받아 시각화된 Flow Chart구현
-<br>
 2. Main Page : 전체 회원과 트레이너의 Privacy Info확인 가능
-<br>
 3. Diet Page :  금일 식사의 영영정보 및 calorie 섭취량 시각화 자료를 통해 확인 가능
-<br>
 4. Exercise Page : 금일, 주별 운동별 calorie소모량을 시각화 자료를 통해 확인 가능
-<br>
-<br>
+
 
 ## ⛏ 기술스택
 <table border = "1px;">
@@ -91,55 +69,42 @@
     </tr>
 </table>
 
-
+## ⚙ 시스템 아키텍처(구조) 
+![서비스 아키텍쳐](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/3f67cf39-54d6-4b3d-9b02-ba3dae3be44b)
 <br>
 
-## ⚙ 시스템 아키텍처(구조) 예시 
-<br>
-![서비스 아키텍처]
-<br>
-(https://user-images.githubusercontent.com/25995055/169925538-15867bd9-aa0b-42fc-a39b-88981e926e51.png)
-<br>
-
-## 📌 SW유스케이스
-![image]
-<br>
-(https://user-images.githubusercontent.com/25995055/178401023-9a015e66-aa6e-4d74-8564-9b1f9d306649.png)
-<br>
-
-## 📌 서비스 흐름도
-![image]
-<br>
-(https://user-images.githubusercontent.com/25995055/178401048-d6484bda-a2d7-40e1-998b-2bd195cd9f89.png)
+## 📌 SW유스케이스 및 서비스 흐름도
+![유스케이스](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/9d225f8f-2d88-4956-8741-4e7f54661f3d)
 <br>
 
 ## 📌 ER다이어그램
-![image]
-<br>
-(https://user-images.githubusercontent.com/25995055/169925318-102784c2-893f-4fd7-bec9-a54c44b669d4.png)
-<br>
+![E-R 다이어그램](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/c24af80e-46f2-4c4b-aed4-0b091aea9b1d)
 <br>
 
 ## 🖥 화면 구성
+### 로그인/회원가입
+![로그인 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/218b75e4-b1fb-487e-9659-45b2d34b2a2c)
 <br>
 
-### 로그인/회원가입/회원괸리/회원수정/회원탈퇴
-![image]
-<br>
-(https://user-images.githubusercontent.com/25995055/178401098-95f15a0e-a2de-415e-83d5-883bb4cb0656.png)
+### 회원관리(헬스장의 간략한 현황과 회원리스트 확인)
+![회원관리 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/84df05b2-f800-455a-8187-31305c51f2fc)
 <br>
 
-### 옷 정보/코디 추천(날씨, 팁, 오늘의 코디, 참고할 수 있는 코디)
-![image]
-<br>
-(https://user-images.githubusercontent.com/25995055/178401127-287e6de2-4396-49fc-a107-59c4d5cd55c7.png)
+### 트레이너 리스트(헬스장의 모든 트레이너 목록 확인)
+![트레이너 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/c7b935f5-c21c-40a6-86aa-af289862e268)
 <br>
 
-### 일정/고객센터
-![image]
+### 회원리스트(헬스장의 모든 회원 목록 화인)
+![회원 리스트 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/fe42945f-2f75-45f1-bdc4-93ddc7f358f8)
 <br>
-(https://user-images.githubusercontent.com/25995055/178401150-861f0e93-0f40-4fae-98c1-2099bf513c8d.png)
+
+### 운동페이지(운동리스트, 운동별 소모칼로리, 운동별 시간별 실제 소모 칼로리, 주별 몸무게 변화를 챠트로 확인)
+![운동 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/c229bdcb-ad25-42f5-81b3-a68a07f00f8a)
 <br>
+
+### 식단페이지(하루 섭취 전체 음식 리스트/섭취 칼로리/영양성분, 시간대별 섭취 칼로리 및 영양성분, 음식별 섭취 칼로리 및 영양성분 확인)
+![음식 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/cdfb64bc-ccde-422d-93d0-526ac46f7313)
+![음식 상세정보 페이지](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/21e05c62-5444-4806-9f2a-6898aee33778)
 
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table border = "1px">
@@ -151,48 +116,52 @@
     <td align="center"><img src="https://pbs.twimg.com/media/B-n6uPYUUAAZSUx.png" width="100" height="100"/></td>
   </tr>
   <tr>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
-    <td align="center"><strong>홍O동</strong></td>
+    <td align="center"><strong>팀장 장건욱</strong></td>
+    <td align="center"><strong>부팀장 최병훈</strong></td>
+    <td align="center"><strong>장지웅</strong></td>
+    <td align="center"><strong>권용현</strong></td>
+    <td align="center"><strong>이나행</strong></td>
   </tr>
   <tr>
-    <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Deep Learning</b></td>
+    <td align="center"><b>Login Page<br>Back-End<br><br>Exercise Page<br>Ajax구현</b></td>
+    <td align="center"><b>Front 총괄<br>Back 총괄<br><br>MainPage<br>Front-End<br>Back-End</b></td>
+    <td align="center"><b>DietPage<br>Front-End<br>Back-End<br>Ajax구현</b></td>
+    <td align="center"><b>Exercise DATA<br><br>ExercisePage<br>Front-End<br>Ajax구현</b></td>
+    <td align="center"><b>Diet DATA<br><br>ExercisePage<br>Back-End</b></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/JangGunWook" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/sentimentalhoon" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/ImagineMaker" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/YongHyeonKwon" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/NHAENGBOK" target='_blank'>github</a></td>
   </tr>
 </table>
 
 ## 🤾‍♂️ 트러블슈팅
-개념: 문제 해결을 위해 문제의 원인을 논리적이고 체계적으로 찾는 일이며 제품이나 프로세스의 운영을 재개
-프로젝트 진행하는 동안 발생했던 이슈 중 가장 기억에 남았던 문제와 해결 프로세스 나열(2~5가지 정도)
 <br>
   
 * 문제1<br>
- 문제점 설명 및 해결방안
- <br>
+비통기 통신 시 ajax로 수신한 데이터가 다음 구문에서 활용이 되지 않음
+![ajax 트러블 슈팅](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/f41c8681-6e05-4adc-9cd5-70b3b81bdb1a)
+
+* 해결책<br>
+asyne await를 사용하ㅕ ajax로 데이터를 수신이 완전히 이루어진 후 다음 구문이 실행되도록 수정
+![ajax 트러블 슈팅 해결](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/01d3721a-504a-417a-896c-981b6fae46f9)
  
 * 문제2<br>
- 문제점 설명 및 해결방안
-<br>
+음식 페이지 로딩 지연 발생
 
-![Uploading 배경화면.jpg…]()
+* 해결책<br>
+DB조회 시 SELECT 횟수를 줄임
 
+![sql 트러블 슈팅](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/d1d7e7ea-70bb-4813-9b92-c616dd84397f)
+![sql 트러블 슈팅 해결](https://github.com/2023-SMHRD-KDT-AI-2/healthcare_project/assets/143372283/74e46570-1236-42e5-b04b-a277e2499870)
 
-
-
-</body>
-</html>
-
-
-
+## 🤾‍♂️ 개선사항
+* 시각자료 및 페이지 디자인 개선
+* 세분화된 기간 별 운동/식단 정보확인 기능
+* 회원 별 섭취 식사 및  운동입력 자료 입력받기 기능 + 시각자료 공개
+* 회원과 트레이너와 소통할 수 있는 기능 구축(채팅/메세지 기능)
+* 빅데이터를 활용한 신체변화 추이 예상 기능 
+* 웹—> 앱버전
