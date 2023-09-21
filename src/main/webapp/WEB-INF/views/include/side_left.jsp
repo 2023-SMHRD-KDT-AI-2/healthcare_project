@@ -28,7 +28,7 @@
 		</div>
 		<div class="profile_info">
 			<span>어서오세요,</span>
-			<h2>${nickname}님</h2>
+			<h2>${nickname} <c:if test="${grade eq 'trainer'}"><small>트레이너</small></c:if>님</h2>
 		</div>
 		<div class="clearfix"></div>
 	</div>
