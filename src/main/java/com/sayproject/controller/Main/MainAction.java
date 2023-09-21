@@ -100,8 +100,11 @@ public class MainAction implements Action {
 
         RequestDispatcher dis = request.getRequestDispatcher("WEB-INF/views/Main/main.jsp");
         dis.forward(request, response);
-
+      } else {
+        response.sendRedirect("/Main.say?c=login");
       }
+    } else {
+      response.sendRedirect("/Main.say?c=login");
     }
   }
 }

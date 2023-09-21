@@ -40,6 +40,7 @@ public class BossLoginCheckAction implements Action {
         BossAccount bossAccount = gson.fromJson(document.toJson(), BossAccount.class);
         if (bossAccount.getMasterid().equals(masterId) && bossAccount.getPassword().equals(masterPassword)) {
           HttpSession httpSession = request.getSession();
+          httpSession.setAttribute("grade", "master");
           httpSession.setAttribute("loginType", "master");
           httpSession.setAttribute("memberObjectId", bossAccount.getNo());
           httpSession.setAttribute("masterId", bossAccount.getMasterid());

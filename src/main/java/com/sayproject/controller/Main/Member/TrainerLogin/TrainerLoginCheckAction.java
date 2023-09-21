@@ -46,6 +46,7 @@ public class TrainerLoginCheckAction implements Action {
         HttpSession session = request.getSession();
         // 존재하는 정보를 세션에 저장시킨다.
         if (returnTrainerAccount != null) {            
+            session.setAttribute("grade", "trainer");
             session.setAttribute("loginType", loginType);
             session.setAttribute("memberObjectId", returnTrainerAccount.getNo());
             session.setAttribute("emailOrId", returnTrainerAccount.getEmail());
