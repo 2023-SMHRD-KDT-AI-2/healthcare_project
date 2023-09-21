@@ -29,7 +29,7 @@ $(document).ready(function () {
                     return (
                         '<img src="' + 
                         row.photopath +
-                        '" width="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Exercise.say?c=sub2' +
+                        '" style="max-width:50px;max-height:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Exercise.say?c=sub2' +
                         '&no=' +
                         row.no +
                         '&name=' +

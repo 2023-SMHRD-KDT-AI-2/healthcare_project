@@ -49,6 +49,7 @@ const loadMemberDailyInfo = async () => {
             console.log('전송 성공');
         },
         error: function () {
+			alert("해당 일자의 정보가 없습니다. 다른 일자를 선택하여 주시기 바랍니다.")
             console.log('전송 실패');
         },
     });
@@ -167,7 +168,7 @@ const loadmember = async () => {
     const getDayNum = 10;
     for (let i = day_n - getDayNum; i <= day_n; i++) {
         dayofDay.push(i + '일');
-        dayWeight.push(memberInfo.dailyInfo[i - 1].status.weight);
+        dayWeight.push(memberInfo?.dailyInfo[i - 1]?.status?.weight);
     }
     // 라인 차트
     let lineChart = $('#line-chart');
@@ -269,7 +270,7 @@ const loadmember = async () => {
     // calorieSumList에 일별 총 칼로리 소모량을 넣어둠.
     for (let i = 0; i < memberInfo.dailyInfo.length; i++) {
         for (let j = 0; j < memberDailyInfo[i].exercise.length; j++) {
-            calorieSum += memberInfo.dailyInfo[i].exercise[j].calorie;
+            calorieSum += memberInfo?.dailyInfo[i]?.exercise[j]?.calorie;
         }
         calorieSumList.push(calorieSum);
         calorieSum = 0;
@@ -285,7 +286,7 @@ const loadmember = async () => {
 
     for (let i = day_n - 1; i > day_n - 8; i--) {
         if (i > 0) {
-            dayOfTheWeek_1.push(memberInfo.dailyInfo[i].dayOfTheWeek);
+            dayOfTheWeek_1.push(memberInfo?.dailyInfo[i]?.dayOfTheWeek);
             dayCalorieSumList_1.push(Math.floor(calorieSumList[i]));
         } else {
             break;
@@ -351,7 +352,7 @@ const loadmember = async () => {
             day_n = Number(urlDay); // 일수의 자리수가 한자리 일 때 0을 제거하기 위해 선언한 변수
 
             // ajax요청에 사용되는 rul
-            moveUrl = `http://localhost/Members.say?c=member&collection=${
+            moveUrl = `/Members.say?c=member&collection=${
                 urlYear + urlMonth
             }&fieldName=_id&value=${memberID}&valueType=int&dataType=json`;
 

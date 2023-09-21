@@ -89,5 +89,4 @@
 	Kakao.init("14274277b7b930e3289085afa313c81c"); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 <!-- Custom Theme Scripts -->
-<script src="assets/build/js/custom.min.js"></script>
 <script src="assets/build/js/custom.js"></script>
