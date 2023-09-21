@@ -19,7 +19,7 @@ public class DietMainAction implements Action {
 
     String memberNo = request.getParameter("no");
     
-    if (memberNo.length() > 0) {
+    if (memberNo != null && memberNo.length() > 0) {
       Enumeration<String> parameterNames = request.getParameterNames();
 
       while (parameterNames.hasMoreElements()) {

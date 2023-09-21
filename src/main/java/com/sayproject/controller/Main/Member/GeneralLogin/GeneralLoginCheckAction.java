@@ -45,6 +45,7 @@ public class GeneralLoginCheckAction implements Action {
             if (password.equals(login.getPassword())) {
                 // 로그인 성공
                 String loginType = request.getParameter("loginType");
+                session.setAttribute("grade", "member");
                 session.setAttribute("loginType", loginType);
                 session.setAttribute("idOrEmail", id);
 
@@ -86,8 +87,8 @@ public class GeneralLoginCheckAction implements Action {
                 System.out.println("등록일 체크 :" + data.getRegist_day());
                 System.out.println("등록일 체크 :" + data.getExpiration_day());
 
-                Script.href("로그인 성공", "/Members.say?c=input", response);
-
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Main.say?c=input");
+                requestDispatcher.forward(request, response);
             } else {
                 request.setAttribute("loginError", "비밀번호가 틀렸습니다.");
                 request.setAttribute("email", id);

@@ -87,7 +87,8 @@ public class KakaoLoginDbCheckAction implements Action {
 				 * 값을 구해온다. 4. token 을 이용해 사용자의 카카오 정보를 가져온다. 5. 이후 해당 정보를 DB 에 기록한다. 6. 카카오 정보
 				 * 외에 필요한 정보를 받는 페이지로 이동하여 입력 받는다. 7. 만약 추가 정보를 입력하지 않은 상태에서는 추가 정보 입력 페이지로 강제
 				 * 이동하게 한다. 8. 추가 정보를 입력하여야만 해당 계정이 활성화 되게 한다.*/
-				
+			  session.setAttribute("grade", "member");
+			  session.setAttribute("loginType", "kakao");
 				session.setAttribute("memberObjectId", memberDailyData.getId());
 				session.setAttribute("emailOrId", kakaoAccount.getEmail());
 				session.setAttribute("nickname", profile.getNickname());
