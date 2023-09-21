@@ -7,14 +7,10 @@ let checkMember;
 // await : async안에서만 구현 가능하다!
 //         await가 다 실행 된다음에 실행 된다는 거다!!!(비동기 통신의 핵심!!!)
 const memberTotal = async () => {
-    console.log("전체회원 명단 : ",memberList)
     await $.ajax({
         url: memberList,
         success: function (data) {
             checkMember = JSON.parse(data);
-            console.log("전체회원 명단 : ",checkMember);
-            console.log("전송 성공");
-            
         },
         error: function () {
             console.log("전송 실패");
@@ -41,17 +37,6 @@ const rendTotalName = () => {
 //회원 명단 이름, 사진 불러오는 함수
 const memberName = async() =>{
     await memberTotal();
-
-    console.log("이름 :",checkMember[0].name);
-
-    checkMember.forEach(element => {
-
-        console.log("이름2",element.name)
-
-       
-        
-    });
-
     rendTotalName()
 }
 

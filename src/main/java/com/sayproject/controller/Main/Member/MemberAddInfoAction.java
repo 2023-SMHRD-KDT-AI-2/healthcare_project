@@ -41,6 +41,5 @@ public class MemberAddInfoAction implements Action {
 		} else {
 			response.sendRedirect("/Main.say?c=login");
 		}
-
 	}
 }

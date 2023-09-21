@@ -22,11 +22,10 @@
           <link href="assets/Exercise/css/custom.css" rel="stylesheet" />
 
           <!-- Font awesome -->
-          <script src="https://kit.fontawesome.com/d5b1d5ed76.js" crossorigin="anonymous"></script>
+          <script src="https://kit.fontawesome.com/d5b1d5ed76.js"></script>
 
           <!-- Google fonts -->
           <link rel="preconnect" href="https://fonts.googleapis.com">
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link rel="preconnect" href="https://fonts.gstatic.com">
           <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -893,65 +892,6 @@
               }
               setInterval(toggleElements, 3000);
 
-              // /* 주 ~ 회 Times/회 글씨 바뀌는 효과 */
-              // /* 근데 너무 많이 쓰니까 요란스럽다*/
-              // function toggleElement2s() {
-              //   const elements = document.getElementsByClassName('howoften_times');
-              //   const changeElements = document.getElementsByClassName('howoften_times_hides');
-
-              //   // elements와 changeElements의 display 속성을 토글
-              //   for (let i = 0; i < elements.length; i++) {
-              //     if (elements[i].style.display === 'none') {
-              //       elements[i].style.display = 'block';
-              //       changeElements[i].style.display = 'none';
-              //     } else {
-              //       elements[i].style.display = 'none';
-              //       changeElements[i].style.display = 'block';
-              //     }
-              //   }
-              // }
-              // setInterval(toggleElement2s, 3000);
-              /*숫자가 3초 뒤에 바뀌는 애니메이션 끝*/
-
-              /*~일째 랜덤한 숫자가 돌다가 멈추는 애니메이션
-              function startRandomNumberAnimation() {
-                const randomNumberElement = document.getElementsByClassName("randomNumber");
-                const targetNumber = 36; // 멈출 숫자
-                const animationDuration = 300; // 애니메이션 지속 시간 (0.3초)
-
-                let currentNumber = 0;
-                let startTime;
-
-                function updateNumber(timestamp) {
-                  if (!startTime) {
-                    startTime = timestamp;
-                  }
-
-                  const progress = timestamp - startTime;
-                  const percentage = Math.min(1, progress / animationDuration);
-
-                  currentNumber = Math.round(percentage * targetNumber);
-                  randomNumberElement[0].textContent = currentNumber;
-
-                  if (percentage < 1) {
-                    requestAnimationFrame(updateNumber);
-                  }
-                }
-
-                requestAnimationFrame(updateNumber);
-              }
-              */
-              // 페이지 로드 후 0.5초 뒤에 애니메이션 시작
-              window.addEventListener("load", () => {
-                setTimeout(startRandomNumberAnimation, 500);
-              });
-              /* ~일째 애니메이션 효과 끝*/
-
-
-
-              /* 주 ~회 숫자 애니메이션 */
-
-              /* 주~째 애니메이션 효과 끝*/
             </script>
             <div class="container body">
               <div class="main_container">
