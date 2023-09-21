@@ -134,7 +134,7 @@
     <td align="center"><a href="https://github.com/sentimentalhoon" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/ImagineMaker" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/YongHyeonKwon" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/자신의username작성해주세요" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/NHAENGBOK" target='_blank'>github</a></td>
   </tr>
 </table>
 
