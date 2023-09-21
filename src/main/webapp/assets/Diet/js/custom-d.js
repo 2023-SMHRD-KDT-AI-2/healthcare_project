@@ -835,6 +835,12 @@ const rendTotalName = () => {
     });
 }
 
+const memberName = async() =>{
+    await loadMemberList();
+    rendTotalName()
+}
+
+memberName();
 
 // 회원이 그날 머근 영양소들의 합을 아침, 점심, 저녁, 간식별로 합산
 const calcNutrient = function() {
@@ -1593,10 +1599,14 @@ function removeAllChildren(parentElementId) {
 // 음실별 영양정보 리스트를 받아오는 함수
 const loadmember = async () => {
   // MonggoDB에 ajax요청 후 데이터를 받을 때까지 대기
-  await loadMemberDailyInfo();
-  await loadMemberList();
 
-  rendTotalName();
+  console.log("실행순서1")
+  await loadMemberDailyInfo();
+  console.log("실행순서2")
+  // await loadMemberList();
+
+  console.log("실행순서3")
+   //rendTotalName();
   
   // MonggoDB에서 받은 음식 정보만을 meal객체에 저장
 	meal = {
@@ -1632,6 +1642,7 @@ const loadmember = async () => {
     }
 
 	// ajax이 끝날 때까지 대기
+	console.log("실행순서4")
     await sendFoodCode();
 
 	console.log("meal : ", meal);
@@ -1641,6 +1652,7 @@ const loadmember = async () => {
     calcNutrient();
 	createPage();
 
+	console.log("실행순서5")
 	$('#single_calCustom').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_1"
@@ -1673,6 +1685,7 @@ const loadmember = async () => {
 			urlYear + urlMonth
 		}&fieldName=_id&value=${memberID}&valueType=int&dataType=json`;
 
+		console.log("실행순서6")
 		removeAllChildren("breakfast_food_info");
 		removeAllChildren("lunch_food_info");
 		removeAllChildren("dinner_food_info");
@@ -1680,12 +1693,13 @@ const loadmember = async () => {
 		removeAllChildren("all_nutrient_chart");
 		removeAllChildren("all_nutrient_progressBar");
 
+		console.log("실행순서7")
 		for (m in nutrientCalc) {
 			for (n in nutrientCalc[m]) {
 				nutrientCalc[m][n] = 0;
 			}
 		}
-
+		console.log("실행순서8")
 		for (m in sumNutrientCalc) {
 			sumNutrientCalc[m] = 0;
 		}
@@ -1693,6 +1707,7 @@ const loadmember = async () => {
 		myDoughtnutChart2 =[];
 		myBarChart2 = [];
 
+		console.log("실행순서9")
 		loadmember();
     });
 	
