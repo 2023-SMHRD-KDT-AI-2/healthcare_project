@@ -21,7 +21,7 @@
 		<!-- Sign In -->
 		<div class="container__form container--admin_and_trainer_signin">
 			<div class="jumbotron">
-				<h1 class="display-4">Hellow PT</h1>
+				<h1 class="display-4">HelLow PT</h1>
 				<p class="lead">해당 페이지는 관리자 / 트레이너 / 일반 회원의 로그인 구분을 위해 만들어 둔 페이지입니다.</p>
 				<hr class="my-4">
 				<p>추후 각각의 페이지, 혹은 웹, 앱으로 분리 될 수 있습니다.</p>
